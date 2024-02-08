@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import { BrowserRouter as Router } from "react-router-dom";
+import { redirectToWWW } from '@/utils/RedirectToWWW';
 import reportWebVitals from './reportWebVitals';
+import App from './App';
+import Providers from './Providers';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+redirectToWWW();
+
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Suspense fallback={null}>
+        <Providers>
+          <App />
+        </Providers>
+      </Suspense>
+    </Router>
   </React.StrictMode>
 );
 
