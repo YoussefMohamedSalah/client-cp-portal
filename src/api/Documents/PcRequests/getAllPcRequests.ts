@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { ROUTES } from "@/constants/routes";
-import { http } from "@/utils/Http";
-import PettyCashRequest from "@/types/Pc_request";
+import { ROUTES } from "constants/routes";
+import { http } from "utils/Http";
+import PettyCashRequest from "types/Pc_request";
 
 export const getAllPcRequests = async () => {
     const { data } = await http.get(ROUTES.PC_REQUESTS);

@@ -1,4 +1,4 @@
-import { ENUMS } from "@/enums/enums";
+import { ENUMS } from "enums/enums";
 
 export interface Company {
     id: string;

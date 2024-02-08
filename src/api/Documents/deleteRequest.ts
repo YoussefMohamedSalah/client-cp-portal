@@ -1,6 +1,6 @@
-import { ROUTES } from "@/constants/routes";
-import { ENUMS } from "@/enums/enums";
-import http from "@/utils/Http";
+import { ROUTES } from "constants/routes";
+import { ENUMS } from "enums/enums";
+import http from "utils/Http";
 import { useMutation } from "react-query";
 
 interface DeleteDocumentProps {

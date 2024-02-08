@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import DataTable from "react-data-table-component";
-import DownloadCSV from '@/components/UI/DownloadCSV';
+import DownloadCSV from 'components/UI/DownloadCSV';
 import TableCards from './TableCards';
 import TableSearch from './TableSearch';
-import PettyCashRequest from '@/types/Pc_request';
-import PurchaseOrderRequest from "@/types/Po_request";
-import EmployeeRequest from "@/types/Employee_request";
-import MaterialRequest from "@/types/Material_request";
-import SiteRequest from "@/types/Site_request";
-import { formatCsvOutput } from '@/utils/FormatCsvOutput';
-import { Contract } from '@/types/Contract';
-import Invoice from '@/types/Invoice';
-import { formatCsvTitle } from '@/utils/FormatCsvTitle';
+import PettyCashRequest from 'types/Pc_request';
+import PurchaseOrderRequest from "types/Po_request";
+import EmployeeRequest from "types/Employee_request";
+import MaterialRequest from "types/Material_request";
+import SiteRequest from "types/Site_request";
+import { formatCsvOutput } from 'utils/FormatCsvOutput';
+import { Contract } from 'types/Contract';
+import Invoice from 'types/Invoice';
+import { formatCsvTitle } from 'utils/FormatCsvTitle';
 
 interface Props<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice> {
 	title: string;

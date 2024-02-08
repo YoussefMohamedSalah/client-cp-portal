@@ -1,4 +1,4 @@
-import { ENUMS } from "@/enums/enums";
+import { ENUMS } from "enums/enums";
 import { Project } from "./Project";
 
 export interface Employee {

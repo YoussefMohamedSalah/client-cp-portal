@@ -4,12 +4,12 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
 // Toasts
-import ErrorToast from '@/components/Alerts/ErrorToast';
-import SuccessToast from '@/components/Alerts/SuccessToast';
+import ErrorToast from 'components/Alerts/ErrorToast';
+import SuccessToast from 'components/Alerts/SuccessToast';
 
 // Contexts
-import { AuthProvider } from "@/contexts/AuthContext";
-import { UIProvider } from "@/contexts/UIContext";
+import { AuthProvider } from "contexts/AuthContext";
+import { UIProvider } from "contexts/UIContext";
 
 const queryClient = new QueryClient();
 

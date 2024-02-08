@@ -1,7 +1,7 @@
 import { Suspense, lazy } from "react";
 import { useParams } from "react-router-dom";
-import { PAGES } from "@/constants/pages";
-import Loading from "@/components/UI/Loading";
+import { PAGES } from "constants/pages";
+import Loading from "components/UI/Loading";
 
 const SignIn = lazy(() => import("../../components/Auth/SignIn"));
 const Register = lazy(() => import("../../components/Auth/SignUp"));

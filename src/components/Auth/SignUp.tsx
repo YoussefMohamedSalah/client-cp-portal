@@ -1,14 +1,14 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import { registerValidation } from "@/validators/Auth/register";
+import { registerValidation } from "validators/Auth/register";
 import { yupResolver } from "@hookform/resolvers/yup";
-import useApp from "@/hooks/useApp";
-import { useAuth } from "@/contexts/AuthContext";
-import { ENUMS } from "@/enums/enums";
-import { useUI } from "@/contexts/UIContext";
-import { useRegister } from "framework/auth/register";
-import { handleServerError } from "@/utils/inputValidator";
+import useApp from "hooks/useApp";
+import { useAuth } from "contexts/AuthContext";
+import { ENUMS } from "enums/enums";
+import { useUI } from "contexts/UIContext";
+import { useRegister } from "api/Auth/Register";
+import { handleServerError } from "utils/HandlingServerError";
 
-interface AuthSignupInput {
+export interface AuthSignupInput {
     email: string;
     password: string;
     name: string;

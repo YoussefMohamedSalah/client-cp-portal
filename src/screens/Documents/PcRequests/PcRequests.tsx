@@ -1,15 +1,15 @@
-import Loading from "@/components/UI/Loading";
-import PettyCashRequest from "@/types/Pc_request";
-import Table from "@/components/Common/Table";
-import { useGetAllPcRequestsQuery } from "@/api/Documents/PcRequests/getAllPcRequests";
-import PageHeader from "@/components/Common/PageHeader";
-import useApp from "@/hooks/useApp";
-import { PAGES } from "@/constants/pages";
-import { calculateWorkFlowStatus } from "@/utils/CalculateWorkFlowStatus";
-import { ENUMS } from "@/enums/enums";
+import Loading from "components/UI/Loading";
+import PettyCashRequest from "types/Pc_request";
+import Table from "components/Common/Table";
+import { useGetAllPcRequestsQuery } from "api/Documents/PcRequests/getAllPcRequests";
+import PageHeader from "components/Common/PageHeader";
+import useApp from "hooks/useApp";
+import { PAGES } from "constants/pages";
+import { calculateWorkFlowStatus } from "utils/CalculateWorkFlowStatus";
+import { ENUMS } from "enums/enums";
 import { useState } from "react";
-import WorkFlowStatusModal from "@/components/Modals/WorkFlowStatusModal";
-import DocumentsTableActionBtn from "@/components/Common/DocumentsTableActionBtn";
+import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
+import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
 
 const PcRequests: React.FC = () => {
 	const [selectedDocument, setSelectedDocument] = useState<PettyCashRequest>({} as PettyCashRequest);

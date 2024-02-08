@@ -1,4 +1,4 @@
-import { filterData } from "@/utils/FilterData";
+import { filterData } from "utils/FilterData";
 import { useEffect, useState } from "react";
 import { Dropdown } from "react-bootstrap";
 

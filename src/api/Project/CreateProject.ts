@@ -1,7 +1,7 @@
-import { useMutation } from "@tanstack/react-query";
-import { ROUTES } from "@/constants/routes";
-import { SelectedProject } from "@/types/Project";
-import { http } from "@/utils/Http";
+import { useMutation } from "react-query";
+import { ROUTES } from "constants/routes";
+import { SelectedProject } from "types/Project";
+import { http } from "utils/Http";
 
 export const useCreateProject = () => {
 	return useMutation<any, Error, FormData>(async (createInput) => {

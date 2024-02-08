@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { ErrorType } from "@/types/Error";
+import { ErrorType } from "types/Error";
 
 interface UIContextValue {
 	changeTheme: (theme: string) => void;

@@ -2,13 +2,13 @@ import { Modal } from "react-bootstrap";
 import "./workFlow.css";
 import { useState } from "react";
 import TimeLineModal from "./TimeLineModal";
-import PettyCashRequest from '@/types/Pc_request';
-import PurchaseOrderRequest from "@/types/Po_request";
-import EmployeeRequest from "@/types/Employee_request";
-import MaterialRequest from "@/types/Material_request";
-import SiteRequest from "@/types/Site_request";
-import { Contract } from '@/types/Contract';
-import Invoice from '@/types/Invoice';
+import PettyCashRequest from 'types/Pc_request';
+import PurchaseOrderRequest from "types/Po_request";
+import EmployeeRequest from "types/Employee_request";
+import MaterialRequest from "types/Material_request";
+import SiteRequest from "types/Site_request";
+import { Contract } from 'types/Contract';
+import Invoice from 'types/Invoice';
 
 interface Props<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice> {
 	open: boolean;

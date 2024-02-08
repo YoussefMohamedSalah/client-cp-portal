@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 // Hooks
-import { getLocaleSession } from "@/utils/Session";
-import { useAuth } from "@/contexts/AuthContext";
-import Loading from "@/components/UI/Loading";
-import DashboardLayout from "@/layouts/DashboardLayout";
-import AuthLayout from "@/components/Layouts/AuthLayout";
+import { getLocaleSession } from "utils/Session";
+import { useAuth } from "contexts/AuthContext";
+import Loading from "components/UI/Loading";
+import DashboardLayout from "layouts/DashboardLayout";
+import AuthLayout from "components/Layouts/AuthLayout";
 
 const SessionLayout: React.FC = () => {
 	const [initialized, setInitialized] = useState<boolean>(false);

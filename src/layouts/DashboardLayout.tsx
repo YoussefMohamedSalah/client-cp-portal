@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Session } from "@/utils/Session";
-import Loading from "@/components/UI/Loading";
-import useApp from "@/hooks/useApp";
-import { PAGES } from "@/constants/pages";
-import { PagesRender, PagesRenderProps } from "@/utils/PagesRender";
+import { Session } from "utils/Session";
+import Loading from "components/UI/Loading";
+import useApp from "hooks/useApp";
+import { PAGES } from "constants/pages";
+import { PagesRender, PagesRenderProps } from "utils/PagesRender";
 
 interface Props {
 	session: Session

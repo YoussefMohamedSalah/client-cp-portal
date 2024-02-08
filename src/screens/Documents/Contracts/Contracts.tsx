@@ -8,29 +8,29 @@ import { ENUMS } from "enums/enums";
 import { useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
-import SiteRequest from "types/Site_request";
-import { useGetAllSiteRequestsQuery } from "api/Documents/SiteRequests/getAllSiteRequests";
+import { Contract } from "types/Contract";
+import { useGetAllContractsQuery } from "api/Documents/Contracts/getAllContracts";
 
-const SiteRequests: React.FC = () => {
-    const [selectedDocument, setSelectedDocument] = useState<SiteRequest>({} as SiteRequest);
+const Contracts: React.FC = () => {
+    const [selectedDocument, setSelectedDocument] = useState<Contract>({} as Contract);
     const [open, setOpen] = useState<boolean>(false);
 
-    const { data, error, isLoading } = useGetAllSiteRequestsQuery();
+    const { data, error, isLoading } = useGetAllContractsQuery();
     const { push } = useApp();
 
     if (isLoading) return <Loading />;
     if (error) return null;
 
-    let requests: SiteRequest[] = [];
-    if (data && data.siteRequests && data.siteRequests.data) {
-        requests = data.siteRequests.data;
+    let requests: Contract[] = [];
+    if (data && data.contracts && data.contracts.data) {
+        requests = data.contracts.data;
     }
 
     const handleClose = () => {
         setOpen(false);
     };
 
-    const handleOpen = (request: SiteRequest) => {
+    const handleOpen = (request: Contract) => {
         setSelectedDocument(request)
         setOpen(true);
     };
@@ -41,11 +41,11 @@ const SiteRequests: React.FC = () => {
             width: "110px",
             selector: (row: any) => row.code,
             sortable: true,
-            cell: (row: any) => <span onClick={() => push(`/${PAGES.SITE_REQUEST}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
+            cell: (row: any) => <span onClick={() => push(`/${PAGES.PC_REQUEST}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
         },
         {
             name: "Rev",
-            width: "80px",
+            width: "70px",
             selector: (row: any) => row.rev_num!,
             sortable: true,
             cell: (row: any) =>
@@ -53,7 +53,7 @@ const SiteRequests: React.FC = () => {
         },
         {
             name: "Maker",
-            width: "230px",
+            width: "220px",
             selector: (row: any) => row.user?.name!,
             sortable: true,
             cell: (row: any) =>
@@ -73,7 +73,24 @@ const SiteRequests: React.FC = () => {
         },
         {
             name: "Description",
+            width: "270px",
             selector: (row: any) => <span className="">{row.description}</span>,
+            sortable: false
+        },
+        {
+            name: "Transaction Date",
+            width: "160px",
+            selector: (row: any) => row.transaction_date,
+            sortable: true
+        },
+        {
+            name: "Total",
+            selector: (row: any) => `${Number(row.total).toFixed(2) || 0} SAR`,
+            sortable: false
+        },
+        {
+            name: "Paid",
+            selector: (row: any) => `${Number(row.paid_amount).toFixed(2) || 0} SAR`,
             sortable: false
         },
         {
@@ -100,7 +117,7 @@ const SiteRequests: React.FC = () => {
             selector: (row: any) => { },
             sortable: false,
             cell: (row: any) =>
-                <DocumentsTableActionBtn<SiteRequest> data={row} />
+                <DocumentsTableActionBtn<Contract> data={row} />
         }
     ];
 
@@ -116,20 +133,20 @@ const SiteRequests: React.FC = () => {
                 />
                 {/* table data */}
                 <div className="row g-3 py-1 pb-4">
-                    <Table<SiteRequest>
+                    <Table<Contract>
                         title={'Purchase Order Requests'}
                         columns={columnT}
                         data={requests}
                         renderCards={true}
                         renderSearch={true}
                         renderDownload={true}
-                        selectItem={(item: SiteRequest) => setSelectedDocument(item)}
+                        selectItem={(item: Contract) => setSelectedDocument(item)}
                     />
                 </div>
             </div>
-            {selectedDocument && selectedDocument.status !== ENUMS.STATUS.ARCHIVED && <WorkFlowStatusModal<SiteRequest> handleClose={handleClose} open={open} selectedDocument={selectedDocument} />}
+            {selectedDocument && selectedDocument.status !== ENUMS.STATUS.ARCHIVED && <WorkFlowStatusModal<Contract> handleClose={handleClose} open={open} selectedDocument={selectedDocument} />}
         </>
     );
 };
 
-export default SiteRequests;
+export default Contracts;

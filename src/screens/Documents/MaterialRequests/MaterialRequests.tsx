@@ -1,17 +1,17 @@
-import Loading from "@/components/UI/Loading";
-import Table from "@/components/Common/Table";
-import PageHeader from "@/components/Common/PageHeader";
-import useApp from "@/hooks/useApp";
-import { PAGES } from "@/constants/pages";
-import { calculateWorkFlowStatus } from "@/utils/CalculateWorkFlowStatus";
-import { ENUMS } from "@/enums/enums";
+import Loading from "components/UI/Loading";
+import Table from "components/Common/Table";
+import PageHeader from "components/Common/PageHeader";
+import useApp from "hooks/useApp";
+import { PAGES } from "constants/pages";
+import { calculateWorkFlowStatus } from "utils/CalculateWorkFlowStatus";
+import { ENUMS } from "enums/enums";
 import { useState } from "react";
-import WorkFlowStatusModal from "@/components/Modals/WorkFlowStatusModal";
-import DocumentsTableActionBtn from "@/components/Common/DocumentsTableActionBtn";
-import MaterialRequest from "@/types/Material_request";
-import { useGetAllMaterialRequestsQuery } from "@/api/Documents/MaterialRequests/getAllMaterialRequests";
+import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
+import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
+import MaterialRequest from "types/Material_request";
+import { useGetAllMaterialRequestsQuery } from "api/Documents/MaterialRequests/getAllMaterialRequests";
 
-const PcRequests: React.FC = () => {
+const MaterialRequests: React.FC = () => {
     const [selectedDocument, setSelectedDocument] = useState<MaterialRequest>({} as MaterialRequest);
     const [open, setOpen] = useState<boolean>(false);
 
@@ -139,4 +139,4 @@ const PcRequests: React.FC = () => {
     );
 };
 
-export default PcRequests;
+export default MaterialRequests;

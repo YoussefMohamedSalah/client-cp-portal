@@ -1,4 +1,4 @@
-import { ErrorType } from "@/types/Error";
+import { ErrorType } from "types/Error";
 
 export const handleServerError = (serverError: any): ErrorType[] => {
 	if (serverError && serverError.data && serverError.data.msg) {

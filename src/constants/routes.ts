@@ -25,7 +25,6 @@ export enum ROUTES {
     CO_GROUPS = "company/group",
     CO_TASKS = 'company/task',
     CO_SUBCONTRACTORS = 'company/subcontractor',
-    CO_SUBCONTRACTORS_CONTRACTS = 'company/contract',
     INVOICE = 'invoice/',
     DAILY_REPORT = 'daily_report/',
     DAILY_REPORT_INITIAL_DATA = 'daily_report/initial/',
@@ -57,14 +56,17 @@ export enum ROUTES {
     PROJECT_EMPLOYEES = 'project/employees/',
     WORKFLOW = 'workflow/',
     SUBCONTRACTOR = 'subcontractor/',
-    CONTRACT = 'contract/',
     CONTRACT_INVOICES = 'contract/invoices/',
     // !----- Requests Endpoints ----
+
+
     PO_REQUESTS = 'request/po/',
     PC_REQUESTS = 'request/pc/',
     SITE_REQUESTS = 'request/site/',
     MATERIAL_REQUESTS = 'request/material/',
     EMPLOYEE_REQUESTS = 'request/employee/',
+    CONTRACTS = 'company/contract',
+    INVOICES = 'company/invoices',
 
     DCC_PO_REQUESTS = 'dcc/po/',
     DCC_PC_REQUESTS = 'dcc/pc/',
@@ -78,6 +80,7 @@ export enum ROUTES {
     MATERIAL_REQUEST = 'request/material/',
     SITE_REQUEST = 'request/site/',
     EMPLOYEE_REQUEST = 'request/employee/',
+    CONTRACT = 'contract/',
 
     APPROVE_REQUEST = 'request/utils/approve/',
     REJECT_REQUEST = 'request/utils/reject/',

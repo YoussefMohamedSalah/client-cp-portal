@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
-import { ENUMS } from '@/enums/enums';
-import SmallCard from '@/components/UI/SmallCard';
-import PettyCashRequest from '@/types/Pc_request';
-import PurchaseOrderRequest from "@/types/Po_request";
-import EmployeeRequest from "@/types/Employee_request";
-import MaterialRequest from "@/types/Material_request";
-import SiteRequest from "@/types/Site_request";
-import { Contract } from '@/types/Contract';
-import Invoice from '@/types/Invoice';
+import { ENUMS } from 'enums/enums';
+import SmallCard from 'components/UI/SmallCard';
+import PettyCashRequest from 'types/Pc_request';
+import PurchaseOrderRequest from "types/Po_request";
+import EmployeeRequest from "types/Employee_request";
+import MaterialRequest from "types/Material_request";
+import SiteRequest from "types/Site_request";
+import { Contract } from 'types/Contract';
+import Invoice from 'types/Invoice';
 
 interface SmallCardProps {
 	title: string;

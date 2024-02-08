@@ -1,5 +1,5 @@
 import { Company } from './Company';
-import { ENUMS } from '@/enums/enums';
+import { ENUMS } from 'enums/enums';
 
 interface Tender {
     id: string;

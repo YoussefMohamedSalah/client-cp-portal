@@ -2,7 +2,7 @@ import { Project } from "./Project";
 import { Company } from "./Company";
 import { Subcontractor } from "./Subcontractor";
 import { Contract } from "./Contract";
-import { STATUS, DOCUMENT_TYPE } from '@/enums/enums';
+import { STATUS, DOCUMENT_TYPE } from 'enums/enums';
 
 interface Invoice {
     id: string;

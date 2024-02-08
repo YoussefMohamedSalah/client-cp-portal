@@ -1,18 +1,18 @@
 import { useState } from "react";
-import { handleServerError } from "@/utils/HandlingServerError";
-import { useUI } from "@/contexts/UIContext";
-import DeleteModal from "@/components/Modals/DeleteModal";
-import useApp from "@/hooks/useApp";
-import { allowEditActionBtn, allowDeleteActionBtn } from "@/utils/ActionsGuards";
-import { useDeleteRequest } from "@/api/Documents/deleteRequest";
-import { PAGES } from "@/constants/pages";
-import PettyCashRequest from '@/types/Pc_request';
-import PurchaseOrderRequest from "@/types/Po_request";
-import EmployeeRequest from "@/types/Employee_request";
-import MaterialRequest from "@/types/Material_request";
-import SiteRequest from "@/types/Site_request";
-import { Contract } from '@/types/Contract';
-import Invoice from '@/types/Invoice';
+import { handleServerError } from "utils/HandlingServerError";
+import { useUI } from "contexts/UIContext";
+import DeleteModal from "components/Modals/DeleteModal";
+import useApp from "hooks/useApp";
+import { allowEditActionBtn, allowDeleteActionBtn } from "utils/ActionsGuards";
+import { useDeleteRequest } from "api/Documents/deleteRequest";
+import { PAGES } from "constants/pages";
+import PettyCashRequest from 'types/Pc_request';
+import PurchaseOrderRequest from "types/Po_request";
+import EmployeeRequest from "types/Employee_request";
+import MaterialRequest from "types/Material_request";
+import SiteRequest from "types/Site_request";
+import { Contract } from 'types/Contract';
+import Invoice from 'types/Invoice';
 
 interface Props<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice> {
 	data: T;

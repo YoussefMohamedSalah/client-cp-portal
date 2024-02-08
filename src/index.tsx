@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router } from "react-router-dom";
-import { redirectToWWW } from '@/utils/RedirectToWWW';
+import { redirectToWWW } from 'utils/RedirectToWWW';
 import reportWebVitals from './reportWebVitals';
-import App from './App';
-import Providers from './Providers';
+import App from 'App';
+import Providers from 'Providers';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

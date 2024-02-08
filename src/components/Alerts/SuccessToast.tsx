@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useUI } from "@/contexts/UIContext";
+import { useUI } from "contexts/UIContext";
 import useSound from 'use-sound';
 import toast, { Toaster } from 'react-hot-toast';
 

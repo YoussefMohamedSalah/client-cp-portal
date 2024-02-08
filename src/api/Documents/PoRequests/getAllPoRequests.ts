@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { ROUTES } from "@/constants/routes";
-import { http } from "@/utils/Http";
-import PurchaseOrderRequest from "@/types/Po_request";
+import { ROUTES } from "constants/routes";
+import { http } from "utils/Http";
+import PurchaseOrderRequest from "types/Po_request";
 
 export const getAllPoRequests = async () => {
     const { data } = await http.get(ROUTES.PO_REQUESTS);

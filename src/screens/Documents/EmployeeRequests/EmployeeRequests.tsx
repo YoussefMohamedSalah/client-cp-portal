@@ -1,17 +1,17 @@
-import Loading from "@/components/UI/Loading";
-import Table from "@/components/Common/Table";
-import PageHeader from "@/components/Common/PageHeader";
-import useApp from "@/hooks/useApp";
-import { PAGES } from "@/constants/pages";
-import { calculateWorkFlowStatus } from "@/utils/CalculateWorkFlowStatus";
-import { ENUMS } from "@/enums/enums";
+import Loading from "components/UI/Loading";
+import Table from "components/Common/Table";
+import PageHeader from "components/Common/PageHeader";
+import useApp from "hooks/useApp";
+import { PAGES } from "constants/pages";
+import { calculateWorkFlowStatus } from "utils/CalculateWorkFlowStatus";
+import { ENUMS } from "enums/enums";
 import { useState } from "react";
-import WorkFlowStatusModal from "@/components/Modals/WorkFlowStatusModal";
-import DocumentsTableActionBtn from "@/components/Common/DocumentsTableActionBtn";
-import EmployeeRequest from "@/types/Employee_request";
-import { useGetAllEmployeeRequestsQuery } from "@/api/Documents/EmployeeRequests/getAllEmployeeRequests";
+import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
+import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
+import EmployeeRequest from "types/Employee_request";
+import { useGetAllEmployeeRequestsQuery } from "api/Documents/EmployeeRequests/getAllEmployeeRequests";
 
-const PcRequests: React.FC = () => {
+const EmployeeRequests: React.FC = () => {
     const [selectedDocument, setSelectedDocument] = useState<EmployeeRequest>({} as EmployeeRequest);
     const [open, setOpen] = useState<boolean>(false);
 
@@ -149,4 +149,4 @@ const PcRequests: React.FC = () => {
     );
 };
 
-export default PcRequests;
+export default EmployeeRequests;

@@ -1,6 +1,6 @@
 import { Project } from "./Project";
 import { Company } from "./Company";
-import { STATUS, DOCUMENT_TYPE } from '@/enums/enums';
+import { STATUS, DOCUMENT_TYPE } from 'enums/enums';
 
 interface MaterialRequest {
     id: string;

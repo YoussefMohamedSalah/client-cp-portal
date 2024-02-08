@@ -1,9 +1,9 @@
-import { ENUMS } from "@/enums/enums";
+import { ENUMS } from "enums/enums";
 import "./timeLine.css";
 import "./workFlow.css";
 import * as React from "react";
 import { Modal } from "react-bootstrap";
-import { formatDate, formatHours } from "@/utils/DateUtils";
+import { formatDate, formatHours } from "utils/DateUtils";
 
 interface Props {
 	handleClose: () => void;

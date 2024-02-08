@@ -1,4 +1,4 @@
-import { DOCUMENT_TYPE } from "@/enums/enums";
+import { DOCUMENT_TYPE } from "enums/enums";
 
 interface EmployeeRequest {
     id: string;

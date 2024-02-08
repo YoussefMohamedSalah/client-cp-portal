@@ -1,11 +1,11 @@
-import PettyCashRequest from '@/types/Pc_request';
-import PurchaseOrderRequest from "@/types/Po_request";
-import EmployeeRequest from "@/types/Employee_request";
-import MaterialRequest from "@/types/Material_request";
-import SiteRequest from "@/types/Site_request";
-import { ENUMS } from '@/enums/enums';
-import Invoice from '@/types/Invoice';
-import { Contract } from "@/types/Contract"
+import PettyCashRequest from 'types/Pc_request';
+import PurchaseOrderRequest from "types/Po_request";
+import EmployeeRequest from "types/Employee_request";
+import MaterialRequest from "types/Material_request";
+import SiteRequest from "types/Site_request";
+import { ENUMS } from 'enums/enums';
+import Invoice from 'types/Invoice';
+import { Contract } from "types/Contract"
 
 export function isPurchaseOrderType(props: any): props is PurchaseOrderRequest {
     return props.type === ENUMS.REQUEST_TYPE.PURCHASE_ORDER;

@@ -1,4 +1,4 @@
-import { ENUMS } from '@/enums/enums';
+import { ENUMS } from 'enums/enums';
 import { Company } from './Company';
 import { Project } from './Project';
 
