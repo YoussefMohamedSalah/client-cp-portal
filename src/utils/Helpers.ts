@@ -50,9 +50,8 @@ export const allowDocumentsActionsBtns = (document: any) => {
     document.status === STATUS.APPROVED ||
     document.status === STATUS.REJECTED ||
     makerId === session.user?.id!) {
-
     return false;
-  }
+  };
 
   // Check the viewType
   if (!viewType) return false;

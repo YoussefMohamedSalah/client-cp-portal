@@ -5,7 +5,7 @@ export const http = axios.create({
     timeout: 30000,
     headers: {
         Accept: "application/json",
-        "Content-Type": "multipart/form-data",
+        "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
     },
 });

@@ -24,7 +24,7 @@ const PcRequests: React.FC = () => {
 	let requests: PettyCashRequest[] = [];
 	if (data && data.pcRequests && data.pcRequests.data) {
 		requests = data.pcRequests.data;
-	}
+	};
 
 	const handleClose = () => {
 		setOpen(false);
@@ -140,6 +140,7 @@ const PcRequests: React.FC = () => {
 						renderSearch={true}
 						renderDownload={true}
 						selectItem={(item: PettyCashRequest) => setSelectedDocument(item)}
+						filterOptions={['name', 'date', 'code']}
 					/>
 				</div>
 			</div>

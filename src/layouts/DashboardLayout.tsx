@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useParams } from "react-router-dom";
 import { Session } from "types/Session";
 import Loading from "components/UI/Loading";
@@ -7,6 +7,7 @@ import { PAGES } from "constants/pages";
 import { PagesRender, PagesRenderProps } from "utils/PagesRender";
 import SideBar from "components/Layout/SideBar";
 import Header from "components/Layout/Header";
+import Footer from "components/Layout/Footer";
 
 interface Props {
 	session: Session
@@ -37,11 +38,14 @@ const DashboardLayout = ({ session }: Props) => {
 	return (
 		<>
 			<SideBar session={session} />
-			<div className="main px-lg-4 px-md-4">
+			<div className="main px-lg-4 px-md-4 d-flex justify-content-between flex-column">
 				<Header session={session} />
 				<div className="body d-flex py-lg-3 py-md-2">
-					{PagesRender(paramsObj)}
+					<Suspense fallback={<Loading />}>
+						{PagesRender(paramsObj)}
+					</Suspense>
 				</div>
+				<Footer />
 			</div>
 		</>
 	)

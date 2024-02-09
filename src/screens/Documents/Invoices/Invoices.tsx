@@ -24,7 +24,7 @@ const Invoiced: React.FC = () => {
     let requests: Invoice[] = [];
     if (data && data.invoices && data.invoices.data) {
         requests = data.invoices.data;
-    }
+    };
 
     const handleClose = () => {
         setOpen(false);
@@ -141,6 +141,7 @@ const Invoiced: React.FC = () => {
                         renderSearch={true}
                         renderDownload={true}
                         selectItem={(item: Invoice) => setSelectedDocument(item)}
+                        filterOptions={['name', 'date', 'code']}
                     />
                 </div>
             </div>

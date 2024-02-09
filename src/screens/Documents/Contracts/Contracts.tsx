@@ -141,6 +141,7 @@ const Contracts: React.FC = () => {
                         renderSearch={true}
                         renderDownload={true}
                         selectItem={(item: Contract) => setSelectedDocument(item)}
+                        filterOptions={['name', 'date', 'code']}
                     />
                 </div>
             </div>

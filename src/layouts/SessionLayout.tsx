@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-// Hooks
 import { useAuth } from "contexts/AuthContext";
-import Loading from "components/UI/Loading";
 import DashboardLayout from "layouts/DashboardLayout";
 import AuthLayout from "./AuthLayout";
 import { getLocaleSession } from "utils/Session";
@@ -21,7 +19,7 @@ const SessionLayout: React.FC = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	if (!initialized) return <Loading />;
+	if (!initialized) return null;
 	return <> {sessionObj?.token! ?
 		(
 			<Routes>

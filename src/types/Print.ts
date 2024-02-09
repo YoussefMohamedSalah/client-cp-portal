@@ -4,8 +4,8 @@ export interface PrintMainInfoSec {
 };
 
 export interface PrintMaterials {
-    description: string;
     item: string;
+    description: string;
     count: number;
     price: number;
     total: number;

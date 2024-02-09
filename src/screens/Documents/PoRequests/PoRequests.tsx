@@ -24,7 +24,7 @@ const PoRequests: React.FC = () => {
 	let requests: PurchaseOrderRequest[] = [];
 	if (data && data.poRequests && data.poRequests.data) {
 		requests = data.poRequests.data;
-	}
+	};
 
 	const handleClose = () => {
 		setOpen(false);
@@ -177,6 +177,7 @@ const PoRequests: React.FC = () => {
 						renderSearch={true}
 						renderDownload={true}
 						selectItem={(item: PurchaseOrderRequest) => setSelectedDocument(item)}
+						filterOptions={['name', 'date', 'code']}
 					/>
 				</div>
 			</div>

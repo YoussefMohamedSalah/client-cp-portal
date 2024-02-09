@@ -14,7 +14,7 @@ export const getLocaleSession = (): Session | null => {
     return sessionObj ? sessionObj : null;
 };
 
-export const removeSession = () => {
+export const removeClientSession = () => {
     localStorage.removeItem("session");
     localStorage.removeItem("access_token");
     localStorage.removeItem("company");

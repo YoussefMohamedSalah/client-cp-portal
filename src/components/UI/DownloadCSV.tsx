@@ -1,4 +1,5 @@
 import { CSVLink } from "react-csv";
+import "./DownloadCsvStyles.css";
 
 interface Props {
 	fileName: string;

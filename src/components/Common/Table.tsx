@@ -44,33 +44,36 @@ function Table<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeReque
 	filterOptions,
 	selectItem
 }: Props<T>) {
-	const [filterData, setFilterData] = useState<T[]>(data || []);
-	const onCardsFilter = (filtered: T[]) => setFilterData(filtered);
-	const onSearchFilter = (filtered: T[]) => setFilterData(filtered);
+	const [filteredData, setFilteredData] = useState<T[]>(data || []);
+	const onCardsFilter = (filtered: T[]) => setFilteredData(filtered);
+	const onSearchFilter = (filtered: T[]) => setFilteredData(filtered);
 
-	let csvData = formatCsvOutput<PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>(filterData || data) || [];
+	let csvData = formatCsvOutput<PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>(filteredData || data) || [];
 	let fileName = data[0]?.code?.split('-')?.[0]! || "data";
 
 	return (
 		<div className="row clearfix g-3">
 			{/* Cards Filters */}
 			{renderCards && <TableCards data={data} onFilter={onCardsFilter} />}
-			{renderSearch && (
-				<TableSearch
-					data={filterData || data}
-					terms={filterOptions || []}
-					classNameContainer={true}
-					onSearchFilter={onSearchFilter}
-				/>
-			)}
-			{/* Download as a CSV */}
-			{renderDownload && <DownloadCSV fileName={formatCsvTitle(fileName)} csvData={csvData} />}
+			<div className="d-flex justify-content-between">
+				{/* Download as a CSV */}
+				{renderDownload && <DownloadCSV fileName={formatCsvTitle(fileName)} csvData={csvData} />}
+				{/* Search Input */}
+				{renderSearch && (
+					<TableSearch
+						data={data}
+						terms={filterOptions || []}
+						classNameContainer={true}
+						onSearchFilter={onSearchFilter}
+					/>
+				)}
+			</div>
 			{/* TABLE */}
 			<div className="col-sm-12">
 				<DataTable
 					title={title}
 					columns={columns}
-					data={filterData || data}
+					data={filteredData || data}
 					defaultSortFieldId={defaultSortFieldId || 1}
 					pagination={pagination || true}
 					selectableRows={selectableRows || false}

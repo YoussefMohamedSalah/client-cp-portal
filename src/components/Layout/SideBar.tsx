@@ -111,7 +111,7 @@ const SideBar: React.FC<Props> = ({ session }) => {
 			<div className="d-flex flex-column h-100">
 				<span
 					onClick={() => {
-						push("/summary");
+						push("/");
 					}}
 					className="mb-0 brand-icon pointer"
 				>

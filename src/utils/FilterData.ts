@@ -15,4 +15,4 @@ export function filterData(
 				return true; // Return all items if no specific term is selected
 		}
 	});
-}
+};

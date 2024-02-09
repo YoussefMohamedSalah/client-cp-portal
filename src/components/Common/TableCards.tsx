@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ENUMS } from 'enums/enums';
+import { STATUS } from 'enums/enums';
 import SmallCard from 'components/UI/SmallCard';
 import { PettyCashRequest } from "types/Pc_request";
 import { PurchaseOrderRequest } from "types/Po_request";
@@ -23,7 +23,7 @@ interface Props<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequ
 };
 
 function TableCards<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>({ data, onFilter }: Props<T>) {
-	const [filterData, setFilterData] = useState<T[]>(data);
+	const [filterData, setFilterData] = useState<T[]>(data || []);
 
 	useEffect(() => {
 		onFilter(filterData);
@@ -31,20 +31,20 @@ function TableCards<T extends PettyCashRequest | PurchaseOrderRequest | Employee
 	}, [filterData])
 
 	let allData = data || [];
-	let archived = data?.filter((row) => row?.status === ENUMS.STATUS.ARCHIVED) || [];
-	let approved = data?.filter((row) => row?.status === ENUMS.STATUS.APPROVED) || [];
-	let pending = data?.filter((row) => row?.status === ENUMS.STATUS.PENDING) || [];
-	let rejected = data?.filter((row) => row?.status === ENUMS.STATUS.REJECTED) || [];
+	let archived = data?.filter((row) => row?.status! === STATUS.ARCHIVED) || [];
+	let approved = data?.filter((row) => row?.status! === STATUS.APPROVED) || [];
+	let pending = data?.filter((row) => row?.status! === STATUS.PENDING) || [];
+	let rejected = data?.filter((row) => row?.status! === STATUS.REJECTED) || [];
 
 	const handleFilter = (term: string) => {
 		switch (term) {
-			case ENUMS.STATUS.ARCHIVED:
+			case STATUS.ARCHIVED:
 				return setFilterData(archived);
-			case ENUMS.STATUS.APPROVED:
+			case STATUS.APPROVED:
 				return setFilterData(approved);
-			case ENUMS.STATUS.PENDING:
+			case STATUS.PENDING:
 				return setFilterData(pending);
-			case ENUMS.STATUS.REJECTED:
+			case STATUS.REJECTED:
 				return setFilterData(rejected);
 			default:
 				return setFilterData(allData);
@@ -64,28 +64,28 @@ function TableCards<T extends PettyCashRequest | PurchaseOrderRequest | Employee
 			color: "bg-black",
 			value: `Data Count: ${archived.length || 0}`,
 			iconClass: "icofont-data fs-3",
-			onClick: () => handleFilter(ENUMS.STATUS.ARCHIVED)
+			onClick: () => handleFilter(STATUS.ARCHIVED)
 		},
 		{
 			title: "Approved",
 			color: "bg-success",
 			value: `Data Count: ${approved.length || 0}`,
 			iconClass: "icofont-data fs-3",
-			onClick: () => handleFilter(ENUMS.STATUS.APPROVED)
+			onClick: () => handleFilter(STATUS.APPROVED)
 		},
 		{
 			title: "Pending",
 			color: "bg-primary",
 			value: `Data Count: ${pending.length || 0}`,
 			iconClass: "icofont-data fs-3",
-			onClick: () => handleFilter(ENUMS.STATUS.PENDING)
+			onClick: () => handleFilter(STATUS.PENDING)
 		},
 		{
 			title: "Rejected",
 			color: "bg-danger",
 			value: `Data Count: ${rejected.length || 0}`,
 			iconClass: "icofont-data fs-3",
-			onClick: () => handleFilter(ENUMS.STATUS.REJECTED)
+			onClick: () => handleFilter(STATUS.REJECTED)
 		}
 	];
 

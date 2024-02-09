@@ -17,7 +17,7 @@ interface Props<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequ
 
 function DocumentActions<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>({ onApprove, onReject, onPrint, document }: Props<T>) {
 	return (
-		<div className="col-sm d-flex align-items-center justify-content-center gap-2">
+		<div className="col-sm d-flex align-items-center justify-content-center gap-2 pt-2">
 			{allowDocumentsActionsBtns(document) && (
 				<button type="button" className="btn btn-success btn-md lift text-white" onClick={onApprove}>
 					<i className="fa fa-check pe-1" /> Approve

@@ -8,8 +8,7 @@ import { Invoice } from "types/Invoice";
 import { isContractType, isEmployeeType, isInvoiceType, isMaterialType, isPettyCashType, isPurchaseOrderType, isSiteType } from './CheckPropsType';
 
 export const formatCsvOutput = <T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>(data: T[] | undefined): any[] => {
-	if (!data) return [];
-
+	if (!data || data.length === 0) return [];
 	if (isPurchaseOrderType(data[0])) {
 		return formatPurchaseOrderData(data as PurchaseOrderRequest[]);
 	} else if (isPettyCashType(data)) {
@@ -31,6 +30,7 @@ export const formatCsvOutput = <T extends PettyCashRequest | PurchaseOrderReques
 
 
 function formatPurchaseOrderData(data: PurchaseOrderRequest[]): any[] {
+	if (!data || data.length === 0) return [];
 	return [
 		["code", "Maker", "Date", "Project", "Description", "Vat", "Sub Total", "Total", "Paid Amount", "Status"],
 		...data.map(({ code, user, date, project_details, description, vat, sub_total, total, paid_amount, status }) => [
@@ -49,6 +49,7 @@ function formatPurchaseOrderData(data: PurchaseOrderRequest[]): any[] {
 };
 
 function formatPettyCashData(data: PettyCashRequest[]): any[] {
+	if (!data || data.length === 0) return [];
 	return [
 		["code", "Maker", "Date", "Project", "Description", "Transaction Date", "Total", "Paid Amount", "Status"],
 		...data.map(({ code, user, date, project_details, description, transaction_date, total, paid_amount, status }) => [
@@ -66,6 +67,7 @@ function formatPettyCashData(data: PettyCashRequest[]): any[] {
 };
 
 function formatEmployeeRequestsData(data: EmployeeRequest[]): any[] {
+	if (!data || data.length === 0) return [];
 	return [
 		["code", "Maker", "Date", "Rev num", "Description", "Subject", "Status"],
 		...data.map(({ code, user, date, rev_num, description, subject, status }) => [
@@ -81,6 +83,7 @@ function formatEmployeeRequestsData(data: EmployeeRequest[]): any[] {
 };
 
 function formatSiteData(data: SiteRequest[]): any[] {
+	if (!data || data.length === 0) return [];
 	return [
 		["code", "Maker", "Date", "Project", "Description", "Status"],
 		...data.map(({ code, user, date, project_details, description, status }) => [
@@ -95,6 +98,7 @@ function formatSiteData(data: SiteRequest[]): any[] {
 };
 
 function formatMaterialData(data: MaterialRequest[]): any[] {
+	if (!data || data.length === 0) return [];
 	return [
 		["code", "Maker", "Date", "Project", "Subject", "Description", "Status"],
 		...data.map(({ code, user, date, project_details, subject, description, status }) => [
@@ -110,6 +114,7 @@ function formatMaterialData(data: MaterialRequest[]): any[] {
 };
 
 function formatContractData(data: Contract[]): any[] {
+	if (!data || data.length === 0) return [];
 	return [
 		["code", "Maker", "Date", "Rev num", "Subcontractor", "Project", "Vat", "Total", "discount", "Paid amount", "Remaining amount", "Status"],
 		...data.map(({ code, user, date, rev_num, subcontractor_details, project_details, vat, total, discount, paid_amount, remaining_amount, status }) => [
@@ -130,6 +135,7 @@ function formatContractData(data: Contract[]): any[] {
 };
 
 function formatInvoiceData(data: Invoice[]): any[] {
+	if (!data || data.length === 0) return [];
 	return [
 		["code", "Maker", "Date", "Contract Code", "Project", "Subject", "Description", "Vat", "Paid Amount", "Total", "Status"],
 		...data.map(({ code, user, date, contract, project_details, subject, description, vat, paid_amount, remaining_amount, status }) => [

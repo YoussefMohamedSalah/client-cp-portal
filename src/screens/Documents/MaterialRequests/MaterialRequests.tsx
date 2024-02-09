@@ -24,7 +24,7 @@ const MaterialRequests: React.FC = () => {
     let requests: MaterialRequest[] = [];
     if (data && data.materialRequests && data.materialRequests.data) {
         requests = data.materialRequests.data;
-    }
+    };
 
     const handleClose = () => {
         setOpen(false);
@@ -131,6 +131,7 @@ const MaterialRequests: React.FC = () => {
                         renderSearch={true}
                         renderDownload={true}
                         selectItem={(item: MaterialRequest) => setSelectedDocument(item)}
+                        filterOptions={['name', 'date', 'code']}
                     />
                 </div>
             </div>

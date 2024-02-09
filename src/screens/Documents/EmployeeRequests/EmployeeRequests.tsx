@@ -24,7 +24,7 @@ const EmployeeRequests: React.FC = () => {
     let requests: EmployeeRequest[] = [];
     if (data && data.empRequests && data.empRequests.data) {
         requests = data.empRequests.data;
-    }
+    };
 
     const handleClose = () => {
         setOpen(false);
@@ -141,6 +141,7 @@ const EmployeeRequests: React.FC = () => {
                         renderSearch={true}
                         renderDownload={true}
                         selectItem={(item: EmployeeRequest) => setSelectedDocument(item)}
+                        filterOptions={['name', 'date', 'code']}
                     />
                 </div>
             </div>

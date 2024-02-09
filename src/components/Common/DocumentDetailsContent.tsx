@@ -27,6 +27,12 @@ interface Props<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequ
 };
 
 function DocumentsDetailsContent<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>({ data }: Props<T>) {
+	const [conditions, setConditions] = useState<string[]>(['one']);
+	const [materials, setMaterials] = useState<PrintMaterials[]>([]);
+	const [installments, setInstallments] = useState<PrintInstallments[]>([]);
+
+
+
 	const [isRejectModal, setIsRejectModal] = useState<boolean>(false);
 	const [isApproveModal, setIsApproveModal] = useState<boolean>(false);
 	const componentRef = useRef<HTMLDivElement>(null);
@@ -36,6 +42,15 @@ function DocumentsDetailsContent<T extends PettyCashRequest | PurchaseOrderReque
 
 	const { showError, showSuccess } = useUI();
 	const { session } = useAuth();
+
+	useEffect(() => {
+		if (data) {
+			checkIfDataHasItems();
+			checkIfDataHasInstallments();
+			checkIfDataHasConditions();
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [data])
 
 	const handleModalClose = (reload: boolean = false) => {
 		if (reload === true) window.location.reload();
@@ -109,67 +124,74 @@ function DocumentsDetailsContent<T extends PettyCashRequest | PurchaseOrderReque
 		return baseDataObj;
 	};
 
-	let conditions: string[] = [];
-	let materials: PrintMaterials[] = [];
-	let installments: PrintInstallments[] = [];
+	console.log({ conditions }, { materials }, { installments }, { data })
 
-	const checkIfDataHasTableInfo = () => {
-		if (!isEmployeeType(data) && !isSiteType(data)) materials = data.items;
-		if (isPurchaseOrderType(data)) installments = data.installments;
-		if (isPurchaseOrderType(data) || isContractType(data)) conditions = data.conditions;
+	const checkIfDataHasItems = () => {
+		if (!isEmployeeType(data) && !isSiteType(data)) setMaterials(data.items);
 	};
 
+	const checkIfDataHasInstallments = () => {
+		if (isPurchaseOrderType(data)) setInstallments(data.installments);
+	};
 
-	useEffect(() => {
-		if (data) {
-			checkIfDataHasTableInfo()
-		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [data])
-
+	const checkIfDataHasConditions = () => {
+		if (isPurchaseOrderType(data) || isContractType(data)) setConditions(data.conditions);
+	};
 
 	return (
 		<>
-			<div ref={componentRef}>
-				<DocumentHeader logo={session?.company?.logo!} url={handleQrCodeUrl()} />
-				<DocumentMainInfoSec mainInfo={handleMainInfoSecData()} />
+			<div ref={componentRef} className="row justify-content-center">
+				<div className="col-lg-12 col-md-12">
+					<div className="card p-xl-3 p-lg-2 p-0">
+						<DocumentHeader logo={session?.company?.logo!} url={handleQrCodeUrl()} />
+						<div className="card-body">
+							<DocumentMainInfoSec mainInfo={handleMainInfoSecData()} />
+							{conditions && conditions.length > 0 && (
+								<div>
+									<h3>Conditions</h3>
+									<DocumentTable tableHead={['condition']} tableData={conditions} renderRow={(rowData) => (
+										<tr>
+											<td className="text-center p-2">{rowData}</td>
+										</tr>
+									)} />
+								</div>
+							)}
+							{materials && materials.length > 0 && (
+								<div>
+									<h3>Materials</h3>
+									<DocumentTable<PrintMaterials> tableHead={['item', 'description', 'count', 'price', 'total', 'payed amount', 'payed percentage', 'prev count', 'current count']} tableData={materials} renderRow={(rowData) => (
+										<>
+											<td className="text-center p-2">{rowData.item}</td>
+											<td className="text-center p-2">{rowData.description}</td>
+											<td className="text-center p-2">{rowData.count || 0}</td>
+											<td className="text-center p-2">{rowData.price || 0}</td>
+											<td className="text-center p-2">{rowData.total || 0}</td>
+											<td className="text-center p-2">{rowData.payed_amount || 0}</td>
+											<td className="text-center p-2">{rowData.payed_percentage || 0}</td>
+											<td className="text-center p-2">{rowData.prev_count || rowData.count}</td>
+											<td className="text-center p-2">{rowData.current_count || rowData.count}</td>
+										</>
+									)} />
+								</div>
+							)}
+							{installments && installments.length > 0 && (
+								<div>
+									<h3>Installments</h3>
+									<DocumentTable<PrintInstallments> tableHead={['name', 'details', 'date', 'percentage', 'value']} tableData={installments} renderRow={(rowData) => (
+										<>
+											<td className="text-center p-2">{rowData.name}</td>
+											<td className="text-center p-2">{rowData.details}</td>
+											<td className="text-center p-2">{rowData.date}</td>
+											<td className="text-center p-2">{rowData.percentage}</td>
+											<td className="text-center p-2">{rowData.value}</td>
+										</>
+									)} />
+								</div>
+							)}
+						</div>
+					</div>
+				</div>
 				<div>
-					{conditions && conditions.length > 0 && (
-						<>
-							<h2>Conditions</h2>
-							<DocumentTable tableData={conditions} renderRow={(rowData) => (
-								<tr>
-									<td>{rowData}</td>
-								</tr>
-							)} />
-						</>
-					)}
-
-					{materials && materials.length > 0 && (
-						<>
-							<h2>Materials</h2>
-							<DocumentTable<PrintMaterials> tableData={materials} renderRow={(rowData) => (
-								<tr>
-									<td>{rowData.item}</td>
-									<td>{rowData.description}</td>
-									{/* Render other material properties */}
-								</tr>
-							)} />
-						</>
-					)}
-
-					{installments && installments.length > 0 && (
-						<>
-							<h2>Installments</h2>
-							<DocumentTable<PrintInstallments> tableData={installments} renderRow={(rowData) => (
-								<tr>
-									<td>{rowData.name}</td>
-									<td>{rowData.percentage}</td>
-									{/* Render other installment properties */}
-								</tr>
-							)} />
-						</>
-					)}
 				</div>
 				<DocumentActions<T> document={data} onApprove={handleOpenApproveModal} onReject={handleOpenRejectModal} onPrint={handlePrint} />
 			</div>

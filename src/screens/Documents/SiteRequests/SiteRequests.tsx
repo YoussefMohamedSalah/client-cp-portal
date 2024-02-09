@@ -24,7 +24,7 @@ const SiteRequests: React.FC = () => {
     let requests: SiteRequest[] = [];
     if (data && data.siteRequests && data.siteRequests.data) {
         requests = data.siteRequests.data;
-    }
+    };
 
     const handleClose = () => {
         setOpen(false);
@@ -124,6 +124,7 @@ const SiteRequests: React.FC = () => {
                         renderSearch={true}
                         renderDownload={true}
                         selectItem={(item: SiteRequest) => setSelectedDocument(item)}
+                        filterOptions={['name', 'date', 'code']}
                     />
                 </div>
             </div>

@@ -15,12 +15,29 @@ const TableSearch: React.FC<Props> = ({
 	classNameContainer,
 	onSearchFilter,
 }) => {
-	const [searchValue, setSearchTerm] = useState<string>("");
+	const [initialized, setInitialized] = useState<boolean>(false);
+	const [originalData, setOriginalData] = useState<any[]>(data || []);
+	const [searchValue, setSearchValue] = useState<string>("");
 	const [selectedTerm, setSelectedTerm] = useState<string>(terms ? terms[0]! : "name");
 
+	const handleClearFilters = () => {
+		setSearchValue("");
+		setSelectedTerm(terms ? terms[0]! : "name")
+	};
+
 	useEffect(() => {
-		let filtered = filterData(data, selectedTerm, searchValue);
-		onSearchFilter(filtered)
+		if (!initialized) {
+			setOriginalData([...data])
+			setInitialized(true)
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [data])
+
+	useEffect(() => {
+		if (originalData) {
+			let filtered = filterData(originalData, selectedTerm, searchValue);
+			onSearchFilter(filtered)
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [searchValue, selectedTerm])
 
@@ -38,11 +55,12 @@ const TableSearch: React.FC<Props> = ({
 					<input
 						type="search"
 						className="form-control fs-6"
-						placeholder={selectedTerm ? `Search By ${selectedTerm}` : 'Search'}
+						placeholder={selectedTerm ? `Search by ${selectedTerm}` : 'Search'}
 						aria-label="search"
 						aria-describedby="addon-wrapping"
+						value={searchValue}
 						onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-							setSearchTerm(e.target.value)}
+							setSearchValue(e.target.value)}
 					/>
 					{terms && (
 						<button type="button" className="input-group-text fs-6" id="addon-wrapping">
@@ -55,14 +73,14 @@ const TableSearch: React.FC<Props> = ({
 										{terms?.map((term, index) => (
 											<li key={index}>
 												<span className="dropdown-item"
-													onClick={() => setSelectedTerm(`${term.toLowerCase()}`)}>
-													{term.toUpperCase()}
+													onClick={() => setSelectedTerm(`${term?.toLowerCase()}`)}>
+													{term?.toUpperCase()}
 												</span>
 											</li>
 										))}
 										<li>
 											<span className="dropdown-item bg-danger-subtle"
-												onClick={() => setSelectedTerm(`${terms[0].toLowerCase()}`)}>
+												onClick={() => handleClearFilters()}>
 												Clear Filter
 											</span>
 										</li>
