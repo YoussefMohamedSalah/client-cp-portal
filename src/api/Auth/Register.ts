@@ -1,6 +1,6 @@
 import { AuthSignupInput } from "components/Auth/SignUp";
 import { ROUTES } from "constants/routes";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import http from "utils/Http";
 
 export const useRegister = () => {

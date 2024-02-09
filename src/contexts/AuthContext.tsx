@@ -1,6 +1,6 @@
 import { ENUMS } from "enums/enums";
 import { createContext, useContext, useEffect, useState } from "react";
-import { Session } from "utils/Session";
+import { Session } from "types/Session";
 
 interface AuthContextValue {
 	session: any;

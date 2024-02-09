@@ -4,11 +4,11 @@ import { ENUMS } from "enums/enums";
 export const checkPermission = (selectPermission: string) => {
 	let session = JSON.parse(localStorage.getItem("session") || "");
 	if (!session) return false;
-	if (session.userInfo.role === ENUMS.ROLE.SUPERUSER) return true;
+	if (session.user.role === ENUMS.ROLE.SUPERUSER) return true;
 	return true;
 	// !CHECK THIS
 	// let hasPermission: boolean = false;
-	// session.userInfo.user_permissions.forEach((permission: Permission) => {
+	// session.user.user_permissions.forEach((permission: Permission) => {
 	//   if (permission.codename === selectPermission) hasPermission = true;
 	// });
 	// return hasPermission;
@@ -27,12 +27,12 @@ export const allowDeleteActionBtn = (userId: string, request: any) => {
 
 	let isAllowed: boolean = true;
 
-	if (!session.userInfo || session.userInfo.id !== userId) return false;
+	if (!session.user || session.user.id !== userId) return false;
 	if (request.status === ENUMS.STATUS.APPROVED) return false;
 
 	if (request.work_flow && request.work_flow.length > 0) {
 		for (let i = 0; i < request.work_flow.length; i++) {
-			if (request.work_flow[i].userId === session.userInfo.id) {
+			if (request.work_flow[i].userId === session.user.id) {
 				isAllowed = true;
 				break;
 			}
@@ -64,7 +64,7 @@ export const allowEditActionBtn = (userId: string, request: any) => {
 
 	let isAllowed: boolean = true;
 
-	if (!session.userInfo || session.userInfo.id !== userId) return false;
+	if (!session.user || session.user.id !== userId) return false;
 	if (request.status === ENUMS.STATUS.APPROVED) return false;
 
 	if (request.work_flow && request.work_flow.length > 0) {
@@ -97,7 +97,7 @@ export const allowRejectOrApproveActionBtn = (request: any) => {
 	let makerId = request.user.id;
 
 	for (let i = 0; i < request.work_flow.length; i++) {
-		if (request.work_flow[i]?.userId === session.userInfo?.id) {
+		if (request.work_flow[i]?.userId === session.user?.id) {
 			isUserInWorkflow = true;
 
 			// Check if the current user is rejected or has a state of true
@@ -123,7 +123,7 @@ export const allowRejectOrApproveActionBtn = (request: any) => {
 	if (request.status === ENUMS.STATUS.ARCHIVED ||
 		request.status === ENUMS.STATUS.APPROVED ||
 		request.status === ENUMS.STATUS.REJECTED ||
-		makerId === session.userInfo?.id!) {
+		makerId === session.user?.id!) {
 
 		return false;
 	}
@@ -151,7 +151,7 @@ export const allowForwardMaterial = (request: any) => {
 
 	if (request.work_flow! && request.work_flow?.length > 0) {
 		for (let i = 0; i < request.work_flow.length; i++) {
-			if (request.work_flow[i]?.userId === session.userInfo?.id) {
+			if (request.work_flow[i]?.userId === session.user?.id) {
 				if (request.work_flow[i]?.isRejected === true || request.work_flow[i]?.state === true) {
 					isAllowed = false;
 					break;

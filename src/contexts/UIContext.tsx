@@ -6,10 +6,12 @@ interface UIContextValue {
 	showError: (error: any) => void;
 	hideError: () => void;
 	showSuccess: () => void;
+	toggleSidebar: () => void;
 	theme: string;
 	isShowError: boolean;
 	isShowSuccess: boolean;
 	errorsList: ErrorType[];
+	isOpenSidebar: boolean;
 };
 
 export const UIContext = createContext<UIContextValue>({
@@ -17,10 +19,12 @@ export const UIContext = createContext<UIContextValue>({
 	showError: () => { },
 	hideError: () => { },
 	showSuccess: () => { },
+	toggleSidebar: () => { },
 	theme: "light",
 	isShowError: false,
 	isShowSuccess: false,
 	errorsList: [],
+	isOpenSidebar: false,
 });
 
 export function useUI() {
@@ -35,6 +39,7 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
 	const [errorsList, setErrorsList] = useState<ErrorType[]>([]);
 	const [isShowError, setIsShowError] = useState<boolean>(false);
 	const [isShowSuccess, setIsShowSuccess] = useState<boolean>(false);
+	const [isOpenSidebar, setIsOpenSidebar] = useState<boolean>(false);
 
 	useEffect(() => {
 		let storedTheme = localStorage.getItem("theme");
@@ -54,6 +59,10 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
 			localStorage.setItem("theme", "light")
 		}
 	};
+
+	const toggleSidebar = () => {
+		setIsOpenSidebar(!isOpenSidebar);
+	}
 
 	const showSuccess = () => {
 		setIsShowSuccess(true);
@@ -82,7 +91,7 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
 	};
 
 	return (
-		<UIContext.Provider value={{ theme, isShowError, errorsList, isShowSuccess, changeTheme, showError, hideError, showSuccess }}>
+		<UIContext.Provider value={{ theme, isShowError, errorsList, isShowSuccess, isOpenSidebar, changeTheme, showError, hideError, showSuccess, toggleSidebar }}>
 			{children}
 		</UIContext.Provider>
 	);

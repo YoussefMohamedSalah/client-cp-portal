@@ -1,0 +1,53 @@
+// .card {
+//   border-color: var(--border-color);
+//   background-color: var(--card-color);
+//   box-shadow: var(--card-box-shadow);
+//   color: var(--text-color);
+
+//   &.card-callout {
+//     border-left-width: 0.4rem;
+//     border-left-color: var(--primary-color);
+//   }
+
+//   .card-header {
+//     background-color: var(--card-color);
+//     border-bottom: none;
+//     color: var(--text-color);
+//   }
+
+//   h3 {
+//     @media only screen and (max-width: 1024px) {
+//       font-size: 20px;
+//     }
+//     @media only screen and (max-width: 767px) {
+//       font-size: 18px;
+//     }
+//   }
+// }
+
+.card {
+  border-color: var(--border-color);
+  background-color: var(--card-color);
+  box-shadow: var(--card-box-shadow);
+  color: var(--text-color);
+
+  &.card-callout {
+    border-left-width: 0.4rem;
+    border-left-color: var(--primary-color);
+  }
+
+  &.card-header {
+    background-color: var(--card-color);
+    border-bottom: none;
+    // color: var(--text-color);
+  }
+
+  h3 {
+    @media only screen and (max-width: 1024px) {
+      font-size: 20px;
+    }
+    @media only screen and (max-width: 767px) {
+      font-size: 18px;
+    }
+  }
+}

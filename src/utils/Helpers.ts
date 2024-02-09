@@ -1,4 +1,5 @@
-import { STATUS } from "enums/enums";
+import { ENUMS, STATUS } from "enums/enums";
+import { Session } from "types/Session";
 
 export const getImageUrl = (url: string) => {
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
@@ -22,7 +23,7 @@ export const allowDocumentsActionsBtns = (document: any) => {
   let makerId = document.user.id;
 
   for (let i = 0; i < document.work_flow.length; i++) {
-    if (document.work_flow[i]?.userId === session.userInfo?.id) {
+    if (document.work_flow[i]?.userId === session.user?.id) {
       isUserInWorkflow = true;
 
       // Check if the current user is rejected or has a state of true
@@ -48,7 +49,7 @@ export const allowDocumentsActionsBtns = (document: any) => {
   if (document.status === STATUS.ARCHIVED ||
     document.status === STATUS.APPROVED ||
     document.status === STATUS.REJECTED ||
-    makerId === session.userInfo?.id!) {
+    makerId === session.user?.id!) {
 
     return false;
   }
@@ -60,4 +61,43 @@ export const allowDocumentsActionsBtns = (document: any) => {
   }
 
   return isAllowed;
+};
+
+export const isAdminView = () => {
+  let viewType = localStorage.getItem("view") || null
+  let isAdmin: boolean = false;
+  if (viewType && viewType === 'admin') isAdmin = true
+  return isAdmin
+};
+
+export const checkPermission = (selectPermission: string) => {
+  let session = JSON.parse(localStorage.getItem("session") || "");
+  if (!session) return false;
+  if (session.user.role === ENUMS.ROLE.SUPERUSER) return true;
+  return true;
+  // !CHECK THIS
+  // let hasPermission: boolean = false;
+  // session.user.user_permissions.forEach((permission: Permission) => {
+  //   if (permission.codename === selectPermission) hasPermission = true;
+  // });
+  // return hasPermission;
+};
+
+export const checkRole = (roles: string[], departments: string[], session: Session) => {
+  if (session?.user?.role === ENUMS.ROLE.SUPERUSER || session?.user?.role === ENUMS.ROLE.SUB_SUPERUSER) return true;
+  if (!session || !roles || roles.length === 0 || !departments || departments.length === 0) return false;
+
+  let hasRole: boolean = false;
+  let isDepartmentMember: boolean = false;
+
+  roles.forEach((role) => {
+    if (session.user?.role! === role) hasRole = true;
+  });
+
+  departments.forEach((department) => {
+    if (session.user?.department_info?.name! === department) isDepartmentMember = true;
+  });
+
+  if (!hasRole || !isDepartmentMember) return false;
+  else return true;
 };

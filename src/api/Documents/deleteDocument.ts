@@ -1,7 +1,7 @@
 import { ROUTES } from "constants/routes";
 import { ENUMS } from "enums/enums";
 import http from "utils/Http";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 
 interface DeleteDocumentProps {
   type: string,

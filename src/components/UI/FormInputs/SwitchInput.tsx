@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Switch from '@mui/material/Switch';
-import { IOption } from 'types/option';
+import { IOption } from 'types/Forms/option';
 
 interface Props {
   label?: string;

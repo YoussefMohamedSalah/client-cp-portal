@@ -1,7 +1,7 @@
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete, { AutocompleteInputChangeReason } from '@mui/material/Autocomplete';
-import { IOption } from 'types/option';
+import { IOption } from 'types/Forms/option';
 
 interface Props {
   label?: string;

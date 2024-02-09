@@ -1,0 +1,734 @@
+// Bootstrap class overwrite css
+.border,
+.border-top,
+.border-right,
+.border-bottom,
+.border-left,
+.dropdown-divider {
+  border-color: var(--border-color);
+}
+
+.container-xxl {
+  max-width: 1560px;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.table > :not(caption) > * > * {
+  padding: 0.8rem 0.8rem;
+}
+
+.zindex-fixed {
+  z-index: $zindex-fixed;
+}
+
+.zindex-popover {
+  z-index: $zindex-popover;
+}
+
+.zindex-modal {
+  z-index: $zindex-modal;
+}
+
+.small-xs {
+  font-size: 13px !important;
+}
+
+// form-control
+.form-control,
+.form-select {
+  &.dark-theme {
+    border-color: var(--border-color);
+    background-color: var(--color-600);
+    color: var(--text-color);
+    font-size: 16px;
+    /* Additional styles for dark theme */
+  }
+
+  &.theme-indigo {
+    border-color: var(--border-color);
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for theme-indigo */
+  }
+
+  &::placeholder {
+    color: var(--color-400);
+  }
+
+  &:focus {
+    box-shadow: 0 0 10px rgba($dark, 0.15);
+    background-color: var(--card-color);
+    border-color: var(--primary-color);
+    color: var(--text-color);
+  }
+
+  &.form-control-lg {
+    min-height: calc(1.5em + 1.8rem + 2px);
+  }
+}
+
+.input-group-text {
+  border-color: var(--border-color);
+  background-color: var(--color-200);
+  color: var(--text-color);
+}
+
+// form Switches css
+.form-switch {
+  .form-check-input {
+    margin-left: -2em;
+
+    &:checked {
+      background-color: var(--text-color);
+      border-color: var(--border-color);
+    }
+  }
+}
+
+.big-search {
+  color: var(--color-fff);
+
+  &:focus {
+    color: var(--color-fff);
+  }
+}
+
+.btn-link {
+  color: var(--text-color);
+
+  &:hover {
+    color: var(--secondary-color);
+  }
+}
+
+.bg-white {
+  color: #f5f5f5;
+}
+
+// lineheight
+.fs-1 {
+  font-size: calc(1.375rem + 1.5vw) !important;
+  line-height: calc(1.375rem + 1.5vw) !important;
+}
+
+.fs-2 {
+  font-size: calc(1.325rem + 0.9vw) !important;
+  line-height: calc(1.325rem + 0.9vw) !important;
+}
+
+.fs-3 {
+  font-size: calc(1.3rem + 0.6vw) !important;
+  line-height: calc(1.3rem + 0.6vw) !important;
+}
+
+.fs-4 {
+  font-size: calc(1.275rem + 0.3vw) !important;
+  line-height: calc(1.275rem + 0.3vw) !important;
+}
+
+// bottom
+.btn {
+  font-size: $font-size;
+  color: var(--text-color);
+
+  &:hover {
+    color: var(--text-color);
+  }
+
+  &.btn-primary {
+    background-color: var(--btn-primary-color) !important;
+    border-color: var(--btn-primary-border-color);
+    color: var(--white-color) !important;
+
+    &.active {
+      background: var(--btn-primary-active-color);
+      border-color: var(--btn-primary-border-color);
+    }
+  }
+
+  &.btn-secondary {
+    background-color: var(--btn-secondary-color) !important;
+    border-color: var(--btn-secondary-border-color);
+    color: var(--white-color) !important;
+
+    &.active {
+      background: var(--btn-secondary-active-color);
+      border-color: var(--btn-secondary-border-color);
+    }
+  }
+
+  &.btn-main {
+    background-color: var(--white-color) !important;
+    border-color: var(--btn-main-border-color);
+    color: var(--btn-main-color) !important;
+
+    &.active {
+      background: var(--btn-main-active-color);
+      border-color: var(--btn-main-border-color);
+    }
+  }
+
+  &.btn-dark {
+    background-color: var(--btn-dark-color) !important;
+    border-color: var(--btn-dark-border-color);
+    color: var(--white-color) !important;
+
+    &.active {
+      background: var(--btn-dark-active-color);
+      border-color: var(--btn-dark-border-color);
+    }
+  }
+
+  &.btn-outline-success {
+    color: $color-success;
+    border-color: $color-success;
+
+    &:hover {
+      background-color: $color-success;
+      color: $white;
+    }
+  }
+
+  &.btn-outline-danger {
+    color: $color-danger;
+    border-color: $color-danger;
+
+    &:hover {
+      background-color: $color-danger;
+      color: $white;
+    }
+  }
+
+  &.btn-outline-info {
+    color: $color-info;
+    border-color: $color-info;
+
+    &:hover {
+      background-color: $color-info;
+      color: $white;
+    }
+  }
+
+  &.btn-white {
+    background-color: var(--color-fff);
+    border-color: var(--color-fff);
+    color: var(--color-700);
+  }
+
+  &.btn-lg {
+    padding: 0.7rem 1rem;
+  }
+}
+
+.btn-close {
+  color: var(--text-color);
+  background-color: var(--color-fff);
+}
+
+// avatar
+.avatar {
+  width: 34px;
+  min-width: 34px;
+  height: 34px;
+
+  &.xs {
+    width: 16px;
+    min-width: 16px;
+    height: 16px;
+  }
+
+  &.sm {
+    width: 22px !important;
+    min-width: 22px !important;
+    height: 22px !important;
+
+    i {
+      font-size: 12px;
+      line-height: 12px;
+      vertical-align: text-top;
+    }
+  }
+
+  &.lg {
+    width: 56px;
+    min-width: 56px;
+    height: 56px;
+  }
+
+  &.xl {
+    width: 120px;
+    min-width: 120px;
+    height: 120px;
+  }
+
+  &.no-thumbnail {
+    background-color: var(--color-300);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.avatar-list {
+  margin: 0 0 -0.5rem;
+  padding: 0;
+  font-size: 0;
+
+  .avatar {
+    color: var(--secondary-color);
+    font-weight: 600;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-radius: 50%;
+    display: inline-block;
+    background: var(--primary-color) no-repeat center/cover;
+    position: relative;
+    vertical-align: bottom;
+    font-size: 0.875rem;
+    user-select: none;
+    min-width: 2rem;
+
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &.list-inlineblock {
+    li {
+      display: inline-block;
+    }
+  }
+}
+
+.avatar-list-stacked {
+  .avatar {
+    margin-right: -0.8em !important;
+    box-shadow: 0 0 0 2px $white;
+  }
+}
+
+.header {
+  .avatar-list-stacked {
+    @media only screen and (max-width: ($break-xsmall - 150px)) {
+      display: none;
+    }
+  }
+}
+
+.add-member-top {
+  @media only screen and (min-width: ($break-xsmall - 150px)) {
+    display: none;
+  }
+}
+
+// dropdown menu
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: rgba($dark, 0.1);
+}
+
+.dropdown-item {
+  color: var(--text-color);
+
+  &:hover {
+    color: var(--secondary-color);
+  }
+}
+
+.dropdown-menu {
+  font-size: $font-size + 1px;
+  color: var(--text-color);
+  background-color: var(--body-color);
+
+  li {
+    margin: 5px 0px;
+  }
+
+  .dropdown-item {
+    color: var(--text-color);
+
+    &.active {
+      color: var(--secondary-color);
+      background-color: var(--primary-color);
+    }
+
+    &:active,
+    &:focus {
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+    }
+
+    &:hover {
+      color: var(--secondary-color);
+    }
+  }
+}
+
+// custom modal popup css
+.modal {
+  right: 0;
+  left: auto;
+
+  // z-index: 99999;
+
+  &.fade {
+    .modal-dialog-vertical {
+      transform: translateX(-100%);
+    }
+  }
+
+  &.show {
+    .modal-dialog-vertical {
+      transform: translateX(0);
+    }
+  }
+
+  .modal-dialog-vertical {
+    margin: 0;
+    height: 100%;
+
+    .modal-content {
+      height: 100%;
+    }
+  }
+
+  .modal-header,
+  .modal-footer {
+    border-color: var(--simple-border-color);
+  }
+
+  .modal-content {
+    background-color: var(--body-color);
+  }
+}
+
+// breadcrumb
+.breadcrumb {
+  background-color: var(--color-200);
+}
+
+// navbar
+.navbar-light {
+  .navbar-nav {
+    .nav-link {
+      color: var(--color-500);
+      &:hover,
+      &:focus {
+        color: var(--primary-color);
+      }
+    }
+  }
+}
+
+// custom tab ui
+/* Custom Tab Styles */
+.nav-tabs {
+  border-color: var(--border-color);
+
+  &.tab-custom {
+    border: 1px solid rgba($white, 0.2);
+
+    .nav-link {
+      color: var(--color-500);
+      opacity: 0.7;
+
+      &.active {
+        opacity: 1;
+        background-color: var(--primary-color);
+        // color: var(--white-color);
+      }
+    }
+  }
+
+  &.tab-card {
+    .nav-link {
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      background-color: transparent;
+      border-bottom: 3px solid transparent;
+      color: var(--simple-border-color);
+
+      &.active {
+        border-color: var(--primary-color);
+      }
+    }
+  }
+
+  &.tab-body-header {
+    border: 1px solid var(--primary-color);
+    overflow: hidden;
+
+    .nav-link {
+      border: 0;
+      margin: 0;
+      border-radius: 0;
+      color: var(--text-color);
+
+      &:hover {
+        color: var(--primary-color-hover);
+      }
+
+      &.active {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        margin-left: -1px;
+      }
+    }
+  }
+}
+
+// nav pill
+.nav-pills {
+  .nav-link.active,
+  .show > .nav-link {
+    background-color: var(--primary-color);
+  }
+
+  .nav-link {
+    color: var(--text-color);
+  }
+}
+
+// border
+.border-dark {
+  border-color: var(--text-color) !important;
+}
+
+.border-start {
+  border-color: var(--border-color) !important;
+}
+
+// list-group design
+.list-group-custom,
+.list-group {
+  .list-group-item {
+    background-color: var(--card-color);
+    border-color: var(--border-color);
+    color: var(--text-color);
+
+    &.active {
+      background-color: var(--primary-color);
+    }
+  }
+}
+
+// .progress bar design
+.progress {
+  background-color: var(--color-100);
+
+  &.plan-active {
+    background-color: var(--color-300);
+  }
+}
+
+// table
+/* Styles for the entire table */
+.rdt_Table {
+  border-color: var(--border-color);
+  background-color: var(--card-color);
+  color: var(--text-color);
+
+  &.dark-theme {
+    border-color: var(--border-color);
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for dark theme */
+  }
+
+  &.theme-indigo {
+    border-color: var(--border-color);
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for theme-indigo */
+  }
+}
+/* Styles for table header */
+.rdt_TableHeader th {
+  background-color: var(--card-color);
+  color: var(--text-color);
+
+  &.dark-theme {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for dark theme */
+  }
+
+  &.theme-indigo {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for theme-indigo */
+  }
+}
+
+/* Styles for table body */
+.rdt_TableBody td {
+  background-color: var(--card-color);
+  color: var(--text-color);
+
+  &.dark-theme {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for dark theme */
+  }
+
+  &.theme-indigo {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for theme-indigo */
+  }
+}
+
+/* General styles for the table */
+.table {
+  border-color: var(--border-color);
+  background-color: var(--card-color);
+  color: var(--text-color);
+
+  &.dark-theme {
+    border-color: var(--border-color);
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for dark theme */
+  }
+
+  &.theme-indigo {
+    border-color: var(--border-color);
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for theme-indigo */
+  }
+}
+
+/* Styles for table header */
+.table th {
+  background-color: var(--card-color);
+  color: var(--text-color);
+
+  &.dark-theme {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for dark theme */
+  }
+
+  &.theme-indigo {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for theme-indigo */
+  }
+}
+
+/* Styles for table rows */
+.table td {
+  background-color: var(--card-color);
+  color: var(--text-color);
+
+  &.dark-theme {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for dark theme */
+  }
+
+  &.theme-indigo {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for theme-indigo */
+  }
+}
+
+// pagination
+.page-item {
+  &.disabled {
+    .page-link {
+      background-color: var(--border-color);
+      border-color: var(--border-color);
+    }
+  }
+  .page-link {
+    background-color: var(--card-color);
+    border-color: var(--border-color);
+    color: var(--primary-color);
+  }
+  &.active {
+    .page-link {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+  }
+}
+
+// Accordion
+/* Styles for the accordion container */
+.accordion {
+  width: 100%;
+}
+
+/* Styles for accordion sections */
+.accordion-section {
+  margin-bottom: 1px; /* Add space between accordion sections */
+}
+
+/* Styles for accordion buttons (toggle buttons) */
+.accordion-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--card-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover {
+    background-color: var(--color-200);
+    color: var(--text-color); /* Change to text color on hover */
+  }
+
+  &.active {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+  }
+}
+
+/* Styles for accordion content in dark theme */
+[data-theme="dark"] .accordion-button.active + .accordion-content {
+  background-color: var(--body-color);
+  color: var(--text-color); /* Set text color */
+}
+
+[data-theme="dark"] .accordion-button.active .svg {
+  color: var(--text-color); /* Set icon color to text-color */
+}
+
+/* Styles for accordion content */
+.accordion-content {
+  display: none;
+  padding: 1rem;
+  background-color: var(
+    --card-color
+  ) !important; /* Set background color to card color */
+  border: 1px solid var(--border-color) !important;
+}
+
+/* Display content when accordion button is active */
+.accordion-button.active + .accordion-content {
+  display: block;
+}
+/* Styles for accordion content in dark theme */
+[data-theme="dark"] .accordion-button.active + .accordion-content,
+[data-theme="dark"] .accordion-button.active + .accordion-body {
+  background-color: var(--body-color);
+  color: var(--text-color); /* Set text color */
+}
+
+[data-theme="dark"] .accordion-button.active .svg,
+[data-theme="dark"] .accordion-button.active .accordion-body .svg {
+  color: var(--text-color); /* Set icon color to text-color */
+}

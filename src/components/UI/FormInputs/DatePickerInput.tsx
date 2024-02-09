@@ -61,7 +61,7 @@ const DatePickerInput = ({ onChange, value, defaultValue, required, disabled, la
       value={moment(value)}
       disabled={disabled}
       sx={{ margin: '8px 0' }}
-      onChange={(newValue) => handleFormatDateBeforeResponding(newValue)}
+      onChange={(newValue: any) => handleFormatDateBeforeResponding(newValue)}
       slotProps={{ textField: { size: 'small', fullWidth: true, required: required ? true : false } }}
       views={['year', 'month', 'day']}
       label={label}

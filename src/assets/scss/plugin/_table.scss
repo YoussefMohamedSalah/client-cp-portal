@@ -1,0 +1,56 @@
+/* Styles for the entire table */
+.rdt_Table {
+  border-color: var(--border-color);
+  background-color: var(--card-color);
+  color: var(--text-color);
+
+  &.dark-theme {
+    border-color: var(--border-color);
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for dark theme */
+  }
+
+  &.theme-indigo {
+    border-color: var(--border-color);
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for theme-indigo */
+  }
+}
+
+/* Styles for table header */
+.rdt_TableHeader th {
+  background-color: var(--card-color);
+  color: var(--text-color);
+
+  &.dark-theme {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for dark theme */
+  }
+
+  &.theme-indigo {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for theme-indigo */
+  }
+}
+
+/* Styles for table body */
+.rdt_TableBody td {
+  background-color: var(--card-color);
+  color: var(--text-color);
+
+  &.dark-theme {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for dark theme */
+  }
+
+  &.theme-indigo {
+    background-color: var(--card-color);
+    color: var(--text-color);
+    /* Additional styles for theme-indigo */
+  }
+}

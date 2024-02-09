@@ -1,41 +1,6 @@
 import { ENUMS } from "enums/enums";
+import { Session } from "types/Session";
 
-export interface Company {
-    id: string;
-    name: string;
-    address: string;
-    logo: string;
-    size: string;
-    employee_count: number;
-    stepper_step: number;
-    stepper_state: boolean;
-    is_verified: boolean;
-    female_count: number;
-    male_count: number;
-    vat: number;
-    shift_start: string;
-    shift_end: string;
-};
-
-export interface User {
-    id: string;
-    email: string;
-    name: string;
-    phone_number: string;
-    is_loggedIn: boolean;
-    role: string;
-    sign: string;
-    avatar: string;
-    department_info: { id: string, name: string };
-    shift_start: string;
-    shift_end: string;
-};
-
-export interface Session {
-    token: string | null;
-    user: User | null;
-    company: Company | null;
-};
 
 export const getLocaleSession = (): Session | null => {
     const session = localStorage.getItem('session');

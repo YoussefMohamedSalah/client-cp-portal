@@ -5,6 +5,7 @@ import { redirectToWWW } from 'utils/RedirectToWWW';
 import reportWebVitals from './reportWebVitals';
 import App from 'App';
 import Providers from 'Providers';
+import "assets/scss/main.scss";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
