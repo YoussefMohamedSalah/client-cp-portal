@@ -13,7 +13,7 @@ export interface Inventory {
     items: InventoryItem[];
     createdAt: Date;
     updatedAt: Date;
-}
+};
 
 
 export interface InventoryItem {

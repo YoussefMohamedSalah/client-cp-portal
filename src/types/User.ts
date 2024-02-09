@@ -1,19 +1,19 @@
 import { ENUMS } from 'enums/enums';
 import { Company } from "./Company";
-import { Department } from "./Department";
-import { Attendance } from "./attendance";
+// import { Department } from "./Department";
+// import { Attendance } from "./attendance";
 import { Notification } from "./Notification";
 // import { Task } from "./task";
-import { Group } from "./group";
+// import { Group } from "./group";
 import { Project } from "./Project";
-import { Chat } from "./chat";
+// import { Chat } from "./chat";
 import { DailyReportGroup } from "./Daily_report";
-import { UserKpi } from "./userKpi";
+// import { UserKpi } from "./userKpi";
 import { EmployeeRequest } from "./Employee_request";
 import Task from './Task';
 
 
-interface User {
+export interface User {
     id: string;
     code: string | null;
     company_info: { id: string, name: string };
@@ -48,23 +48,21 @@ interface User {
     is_verified: boolean;
     temp_otp: number | null;
     temp_password_code: string | null;
-    chats: Chat[];
+    // chats: Chat[];
     deletion_code: string | null;
     department_info: { id: string, name: string };
     projects_info: { id: string, name: string, longitude: number, latitude: number }[];
     company: Company;
-    department: Department;
-    attendances: Attendance[];
+    // department: Department;
+    //attendances: Attendance[];
     notifications: Notification[];
     tasks: Task[];
     projects: Project[];
     manager_of: Project[];
-    groups: Group[];
+    // groups: Group[];
     daily_report_group: DailyReportGroup;
-    kpi_records: UserKpi[];
+    // kpi_records: UserKpi[];
     employeeRequests: EmployeeRequest[];
     createdAt: Date;
     updatedAt: Date;
-}
-
-export default User;
+};

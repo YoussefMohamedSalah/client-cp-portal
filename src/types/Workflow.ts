@@ -1,6 +1,16 @@
 import { Company } from './Company';
 
-interface RequestWorkFlow {
+export interface WorkFlow {
+    userId: string;
+    name: string;
+    title: string;
+    state: boolean;
+    isRejected: boolean;
+    index: number;
+    sign: string;
+};
+
+export interface CompanyWorkFlow {
     id: string;
     site_request_flow: { userId: string; name: string; title: string; state: boolean; isRejected: boolean; index: number; sign: string }[];
     petty_cash_request_flow: { userId: string; name: string; title: string; state: boolean; isRejected: boolean; index: number; sign: string }[];
@@ -12,6 +22,4 @@ interface RequestWorkFlow {
     default_contract_conditions: string[];
     invoice_flow: { userId: string; name: string; title: string; state: boolean; isRejected: boolean; index: number; sign: string }[];
     company: Company;
-}
-
-export default RequestWorkFlow;
+};

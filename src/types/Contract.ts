@@ -1,4 +1,4 @@
-import Invoice from "./Invoice";
+import { Invoice } from "./Invoice";
 import { Project } from "./Project";
 import { Subcontractor } from "./Subcontractor";
 import { STATUS, DOCUMENT_TYPE } from 'enums/enums';
@@ -19,6 +19,8 @@ export interface Contract {
 	discount: number;
 	paid_amount: number;
 	remaining_amount: number;
+	subject: string | null;
+	description: string | null;
 	user: { id: string; name: string };
 	project_details: { id: string; name: string };
 	subcontractor_details: { id: string; name: string };
@@ -40,8 +42,8 @@ export interface Contract {
 interface ContractItem {
 	description: string;
 	item: string;
-	count: string;
-	price: string;
+	count: number;
+	price: number;
 	total: number;
 };
 

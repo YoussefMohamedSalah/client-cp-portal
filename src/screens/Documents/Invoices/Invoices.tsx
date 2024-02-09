@@ -8,7 +8,7 @@ import { ENUMS } from "enums/enums";
 import { useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
-import Invoice from "types/Invoice";
+import { Invoice } from "types/Invoice";
 import { useGetAllInvoicesQuery } from "api/Documents/Invoices/getAllInvoices";
 
 const Invoiced: React.FC = () => {
@@ -117,7 +117,7 @@ const Invoiced: React.FC = () => {
             selector: (row: any) => { },
             sortable: false,
             cell: (row: any) =>
-                <DocumentsTableActionBtn<Invoice> data={row} />
+                <DocumentsTableActionBtn<Invoice> data={row} onClickEdit={() => push('/' + PAGES.EDIT_INVOICE + '/' + row.id)} />
         }
     ];
 

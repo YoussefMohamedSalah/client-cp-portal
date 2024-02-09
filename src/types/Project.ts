@@ -1,16 +1,16 @@
 import { Company } from './Company';
 import { Customer } from './Customer';
-import { SiteRequest } from './SiteRequest';
-import { PettyCashRequest } from './PettyCashRequest';
-import { MaterialRequest } from './MaterialRequest';
-import { PurchaseOrderRequest } from './PurchaseOrderRequest';
-import { Group } from './Group';
+import { SiteRequest } from './Site_request';
+import { PettyCashRequest } from './Pc_request';
+import { MaterialRequest } from './Material_request';
+import { PurchaseOrderRequest } from './Po_request';
+// import { Group } from './Group';
 import { Inventory } from './Inventory';
 import { User } from './User';
 import { Contract } from './Contract';
 import { Invoice } from './Invoice';
-import { DailyReport } from './DailyReport';
 import { Employee } from './Employee';
+import { DailyReport } from './Daily_report';
 
 export interface Project {
     id: string;
@@ -48,7 +48,7 @@ export interface Project {
     customer: Customer;
     users: User[];
     managers: User[];
-    group: Group;
+    // group: Group;
     inventory: Inventory;
     SiteRequests: SiteRequest[];
     PettyCashRequests: PettyCashRequest[];

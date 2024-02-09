@@ -8,7 +8,7 @@ import { ENUMS } from "enums/enums";
 import { useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
-import SiteRequest from "types/Site_request";
+import { SiteRequest } from "types/Site_request";
 import { useGetAllSiteRequestsQuery } from "api/Documents/SiteRequests/getAllSiteRequests";
 
 const SiteRequests: React.FC = () => {
@@ -100,7 +100,7 @@ const SiteRequests: React.FC = () => {
             selector: (row: any) => { },
             sortable: false,
             cell: (row: any) =>
-                <DocumentsTableActionBtn<SiteRequest> data={row} />
+                <DocumentsTableActionBtn<SiteRequest> data={row} onClickEdit={() => push('/' + PAGES.EDIT_SITE_REQUEST + '/' + row.id)} />
         }
     ];
 

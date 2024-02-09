@@ -9,7 +9,7 @@ import { ENUMS } from "enums/enums";
 import { useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
-import PurchaseOrderRequest from "types/Po_request";
+import { PurchaseOrderRequest } from "types/Po_request";
 
 const PoRequests: React.FC = () => {
 	const [selectedDocument, setSelectedDocument] = useState<PurchaseOrderRequest>({} as PurchaseOrderRequest);
@@ -153,7 +153,7 @@ const PoRequests: React.FC = () => {
 			selector: (row: any) => { },
 			sortable: false,
 			cell: (row: any) =>
-				<DocumentsTableActionBtn<PurchaseOrderRequest> data={row} />
+				<DocumentsTableActionBtn<PurchaseOrderRequest> data={row} onClickEdit={() => push('/' + PAGES.EDIT_PO_REQUEST + '/' + row.id)} />
 		}
 	];
 

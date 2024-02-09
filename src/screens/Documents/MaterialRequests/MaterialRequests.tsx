@@ -8,7 +8,7 @@ import { ENUMS } from "enums/enums";
 import { useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
-import MaterialRequest from "types/Material_request";
+import { MaterialRequest } from "types/Material_request";
 import { useGetAllMaterialRequestsQuery } from "api/Documents/MaterialRequests/getAllMaterialRequests";
 
 const MaterialRequests: React.FC = () => {
@@ -107,7 +107,7 @@ const MaterialRequests: React.FC = () => {
             selector: (row: any) => { },
             sortable: false,
             cell: (row: any) =>
-                <DocumentsTableActionBtn<MaterialRequest> data={row} />
+                <DocumentsTableActionBtn<MaterialRequest> data={row} onClickEdit={() => push('/' + PAGES.EDIT_MATERIAL_REQUEST + '/' + row.id)} />
         }
     ];
 

@@ -2,10 +2,7 @@ import { Link } from "react-router-dom";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { loginValidation } from "validators/Auth/login";
-
-// import { loginHandler } from "api/Auth/Login_Api";
-import Input from "components/FormInputs/Input";
-
+import Input from "components/UI/FormInputs/Input";
 import useApp from "hooks/useApp";
 import { useAuth } from "contexts/AuthContext";
 import { useUI } from "contexts/UIContext";

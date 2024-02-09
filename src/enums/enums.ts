@@ -98,3 +98,24 @@ export enum DOCUMENT_TYPE {
 	INVOICE = "invoice",
 	EMPLOYEE = 'employee_request'
 };
+
+export enum TASK_TYPE {
+	GENERAL_TASK = 'general_task',
+	GROUP_TASK = 'group_task',
+	INDIVIDUAL_TASK = 'individual_task'
+};
+
+
+export enum PROGRESS {
+	TODO = "ToDo",
+	ON_PROGRESS = "ON PROGRESS",
+	ON_REVIEW = "REVIEW",
+	COMPLETED = "COMPLETE",
+};
+
+export enum PRIORITY {
+	LOW = "Low",
+	MEDIUM = 'Medium',
+	HIGH = 'High',
+	CRITICAL = 'Critical'
+};

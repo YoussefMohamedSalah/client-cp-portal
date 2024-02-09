@@ -1,10 +1,10 @@
-import PettyCashRequest from 'types/Pc_request';
-import PurchaseOrderRequest from "types/Po_request";
-import EmployeeRequest from "types/Employee_request";
-import MaterialRequest from "types/Material_request";
-import SiteRequest from "types/Site_request";
+import { PettyCashRequest } from "types/Pc_request";
+import { PurchaseOrderRequest } from "types/Po_request";
+import { EmployeeRequest } from "types/Employee_request";
+import { MaterialRequest } from "types/Material_request";
+import { SiteRequest } from "types/Site_request";
 import { Contract } from "types/Contract";
-import Invoice from 'types/Invoice';
+import { Invoice } from "types/Invoice";
 import { isContractType, isEmployeeType, isInvoiceType, isMaterialType, isPettyCashType, isPurchaseOrderType, isSiteType } from './CheckPropsType';
 
 export const formatCsvOutput = <T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>(data: T[] | undefined): any[] => {

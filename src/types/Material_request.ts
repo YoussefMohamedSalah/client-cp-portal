@@ -2,7 +2,7 @@ import { Project } from "./Project";
 import { Company } from "./Company";
 import { STATUS, DOCUMENT_TYPE } from 'enums/enums';
 
-interface MaterialRequest {
+export interface MaterialRequest {
     id: string;
     type: DOCUMENT_TYPE.MATERIAL;
     code: string | null;
@@ -24,5 +24,3 @@ interface MaterialRequest {
     createdAt: Date;
     updatedAt: Date;
 };
-
-export default MaterialRequest;

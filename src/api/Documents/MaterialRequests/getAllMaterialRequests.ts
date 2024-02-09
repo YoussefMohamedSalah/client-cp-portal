@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
 import { http } from "utils/Http";
-import MaterialRequest from "types/Material_request";
+import { MaterialRequest } from "types/Material_request";
 
 export const getAllMaterialRequests = async () => {
     const { data } = await http.get(ROUTES.MATERIAL_REQUESTS);

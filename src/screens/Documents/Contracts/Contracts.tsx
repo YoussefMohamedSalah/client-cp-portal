@@ -117,7 +117,7 @@ const Contracts: React.FC = () => {
             selector: (row: any) => { },
             sortable: false,
             cell: (row: any) =>
-                <DocumentsTableActionBtn<Contract> data={row} />
+                <DocumentsTableActionBtn<Contract> data={row} onClickEdit={() => push('/' + PAGES.EDIT_CONTRACT + '/' + row.id)} />
         }
     ];
 

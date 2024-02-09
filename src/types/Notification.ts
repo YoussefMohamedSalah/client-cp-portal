@@ -1,4 +1,4 @@
-import User from "./User";
+import { User } from "./User";
 
 export interface Notification {
     id: string;
@@ -8,4 +8,4 @@ export interface Notification {
     user: User;
     is_read: boolean;
     receivedAt: Date;
-}
+};

@@ -8,7 +8,7 @@ import { ENUMS } from "enums/enums";
 import { useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
-import EmployeeRequest from "types/Employee_request";
+import { EmployeeRequest } from "types/Employee_request";
 import { useGetAllEmployeeRequestsQuery } from "api/Documents/EmployeeRequests/getAllEmployeeRequests";
 
 const EmployeeRequests: React.FC = () => {
@@ -117,7 +117,7 @@ const EmployeeRequests: React.FC = () => {
             selector: (row: any) => { },
             sortable: false,
             cell: (row: any) =>
-                <DocumentsTableActionBtn<EmployeeRequest> data={row} />
+                <DocumentsTableActionBtn<EmployeeRequest> data={row} onClickEdit={() => push('/' + PAGES.EDIT_EMPLOYEE_REQUEST + '/' + row.id)} />
         }
     ];
 

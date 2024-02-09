@@ -2,7 +2,7 @@ import { Project } from './Project';
 import { Company } from './Company';
 import { STATUS, DOCUMENT_TYPE } from 'enums/enums';
 
-interface SiteRequest {
+export interface SiteRequest {
     id: string;
     type: DOCUMENT_TYPE.SITE;
     code: string | null;
@@ -21,5 +21,3 @@ interface SiteRequest {
     createdAt: Date;
     updatedAt: Date;
 };
-
-export default SiteRequest;

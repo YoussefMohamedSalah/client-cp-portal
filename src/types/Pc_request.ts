@@ -2,7 +2,7 @@ import { Project } from './Project';
 import { Company } from './Company';
 import { STATUS, DOCUMENT_TYPE } from 'enums/enums';
 
-interface PettyCashRequest {
+export interface PettyCashRequest {
     id: string;
     type: DOCUMENT_TYPE.PETTY_CASH;
     code: string;
@@ -28,6 +28,4 @@ interface PettyCashRequest {
     company: Company;
     createdAt: Date;
     updatedAt: Date;
-}
-
-export default PettyCashRequest;
+};

@@ -1,6 +1,6 @@
 import { Company } from './Company';
 import { ENUMS } from 'enums/enums';
-import PurchaseOrderRequest from './Po_request';
+import { PurchaseOrderRequest } from './Po_request';
 
 export interface Supplier {
     id: string;

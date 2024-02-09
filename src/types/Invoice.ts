@@ -4,7 +4,7 @@ import { Subcontractor } from "./Subcontractor";
 import { Contract } from "./Contract";
 import { STATUS, DOCUMENT_TYPE } from 'enums/enums';
 
-interface Invoice {
+export interface Invoice {
     id: string;
     code: string | null;
     rev_num: number;
@@ -41,6 +41,4 @@ interface Invoice {
     company: Company;
     createdAt: Date;
     updatedAt: Date;
-}
-
-export default Invoice;
+};

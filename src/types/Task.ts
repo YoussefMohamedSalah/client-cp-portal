@@ -1,22 +1,22 @@
 import { Company } from './Company';
-import { Group } from './Group';
+// import { Group } from './Group';
 import { User } from './User';
-import { TaskPriority, TaskProgressType, taskType } from '../enums/enums';
+import { PRIORITY, PROGRESS, TASK_TYPE } from 'enums/enums';
 
 interface Task {
     id: string;
-    task_type: taskType;
+    task_type: TASK_TYPE;
     name: string | null;
     description: string | null;
-    task_priority: TaskPriority;
+    task_priority: PRIORITY;
     status: string | null;
-    task_progress: TaskProgressType;
+    task_progress: PROGRESS;
     creator: { id: string, name: string };
     files: string[];
     start_at: string;
     end_at: string | null;
     company: Company;
-    group: Group;
+    group: string;
     users: User[];
     createdAt: Date;
     updatedAt: Date;

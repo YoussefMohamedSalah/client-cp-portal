@@ -3,7 +3,7 @@ import { Supplier } from './Supplier';
 import { Project } from './Project';
 import { Company } from './Company';
 
-interface PurchaseOrderRequest {
+export interface PurchaseOrderRequest {
     id: string;
     type: DOCUMENT_TYPE.PURCHASE_ORDER;
     code: string | null;
@@ -26,11 +26,11 @@ interface PurchaseOrderRequest {
     total: number;
     paid_amount: number;
     payment_type: string;
-    installments: { name: string; percentage: number; value: number; details: string; date: string }[];
+    installments: Array<{ name: string; percentage: number; value: number; details: string; date: string }>;
     default_conditions: string[];
     conditions: string[];
     status: STATUS;
-    items: { description: string; item: string; count: number; price: number; total: number }[];
+    items: Array<{ description: string; item: string; count: number; price: number; total: number }>;
     work_flow: { userId: string; name: string; title: string; state: boolean; isRejected: boolean; sign: string }[];
     files: { name: string; url: string }[];
     timeline: { name: string; content: string; date: Date; status: string }[];
@@ -40,6 +40,4 @@ interface PurchaseOrderRequest {
     company: Company;
     createdAt: Date;
     updatedAt: Date;
-}
-
-export default PurchaseOrderRequest;
+};

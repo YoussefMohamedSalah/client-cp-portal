@@ -1,4 +1,5 @@
 import { Nav } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 interface TabList {
 	title: string;
@@ -11,6 +12,7 @@ interface Props {
 	tabList?: TabList[];
 	isBtnShow?: boolean;
 	btnText?: string;
+	isBackBtn?: boolean;
 	onClickBtn?: () => void;
 	renderRight?: () => React.ReactNode;
 };
@@ -21,13 +23,27 @@ const PageHeader: React.FC<Props> = ({
 	tabList,
 	isBtnShow,
 	btnText,
+	isBackBtn,
 	onClickBtn,
 	renderRight,
 }) => {
+	const navigate = useNavigate();
+
 	return (
 		<div className="row align-items-center">
 			<div className="border-0 mb-4">
 				<div className="card-header no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+					{isBackBtn && (
+						<span
+							onClick={() => navigate(-1)}
+							title=""
+							className="btn btn-primary border lift"
+						>
+							<div className="icon">
+								<i className="icofont-bubble-left fs-3" />
+							</div>
+						</span>
+					)}
 					<h3 className="fw-bold mb-0 py-3 pb-2">{headerTitle}</h3>
 					{isTabShow && tabList && tabList.length > 0 ? (
 						<div className="col-auto py-2 w-sm-100">

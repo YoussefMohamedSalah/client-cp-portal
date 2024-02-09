@@ -1,6 +1,6 @@
 import { Company } from "./Company";
 import { Project } from "./Project";
-import User from "./User";
+import { User } from "./User";
 
 export interface DailyReportGroupKpi {
     id: string;
@@ -9,7 +9,7 @@ export interface DailyReportGroupKpi {
     group: DailyReportGroup;
     createdAt: Date;
     updatedAt: Date;
-}
+};
 
 export interface DailyReportGroup {
     id: string;

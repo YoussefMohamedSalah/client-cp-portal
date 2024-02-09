@@ -1,5 +1,5 @@
 import Loading from "components/UI/Loading";
-import PettyCashRequest from "types/Pc_request";
+import { PettyCashRequest } from "types/Pc_request";
 import Table from "components/Common/Table";
 import { useGetAllPcRequestsQuery } from "api/Documents/PcRequests/getAllPcRequests";
 import PageHeader from "components/Common/PageHeader";
@@ -117,7 +117,7 @@ const PcRequests: React.FC = () => {
 			selector: (row: any) => { },
 			sortable: false,
 			cell: (row: any) =>
-				<DocumentsTableActionBtn<PettyCashRequest> data={row} />
+				<DocumentsTableActionBtn<PettyCashRequest> data={row} onClickEdit={() => push('/' + PAGES.EDIT_PC_REQUEST + '/' + row.id)} />
 		}
 	];
 	return (

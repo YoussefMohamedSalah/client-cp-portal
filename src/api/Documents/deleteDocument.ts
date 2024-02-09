@@ -8,7 +8,7 @@ interface DeleteDocumentProps {
   id: string
 };
 
-export const useDeleteRequest = () => {
+export const useDeleteDocument = () => {
   return useMutation<any, Error, any>(async (variables: DeleteDocumentProps) => {
     const { type, id } = variables;
     if (type === ENUMS.REQUEST_TYPE.PETTY_CASH) {

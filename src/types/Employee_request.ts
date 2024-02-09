@@ -1,14 +1,14 @@
 import { DOCUMENT_TYPE } from "enums/enums";
 
-interface EmployeeRequest {
+export interface EmployeeRequest {
     id: string;
     type: DOCUMENT_TYPE.EMPLOYEE;
     code: string | null;
     rev_num: number;
     user: { id: string; name: string };
     date: string;
-    description: string | null;
     subject: string | null;
+    description: string | null;
     status: string;
     work_flow: Array<{ userId: string; name: string; title: string; state: boolean; isRejected: boolean; sign: string }>;
     files: Array<{ name: string; url: string }>;
@@ -20,5 +20,3 @@ interface EmployeeRequest {
     createdAt: Date;
     updatedAt: Date;
 };
-
-export default EmployeeRequest;
