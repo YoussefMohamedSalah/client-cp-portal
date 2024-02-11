@@ -11,7 +11,8 @@ interface Props {
   options: (string | IOption)[];
   onChange: (value: any) => void;
   placeholder?: string;
-}
+  required?: boolean;
+};
 
 const OptionsSelectOne = React.memo(({
   options,
@@ -19,7 +20,8 @@ const OptionsSelectOne = React.memo(({
   onChange,
   defaultValue,
   disabled,
-  value
+  value,
+  required
 }: Props) => {
   const getOptionLabel = (option: string | IOption) => (typeof option === 'string' ? option : option?.label || '');
   const filterOptions = (options: (string | IOption)[], { inputValue }: { inputValue: string }) => {
@@ -84,6 +86,7 @@ const OptionsSelectOne = React.memo(({
         <TextField
           sx={{ margin: '8px 0' }}
           placeholder={label}
+          required={required}
           {...params}
           label={label}
           InputProps={{

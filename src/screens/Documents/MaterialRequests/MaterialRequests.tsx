@@ -41,7 +41,7 @@ const MaterialRequests: React.FC = () => {
             width: "110px",
             selector: (row: any) => row.code,
             sortable: true,
-            cell: (row: any) => <span onClick={() => push(`/${PAGES.MATERIAL_REQUEST}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
+            cell: (row: any) => <span onClick={() => push(`/${PAGES.MATERIAL_REQUEST_INFO}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
         },
         {
             name: "Rev",
@@ -107,7 +107,7 @@ const MaterialRequests: React.FC = () => {
             selector: (row: any) => { },
             sortable: false,
             cell: (row: any) =>
-                <DocumentsTableActionBtn<MaterialRequest> data={row} onClickEdit={() => push('/' + PAGES.EDIT_MATERIAL_REQUEST + '/' + row.id)} />
+                <DocumentsTableActionBtn<MaterialRequest> data={row} onClickEdit={() => push('/' + PAGES.MATERIAL_REQUEST + '/' + row.id)} />
         }
     ];
 
@@ -116,15 +116,15 @@ const MaterialRequests: React.FC = () => {
             <div className="container-fluid">
                 {/* page header */}
                 <PageHeader
-                    headerTitle={'Purchase Order Requests'}
+                    headerTitle={'Material Requests'}
                     isBtnShow={true}
-                    btnText={"Create PC"}
-                    onClickBtn={() => push("/" + PAGES.PO_REQUEST)}
+                    btnText={"Create Material Request"}
+                    onClickBtn={() => push("/" + PAGES.MATERIAL_REQUEST)}
                 />
                 {/* table data */}
                 <div className="row g-3 py-1 pb-4">
                     <Table<MaterialRequest>
-                        title={'Purchase Order Requests'}
+                        title={'Material Requests'}
                         columns={columnT}
                         data={requests}
                         renderCards={true}

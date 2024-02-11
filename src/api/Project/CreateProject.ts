@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
-import { SelectedProject } from "types/Project";
+import { Project, SelectedProject } from "types/Project";
 import { http } from "utils/Http";
 
 export const useCreateProject = () => {
@@ -12,7 +12,7 @@ export const useCreateProject = () => {
 				}
 			}
 		);
-		return { project: { data: data as any } };
+		return { project: { data: data as Project } };
 	});
 };
 

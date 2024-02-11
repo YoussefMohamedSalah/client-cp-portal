@@ -33,7 +33,7 @@ const FormInputs: React.FC<Props> = ({ formFields, grid, block = false }) => {
 							{(formInfo.type === "text" || formInfo.type === "number") && !formInfo.hide && <TextInput placeholder={formInfo.placeholder} value={formInfo.value} onChange={formInfo.onChange} defaultValue={formInfo.default} hidden={formInfo.hide} disabled={formInfo.disabled} label={formInfo.label} required={formInfo.required} type={formInfo.type} />}
 
 							{/* Select */}
-							{formInfo.type === "select" && !formInfo.hide && <OptionsSelectOne label={formInfo.label} value={formInfo.value} onChange={formInfo.onChange} defaultValue={formInfo.default} disabled={formInfo.disabled} options={formInfo.options ? formInfo.options : []} placeholder={formInfo.placeholder} />}
+							{formInfo.type === "select" && !formInfo.hide && <OptionsSelectOne label={formInfo.label} value={formInfo.value} onChange={formInfo.onChange} defaultValue={formInfo.default} disabled={formInfo.disabled} options={formInfo.options ? formInfo.options : []} placeholder={formInfo.placeholder} required={formInfo.required} />}
 
 							{/* Multi Select */}
 							{formInfo.type === "multiSelect" && !formInfo.hide && <MultiSelectInput label={formInfo.label} onChange={formInfo.onChange} defaultValue={formInfo.value} disabled={formInfo.disabled} options={formInfo.options ? formInfo.options : []} />}

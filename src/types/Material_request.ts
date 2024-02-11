@@ -1,6 +1,8 @@
 import { Project } from "./Project";
 import { Company } from "./Company";
 import { STATUS, DOCUMENT_TYPE } from 'enums/enums';
+import { FileType } from "./FileType";
+import { IOption } from "./Forms/option";
 
 export interface MaterialRequest {
     id: string;
@@ -13,13 +15,13 @@ export interface MaterialRequest {
     description: string | null;
     subject: string | null;
     status: STATUS;
-    items: Array<{ description: string; item: string; count: number; price: number; total: number }>;
+    items: Array<{ description: string, item: string, count: string | number, price: string | number, total: string | number }>;
     work_flow: Array<{ userId: string; name: string; title: string; state: boolean; isRejected: boolean; sign: string }>;
-    files: Array<{ name: string; url: string }>;
+    files: Array<{ name: string; url: string }> | Array<FileType>;
     timeline: Array<{ name: string; content: string; date: Date; status: string }>;
     is_approved: boolean;
     rejection_reason: string | null;
-    project: Project;
+    project: Project | IOption;
     company: Company;
     createdAt: Date;
     updatedAt: Date;

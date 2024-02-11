@@ -1,3 +1,5 @@
+import { CompanyWorkFlow } from "./Workflow";
+
 export interface Company {
     name: string;
     address: string;
@@ -12,6 +14,7 @@ export interface Company {
     is_verified: boolean;
     stepper_state: boolean;
     stepper_step: number;
+    workFlow: CompanyWorkFlow
 };
 
 export interface selectedCompany {

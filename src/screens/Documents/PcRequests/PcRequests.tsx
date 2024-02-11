@@ -41,7 +41,7 @@ const PcRequests: React.FC = () => {
 			width: "110px",
 			selector: (row: any) => row.code,
 			sortable: true,
-			cell: (row: any) => <span onClick={() => push(`/${PAGES.PC_REQUEST}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
+			cell: (row: any) => <span onClick={() => push(`/${PAGES.PC_REQUEST_INFO}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
 		},
 		{
 			name: "Rev",
@@ -117,7 +117,7 @@ const PcRequests: React.FC = () => {
 			selector: (row: any) => { },
 			sortable: false,
 			cell: (row: any) =>
-				<DocumentsTableActionBtn<PettyCashRequest> data={row} onClickEdit={() => push('/' + PAGES.EDIT_PC_REQUEST + '/' + row.id)} />
+				<DocumentsTableActionBtn<PettyCashRequest> data={row} onClickEdit={() => push('/' + PAGES.PC_REQUEST + '/' + row.id)} />
 		}
 	];
 	return (

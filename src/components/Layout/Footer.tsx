@@ -6,7 +6,7 @@ const Footer = () => {
                     <a className="text-body" href="https://cp-sa.com/"> © {new Date().getFullYear()} All rights reserved.</a>
                 </div>
                 <a className="text-body" href="https://cp-sa.com/">
-                    <div className="p-3 fs-6 bold" style={{ color: "blue" }}>
+                    <div className="p-3 fs-7 bolder" style={{ color: "blue" }}>
                         Construction Power
                     </div>
                 </a>

@@ -1,6 +1,8 @@
 import { Project } from './Project';
 import { Company } from './Company';
 import { STATUS, DOCUMENT_TYPE } from 'enums/enums';
+import { IOption } from './Forms/option';
+
 
 export interface SiteRequest {
     id: string;
@@ -16,7 +18,7 @@ export interface SiteRequest {
     work_flow: { userId: string, name: string, title: string, state: boolean, isRejected: boolean, sign: string }[];
     timeline: { name: string, content: string, date: Date, status: string }[];
     rejection_reason: string | null;
-    project: Project;
+    project: Project | IOption;
     company: Company;
     createdAt: Date;
     updatedAt: Date;

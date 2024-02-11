@@ -12,7 +12,7 @@ function DocumentTable<T>({ tableHead, tableData, renderRow }: Props<T>) {
             <thead>
                 <tr className="border-bottom border-black">
                     {tableHead.map((headData, index) => (
-                        <th className="text-center p-2" key={index}>
+                        <th className="text-start p-2" key={index}>
                             {headData}
                         </th>
                     ))}

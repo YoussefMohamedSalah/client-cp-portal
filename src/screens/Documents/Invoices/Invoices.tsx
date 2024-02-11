@@ -41,7 +41,7 @@ const Invoiced: React.FC = () => {
             width: "110px",
             selector: (row: any) => row.code,
             sortable: true,
-            cell: (row: any) => <span onClick={() => push(`/${PAGES.PC_REQUEST}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
+            cell: (row: any) => <span onClick={() => push(`/${PAGES.INVOICE_INFO}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
         },
         {
             name: "Rev",
@@ -117,7 +117,7 @@ const Invoiced: React.FC = () => {
             selector: (row: any) => { },
             sortable: false,
             cell: (row: any) =>
-                <DocumentsTableActionBtn<Invoice> data={row} onClickEdit={() => push('/' + PAGES.EDIT_INVOICE + '/' + row.id)} />
+                <DocumentsTableActionBtn<Invoice> data={row} onClickEdit={() => push('/' + PAGES.INVOICE + '/' + row.id)} />
         }
     ];
 
@@ -126,15 +126,15 @@ const Invoiced: React.FC = () => {
             <div className="container-fluid">
                 {/* page header */}
                 <PageHeader
-                    headerTitle={'Purchase Order Requests'}
+                    headerTitle={'Invoices'}
                     isBtnShow={true}
-                    btnText={"Create PC"}
-                    onClickBtn={() => push("/" + PAGES.PO_REQUEST)}
+                    btnText={"Create Invoice"}
+                    onClickBtn={() => push("/" + PAGES.INVOICE)}
                 />
                 {/* table data */}
                 <div className="row g-3 py-1 pb-4">
                     <Table<Invoice>
-                        title={'Purchase Order Requests'}
+                        title={'Invoices'}
                         columns={columnT}
                         data={requests}
                         renderCards={true}

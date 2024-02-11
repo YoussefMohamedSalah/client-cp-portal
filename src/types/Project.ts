@@ -14,7 +14,7 @@ import { DailyReport } from './Daily_report';
 
 export interface Project {
     id: string;
-    name: string | null;
+    name: string;
     description: string | null;
     customer_details: { id: string; name: string };
     kpi: number;
@@ -114,3 +114,9 @@ export interface ProjectKpi {
     updatedAt: Date;
 };
 
+export interface ProjectAttachment {
+    id?: number;
+    files: File[];
+    project?: number;
+    task?: number;
+};

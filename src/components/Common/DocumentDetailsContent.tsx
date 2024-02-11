@@ -21,17 +21,17 @@ import DocumentTable from "components/Print/DocumentTable";
 import DocumentActions from "components/Print/DocumentActions";
 import { useApproveDocument } from "api/Documents/approveDocument";
 import { useRejectDocument } from "api/Documents/rejectDocument";
+import { DocumentFinances } from "types/DocumentFinances";
 
 interface Props<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice> {
 	data: T;
+	finances?: DocumentFinances;
 };
 
 function DocumentsDetailsContent<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>({ data }: Props<T>) {
-	const [conditions, setConditions] = useState<string[]>(['one']);
+	const [conditions, setConditions] = useState<string[]>([]);
 	const [materials, setMaterials] = useState<PrintMaterials[]>([]);
 	const [installments, setInstallments] = useState<PrintInstallments[]>([]);
-
-
 
 	const [isRejectModal, setIsRejectModal] = useState<boolean>(false);
 	const [isApproveModal, setIsApproveModal] = useState<boolean>(false);
@@ -124,8 +124,6 @@ function DocumentsDetailsContent<T extends PettyCashRequest | PurchaseOrderReque
 		return baseDataObj;
 	};
 
-	console.log({ conditions }, { materials }, { installments }, { data })
-
 	const checkIfDataHasItems = () => {
 		if (!isEmployeeType(data) && !isSiteType(data)) setMaterials(data.items);
 	};
@@ -149,8 +147,9 @@ function DocumentsDetailsContent<T extends PettyCashRequest | PurchaseOrderReque
 							{conditions && conditions.length > 0 && (
 								<div>
 									<h3>Conditions</h3>
-									<DocumentTable tableHead={['condition']} tableData={conditions} renderRow={(rowData) => (
+									<DocumentTable tableHead={['#', 'condition']} tableData={conditions} renderRow={(rowData, index: number) => (
 										<tr>
+											<td className="text-center p-2">{index + 1} -</td>
 											<td className="text-center p-2">{rowData}</td>
 										</tr>
 									)} />

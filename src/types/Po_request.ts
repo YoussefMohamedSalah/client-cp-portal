@@ -2,6 +2,7 @@ import { STATUS, DOCUMENT_TYPE } from 'enums/enums';
 import { Supplier } from './Supplier';
 import { Project } from './Project';
 import { Company } from './Company';
+import { IOption } from './Forms/option';
 
 export interface PurchaseOrderRequest {
     id: string;
@@ -32,7 +33,7 @@ export interface PurchaseOrderRequest {
     status: STATUS;
     items: Array<{ description: string; item: string; count: number; price: number; total: number }>;
     work_flow: { userId: string; name: string; title: string; state: boolean; isRejected: boolean; sign: string }[];
-    files: { name: string; url: string }[];
+    files?: Array<{ name: string; url: string, state?: boolean }>;
     timeline: { name: string; content: string; date: Date; status: string }[];
     rejection_reason: string | null;
     project: Project;

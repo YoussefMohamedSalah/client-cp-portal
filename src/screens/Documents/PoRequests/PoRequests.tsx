@@ -41,7 +41,7 @@ const PoRequests: React.FC = () => {
 			width: "110px",
 			selector: (row: any) => row.code,
 			sortable: true,
-			cell: (row: any) => <span onClick={() => push(`/${PAGES.PO_REQUEST}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
+			cell: (row: any) => <span onClick={() => push(`/${PAGES.PO_REQUEST_INFO}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
 		},
 		{
 			name: "Date",
@@ -153,7 +153,7 @@ const PoRequests: React.FC = () => {
 			selector: (row: any) => { },
 			sortable: false,
 			cell: (row: any) =>
-				<DocumentsTableActionBtn<PurchaseOrderRequest> data={row} onClickEdit={() => push('/' + PAGES.EDIT_PO_REQUEST + '/' + row.id)} />
+				<DocumentsTableActionBtn<PurchaseOrderRequest> data={row} onClickEdit={() => push('/' + PAGES.PO_REQUEST + '/' + row.id)} />
 		}
 	];
 

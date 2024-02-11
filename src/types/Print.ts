@@ -6,9 +6,9 @@ export interface PrintMainInfoSec {
 export interface PrintMaterials {
     item: string;
     description: string;
-    count: number;
-    price: number;
-    total: number;
+    count: string | number;
+    price: string | number;
+    total: string | number;
     payed_amount?: number;
     payed_percentage?: number;
     prev_count?: number;

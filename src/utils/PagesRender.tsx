@@ -49,14 +49,14 @@ const ContractDetails = lazy(() => import("../screens/Documents/Contracts/Contra
 const InvoiceDetails = lazy(() => import("../screens/Documents/Invoices/InvoiceDetails"));
 
 
-// // CREATE //
-// const PoRequestFormPage = lazy(() => import("../PoRequests/PoRequestFormPage"));
-// const PcRequestFormPage = lazy(() => import("../PcRequests/PcRequestFormPage"));
-// const SiteRequestFormPage = lazy(() => import("../SiteRequests/SiteRequestFormPage"));
-// const MaterialRequestFormPage = lazy(() => import("../MaterialRequests/MaterialRequestFormPage"));
-// const EmployeeRequestFormPage = lazy(() => import("../EmployeeRequest/EmployeeRequestFormPage"));
-// const ContractFormPage = lazy(() => import("../Contracts/ContractFormPage"));
-// const InvoiceFormPage = lazy(() => import("../Invoices/InvoiceFormPage"));
+// CREATE //
+const PoFormPage = lazy(() => import("../screens/Documents/PoRequests/PoFormPage"));
+const PcFormPage = lazy(() => import("../screens/Documents/PcRequests/PcFormPage"));
+const SiteFormPage = lazy(() => import("../screens/Documents/SiteRequests/SiteFormPage"));
+const MaterialFormPage = lazy(() => import("../screens/Documents/MaterialRequests/MaterialFormPage"));
+const EmployeeRequestFormPage = lazy(() => import("../screens/Documents/EmployeeRequests/EmployeeRequestFormPage"));
+const ContractFormPage = lazy(() => import("../screens/Documents/Contracts/ContractFormPage"));
+const InvoiceFormPage = lazy(() => import("../screens/Documents/Invoices/InvoiceFormPage"));
 
 
 // // EDIT //
@@ -134,12 +134,7 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 			// 	return <InventoryDetails id={id} />;
 			// case PAGES.INVENTORY_ITEM:
 			// 	return <InventoryItemDetails id={id} />;
-			// case PAGES.CONTRACT:
-			// 	return <ContractDetails id={id} />;
-			// case PAGES.INVOICES:
-			// 	return <Invoices id={id} />;
-			// case PAGES.INVOICE:
-			// 	return <InvoiceFormPage id={id} />;
+
 			// case PAGES.EDIT_PO_REQUEST:
 			// 	return <PoRequestEditPage id={id} />;
 			// case PAGES.EDIT_PC_REQUEST:
@@ -150,32 +145,86 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 			// 	return <MaterialRequestEditPage id={id} />;
 			// case PAGES.MATERIAL_FORWARDING_REQUEST:
 			// 	return <MaterialForwardingPage id={id} />;
+			// case PAGES.INVOICES:
+			// 	return <Invoices id={id} />;
 			// 
 			// case PAGES.EDIT_CONTRACT:
 			// 	return <ContractEditPage id={id} />;
 			// ----
-			case PAGES.PO_REQUEST:
+			case PAGES.PO_REQUEST_INFO:
 				return <PoRequestDetails id={id} />;
-			case PAGES.PC_REQUEST:
+			case PAGES.PO_REQUEST:
+				return <PoFormPage id={id} />;
+			case PAGES.PC_REQUEST_INFO:
 				return <PcRequestDetails id={id} />;
-			case PAGES.SITE_REQUEST:
+			case PAGES.PC_REQUEST:
+				return <PcFormPage id={id} />;
+			case PAGES.SITE_REQUEST_INFO:
 				return <SiteRequestDetails id={id} />;
-			case PAGES.EMPLOYEE_REQUEST:
+			case PAGES.SITE_REQUEST:
+				return <SiteFormPage id={id} />;
+			case PAGES.EMPLOYEE_REQUEST_INFO:
 				return <EmployeeRequestDetails id={id} />;
-			// case PAGES.MATERIAL_REQUEST:
-			// 	// return <MaterialRequestDetails id={id} />;
-			// 	return <ComingSoon />
+			case PAGES.EMPLOYEE_REQUEST:
+				return <EmployeeRequestFormPage id={id} />;
+			case PAGES.MATERIAL_REQUEST_INFO:
+				return <MaterialRequestDetails id={id} />;
+			case PAGES.MATERIAL_REQUEST:
+				return <MaterialFormPage id={id} />;
+			case PAGES.CONTRACT_INFO:
+				return <ContractDetails id={id} />;
+			case PAGES.CONTRACT:
+				return <ContractFormPage id={id} />;
+			case PAGES.INVOICE_INFO:
+				return <InvoiceDetails id={id} />;
+			case PAGES.INVOICE:
+				return <InvoiceFormPage id={id} />;
 		}
 	} else
 		switch (slug) {
+			case PAGES.PO_REQUESTS:
+				return <PoRequests />;
+			case PAGES.PO_REQUEST:
+				return <PoFormPage />;
+			// ---
+			case PAGES.PC_REQUESTS:
+				return <PcRequests />;
+			case PAGES.PC_REQUEST:
+				return <PcFormPage />;
+			// ---
+			case PAGES.SITE_REQUESTS:
+				return <SiteRequests />;
+			case PAGES.SITE_REQUEST:
+				return <SiteFormPage />;
+			// ---
+			case PAGES.MATERIAL_REQUESTS:
+				return <MaterialRequests />;
+			case PAGES.MATERIAL_REQUEST:
+				return <MaterialFormPage />;
+			// ---
+			case PAGES.EMPLOYEE_REQUESTS:
+				return <EmployeeRequests />;
+			case PAGES.EMPLOYEE_REQUEST:
+				return <EmployeeRequestFormPage />;
+			// ---
+			case PAGES.CONTRACTS:
+				return <Contracts />;
+			case PAGES.CONTRACT:
+				return <ContractFormPage />;
+			// ---
+			case PAGES.INVOICES:
+				return <Invoices />;
+			// ---
+
+
+
+
+
 			// case PAGES.INVENTORY:
 			// 	return <Inventory />;
 			case PAGES.SUBCONTRACTOR:
 				return <Subcontractors />;
-			case PAGES.CONTRACTS:
-				return <Contracts />;
-			// case PAGES.CONTRACT:
-			// 	return <ContractFormPage />;
+
 			// case PAGES.DCC:
 			// 	return <Dcc />;
 
@@ -189,31 +238,7 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 			// case PAGES.DAILY_REPORTS:
 			// 	return <DailyReports />;
 			// ---
-			case PAGES.SITE_REQUESTS:
-				return <SiteRequests />;
-			// case PAGES.SITE_REQUEST:
-			// 	return <SiteRequestFormPage />;
-			// ---
-			case PAGES.PO_REQUESTS:
-				return <PoRequests />;
-			// case PAGES.PO_REQUEST:
-			// 	return <PoRequestFormPage />;
-			// ---
-			case PAGES.PC_REQUESTS:
-				return <PcRequests />;
-			// case PAGES.PC_REQUEST:
-			// 	return <PcRequestFormPage />;
-			// ---
-			case PAGES.MATERIAL_REQUESTS:
-				return <MaterialRequests />;
-			// case PAGES.MATERIAL_REQUEST:
-			// 	return <MaterialRequestFormPage />;
-			// ---
-			case PAGES.EMPLOYEE_REQUESTS:
-				return <EmployeeRequests />;
-			// case PAGES.EMPLOYEE_REQUEST:
-			// 	return <EmployeeRequestFormPage />;
-			// ---
+
 			// case PAGES.SETTINGS:
 			// 	return <Settings />;
 			// case PAGES.PROFILE:
@@ -222,8 +247,7 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 				return <Projects />;
 			case PAGES.SUPPLIERS:
 				return <Suppliers />;
-			// case PAGES.INVOICES:
-			//   return <Invoices />;
+
 			// case PAGES.INVOICES:
 			// 	// return <InvoicesSample />;
 			// 	return <ComingSoon />;

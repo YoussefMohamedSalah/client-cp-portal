@@ -41,7 +41,7 @@ const Contracts: React.FC = () => {
             width: "110px",
             selector: (row: any) => row.code,
             sortable: true,
-            cell: (row: any) => <span onClick={() => push(`/${PAGES.PC_REQUEST}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
+            cell: (row: any) => <span onClick={() => push(`/${PAGES.CONTRACT_INFO}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
         },
         {
             name: "Rev",
@@ -117,7 +117,7 @@ const Contracts: React.FC = () => {
             selector: (row: any) => { },
             sortable: false,
             cell: (row: any) =>
-                <DocumentsTableActionBtn<Contract> data={row} onClickEdit={() => push('/' + PAGES.EDIT_CONTRACT + '/' + row.id)} />
+                <DocumentsTableActionBtn<Contract> data={row} onClickEdit={() => push('/' + PAGES.CONTRACT + '/' + row.id)} />
         }
     ];
 
@@ -126,15 +126,15 @@ const Contracts: React.FC = () => {
             <div className="container-fluid">
                 {/* page header */}
                 <PageHeader
-                    headerTitle={'Purchase Order Requests'}
+                    headerTitle={'Contracts'}
                     isBtnShow={true}
-                    btnText={"Create PC"}
-                    onClickBtn={() => push("/" + PAGES.PO_REQUEST)}
+                    btnText={"Create Contract"}
+                    onClickBtn={() => push("/" + PAGES.CONTRACT)}
                 />
                 {/* table data */}
                 <div className="row g-3 py-1 pb-4">
                     <Table<Contract>
-                        title={'Purchase Order Requests'}
+                        title={'Contracts'}
                         columns={columnT}
                         data={requests}
                         renderCards={true}
