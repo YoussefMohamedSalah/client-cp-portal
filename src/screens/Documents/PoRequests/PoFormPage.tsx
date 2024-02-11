@@ -233,7 +233,7 @@ we would like to place the purchase order for Below Items.`
             value = newFilesArray;
             setFiles(newFilesArray);
         }
-        if (key === 'items') {
+        if (key === PoRequestKeys.ITEMS) {
             setModelData({
                 ...modelData,
                 total: totalAmount
@@ -441,7 +441,7 @@ we would like to place the purchase order for Below Items.`,
                 return total;
             }, 0);
 
-            handleModelData("items", updatedItems);
+            handleModelData(PoRequestKeys.ITEMS, updatedItems);
             setSubTotalAmount(allItemsTotal);
             return updatedItems;
         });
@@ -468,7 +468,7 @@ we would like to place the purchase order for Below Items.`,
                 return total;
             }, 0);
 
-            handleModelData("items", updatedItems);
+            handleModelData(PoRequestKeys.ITEMS, updatedItems);
             setSubTotalAmount(allItemsTotal);
 
             return updatedItems;
@@ -507,8 +507,8 @@ we would like to place the purchase order for Below Items.`,
     };
 
     const handleInstallmentsChange = (term: string, value: any) => {
-        if (term === 'installments') setInstallments(value)
-        if (term === 'payment_type') setPaymentType(value)
+        if (term === PoRequestKeys.INSTALLMENTS) setInstallments(value)
+        if (term === PoRequestKeys.PAYMENT_TYPE) setPaymentType(value)
     };
 
     const handleDefaultConditionsChange = (value: any) => {

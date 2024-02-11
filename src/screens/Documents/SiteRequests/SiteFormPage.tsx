@@ -61,7 +61,16 @@ const SiteFormPage = ({ id }: Props) => {
             if (id) setIsEdit(true)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [id])
+    }, [id]);
+
+    // !Assuming this is CREATE Modal
+    useEffect(() => {
+        if (!isEdit) {
+            handleInitialModelData();
+            setInitialized(true);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // !Assuming this is EDIT Modal
     useEffect(() => {
@@ -78,8 +87,12 @@ const SiteFormPage = ({ id }: Props) => {
             setInitialized(true)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [documentData])
+    }, [documentData]);
 
+    const handleInitialModelData = () => {
+        modelData.date = `${getFormattedTodayDate()}`
+        modelData.description = `With reference to the above subject,`
+    };
 
     if ((id && documentIsLoading) || (!id && projectsIsLoading)) return <Loading />;
     if ((id && documentError) || (!id && projectsError)) return null;

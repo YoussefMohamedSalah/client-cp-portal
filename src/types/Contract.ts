@@ -1,3 +1,4 @@
+import { Company } from "./Company";
 import { Invoice } from "./Invoice";
 import { Project } from "./Project";
 import { Subcontractor } from "./Subcontractor";
@@ -25,6 +26,8 @@ export interface Contract {
 	project_details: { id: string; name: string };
 	subcontractor_details: { id: string; name: string };
 	status: STATUS;
+	payment_type: string;
+	installments: Array<{ name: string; percentage: number; value: number; details: string; date: string }>;
 	work_flow: Array<{ userId: string; name: string; title: string; state: boolean; isRejected: boolean; sign: string }>;
 	files: Array<{ name: string; url: string }>;
 	comments: Array<{ id: number; userId: string; userName: string; comment: string; createdAt: string }>;
@@ -33,8 +36,9 @@ export interface Contract {
 	currency: string;
 	timeline: Array<{ name: string; content: string; date: Date; status: string }>;
 	project: Project;
-	subcontractor: Subcontractor;
 	invoices: Invoice[];
+	subcontractor: Subcontractor;
+	company: Company;
 	createdAt: Date;
 	updatedAt: Date;
 };

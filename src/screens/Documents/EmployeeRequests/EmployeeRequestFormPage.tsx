@@ -44,6 +44,7 @@ const EmployeeRequestFormPage = ({ id }: Props) => {
         isLoading: documentIsLoading
     } = useEmployeeRequestDetailsQuery({ id });
 
+    // !Check if this is CREATE OR EDIT Modal
     useEffect(() => {
         if (!initialized) {
             if (id) setIsEdit(true)
@@ -51,6 +52,16 @@ const EmployeeRequestFormPage = ({ id }: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id])
 
+    // !Assuming this is CREATE Modal
+    useEffect(() => {
+        if (!isEdit) {
+            handleInitialModelData();
+            setInitialized(true);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    // !Assuming this is EDIT Modal
     useEffect(() => {
         if (!initialized && documentData) {
             const initialModelData: any = {
@@ -60,7 +71,12 @@ const EmployeeRequestFormPage = ({ id }: Props) => {
             setInitialized(true)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [documentData])
+    }, [documentData]);
+
+    const handleInitialModelData = () => {
+        modelData.date = `${getFormattedTodayDate()}`
+        modelData.description = `With reference to the above subject,`
+    };
 
     if ((id && documentIsLoading)) return <Loading />;
     if ((id && documentError)) return null;

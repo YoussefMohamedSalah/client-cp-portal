@@ -26,6 +26,7 @@ import { Project } from 'types/Project';
 import { allowEditActionBtn } from 'utils/ActionsGuards';
 import { getOptions } from 'utils/GetOptions';
 import { handleServerError, validateInputs } from 'utils/HandlingServerError';
+import { getFormattedTodayDate } from 'utils/DateUtils';
 
 interface Props {
     id?: string;
@@ -73,14 +74,22 @@ const MaterialFormPage = ({ id }: Props) => {
             if (id) setIsEdit(true)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [id])
+    }, [id]);
+
+    // !Assuming this is CREATE Modal
+    useEffect(() => {
+        if (!isEdit) {
+            handleInitialModelData();
+            setInitialized(true);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // !Assuming this is EDIT Modal
     useEffect(() => {
         if (!initialized && projectsData && documentData) {
             let document: MaterialRequest = documentData?.materialRequestDetails?.data!
             let selectedProject: Project = document?.project;
-
 
             const initialModelData: any = {
                 ...document!,
@@ -95,7 +104,16 @@ const MaterialFormPage = ({ id }: Props) => {
             setInitialized(true)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [documentData])
+    }, [documentData]);
+
+    const handleInitialModelData = () => {
+        modelData.date = `${getFormattedTodayDate()}`
+        modelData.description = `Reference to above mentioned subject we are requesting the material below,
+kindly note the following :
+        1- All the requested material has been requested according to approved and according to shop drawings.
+        2- All the requested material we have been checked that not available on CP stores.
+Best Regards.`
+    };
 
     if ((id && documentIsLoading) || (!id && projectsIsLoading)) return <Loading />;
     if ((id && documentError) || (!id && projectsError)) return null;

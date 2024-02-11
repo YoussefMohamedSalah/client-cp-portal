@@ -2,7 +2,6 @@ import { STATUS, DOCUMENT_TYPE } from 'enums/enums';
 import { Supplier } from './Supplier';
 import { Project } from './Project';
 import { Company } from './Company';
-import { IOption } from './Forms/option';
 
 export interface PurchaseOrderRequest {
     id: string;

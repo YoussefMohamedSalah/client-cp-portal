@@ -1,12 +1,18 @@
 export enum ContractKeys {
-  DATE = 'date',
+  SUBJECT = "subject",
   PROJECT = "project",
+  SUB_CONTRACTOR = 'subcontractor',
+  DESCRIPTION = "description",
+  DATE = 'date',
   ITEMS = 'items',
   CONDITIONS = 'conditions',
-  FILES = 'files',
-  SUB_CONTRACTOR = 'subcontractor',
+  PAYMENT_TYPE = "payment_type",
+  INSTALLMENTS = "installments",
+  DISCOUNT = "discount",
   VAT = "vat",
   TOTAL = 'total',
+  FILES = 'files',
+  FILE = 'file',
 };
 
 export const ContractNumKeys = [
