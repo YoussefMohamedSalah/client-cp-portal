@@ -7,7 +7,7 @@ interface Props {
 const CustomerDetails = ({ id }: Props) => {
     return (
         <div>
-            details page
+            details page {id}
         </div>
     )
 }

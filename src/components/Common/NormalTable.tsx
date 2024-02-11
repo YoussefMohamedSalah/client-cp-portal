@@ -37,7 +37,7 @@ function NormalTable<T extends Customer | Supplier | Employee>({
     filterOptions,
     selectItem
 }: Props<T>) {
-    const [filteredData, setFilteredData] = useState<T[]>(data || []);
+    const [filteredData, setFilteredData] = useState<T[]>([...data] || []);
     const onSearchFilter = (filtered: T[]) => setFilteredData(filtered);
 
     let csvData = formatNormalCsvOutput<Customer | Supplier | Employee>(filteredData || data) || [];

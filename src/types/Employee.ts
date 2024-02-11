@@ -32,7 +32,7 @@ export interface Employee {
     site_role: string;
     site_job: string;
     joining_date: string;
-    iban_number: number;
+    iban_number: number | null
 };
 
 export interface SelectedEmployee {

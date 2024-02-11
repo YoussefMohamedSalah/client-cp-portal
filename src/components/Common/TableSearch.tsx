@@ -16,8 +16,8 @@ const TableSearch: React.FC<Props> = ({
 	onSearchFilter,
 }) => {
 	const [initialized, setInitialized] = useState<boolean>(false);
-	const [originalData, setOriginalData] = useState<any[]>(data || []);
-	const [searchValue, setSearchValue] = useState<string>("");
+	const [originalData, setOriginalData] = useState<any[]>([...data] || []);
+	const [searchValue, setSearchValue] = useState<string>();
 	const [selectedTerm, setSelectedTerm] = useState<string>(terms ? terms[0]! : "name");
 
 	const handleClearFilters = () => {
@@ -34,7 +34,7 @@ const TableSearch: React.FC<Props> = ({
 	}, [data])
 
 	useEffect(() => {
-		if (originalData) {
+		if (originalData && searchValue) {
 			let filtered = filterData(originalData, selectedTerm, searchValue);
 			onSearchFilter(filtered)
 		}

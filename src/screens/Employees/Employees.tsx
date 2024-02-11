@@ -9,6 +9,8 @@ import NormalTable from "components/Common/NormalTable";
 import TableActionBtn from "components/Common/TableActionBtn";
 import { useDeleteEmployee } from "api/Employees/deleteEmployee";
 import { useEmployeesQuery } from "api/Employees/getAllEmployees";
+import { isSuperUserRole } from "utils/Session";
+import { getImageUrl } from "utils/Helpers";
 
 const Employees: React.FC = () => {
     const { mutateAsync: deleteMutation } = useDeleteEmployee();
@@ -39,33 +41,29 @@ const Employees: React.FC = () => {
             cell: (row: any) => <span onClick={() => push(`/${PAGES.EMPLOYEE_INFO}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
         },
         {
-            name: "REPRESENTATIVE",
+            name: "NAME",
             selector: (row: any) => { },
             sortable: true,
             cell: (row: any) =>
                 <>
-                    <span className="fw-bold ms-1">{row.representative}</span>
+                    <img className="avatar rounded-circle" src={row.avatar ? getImageUrl(row?.avatar!) : 'https://gravatar.com/avatar/f42228ef47a296bebf07d1228e2eabd6?s=400&d=robohash&r=x'} alt={`${row.name}'s pic`} />
+                    <span className="fw-bold ms-1">{row.name}</span>
                 </>
         },
         {
-            name: "COMPANY",
-            selector: (row: any) => row.company_name!,
+            name: "BUSINESS TITLE",
+            selector: (row: any) => row.business_title ? row.business_title : `${row.department_info?.name ? row.department_info.name + '-' : `${isSuperUserRole(row.role) ? 'SuperUser' : row.role}`}`,
             sortable: true
         },
         {
-            name: "PHONE NUMBER",
-            selector: (row: any) => row.phone_number!,
+            name: "DEPARTMENT",
+            selector: (row: any) => row.department_info?.name!,
             sortable: true
         },
         {
             name: "EMAIL",
             selector: (row: any) => row.email,
             sortable: false
-        },
-        {
-            name: "COUNTRY",
-            selector: (row: any) => row.country!,
-            sortable: true
         },
         {
             name: "ACTION",

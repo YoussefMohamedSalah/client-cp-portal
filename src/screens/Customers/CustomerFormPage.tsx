@@ -1,5 +1,3 @@
-
-
 import PageHeader from 'components/Common/PageHeader';
 import Button from 'components/UI/Button';
 import FormInputs from 'components/UI/FormInputs/FormInputs';
@@ -31,9 +29,9 @@ const CustomerFormPage = ({ id }: Props) => {
     const [modelData, setModelData] = useState<Customer>({} as Customer);
     const [isModal, setIsModal] = useState<boolean>(false);
     // -----
-    const { mutateAsync: createCustomerMutation } = useCreateCustomer();
-    const { mutateAsync: updateCustomerMutation } = useUpdateCustomer();
-    const { mutateAsync: deleteCustomerMutation } = useDeleteCustomer();
+    const { mutateAsync: createMutation } = useCreateCustomer();
+    const { mutateAsync: updateMutation } = useUpdateCustomer();
+    const { mutateAsync: deleteMutation } = useDeleteCustomer();
     // -----
     const { showError, showSuccess } = useUI();
     const { push } = useApp();
@@ -246,7 +244,8 @@ const CustomerFormPage = ({ id }: Props) => {
 
         try {
             let createInput = customerInput(modelData);
-            await createCustomerMutation(createInput);
+            await createMutation(createInput);
+            push('/' + PAGES.CUSTOMERS)
             showSuccess();
         } catch (err: any) {
             showError(handleServerError(err.response));
@@ -270,7 +269,7 @@ const CustomerFormPage = ({ id }: Props) => {
 
         try {
             let createInput = customerUpdateInput(modelData);
-            await updateCustomerMutation({
+            await updateMutation({
                 id: modelData.id,
                 data: createInput,
             });
@@ -282,7 +281,7 @@ const CustomerFormPage = ({ id }: Props) => {
 
     const handleDelete = async () => {
         try {
-            await deleteCustomerMutation(modelData.id!);
+            await deleteMutation(modelData.id!);
             showSuccess();
         } catch (err: any) {
             showError(handleServerError(err.response));
@@ -304,7 +303,7 @@ const CustomerFormPage = ({ id }: Props) => {
                 </div>
                 <div className="col-sm d-flex align-items-center justify-content-center gap-2">
                     {isEdit ? (<>
-                        <Button className='lift' content='Cancel' onClick={() => push('/' + PAGES.SITE_REQUESTS)} variant='secondary' />
+                        <Button className='lift' content='Cancel' onClick={() => push('/' + PAGES.CUSTOMERS)} variant='secondary' />
                     </>) : (<>
                         <Button className='lift' content='Reset' onClick={handleReset} variant='secondary' />
                     </>)}
@@ -315,7 +314,7 @@ const CustomerFormPage = ({ id }: Props) => {
                         <Button className='lift' content='Create' onClick={handleCreate} />
                     </>
                     )}
-                    <Button className='lift' content='profile' onClick={() => push('/' + PAGES.CUSTOMER + '/' + modelData.id)} />
+                    <Button className='lift' content='profile' onClick={() => push('/' + PAGES.CUSTOMER_INFO + '/' + modelData.id)} />
                 </div>
             </div>
             <DeleteModal
