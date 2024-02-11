@@ -5,7 +5,7 @@ import { PurchaseOrderRequest } from './Po_request';
 export interface Supplier {
     id: string;
     supplier_type: typeof ENUMS.SUPPLIER_TYPE;
-    code: string | null;
+    code: string;
     company_name: string | null;
     vat_on: number | null;
     representative: string | null;

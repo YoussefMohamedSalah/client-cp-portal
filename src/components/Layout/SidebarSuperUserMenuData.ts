@@ -32,7 +32,19 @@ export const superUserMenuData: any[] = [
                 roles: ["Superuser", "Sub_Superuser"]
             },
             {
-                name: "PO Requests",
+                name: "Subcontractors",
+                routerLink: ["/subcontractor"],
+                identifier: "Subcontractors",
+                iconClass: "icofont-business-man-alt-1",
+                breadcrumbMessage: "",
+                isCategory: false,
+                isApp: true,
+                children: [],
+                roles: ["Superuser", "Sub_Superuser"],
+                departments: ['Projects', 'HR']
+            },
+            {
+                name: "Po Requests",
                 routerLink: ["/po_requests"],
                 identifier: "PO_requests",
                 iconClass: "icofont-users-alt-1",
@@ -43,7 +55,7 @@ export const superUserMenuData: any[] = [
                 roles: ["Superuser", "Sub_Superuser"]
             },
             {
-                name: "PC Requests",
+                name: "Pc Requests",
                 routerLink: ["/pc_requests"],
                 identifier: "pc_requests",
                 iconClass: "icofont-file-spreadsheet",
@@ -76,16 +88,15 @@ export const superUserMenuData: any[] = [
                 roles: ["Superuser", "Sub_Superuser"]
             },
             {
-                name: "Subcontractors",
-                routerLink: ["/subcontractor"],
-                identifier: "Subcontractors",
-                iconClass: "icofont-business-man-alt-1",
+                name: "Employee Requests",
+                routerLink: ["/employee_requests"],
+                identifier: "Employee_requests",
+                iconClass: "icofont-users-alt-1",
                 breadcrumbMessage: "",
                 isCategory: false,
                 isApp: true,
                 children: [],
-                roles: ["Superuser", "Sub_Superuser"],
-                departments: ['Projects', 'HR']
+                roles: ["Superuser", "Sub_Superuser"]
             },
             {
                 name: "Contracts",
@@ -98,17 +109,6 @@ export const superUserMenuData: any[] = [
                 children: [],
                 roles: ["Superuser", "Sub_Superuser"],
                 departments: ['Projects']
-            },
-            {
-                name: "Employee Requests",
-                routerLink: ["/employee_requests"],
-                identifier: "Employee_requests",
-                iconClass: "icofont-users-alt-1",
-                breadcrumbMessage: "",
-                isCategory: false,
-                isApp: true,
-                children: [],
-                roles: ["Superuser", "Sub_Superuser"]
             },
         ],
         roles: ["Superuser", "Sub_Superuser"]

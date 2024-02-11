@@ -1,5 +1,5 @@
 import Loading from "components/UI/Loading";
-import Table from "components/Common/Table";
+import DocumentTable from "components/Common/DocumentTable";
 import PageHeader from "components/Common/PageHeader";
 import useApp from "hooks/useApp";
 import { PAGES } from "constants/pages";
@@ -133,7 +133,7 @@ const Contracts: React.FC = () => {
                 />
                 {/* table data */}
                 <div className="row g-3 py-1 pb-4">
-                    <Table<Contract>
+                    <DocumentTable<Contract>
                         title={'Contracts'}
                         columns={columnT}
                         data={requests}

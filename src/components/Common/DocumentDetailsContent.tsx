@@ -14,7 +14,7 @@ import ApproveDocumentModal from "components/Modals/ApproveDocumentModal";
 import RejectDocumentModal from "components/Modals/RejectDocumentModal";
 import DocumentHeader from "components/Print/DocumentHeader";
 import { PAGES } from "constants/pages";
-import { isContractType, isEmployeeType, isInvoiceType, isMaterialType, isPettyCashType, isPurchaseOrderType, isSiteType } from "utils/CheckPropsType";
+import { isContractType, isEmployeeRequestType, isInvoiceType, isMaterialType, isPettyCashType, isPurchaseOrderType, isSiteType } from "utils/CheckPropsType";
 import DocumentMainInfoSec from "components/Print/DocumentMainInfoSec";
 import { PrintInstallments, PrintMainInfoSec, PrintMaterials } from "types/Print";
 import DocumentTable from "components/Print/DocumentTable";
@@ -103,7 +103,7 @@ function DocumentsDetailsContent<T extends PettyCashRequest | PurchaseOrderReque
 			else if (isPettyCashType(data)) return `${baseUrl}/${PAGES.PC_REQUEST}/${data.id}`;
 			else if (isSiteType(data)) return `${baseUrl}/${PAGES.SITE_REQUEST}/${data.id}`;
 			else if (isMaterialType(data)) return `${baseUrl}/${PAGES.MATERIAL_REQUEST}/${data.id}`;
-			else if (isEmployeeType(data)) return `${baseUrl}/${PAGES.EMPLOYEE_REQUEST}/${data.id}`;
+			else if (isEmployeeRequestType(data)) return `${baseUrl}/${PAGES.EMPLOYEE_REQUEST}/${data.id}`;
 			else if (isContractType(data)) return `${baseUrl}/${PAGES.CONTRACT}/${data.id}`;
 			else if (isInvoiceType(data)) return `${baseUrl}/${PAGES.INVOICE}/${data.id}`;
 			else return '';
@@ -115,7 +115,7 @@ function DocumentsDetailsContent<T extends PettyCashRequest | PurchaseOrderReque
 		let baseDataObj = [
 			{ key: "Ref", value: data.code || '' },
 			{ key: "Date", value: data.date || '' },
-			{ key: "Project", value: `${!isEmployeeType(data) ? data.project_details?.name! : ""}` },
+			{ key: "Project", value: `${!isEmployeeRequestType(data) ? data.project_details?.name! : ""}` },
 			{ key: "To", value: `${isPurchaseOrderType(data) ? data.supplier?.company_name! : ""}` },
 			{ key: "To", value: `${isContractType(data) ? data.subcontractor_details?.name! : ""}` },
 			{ key: "Subject", value: data.subject || '' },
@@ -125,7 +125,7 @@ function DocumentsDetailsContent<T extends PettyCashRequest | PurchaseOrderReque
 	};
 
 	const checkIfDataHasItems = () => {
-		if (!isEmployeeType(data) && !isSiteType(data)) setMaterials(data.items);
+		if (!isEmployeeRequestType(data) && !isSiteType(data)) setMaterials(data.items);
 	};
 
 	const checkIfDataHasInstallments = () => {

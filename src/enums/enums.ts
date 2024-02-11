@@ -105,7 +105,6 @@ export enum TASK_TYPE {
 	INDIVIDUAL_TASK = 'individual_task'
 };
 
-
 export enum PROGRESS {
 	TODO = "ToDo",
 	ON_PROGRESS = "ON PROGRESS",
@@ -118,4 +117,17 @@ export enum PRIORITY {
 	MEDIUM = 'Medium',
 	HIGH = 'High',
 	CRITICAL = 'Critical'
+};
+
+export enum ROLE {
+	SUPERUSER = 'Superuser',
+	SUB_SUPERUSER = 'Sub_Superuser',
+	USER = 'User',
+	MANAGER = 'Manager',
+	DIRECTOR = 'Director',
+};
+
+export enum SUPPLIER_TYPE {
+	Company = 'Company',
+	Individual = 'Individual',
 };

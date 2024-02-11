@@ -8,7 +8,7 @@ import { PurchaseOrderRequest } from "types/Po_request";
 import { EmployeeRequest } from "types/Employee_request";
 import { MaterialRequest } from "types/Material_request";
 import { SiteRequest } from "types/Site_request";
-import { formatCsvOutput } from 'utils/FormatCsvOutput';
+import { formatDocumentCsvOutput } from 'utils/FormatDocumentCsvOutput';
 import { Contract } from 'types/Contract';
 import { Invoice } from "types/Invoice";
 import { formatCsvTitle } from 'utils/FormatCsvTitle';
@@ -26,10 +26,10 @@ interface Props<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequ
 	renderSearch: boolean;
 	renderDownload: boolean;
 	filterOptions?: string[];
-	selectItem: (item: T) => void;
+	selectItem?: (item: T) => void;
 };
 
-function Table<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>({
+function DocumentTable<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>({
 	title,
 	columns,
 	data,
@@ -48,7 +48,7 @@ function Table<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeReque
 	const onCardsFilter = (filtered: T[]) => setFilteredData(filtered);
 	const onSearchFilter = (filtered: T[]) => setFilteredData(filtered);
 
-	let csvData = formatCsvOutput<PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>(filteredData || data) || [];
+	let csvData = formatDocumentCsvOutput<PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>(filteredData || data) || [];
 	let fileName = data[0]?.code?.split('-')?.[0]! || "data";
 
 	return (
@@ -85,4 +85,4 @@ function Table<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeReque
 	)
 };
 
-export default Table;
+export default DocumentTable;

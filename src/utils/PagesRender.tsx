@@ -13,9 +13,6 @@ import { lazy } from "react";
 const Dashboard = lazy(() => import("../screens/Dashboard/Dashboard"));
 const Projects = lazy(() => import("../screens/Projects/Projects"));
 const Tenders = lazy(() => import("../screens/Tenders/Tenders"));
-const Customers = lazy(() => import("../screens/Customers/Customers"));
-const Suppliers = lazy(() => import("../screens/Suppliers/Suppliers"));
-const Employees = lazy(() => import("../screens/Employees/Employees"));
 const Subcontractors = lazy(() => import("../screens/Subcontractors/Subcontractors"));
 // const Settings = lazy(() => import("../screens/Settings/Settings"));
 
@@ -37,6 +34,10 @@ const MaterialRequests = lazy(() => import("../screens/Documents/MaterialRequest
 const EmployeeRequests = lazy(() => import("../screens/Documents/EmployeeRequests/EmployeeRequests"));
 const Contracts = lazy(() => import("../screens/Documents/Contracts/Contracts"));
 const Invoices = lazy(() => import("../screens/Documents/Invoices/Invoices"));
+// ---
+const Customers = lazy(() => import("../screens/Customers/Customers"));
+const Suppliers = lazy(() => import("../screens/Suppliers/Suppliers"));
+const Employees = lazy(() => import("../screens/Employees/Employees"));
 
 
 // DOCUMENT PAGE DETAILS //
@@ -47,6 +48,10 @@ const MaterialRequestDetails = lazy(() => import("../screens/Documents/MaterialR
 const EmployeeRequestDetails = lazy(() => import("../screens/Documents/EmployeeRequests/EmployeeRequestDetails"));
 const ContractDetails = lazy(() => import("../screens/Documents/Contracts/ContractDetails"));
 const InvoiceDetails = lazy(() => import("../screens/Documents/Invoices/InvoiceDetails"));
+// ---
+const CustomerDetails = lazy(() => import("../screens/Customers/CustomerDetails"));
+const SupplierDetails = lazy(() => import("../screens/Suppliers/SupplierDetails"));
+const EmployeeDetails = lazy(() => import("../screens/Employees/EmployeeDetails"));
 
 
 // CREATE //
@@ -57,6 +62,10 @@ const MaterialFormPage = lazy(() => import("../screens/Documents/MaterialRequest
 const EmployeeRequestFormPage = lazy(() => import("../screens/Documents/EmployeeRequests/EmployeeRequestFormPage"));
 const ContractFormPage = lazy(() => import("../screens/Documents/Contracts/ContractFormPage"));
 const InvoiceFormPage = lazy(() => import("../screens/Documents/Invoices/InvoiceFormPage"));
+// ---
+const CustomerFormPage = lazy(() => import("../screens/Customers/CustomerFormPage"));
+const SupplierFormPage = lazy(() => import("../screens/Suppliers/SupplierFormPage"));
+const EmployeeFormPage = lazy(() => import("../screens/Employees/EmployeeFormPage"));
 
 
 // // EDIT //
@@ -179,6 +188,22 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 				return <InvoiceDetails id={id} />;
 			case PAGES.INVOICE:
 				return <InvoiceFormPage id={id} />;
+			// ---
+			case PAGES.CUSTOMER_INFO:
+				return <CustomerDetails id={id} />;
+			case PAGES.CUSTOMER:
+				return <CustomerFormPage id={id} />;
+			// ---
+			case PAGES.SUPPLIER_INFO:
+				return <SupplierDetails id={id} />;
+			case PAGES.SUPPLIER:
+				return <SupplierFormPage id={id} />;
+			// ---
+			case PAGES.EMPLOYEE_INFO:
+				return <EmployeeDetails id={id} />;
+			case PAGES.EMPLOYEE:
+				return <EmployeeFormPage id={id} />;
+
 		}
 	} else
 		switch (slug) {
@@ -215,6 +240,20 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 			case PAGES.INVOICES:
 				return <Invoices />;
 			// ---
+			case PAGES.CUSTOMERS:
+				return <Customers />;
+			case PAGES.CUSTOMER:
+				return <CustomerFormPage />;
+			// ---
+			case PAGES.SUPPLIERS:
+				return <Suppliers />;
+			case PAGES.SUPPLIER:
+				return <SupplierFormPage />;
+			// ---
+			case PAGES.EMPLOYEES:
+				return <Employees />;
+			case PAGES.EMPLOYEE:
+				return <EmployeeFormPage />;
 
 
 
@@ -245,8 +284,6 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 			//   return <Profile />;
 			case PAGES.PROJECTS:
 				return <Projects />;
-			case PAGES.SUPPLIERS:
-				return <Suppliers />;
 
 			// case PAGES.INVOICES:
 			// 	// return <InvoicesSample />;
@@ -255,12 +292,10 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 			// 	return <EmployeeProfile />;
 			case PAGES.TENDERS:
 				return <Tenders />;
-			case PAGES.CUSTOMERS:
-				return <Customers />;
+
 			// case PAGES.TASKS:
 			// 	return <Tasks />;
-			case PAGES.EMPLOYEES:
-				return <Employees />;
+
 			// case PAGES.ATTENDANCE:
 			// 	return <AllEmployeesAttendance />;
 			// case PAGES.CALENDAR:

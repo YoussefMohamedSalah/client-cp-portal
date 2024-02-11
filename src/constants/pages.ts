@@ -27,7 +27,7 @@ export enum PAGES {
     PROCUREMENT_PLAN = "procurement_plan",
     CONSTRUCTION_PLAN = "construction_plan",
 
-    // Docs Details
+    // Details
     PO_REQUEST_INFO = "po_request_rev",
     PC_REQUEST_INFO = "pc_request_rev",
     SITE_REQUEST_INFO = "site_request_rev",
@@ -35,8 +35,11 @@ export enum PAGES {
     EMPLOYEE_REQUEST_INFO = "employee_request_rev",
     INVOICE_INFO = "invoice_rev",
     CONTRACT_INFO = "contract_rev",
+    CUSTOMER_INFO = "customer_rev",
+    SUPPLIER_INFO = "supplier_rev",
+    EMPLOYEE_INFO = "employee_rev",
 
-    // Docs Create or Edit
+    // Create or Edit
     PO_REQUEST = "po_request",
     PC_REQUEST = "pc_request",
     SITE_REQUEST = "site_request",
@@ -44,21 +47,16 @@ export enum PAGES {
     EMPLOYEE_REQUEST = "employee_request",
     INVOICE = "invoice",
     CONTRACT = "contract",
-
+    CUSTOMER = "customer",
+    SUPPLIER = "supplier",
+    EMPLOYEE = "employee",
 
 
 
     INVENTORY = "inventory",
     SUBCONTRACTOR = "subcontractor",
 
-    // --
-    EDIT_PO_REQUEST = "po_edit",
-    EDIT_PC_REQUEST = "pc_edit",
-    EDIT_SITE_REQUEST = "site_edit",
-    EDIT_MATERIAL_REQUEST = "material_edit",
-    EDIT_EMPLOYEE_REQUEST = "employee_edit",
-    EDIT_INVOICE = "invoice_edit",
-    EDIT_CONTRACT = "contract_edit",
+
     INVENTORY_ITEM = "inventory_item",
     MATERIAL_FORWARDING_REQUEST = "material_forward",
 

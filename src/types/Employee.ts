@@ -1,4 +1,4 @@
-import { ENUMS } from "enums/enums";
+import { ROLE } from "enums/enums";
 import { Project } from "./Project";
 
 export interface Employee {
@@ -6,8 +6,10 @@ export interface Employee {
     code: string;
     name: string;
     email: string;
+    password?: string;
     phone_number: string;
     business_title?: string;
+    address: string;
     gender: string;
     shift_start: string;
     shift_end: string;
@@ -16,9 +18,9 @@ export interface Employee {
     contract_date: string;
     contract_ex: string;
     salary_per_month: number;
-    role: typeof ENUMS.ROLE;
+    role: ROLE;
     sign: string;
-    avatar: string;
+    avatar: any;
     is_verified: boolean;
     department?: string;
     department_info?: { id: string, name: string };

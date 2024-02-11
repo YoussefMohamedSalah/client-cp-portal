@@ -1,5 +1,5 @@
 import Loading from "components/UI/Loading";
-import Table from "components/Common/Table";
+import DocumentTable from "components/Common/DocumentTable";
 import PageHeader from "components/Common/PageHeader";
 import useApp from "hooks/useApp";
 import { PAGES } from "constants/pages";
@@ -116,7 +116,7 @@ const SiteRequests: React.FC = () => {
                 />
                 {/* table data */}
                 <div className="row g-3 py-1 pb-4">
-                    <Table<SiteRequest>
+                    <DocumentTable<SiteRequest>
                         title={'Site Requests'}
                         columns={columnT}
                         data={requests}

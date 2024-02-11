@@ -55,8 +55,8 @@ function DocumentsTableActionBtn<T extends PettyCashRequest | PurchaseOrderReque
 				show={isModal}
 				onClose={handleModalClose}
 				onDelete={handleDelete}
-				message="Are you sure you want to delete this Pc Request?"
-				modalHeader="Delete Pc Request"
+				message="Are you sure you want to delete this Document?"
+				modalHeader="Delete Document"
 			/>
 		</>
 	);

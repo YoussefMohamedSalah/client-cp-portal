@@ -5,15 +5,16 @@ import { MaterialRequest } from "types/Material_request";
 import { SiteRequest } from "types/Site_request";
 import { Contract } from "types/Contract";
 import { Invoice } from "types/Invoice";
-import { isContractType, isEmployeeType, isInvoiceType, isMaterialType, isPettyCashType, isPurchaseOrderType, isSiteType } from './CheckPropsType';
+import { isContractType, isEmployeeRequestType, isInvoiceType, isMaterialType, isPettyCashType, isPurchaseOrderType, isSiteType } from './CheckPropsType';
+import { Customer } from "types/Customer";
 
-export const formatCsvOutput = <T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>(data: T[] | undefined): any[] => {
+export const formatDocumentCsvOutput = <T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice | Customer>(data: T[] | undefined): any[] => {
 	if (!data || data.length === 0) return [];
 	if (isPurchaseOrderType(data[0])) {
 		return formatPurchaseOrderData(data as PurchaseOrderRequest[]);
 	} else if (isPettyCashType(data)) {
 		return formatPettyCashData(data as PettyCashRequest[]);
-	} else if (isEmployeeType(data[0])) {
+	} else if (isEmployeeRequestType(data[0])) {
 		return formatEmployeeRequestsData(data as EmployeeRequest[]);
 	} else if (isMaterialType(data[0])) {
 		return formatMaterialData(data as MaterialRequest[]);

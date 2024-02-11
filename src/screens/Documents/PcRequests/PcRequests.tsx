@@ -1,6 +1,6 @@
 import Loading from "components/UI/Loading";
 import { PettyCashRequest } from "types/Pc_request";
-import Table from "components/Common/Table";
+import DocumentTable from "components/Common/DocumentTable";
 import { useGetAllPcRequestsQuery } from "api/Documents/PcRequests/getAllPcRequests";
 import PageHeader from "components/Common/PageHeader";
 import useApp from "hooks/useApp";
@@ -132,7 +132,7 @@ const PcRequests: React.FC = () => {
 				/>
 				{/* table data */}
 				<div className="row g-3 py-1 pb-4">
-					<Table<PettyCashRequest>
+					<DocumentTable<PettyCashRequest>
 						title={'Petty cash Requests'}
 						columns={columnT}
 						data={requests}

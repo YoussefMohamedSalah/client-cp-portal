@@ -1,10 +1,10 @@
-import { ENUMS } from 'enums/enums';
+import { SUPPLIER_TYPE } from 'enums/enums';
 import { Company } from './Company';
 import { Project } from './Project';
 
 export interface Customer {
     id: string;
-    customer_type: typeof ENUMS.SUPPLIER_TYPE;
+    customer_type: SUPPLIER_TYPE;
     code: string;
     company_name: string | null;
     vat_on: number;
@@ -21,4 +21,4 @@ export interface Customer {
     projects: Project[];
     createdAt: Date;
     updatedAt: Date;
-}
+};
