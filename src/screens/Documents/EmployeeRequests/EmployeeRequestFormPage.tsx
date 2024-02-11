@@ -26,14 +26,15 @@ interface Props {
 const EmployeeRequestFormPage = ({ id }: Props) => {
     const [initialized, setInitialized] = useState<boolean>(false);
     const [isEdit, setIsEdit] = useState<boolean>(id ? true : false);
-
+    // -----
     const [modelData, setModelData] = useState<EmployeeRequest>({} as EmployeeRequest);
     const [modalHeader, setModalHeader] = useState<string>("");
     const [isPreviewModal, setIsPreviewModal] = useState<boolean>(false);
-
+    // -----
     const { mutateAsync: createMutation } = useCreateEmployeeRequest();
     const { mutateAsync: editMutation } = useEditEmployeeRequest();
     const { mutateAsync: archiveMutation } = useSaveEmployeeRequestToArchive();
+    // -----
     const { showError, showSuccess } = useUI();
     const { push } = useApp();
 
@@ -207,6 +208,7 @@ const EmployeeRequestFormPage = ({ id }: Props) => {
         }
     };
 
+    if (!initialized) return <></>
     return (
         <div className="container-xxl">
             <PageHeader

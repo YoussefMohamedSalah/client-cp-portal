@@ -2,7 +2,6 @@ import { Project } from "./Project";
 import { Company } from "./Company";
 import { STATUS, DOCUMENT_TYPE } from 'enums/enums';
 import { FileType } from "./FileType";
-import { IOption } from "./Forms/option";
 
 export interface MaterialRequest {
     id: string;
@@ -21,7 +20,7 @@ export interface MaterialRequest {
     timeline: Array<{ name: string; content: string; date: Date; status: string }>;
     is_approved: boolean;
     rejection_reason: string | null;
-    project: Project | IOption;
+    project: Project;
     company: Company;
     createdAt: Date;
     updatedAt: Date;

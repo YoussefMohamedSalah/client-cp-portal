@@ -30,15 +30,16 @@ interface Props {
 const SiteFormPage = ({ id }: Props) => {
     const [initialized, setInitialized] = useState<boolean>(false);
     const [isEdit, setIsEdit] = useState<boolean>(id ? true : false);
-
+    // -----
     const [modelData, setModelData] = useState<SiteRequest>({} as SiteRequest);
     const [modalHeader, setModalHeader] = useState<string>("");
     const [isPreviewModal, setIsPreviewModal] = useState<boolean>(false);
     const [selectedProject, setSelectedProject] = useState<Project>({} as Project);
-
+    // -----
     const { mutateAsync: createMutation } = useCreateSiteRequest();
     const { mutateAsync: editMutation } = useEditSiteRequest();
     const { mutateAsync: archiveMutation } = useSaveSiteRequestToArchive();
+    // -----
     const { showError, showSuccess } = useUI();
     const { push } = useApp();
 
@@ -54,7 +55,7 @@ const SiteFormPage = ({ id }: Props) => {
         isLoading: documentIsLoading
     } = useSiteRequestDetailsQuery({ id });
 
-
+    // !Check if this is CREATE OR EDIT Modal
     useEffect(() => {
         if (!initialized) {
             if (id) setIsEdit(true)
@@ -62,15 +63,15 @@ const SiteFormPage = ({ id }: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id])
 
+    // !Assuming this is EDIT Modal
     useEffect(() => {
-        if (!initialized && projectsData?.projects?.data && documentData) {
-            let project: Project = projectsData.projects?.data?.find(
-                (project: Project) => project.id === documentData?.siteRequestDetails?.data?.project_details?.id!
-            );
+        if (!initialized && projectsData && documentData) {
+            let document: SiteRequest = documentData?.siteRequestDetails?.data!
+            let selectedProject: Project = document?.project!;
 
             const initialModelData: any = {
-                ...documentData?.siteRequestDetails?.data!,
-                project
+                ...document!,
+                project: selectedProject || {} as Project,
             };
 
             setModelData({ ...initialModelData })
@@ -104,14 +105,12 @@ const SiteFormPage = ({ id }: Props) => {
     };
 
     const handleReset = () => {
+        setSelectedProject({} as Project);
         setModelData({
             ...modelData,
             subject: '',
             date: '',
-            project: {
-                label: "Select Project",
-                value: "0"
-            },
+            project: {} as Project,
             description: `With reference to the above subject,`,
         })
     };
@@ -248,6 +247,7 @@ const SiteFormPage = ({ id }: Props) => {
         }
     };
 
+    if (!initialized) return <></>
     return (
         <div className="container-xxl">
             <PageHeader

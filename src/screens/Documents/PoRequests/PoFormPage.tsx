@@ -125,7 +125,7 @@ const PoFormPage = ({ id }: Props) => {
             let selectedSupplier: Supplier = document?.supplier;
 
             const initialModelData: PurchaseOrderRequest = {
-                ...documentData?.poRequestDetails?.data!,
+                ...document!,
                 project: selectedProject || {} as Project,
                 supplier: selectedSupplier || {} as Supplier,
             };
@@ -554,7 +554,7 @@ we would like to place the purchase order for Below Items.`,
                     default_conditions: stringDefaultConditions,
                     installments: stringInstallments,
                     filesNameSet: stringAddedFiles,
-                    projectId: modelData.project?.id!
+                    projectId: selectedProject?.id!
                 });
             } else {
                 createInput = poRequestInput({
@@ -568,7 +568,7 @@ we would like to place the purchase order for Below Items.`,
                     conditions: stringConditions,
                     default_conditions: stringDefaultConditions,
                     installments: stringInstallments,
-                    projectId: modelData.project?.id!
+                    projectId: selectedProject?.id!
                 });
             }
             await createMutation(createInput);

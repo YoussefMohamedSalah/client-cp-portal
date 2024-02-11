@@ -34,7 +34,7 @@ interface Props {
 const MaterialFormPage = ({ id }: Props) => {
     const [initialized, setInitialized] = useState<boolean>(false);
     const [isEdit, setIsEdit] = useState<boolean>(id ? true : false);
-
+    // -----
     const [modelData, setModelData] = useState<MaterialRequest>({} as MaterialRequest);
     const [modalHeader, setModalHeader] = useState<string>("");
     const [isPreviewModal, setIsPreviewModal] = useState<boolean>(false);
@@ -51,6 +51,7 @@ const MaterialFormPage = ({ id }: Props) => {
     const { mutateAsync: createMutation } = useCreateMaterialRequest();
     const { mutateAsync: editMutation } = useEditMaterialRequest();
     const { mutateAsync: archiveMutation } = useSaveMaterialRequestToArchive();
+    // -----
     const { showError, showSuccess } = useUI();
     const { push } = useApp();
 
@@ -66,7 +67,7 @@ const MaterialFormPage = ({ id }: Props) => {
         isLoading: documentIsLoading
     } = useMaterialRequestDetailsQuery({ id });
 
-
+    // !Check if this is CREATE OR EDIT Modal
     useEffect(() => {
         if (!initialized) {
             if (id) setIsEdit(true)
@@ -74,27 +75,27 @@ const MaterialFormPage = ({ id }: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id])
 
+    // !Assuming this is EDIT Modal
     useEffect(() => {
-        if (!initialized && projectsData?.projects?.data && documentData) {
-            let project: Project = projectsData.projects?.data?.find(
-                (project: Project) => project.id === documentData?.materialRequestDetails?.data?.project_details?.id!
-            );
+        if (!initialized && projectsData && documentData) {
+            let document: MaterialRequest = documentData?.materialRequestDetails?.data!
+            let selectedProject: Project = document?.project;
+
 
             const initialModelData: any = {
-                ...documentData?.materialRequestDetails?.data!,
-                project
+                ...document!,
+                project: selectedProject || {} as Project,
             };
 
             setModelData({ ...initialModelData })
-            if (documentData.materialRequestDetails?.data?.items! && documentData.materialRequestDetails?.data?.items?.length! > 0) {
-                setItems(documentData.materialRequestDetails.data?.items!)
-                setOldFiles(documentData.materialRequestDetails?.data?.files)
+            if (document?.items! && document?.items?.length! > 0) {
+                setItems(document?.items!)
+                setOldFiles(document?.files)
             }
             setInitialized(true)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [documentData])
-
 
     if ((id && documentIsLoading) || (!id && projectsIsLoading)) return <Loading />;
     if ((id && documentError) || (!id && projectsError)) return null;
@@ -130,10 +131,7 @@ const MaterialFormPage = ({ id }: Props) => {
             ...modelData,
             subject: '',
             date: '',
-            project: {
-                label: "Select Project",
-                value: "0"
-            },
+            project: {} as Project,
             description: `Reference to above mentioned subject we are requesting the material below,
 kindly note the following :
         1- All the requested material has been requested according to approved and according to shop drawings.
@@ -189,10 +187,10 @@ Best Regards.`,
                 handleModelData(MaterialRequestKeys.DESCRIPTION, value),
             placeholder: "Enter Description",
             default: `Reference to above mentioned subject we are requesting the material below,
-    kindly note the following :
-          1- All the requested material has been requested according to approved and according to shop drawings.
-          2- All the requested material we have been checked that not available on CP stores.
-    Best Regards.`,
+kindly note the following :
+        1- All the requested material has been requested according to approved and according to shop drawings.
+        2- All the requested material we have been checked that not available on CP stores.
+Best Regards.`,
             required: true,
         },
         {
@@ -213,7 +211,6 @@ Best Regards.`,
             },
         },
     ];
-
 
     const handleItemChange = (index: number, prop: keyof ItemProps, value: string) => {
         setItems(prevItems => {
@@ -383,6 +380,7 @@ Best Regards.`,
         }
     };
 
+    if (!initialized) return <></>
     return (
         <div className="container-xxl">
             <PageHeader
