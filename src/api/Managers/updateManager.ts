@@ -4,10 +4,7 @@ import { http } from "utils/Http";
 
 export const useUpdateEmployee = () => {
   return useMutation<any, Error, any>(async updateInput => {
-    const { data } = await http.post(
-      ROUTES.EMPLOYEE + updateInput.id + "/",
-      updateInput
-    );
+    const { data } = await http.post(ROUTES.EMPLOYEE + updateInput.id + "/", updateInput);
     return { session: { data: data as any } };
   });
 };

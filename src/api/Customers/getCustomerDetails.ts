@@ -12,7 +12,7 @@ export const getCustomerDetails = async ({ queryKey }: any) => {
 
 export const useCustomerDetailsQuery = (options: any) => {
   return useQuery(
-    [ROUTES.PC_REQUEST, options],
+    [ROUTES.CUSTOMER, options],
     getCustomerDetails
   );
 };

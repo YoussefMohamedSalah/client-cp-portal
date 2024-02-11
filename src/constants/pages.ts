@@ -18,6 +18,7 @@ export enum PAGES {
     MANAGERS = "managers",
     EMPLOYEES = "employees",
     CUSTOMERS = "customers",
+    SUBCONTRACTORS = "subcontractors",
     CONTRACTS = "contracts",
     SUPPLIERS = "suppliers",
     ATTENDANCE = "attendance",
@@ -36,6 +37,7 @@ export enum PAGES {
     INVOICE_INFO = "invoice_rev",
     CONTRACT_INFO = "contract_rev",
     CUSTOMER_INFO = "customer_rev",
+    SUBCONTRACTOR_INFO = "subcontractor_rev",
     SUPPLIER_INFO = "supplier_rev",
     EMPLOYEE_INFO = "employee_rev",
 
@@ -48,13 +50,13 @@ export enum PAGES {
     INVOICE = "invoice",
     CONTRACT = "contract",
     CUSTOMER = "customer",
+    SUBCONTRACTOR = "subcontractor",
     SUPPLIER = "supplier",
     EMPLOYEE = "employee",
 
 
 
     INVENTORY = "inventory",
-    SUBCONTRACTOR = "subcontractor",
 
 
     INVENTORY_ITEM = "inventory_item",

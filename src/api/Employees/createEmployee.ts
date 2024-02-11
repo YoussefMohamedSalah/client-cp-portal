@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
-import { ROUTES } from "constants/routes";
 import { Employee } from "types/Employee";
+import { ROUTES } from "constants/routes";
 import { http } from "utils/Http";
 
 export const useCreateEmployee = () => {

@@ -80,7 +80,7 @@ const Employees: React.FC = () => {
             <div className="container-fluid">
                 {/* page header */}
                 <PageHeader
-                    headerTitle={'employees'}
+                    headerTitle={'Employees'}
                     isBtnShow={true}
                     btnText={"Create Employee"}
                     onClickBtn={() => push("/" + PAGES.EMPLOYEE)}
@@ -88,7 +88,7 @@ const Employees: React.FC = () => {
                 {/* table data */}
                 <div className="row g-3 py-1 pb-4">
                     <NormalTable<Employee>
-                        title={'employees'}
+                        title={'Employees'}
                         columns={columnT}
                         data={employees}
                         renderSearch={true}

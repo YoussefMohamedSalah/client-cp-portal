@@ -12,8 +12,10 @@ function TableActionBtn({ id, title, onClickEdit, onDelete }: Props) {
     const [isModal, setIsModal] = useState<boolean>(false);
 
     const handleDelete = (id: string) => {
-        window.location.reload();
-        onDelete(id)
+        onDelete(id);
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000)
     };
 
     return (
@@ -29,7 +31,7 @@ function TableActionBtn({ id, title, onClickEdit, onDelete }: Props) {
                 show={isModal}
                 onClose={() => setIsModal(false)}
                 onDelete={() => handleDelete(id)}
-                message={`Are you sure you want to delete this ${title}?`}
+                message={`Are you sure you want to delete ${title}?`}
                 modalHeader={`Delete ${title}`}
             />
         </>

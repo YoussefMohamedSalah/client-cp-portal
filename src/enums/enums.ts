@@ -128,6 +128,11 @@ export enum ROLE {
 };
 
 export enum SUPPLIER_TYPE {
-	Company = 'Company',
-	Individual = 'Individual',
+	COMPANY = 'Company',
+	INDIVIDUAL = 'Individual',
+};
+
+export enum SUBCONTRACTOR_TYPE {
+	COMPANY = 'Company',
+	INDIVIDUAL = 'Individual',
 };

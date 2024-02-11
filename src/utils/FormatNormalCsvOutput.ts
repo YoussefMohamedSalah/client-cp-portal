@@ -1,10 +1,11 @@
 
-import { isCustomerType, isEmployeeType, isSupplierType } from './CheckPropsType';
+import { isCustomerType, isEmployeeType, isSubcontractorType, isSupplierType } from './CheckPropsType';
 import { Customer } from "types/Customer";
 import { Employee } from 'types/Employee';
+import { Subcontractor } from 'types/Subcontractor';
 import { Supplier } from "types/Supplier";
 
-export const formatNormalCsvOutput = <T extends Customer | Supplier | Employee>(data: T[] | undefined): any[] => {
+export const formatNormalCsvOutput = <T extends Customer | Supplier | Employee | Subcontractor>(data: T[] | undefined): any[] => {
     if (!data || data.length === 0) return [];
     if (isCustomerType(data[0])) {
         return formatCustomersData(data as Customer[]);
@@ -12,8 +13,8 @@ export const formatNormalCsvOutput = <T extends Customer | Supplier | Employee>(
         return formatSuppliersData(data as Supplier[]);
     } else if (isEmployeeType(data[0])) {
         return formatEmployeesData(data as Employee[]);
-        // } else if (isMaterialType(data[0])) {
-        //     return formatMaterialData(data as MaterialRequest[]);
+    } else if (isSubcontractorType(data[0])) {
+        return formatSubcontractorsData(data as Subcontractor[]);
         // } else if (isSiteType(data[0])) {
         //     return formatSiteData(data as SiteRequest[]);
         // } else if (isContractType(data[0])) {
@@ -83,20 +84,21 @@ function formatEmployeesData(data: Employee[]): any[] {
 
 };
 
-// function formatSiteData(data: SiteRequest[]): any[] {
-//     if (!data || data.length === 0) return [];
-//     return [
-//         ["code", "Maker", "Date", "Project", "Description", "Status"],
-//         ...data.map(({ code, user, date, project_details, description, status }) => [
-//             code,
-//             user?.name || '',
-//             date,
-//             project_details?.name || '',
-//             description,
-//             status
-//         ]),
-//     ];
-// };
+function formatSubcontractorsData(data: Subcontractor[]): any[] {
+    if (!data || data.length === 0) return [];
+    // return [
+    //     ["code", "Maker", "Date", "Project", "Description", "Status"],
+    //     ...data.map(({ code, user, date, project_details, description, status }) => [
+    //         code,
+    //         user?.name || '',
+    //         date,
+    //         project_details?.name || '',
+    //         description,
+    //         status
+    //     ]),
+    // ];
+    return [] as any[]
+};
 
 // function formatMaterialData(data: MaterialRequest[]): any[] {
 //     if (!data || data.length === 0) return [];

@@ -1,16 +1,16 @@
 import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
-import { SelectedSubcontractor, Subcontractor } from "types/Subcontractor";
+import { Subcontractor } from "types/Subcontractor";
 import http from "utils/Http";
 
 export const useCreateSubcontractor = () => {
-  return useMutation<any, Error, SelectedSubcontractor>(async createInput => {
+  return useMutation<any, Error, Subcontractor>(async createInput => {
     const { data } = await http.post(ROUTES.SUBCONTRACTOR, createInput);
     return { subcontractor: { data: data as Subcontractor } };
   });
 };
 
-export const subcontractorInput = (data: SelectedSubcontractor): any => {
+export const subcontractorInput = (data: Subcontractor): any => {
   return {
     company_name: data.company_name,
     phone_number: data.phone_number,

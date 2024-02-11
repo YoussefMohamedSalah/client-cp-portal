@@ -1,8 +1,9 @@
-import { ENUMS } from "enums/enums";
+import { SUBCONTRACTOR_TYPE } from "enums/enums";
 
 export interface Subcontractor {
     id: string;
-    subcontractor_type: typeof ENUMS.CONTRACT_TYPE;
+    code: string;
+    subcontractor_type: SUBCONTRACTOR_TYPE;
     company_name: string;
     vat_on: number;
     representative: string;
@@ -13,12 +14,12 @@ export interface Subcontractor {
     area: string;
     street: string;
     building_number: string;
-    postal_code: number;
+    postal_code: number | null;
 };
 
 export interface SelectedSubcontractor {
     id: string;
-    subcontractor_type?: typeof ENUMS.CONTRACT_TYPE;
+    subcontractor_type?: SUBCONTRACTOR_TYPE;
     company_name?: string;
     vat_on?: number;
     representative?: string;

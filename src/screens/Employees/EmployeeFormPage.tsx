@@ -19,6 +19,8 @@ import { useEmployeeDetailsQuery } from 'api/Employees/getEmployeeDetails';
 import { Project } from 'types/Project';
 import { getOptions } from 'utils/GetOptions';
 import { useProjectsQuery } from 'api/Project/getAllProjects';
+import { useDepartmentsQuery } from 'api/Departments/getAllDepartments';
+// import { useManagersQuery } from 'api/Managers/getAllManagers';
 
 interface Props {
     id?: string;
@@ -44,11 +46,11 @@ const EmployeeFormPage = ({ id }: Props) => {
         isLoading: employeeIsLoading,
     } = useEmployeeDetailsQuery({ id });
 
-    const {
-        data: managerData,
-        error: managerError,
-        isLoading: managerIsLoading,
-    } = useManagerQuery({});
+    // const {
+    //     data: managerData,
+    //     error: managerError,
+    //     isLoading: managerIsLoading,
+    // } = useManagersQuery({});
 
     const {
         data: projectsData,
@@ -60,9 +62,7 @@ const EmployeeFormPage = ({ id }: Props) => {
         data: departmentData,
         error: departmentError,
         isLoading: departmentIsLoading,
-    } = useCategoriesQuery({});
-
-
+    } = useDepartmentsQuery({});
 
     // !Check if this is CREATE OR EDIT Modal
     useEffect(() => {
@@ -90,15 +90,26 @@ const EmployeeFormPage = ({ id }: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [employeeData]);
 
-    if (employeeIsLoading || departmentIsLoading || managerIsLoading || projectsIsLoading) return <Loading />;
-    if (employeeError || departmentError || managerError || projectsError) return null;
+    if (employeeIsLoading || departmentIsLoading || projectsIsLoading) return <Loading />;
+    if (employeeError || departmentError || projectsError) return null;
 
-
-    let managers: Employee[] = managerData?.managers?.data || [] as Employee[];
+    // let managers: Employee[] = managerData?.managers?.data || [] as Employee[];
     let projects: Project[] = projectsData?.projects?.data || [] as Project[];
-    let departments: any[] = departmentData?.categories?.data || [];
+    let departments: any[] = departmentData?.departments?.data || [];
 
     let projectsOptions = getOptions(projects, "Select Project");
+    let departmentsOptions = getOptions(departments, "Select Department");
+
+    // let managersOptions = managers.map((manager) => {
+    //     return {
+    //         label:
+    //             manager.name +
+    //             " - " +
+    //             manager.department_info?.name
+    //         ,
+    //         value: manager.id,
+    //     };
+    // });
 
     const handleModelData = (key: string, value: any) => {
         setModelData({
@@ -137,7 +148,7 @@ const EmployeeFormPage = ({ id }: Props) => {
             value: modelData?.department,
             onChange: (value: string | any) =>
                 handleModelData(EmployeeKeys.DEPARTMENT, value),
-            options: departments,
+            options: departmentsOptions,
             placeholder: "Select Department",
             required: true,
         },

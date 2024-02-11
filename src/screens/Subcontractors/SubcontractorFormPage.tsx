@@ -4,43 +4,43 @@ import FormInputs from 'components/UI/FormInputs/FormInputs';
 import Loading from 'components/UI/Loading';
 import { PAGES } from 'constants/pages';
 import { useUI } from 'contexts/UIContext';
-import { SUPPLIER_TYPE } from 'enums/enums';
+import { SUBCONTRACTOR_TYPE } from 'enums/enums';
 import useApp from 'hooks/useApp';
-import { CustomerKeys, CustomerNumKeys, CustomerStrKeys, CustomerRequiredKeys } from 'models/Customer';
+import { SubcontractorKeys, SubcontractorNumKeys, SubcontractorStrKeys, SubcontractorRequiredKeys } from 'models/Subcontractor';
 import { useEffect, useState } from 'react';
 import { inputsValidationType } from 'types/Error';
 import { IField } from 'types/Forms/formFields';
-import { Customer } from 'types/Customer';
+import { Subcontractor } from 'types/Subcontractor';
 import { handleServerError, validateInputs } from 'utils/HandlingServerError';
-import { customerInput, useCreateCustomer } from 'api/Customers/createCustomer';
-import { customerUpdateInput, useUpdateCustomer } from 'api/Customers/updateCustomer';
-import { useDeleteCustomer } from 'api/Customers/deleteCustomer';
-import { useCustomerDetailsQuery } from 'api/Customers/getCustomerDetails';
 import DeleteModal from 'components/Modals/DeleteModal';
+import { subcontractorInput, useCreateSubcontractor } from 'api/Subcontractors/createSubcontractor';
+import { useDeleteSubcontractor } from 'api/Subcontractors/deleteSubcontractor';
+import { subcontractorUpdateInput, useUpdateSubcontractor } from 'api/Subcontractors/updateSubcontractor';
+import { useSubcontractorDetailsQuery } from 'api/Subcontractors/getSubcontractor';
 
 interface Props {
     id?: string;
 };
 
-const CustomerFormPage = ({ id }: Props) => {
+const SubcontractorFormPage = ({ id }: Props) => {
     const [initialized, setInitialized] = useState<boolean>(false);
     const [isEdit, setIsEdit] = useState<boolean>(id ? true : false);
     // -----
-    const [modelData, setModelData] = useState<Customer>({} as Customer);
+    const [modelData, setModelData] = useState<Subcontractor>({} as Subcontractor);
     const [isModal, setIsModal] = useState<boolean>(false);
     // -----
-    const { mutateAsync: createMutation } = useCreateCustomer();
-    const { mutateAsync: updateMutation } = useUpdateCustomer();
-    const { mutateAsync: deleteMutation } = useDeleteCustomer();
+    const { mutateAsync: createMutation } = useCreateSubcontractor();
+    const { mutateAsync: updateMutation } = useUpdateSubcontractor();
+    const { mutateAsync: deleteMutation } = useDeleteSubcontractor();
     // -----
     const { showError, showSuccess } = useUI();
     const { push } = useApp();
 
     const {
-        data: customerData,
-        error: customerError,
-        isLoading: customerIsLoading
-    } = useCustomerDetailsQuery({ id });
+        data: subcontractorData,
+        error: subcontractorError,
+        isLoading: subcontractorIsLoading
+    } = useSubcontractorDetailsQuery({ id });
 
     // !Check if this is CREATE OR EDIT Modal
     useEffect(() => {
@@ -60,16 +60,16 @@ const CustomerFormPage = ({ id }: Props) => {
 
     // !Assuming this is EDIT Modal
     useEffect(() => {
-        if (!initialized && customerData) {
-            let customer: Customer = customerData?.customer?.data!
-            setModelData({ ...customer })
+        if (!initialized && subcontractorData) {
+            let subcontractor: Subcontractor = subcontractorData?.subcontractor?.data!
+            setModelData({ ...subcontractor })
             setInitialized(true)
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [customerData]);
+    }, [subcontractorData]);
 
-    if ((id && customerIsLoading)) return <Loading />;
-    if ((id && customerError)) return null;
+    if ((id && subcontractorIsLoading)) return <Loading />;
+    if ((id && subcontractorError)) return null;
 
     const handleModelData = (key: string, value: any) => {
         setModelData({
@@ -100,9 +100,9 @@ const CustomerFormPage = ({ id }: Props) => {
             label: "Representative Name",
             type: "text",
             width: "col-md-6",
-            key: CustomerKeys.REPRESENTATIVE,
+            key: SubcontractorKeys.REPRESENTATIVE,
             value: modelData?.representative,
-            onChange: (value: string | any) => handleModelData(CustomerKeys.REPRESENTATIVE, value),
+            onChange: (value: string | any) => handleModelData(SubcontractorKeys.REPRESENTATIVE, value),
             placeholder: "Representative Name",
             required: true,
         },
@@ -110,35 +110,35 @@ const CustomerFormPage = ({ id }: Props) => {
             label: "Company Name",
             type: "text",
             width: "col-md-6",
-            key: CustomerKeys.COMPANY_NAME,
+            key: SubcontractorKeys.COMPANY_NAME,
             value: modelData?.company_name,
             onChange: (value: string | any) =>
-                handleModelData(CustomerKeys.COMPANY_NAME, value),
+                handleModelData(SubcontractorKeys.COMPANY_NAME, value),
             placeholder: "Company Name",
             required: true,
         },
         {
-            label: "Customer Type",
+            label: "Subcontractor Type",
             type: "select",
             width: "col-md-6",
-            key: CustomerKeys.CUSTOMER_TYPE,
-            value: modelData?.customer_type,
+            key: SubcontractorKeys.SUBCONTRACTOR_TYPE,
+            value: modelData?.subcontractor_type,
             onChange: (value: string) =>
-                handleModelData(CustomerKeys.CUSTOMER_TYPE, value),
+                handleModelData(SubcontractorKeys.SUBCONTRACTOR_TYPE, value),
             options: [
                 { value: "Company", label: "Company" },
                 { value: "Individual", label: "Individual" },
             ],
-            placeholder: "Select Customer Type",
+            placeholder: "Select Subcontractor Type",
             required: true,
         },
         {
             label: "Phone Number",
             type: "text",
             width: "col-md-6",
-            key: CustomerKeys.PHONE_NUMBER,
+            key: SubcontractorKeys.PHONE_NUMBER,
             value: modelData?.phone_number,
-            onChange: (value: string | any) => handleModelData(CustomerKeys.PHONE_NUMBER, value),
+            onChange: (value: string | any) => handleModelData(SubcontractorKeys.PHONE_NUMBER, value),
             placeholder: "Phone Number",
             required: true,
         },
@@ -146,9 +146,9 @@ const CustomerFormPage = ({ id }: Props) => {
             label: "Email",
             type: "text",
             width: "col-md-6",
-            key: CustomerKeys.EMAIL,
+            key: SubcontractorKeys.EMAIL,
             value: modelData?.email,
-            onChange: (value: string | any) => handleModelData(CustomerKeys.EMAIL, value),
+            onChange: (value: string | any) => handleModelData(SubcontractorKeys.EMAIL, value),
             placeholder: "Email",
             required: true,
         },
@@ -156,20 +156,20 @@ const CustomerFormPage = ({ id }: Props) => {
             label: "Vat On",
             type: "text",
             width: "col-md-6",
-            key: CustomerKeys.VAT_ON,
+            key: SubcontractorKeys.VAT_ON,
             value: modelData?.vat_on,
             onChange: (value: string | any) =>
-                handleModelData(CustomerKeys.VAT_ON, value),
+                handleModelData(SubcontractorKeys.VAT_ON, value),
             placeholder: "Vat On",
         },
         {
             label: "Country",
             type: "text",
             width: "col-md-6",
-            key: CustomerKeys.COUNTRY,
+            key: SubcontractorKeys.COUNTRY,
             value: modelData?.country,
             onChange: (value: string | any) =>
-                handleModelData(CustomerKeys.COUNTRY, value),
+                handleModelData(SubcontractorKeys.COUNTRY, value),
             placeholder: "Country",
             required: true,
         },
@@ -177,9 +177,9 @@ const CustomerFormPage = ({ id }: Props) => {
             label: "City",
             type: "text",
             width: "col-md-3",
-            key: CustomerKeys.CITY,
+            key: SubcontractorKeys.CITY,
             value: modelData?.city,
-            onChange: (value: string | any) => handleModelData(CustomerKeys.CITY, value),
+            onChange: (value: string | any) => handleModelData(SubcontractorKeys.CITY, value),
             placeholder: "City",
             required: true,
         },
@@ -187,38 +187,38 @@ const CustomerFormPage = ({ id }: Props) => {
             label: "Area",
             type: "text",
             width: "col-md-3",
-            key: CustomerKeys.AREA,
+            key: SubcontractorKeys.AREA,
             value: modelData?.area,
-            onChange: (value: string | any) => handleModelData(CustomerKeys.AREA, value),
+            onChange: (value: string | any) => handleModelData(SubcontractorKeys.AREA, value),
             placeholder: "Area",
         },
         {
             label: "Street",
             type: "text",
             width: "col-md-6",
-            key: CustomerKeys.STREET,
+            key: SubcontractorKeys.STREET,
             value: modelData?.street,
             onChange: (value: string | any) =>
-                handleModelData(CustomerKeys.STREET, value),
+                handleModelData(SubcontractorKeys.STREET, value),
             placeholder: "Street",
         },
         {
             label: "Building Number",
             type: "text",
             width: "col-md-3",
-            key: CustomerKeys.BUILDING_NUMBER,
+            key: SubcontractorKeys.BUILDING_NUMBER,
             value: modelData?.building_number,
             onChange: (value: string | any) =>
-                handleModelData(CustomerKeys.BUILDING_NUMBER, value),
+                handleModelData(SubcontractorKeys.BUILDING_NUMBER, value),
             placeholder: "Building Number",
         },
         {
             label: "Postal Code",
             type: "text",
             width: "col-md-3",
-            key: CustomerKeys.POSTAL_CODE,
+            key: SubcontractorKeys.POSTAL_CODE,
             value: modelData?.postal_code,
-            onChange: (value: string | any) => handleModelData(CustomerKeys.POSTAL_CODE, value),
+            onChange: (value: string | any) => handleModelData(SubcontractorKeys.POSTAL_CODE, value),
             placeholder: "Postal Code",
         }
     ];
@@ -226,11 +226,11 @@ const CustomerFormPage = ({ id }: Props) => {
     // MAIN ACTIONS
 
     const handleCreate = async () => {
-        if (!modelData?.customer_type) modelData.customer_type = SUPPLIER_TYPE.COMPANY
+        if (!modelData?.subcontractor_type) modelData.subcontractor_type = SUBCONTRACTOR_TYPE.COMPANY
 
-        let numbersToValidate = CustomerNumKeys;
-        let stringsToValidate = CustomerStrKeys;
-        let requiredToValidate = CustomerRequiredKeys;
+        let numbersToValidate = SubcontractorNumKeys;
+        let stringsToValidate = SubcontractorStrKeys;
+        let requiredToValidate = SubcontractorRequiredKeys;
 
         const validationData: inputsValidationType = {
             requiredToValidate,
@@ -243,7 +243,7 @@ const CustomerFormPage = ({ id }: Props) => {
         if (errors.length > 0) return showError(errors);
 
         try {
-            let createInput = customerInput(modelData);
+            let createInput = subcontractorInput(modelData);
             await createMutation(createInput);
             push('/' + PAGES.CUSTOMERS)
             showSuccess();
@@ -253,8 +253,8 @@ const CustomerFormPage = ({ id }: Props) => {
     };
 
     const handleEdit = async () => {
-        let numbersToValidate = CustomerNumKeys;
-        let stringsToValidate = CustomerStrKeys;
+        let numbersToValidate = SubcontractorNumKeys;
+        let stringsToValidate = SubcontractorStrKeys;
         let requiredToValidate: string[] = [];
 
         const validationData: inputsValidationType = {
@@ -268,7 +268,7 @@ const CustomerFormPage = ({ id }: Props) => {
         if (errors.length > 0) return showError(errors);
 
         try {
-            let createInput = customerUpdateInput(modelData);
+            let createInput = subcontractorUpdateInput(modelData);
             await updateMutation({
                 id: modelData.id,
                 data: createInput,
@@ -321,11 +321,11 @@ const CustomerFormPage = ({ id }: Props) => {
                 show={isModal}
                 onClose={() => setIsModal(false)}
                 onDelete={handleDelete}
-                message={`Are you sure you want to delete this Customer?`}
-                modalHeader={`Delete Customer`}
+                message={`Are you sure you want to delete this Subcontractor?`}
+                modalHeader={`Delete Subcontractor`}
             />
         </div>
     )
 }
 
-export default CustomerFormPage
+export default SubcontractorFormPage

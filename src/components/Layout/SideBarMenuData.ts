@@ -36,7 +36,7 @@ export const SideBarMenuData: any[] = [
       },
       {
         name: "Subcontractors",
-        routerLink: ["/subcontractor"],
+        routerLink: ["/subcontractors"],
         identifier: "Subcontractors",
         iconClass: "icofont-business-man-alt-1",
         breadcrumbMessage: "",

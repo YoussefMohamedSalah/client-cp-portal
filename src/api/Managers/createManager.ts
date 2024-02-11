@@ -4,7 +4,7 @@ import { http } from "utils/Http";
 
 export const useCreateManager = () => {
   return useMutation<any, Error, any>(async createInput => {
-    const { data } = await http.post(ROUTES.EMPLOYEE_MANAGER, createInput);
+    const { data } = await http.post(ROUTES.MANAGER, createInput);
     return { data: { data: data as any } };
   });
 };

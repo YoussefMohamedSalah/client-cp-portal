@@ -9,7 +9,7 @@ interface Props {
   disabled?: boolean;
   label: string;
   onChange: (value: string | any) => void;
-}
+};
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -33,21 +33,23 @@ const FileUploadInput = ({ onChange, disabled, label }: Props) => {
   };
 
   return (
-    <Button
-      sx={{ margin: '8px 0', width: "250px" }}
-      variant="outlined"
-      component="span"
-      disabled={disabled}
-      endIcon={<CloudUploadIcon />}
-      onClick={handleButtonClick}
-    >
-      {label}
-      <VisuallyHiddenInput
-        type="file"
-        ref={fileInputRef} // Reference to the hidden file input
-        onChange={onChange} // Handle file change
-      />
-    </Button>
+    <div className="d-flex justify-content-center align-items-center w-100">
+      <Button
+        sx={{ margin: '8px 0', width: "250px" }}
+        variant="outlined"
+        component="span"
+        disabled={disabled}
+        endIcon={<CloudUploadIcon />}
+        onClick={handleButtonClick}
+      >
+        {label}
+        <VisuallyHiddenInput
+          type="file"
+          ref={fileInputRef} // Reference to the hidden file input
+          onChange={onChange} // Handle file change
+        />
+      </Button>
+    </div>
   );
 }
 

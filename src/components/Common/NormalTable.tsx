@@ -7,8 +7,9 @@ import { formatCsvTitle } from 'utils/FormatCsvTitle';
 import { Customer } from 'types/Customer';
 import { Supplier } from 'types/Supplier';
 import { Employee } from 'types/Employee';
+import { Subcontractor } from 'types/Subcontractor';
 
-interface Props<T extends Customer | Supplier | Employee> {
+interface Props<T extends Customer | Supplier | Employee | Subcontractor> {
     title: string;
     columns: any;
     data: T[];
@@ -23,7 +24,7 @@ interface Props<T extends Customer | Supplier | Employee> {
     selectItem?: (item: T) => void;
 };
 
-function NormalTable<T extends Customer | Supplier | Employee>({
+function NormalTable<T extends Customer | Supplier | Employee | Subcontractor>({
     title,
     columns,
     data,
@@ -40,7 +41,7 @@ function NormalTable<T extends Customer | Supplier | Employee>({
     const [filteredData, setFilteredData] = useState<T[]>([...data] || []);
     const onSearchFilter = (filtered: T[]) => setFilteredData(filtered);
 
-    let csvData = formatNormalCsvOutput<Customer | Supplier | Employee>(filteredData || data) || [];
+    let csvData = formatNormalCsvOutput<Customer | Supplier | Employee | Subcontractor>(filteredData || data) || [];
     let fileName = data[0]?.code?.split('-')?.[0]! || "data";
 
     return (

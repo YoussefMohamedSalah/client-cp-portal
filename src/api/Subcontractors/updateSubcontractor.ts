@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
-import { SelectedSubcontractor, Subcontractor } from "types/Subcontractor";
+import { Subcontractor } from "types/Subcontractor";
 import http from "utils/Http";
 
 export const useUpdateSubcontractor = () => {
@@ -10,7 +10,7 @@ export const useUpdateSubcontractor = () => {
   });
 };
 
-export const subcontractorUpdateInput = (data: SelectedSubcontractor): any => {
+export const subcontractorUpdateInput = (data: Subcontractor): any => {
   return {
     id: data.id,
     subcontractor_type: data.subcontractor_type,
@@ -25,5 +25,5 @@ export const subcontractorUpdateInput = (data: SelectedSubcontractor): any => {
     street: data.street,
     building_number: data.building_number,
     postal_code: data.postal_code,
-  } as SelectedSubcontractor;
+  } as Subcontractor;
 };

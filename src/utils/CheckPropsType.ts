@@ -8,6 +8,7 @@ import { Invoice } from "types/Invoice";
 import { Contract } from "types/Contract"
 import { Customer } from "types/Customer";
 import { Supplier } from "types/Supplier";
+import { Subcontractor } from "types/Subcontractor";
 
 export function isPurchaseOrderType(props: any): props is PurchaseOrderRequest {
     return props.type! === DOCUMENT_TYPE.PURCHASE_ORDER;
@@ -47,4 +48,8 @@ export function isSupplierType(props: any): props is Supplier {
 
 export function isEmployeeType(props: any): props is Supplier {
     return props.code.startsWith("E-");
+};
+
+export function isSubcontractorType(props: any): props is Subcontractor {
+    return props.code.startsWith("SC-");
 };
