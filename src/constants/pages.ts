@@ -40,6 +40,8 @@ export enum PAGES {
     SUBCONTRACTOR_INFO = "subcontractor_rev",
     SUPPLIER_INFO = "supplier_rev",
     EMPLOYEE_INFO = "employee_rev",
+    PROJECT_INFO = "project_rev",
+
 
     // Create or Edit
     PO_REQUEST = "po_request",
@@ -53,6 +55,7 @@ export enum PAGES {
     SUBCONTRACTOR = "subcontractor",
     SUPPLIER = "supplier",
     EMPLOYEE = "employee",
+    PROJECT = "project",
 
 
 

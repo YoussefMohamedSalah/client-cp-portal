@@ -11,7 +11,6 @@ import { lazy } from "react";
 
 
 const Dashboard = lazy(() => import("../screens/Dashboard/Dashboard"));
-const Projects = lazy(() => import("../screens/Projects/Projects"));
 const Tenders = lazy(() => import("../screens/Tenders/Tenders"));
 // const Settings = lazy(() => import("../screens/Settings/Settings"));
 
@@ -38,6 +37,7 @@ const Customers = lazy(() => import("../screens/Customers/Customers"));
 const Suppliers = lazy(() => import("../screens/Suppliers/Suppliers"));
 const Employees = lazy(() => import("../screens/Employees/Employees"));
 const Subcontractors = lazy(() => import("../screens/Subcontractors/Subcontractors"));
+const Projects = lazy(() => import("../screens/Projects/Projects"));
 
 
 // DOCUMENT PAGE DETAILS //
@@ -53,7 +53,7 @@ const CustomerDetails = lazy(() => import("../screens/Customers/CustomerDetails"
 const SupplierDetails = lazy(() => import("../screens/Suppliers/SupplierDetails"));
 const EmployeeDetails = lazy(() => import("../screens/Employees/EmployeeDetails"));
 const SubcontractorDetails = lazy(() => import("../screens/Subcontractors/SubcontractorDetails"));
-// SubcontractorFormPage
+const ProjectDetails = lazy(() => import("../screens/Projects/ProjectDetails"));
 
 // CREATE //
 const PoFormPage = lazy(() => import("../screens/Documents/PoRequests/PoFormPage"));
@@ -68,6 +68,7 @@ const CustomerFormPage = lazy(() => import("../screens/Customers/CustomerFormPag
 const SupplierFormPage = lazy(() => import("../screens/Suppliers/SupplierFormPage"));
 const EmployeeFormPage = lazy(() => import("../screens/Employees/EmployeeFormPage"));
 const SubcontractorFormPage = lazy(() => import("../screens/Subcontractors/SubcontractorFormPage"));
+const ProjectFormPage = lazy(() => import("../screens/Projects/ProjectFormPage"));
 
 // // EDIT //
 // const PoRequestEditPage = lazy(() => import("../PoRequests/PoRequestEditPage"));
@@ -209,7 +210,11 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 				return <SubcontractorDetails id={id} />;
 			case PAGES.SUBCONTRACTOR:
 				return <SubcontractorFormPage id={id} />;
-
+			// ---
+			case PAGES.PROJECT_INFO:
+				return <ProjectDetails id={id} />;
+			case PAGES.PROJECT:
+				return <ProjectFormPage id={id} />;
 		}
 	} else
 		switch (slug) {
@@ -265,7 +270,11 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 				return <Subcontractors />;
 			case PAGES.SUBCONTRACTOR:
 				return <SubcontractorFormPage />;
-
+			// ---
+			case PAGES.PROJECTS:
+				return <Projects />;
+			case PAGES.PROJECT:
+				return <ProjectFormPage />;
 
 
 

@@ -20,7 +20,7 @@ export interface Project {
     kpi: number;
     longitude: number | null;
     latitude: number | null;
-    thumbnail: string | null;
+    thumbnail?: File;
     bid_value: number;
     duration: number | null;
     project_status: string;
@@ -45,10 +45,13 @@ export interface Project {
     manager: { id: string; name: string };
     daily_report_groups: { groupId: string; groupName: string; employees: string[] }[];
     company: Company;
+    assistants?: { label: string, value: string }[];
+    members: any[];
     customer: Customer;
     users: User[];
     managers: User[];
-    // group: Group;
+    // group: Group;    
+    tasks?: any[];
     inventory: Inventory;
     SiteRequests: SiteRequest[];
     PettyCashRequests: PettyCashRequest[];

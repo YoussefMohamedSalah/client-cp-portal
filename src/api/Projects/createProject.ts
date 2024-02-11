@@ -16,7 +16,7 @@ export const useCreateProject = () => {
 	});
 };
 
-export const projectInput = (data: SelectedProject): any => {
+export const projectInput = (data: Project): any => {
 	if (!data.thumbnail?.size) {
 		return {
 			id: data.id,

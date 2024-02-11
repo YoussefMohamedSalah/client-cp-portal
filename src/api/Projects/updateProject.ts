@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
-import { SelectedProject } from "types/Project";
+import { Project } from "types/Project";
 import { http } from "utils/Http";
 
 
@@ -19,7 +19,7 @@ export const useUpdateProject = () => {
   });
 };
 
-export const projectUpdateInput = (data: SelectedProject): any => {
+export const projectUpdateInput = (data: Project): any => {
   if (!data.thumbnail?.size) {
     return {
       id: data.id,
@@ -47,7 +47,7 @@ export const projectUpdateInput = (data: SelectedProject): any => {
       members: data.members,
       tasks: data.tasks,
       customer: data.customer,
-    } as SelectedProject;
+    } as Project;
   }
 
   const formData = new FormData();

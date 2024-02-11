@@ -1,7 +1,7 @@
 import ItemsCard from 'components/Common/ItemsCard';
 import NewFiles from 'components/Common/NewFiles';
 import OldFiles from 'components/Common/OldFiles';
-import { useProjectsQuery } from 'api/Project/getAllProjects';
+import { useProjectsQuery } from 'api/Projects/getAllProjects';
 import PageHeader from 'components/Common/PageHeader';
 import DocumentPreviewModal from 'components/Modals/DocumentPreviewModal';
 import Button from 'components/UI/Button';

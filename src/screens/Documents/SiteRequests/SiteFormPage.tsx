@@ -2,7 +2,7 @@ import { useSaveSiteRequestToArchive } from 'api/Documents/SiteRequests/archiveS
 import { siteRequestInput, useCreateSiteRequest } from 'api/Documents/SiteRequests/createSiteRequest';
 import { siteEditInput, useEditSiteRequest } from 'api/Documents/SiteRequests/editSiteRequest';
 import { useSiteRequestDetailsQuery } from 'api/Documents/SiteRequests/getSiteRequestDetails';
-import { useProjectsQuery } from 'api/Project/getAllProjects';
+import { useProjectsQuery } from 'api/Projects/getAllProjects';
 import PageHeader from 'components/Common/PageHeader';
 import DocumentPreviewModal from 'components/Modals/DocumentPreviewModal';
 import Button from 'components/UI/Button';

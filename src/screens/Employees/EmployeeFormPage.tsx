@@ -18,7 +18,7 @@ import { useDeleteEmployee } from 'api/Employees/deleteEmployee';
 import { useEmployeeDetailsQuery } from 'api/Employees/getEmployeeDetails';
 import { Project } from 'types/Project';
 import { getOptions } from 'utils/GetOptions';
-import { useProjectsQuery } from 'api/Project/getAllProjects';
+import { useProjectsQuery } from 'api/Projects/getAllProjects';
 import { useDepartmentsQuery } from 'api/Departments/getAllDepartments';
 // import { useManagersQuery } from 'api/Managers/getAllManagers';
 
@@ -410,6 +410,7 @@ const EmployeeFormPage = ({ id }: Props) => {
             let createInput = employeeInput(modelData);
             await createMutation(createInput);
             showSuccess();
+            push('/' + PAGES.EMPLOYEES)
         } catch (err: any) {
             showError(handleServerError(err.response));
         }
@@ -438,6 +439,7 @@ const EmployeeFormPage = ({ id }: Props) => {
                 data: createInput,
             });
             showSuccess();
+            push('/' + PAGES.EMPLOYEES)
         } catch (err: any) {
             showError(handleServerError(err.response));
         }
@@ -447,6 +449,7 @@ const EmployeeFormPage = ({ id }: Props) => {
         try {
             await deleteMutation(modelData.id);
             showSuccess();
+            push('/' + PAGES.EMPLOYEES)
         } catch (err: any) {
             showError(handleServerError(err.response));
         }

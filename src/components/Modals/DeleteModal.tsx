@@ -7,7 +7,7 @@ interface Props {
 	modalHeader: string;
 	onDelete: () => void;
 	message?: string;
-}
+};
 
 const DeleteModal: React.FC<Props> = ({ onClose, show, modalHeader, onDelete, message }) => {
 	return (

@@ -3,7 +3,7 @@ export enum ProjectKeys {
   LATITUDE = "latitude",
   LONGITUDE = "longitude",
   DESCRIPTION = "description",
-  BID_VALUE = 'bid_value',
+  BID_VALUE = "bid_value",
   TOTAL_BUDGET = "total_budget",
   PO_BUDGET = "po_budget",
   PC_BUDGET = "pc_budget",
@@ -17,7 +17,8 @@ export enum ProjectKeys {
   FLOORS_COUNT = "floors_count",
   PROJECT_STATUS = "project_status",
   CONTRACT_NUMBER = "contract_number",
-  // PROJECT_MANAGER = "project_manager",
+  MANAGER = "manager",
+  ASSISTANTS = "assistants",
   CUSTOMER = "customer",
   THUMBNAIL = "thumbnail",
   FILES = "files"
