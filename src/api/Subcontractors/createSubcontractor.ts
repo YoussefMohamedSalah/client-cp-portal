@@ -17,7 +17,7 @@ export const subcontractorInput = (data: Subcontractor): any => {
     email: data.email,
     subcontractor_type: data.subcontractor_type,
     vat_on: data.vat_on,
-    representative: data.representative,
+    name: data.name,
     country: data.country,
     city: data.city,
     area: data.area,

@@ -8,7 +8,6 @@ export interface Supplier {
     code: string;
     company_name: string | null;
     vat_on: number | null;
-    representative: string | null;
     name: string | null;
     phone_number: string | null;
     email: string | null;
@@ -28,7 +27,6 @@ export interface createSupplierInput {
     supplier_type?: string;
     company_name?: string;
     vat_on?: string;
-    representative?: string;
     name?: string;
     phone_number?: string;
     email?: string;

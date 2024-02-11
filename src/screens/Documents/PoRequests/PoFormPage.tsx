@@ -207,7 +207,7 @@ we would like to place the purchase order for Below Items.`
     let projectsOptions = getOptions(projects, "Select Project");
     let suppliersOptions = suppliers.map((supplier) => {
         return {
-            label: supplier.representative + ' - ' + supplier.company_name + ' - ' + supplier.country + ', ' + supplier.city,
+            label: supplier.name + ' - ' + supplier.company_name + ' - ' + supplier.country + ', ' + supplier.city,
             value: supplier.id
         };
     });

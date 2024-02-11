@@ -205,7 +205,7 @@ const ContractFormPage = ({ id }: Props) => {
     let projectsOptions = getOptions(projects, "Select Project");
     let subcontractorsOptions = subcontractors.map((subcontractor) => {
         return {
-            label: subcontractor.representative + ' - ' + subcontractor.company_name + ' - ' + subcontractor.country + ', ' + subcontractor.city,
+            label: subcontractor.name + ' - ' + subcontractor.company_name + ' - ' + subcontractor.country + ', ' + subcontractor.city,
             value: subcontractor.id
         };
     });
@@ -303,7 +303,7 @@ const ContractFormPage = ({ id }: Props) => {
             type: "select",
             width: "col-md-6",
             key: ContractKeys.SUB_CONTRACTOR,
-            value: selectedSubcontractor?.representative!,
+            value: selectedSubcontractor?.name!,
             onChange: (value: any) => handleModelData(ContractKeys.SUB_CONTRACTOR, value),
             options: subcontractorsOptions,
             placeholder: "Select Subcontractor",

@@ -39,12 +39,12 @@ const Subcontractors: React.FC = () => {
             cell: (row: any) => <span onClick={() => push(`/${PAGES.SUBCONTRACTOR_INFO}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
         },
         {
-            name: "REPRESENTATIVE",
+            name: "NAME",
             selector: (row: any) => { },
             sortable: true,
             cell: (row: any) =>
                 <>
-                    <span className="fw-bold ms-1">{row.representative}</span>
+                    <span className="fw-bold ms-1">{row.name}</span>
                 </>
         },
         {
@@ -73,7 +73,7 @@ const Subcontractors: React.FC = () => {
             selector: (row: any) => { },
             sortable: false,
             cell: (row: any) =>
-                <TableActionBtn id={row.id!} title={row.representative || row.company_name} onDelete={handleDelete} onClickEdit={() => push('/' + PAGES.SUBCONTRACTOR + '/' + row.id)} />
+                <TableActionBtn id={row.id!} title={row.name || row.company_name} onDelete={handleDelete} onClickEdit={() => push('/' + PAGES.SUBCONTRACTOR + '/' + row.id)} />
         }
     ];
 

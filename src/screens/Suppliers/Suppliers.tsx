@@ -39,12 +39,12 @@ const Suppliers: React.FC = () => {
             cell: (row: any) => <span onClick={() => push(`/${PAGES.SUPPLIER_INFO}/${row.id}`)} className="fw-bold text-secondary pointer">{row.code}</span>
         },
         {
-            name: "REPRESENTATIVE",
+            name: "NAME",
             selector: (row: any) => { },
             sortable: true,
             cell: (row: any) =>
                 <>
-                    <span className="fw-bold ms-1">{row.representative}</span>
+                    <span className="fw-bold ms-1">{row.name}</span>
                 </>
         },
         {

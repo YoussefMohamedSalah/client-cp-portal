@@ -8,7 +8,7 @@ export interface Customer {
     code: string;
     company_name: string | null;
     vat_on: number;
-    representative: string | null;
+    name: string | null;
     phone_number: string | null;
     email: string | null;
     country: string | null;

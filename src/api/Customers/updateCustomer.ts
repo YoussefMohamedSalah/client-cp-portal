@@ -16,7 +16,7 @@ export const customerUpdateInput = (data: Customer): any => {
     customer_type: data.customer_type,
     company_name: data.company_name,
     vat_on: data.vat_on,
-    representative: data.representative,
+    name: data.name,
     phone_number: data.phone_number,
     email: data.email,
     country: data.country,

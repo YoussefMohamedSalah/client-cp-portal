@@ -1,5 +1,5 @@
 export enum SubcontractorKeys {
-  REPRESENTATIVE = 'representative',
+  NAME = 'name',
   COMPANY_NAME = 'company_name',
   PHONE_NUMBER = "phone_number",
   EMAIL = "email",
@@ -24,7 +24,7 @@ export const SubcontractorStrKeys = [
   SubcontractorKeys.CITY,
   SubcontractorKeys.COMPANY_NAME,
   SubcontractorKeys.PHONE_NUMBER,
-  SubcontractorKeys.REPRESENTATIVE,
+  SubcontractorKeys.NAME,
   SubcontractorKeys.EMAIL,
   SubcontractorKeys.SUBCONTRACTOR_TYPE,
   SubcontractorKeys.COUNTRY,
@@ -33,7 +33,7 @@ export const SubcontractorStrKeys = [
 
 export const SubcontractorRequiredKeys = [
   SubcontractorKeys.SUBCONTRACTOR_TYPE,
-  SubcontractorKeys.REPRESENTATIVE,
+  SubcontractorKeys.NAME,
   SubcontractorKeys.COMPANY_NAME,
   SubcontractorKeys.COUNTRY,
   SubcontractorKeys.CITY,

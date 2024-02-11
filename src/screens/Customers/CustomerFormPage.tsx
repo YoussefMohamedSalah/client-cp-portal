@@ -83,7 +83,7 @@ const CustomerFormPage = ({ id }: Props) => {
             ...modelData,
             company_name: '',
             vat_on: 0,
-            representative: "",
+            name: "",
             phone_number: "",
             email: "",
             country: "",
@@ -97,13 +97,13 @@ const CustomerFormPage = ({ id }: Props) => {
 
     const formFields: IField[] = [
         {
-            label: "Representative Name",
+            label: "NAME Name",
             type: "text",
             width: "col-md-6",
-            key: CustomerKeys.REPRESENTATIVE,
-            value: modelData?.representative,
-            onChange: (value: string | any) => handleModelData(CustomerKeys.REPRESENTATIVE, value),
-            placeholder: "Representative Name",
+            key: CustomerKeys.NAME,
+            value: modelData?.name,
+            onChange: (value: string | any) => handleModelData(CustomerKeys.NAME, value),
+            placeholder: "NAME Name",
             required: true,
         },
         {
@@ -224,7 +224,6 @@ const CustomerFormPage = ({ id }: Props) => {
     ];
 
     // MAIN ACTIONS
-
     const handleCreate = async () => {
         if (!modelData?.customer_type) modelData.customer_type = SUPPLIER_TYPE.COMPANY
 

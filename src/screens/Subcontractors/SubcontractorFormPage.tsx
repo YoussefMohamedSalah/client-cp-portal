@@ -83,7 +83,7 @@ const SubcontractorFormPage = ({ id }: Props) => {
             ...modelData,
             company_name: '',
             vat_on: 0,
-            representative: "",
+            name: "",
             phone_number: "",
             email: "",
             country: "",
@@ -97,13 +97,13 @@ const SubcontractorFormPage = ({ id }: Props) => {
 
     const formFields: IField[] = [
         {
-            label: "Representative Name",
+            label: "NAME Name",
             type: "text",
             width: "col-md-6",
-            key: SubcontractorKeys.REPRESENTATIVE,
-            value: modelData?.representative,
-            onChange: (value: string | any) => handleModelData(SubcontractorKeys.REPRESENTATIVE, value),
-            placeholder: "Representative Name",
+            key: SubcontractorKeys.NAME,
+            value: modelData?.name,
+            onChange: (value: string | any) => handleModelData(SubcontractorKeys.NAME, value),
+            placeholder: "NAME Name",
             required: true,
         },
         {

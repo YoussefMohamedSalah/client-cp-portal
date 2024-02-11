@@ -6,7 +6,7 @@ export interface Subcontractor {
     subcontractor_type: SUBCONTRACTOR_TYPE;
     company_name: string;
     vat_on: number;
-    representative: string;
+    name: string;
     phone_number: string;
     email: string;
     country: string;
@@ -22,7 +22,7 @@ export interface SelectedSubcontractor {
     subcontractor_type?: SUBCONTRACTOR_TYPE;
     company_name?: string;
     vat_on?: number;
-    representative?: string;
+    name?: string;
     phone_number?: string;
     email?: string;
     country?: string;

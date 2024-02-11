@@ -1,5 +1,5 @@
 export enum CustomerKeys {
-  REPRESENTATIVE = 'representative',
+  NAME = 'name',
   COMPANY_NAME = 'company_name',
   PHONE_NUMBER = "phone_number",
   EMAIL = "email",
@@ -24,7 +24,7 @@ export const CustomerStrKeys = [
   CustomerKeys.CITY,
   CustomerKeys.COMPANY_NAME,
   // CustomerKeys.PHONE_NUMBER,
-  CustomerKeys.REPRESENTATIVE,
+  CustomerKeys.NAME,
   CustomerKeys.EMAIL,
   CustomerKeys.CUSTOMER_TYPE,
   CustomerKeys.COUNTRY,
@@ -33,7 +33,7 @@ export const CustomerStrKeys = [
 
 export const CustomerRequiredKeys = [
   CustomerKeys.CUSTOMER_TYPE,
-  CustomerKeys.REPRESENTATIVE,
+  CustomerKeys.NAME,
   CustomerKeys.COMPANY_NAME,
   CustomerKeys.COUNTRY,
   CustomerKeys.CITY,

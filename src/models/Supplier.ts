@@ -1,5 +1,5 @@
 export enum SupplierKeys {
-  REPRESENTATIVE = 'representative',
+  NAME = 'name',
   COMPANY_NAME = 'company_name',
   PHONE_NUMBER = "phone_number",
   EMAIL = "email",
@@ -22,7 +22,7 @@ export const SupplierNumKeys = [
 export const SupplierStrKeys = [
   SupplierKeys.CITY,
   SupplierKeys.COMPANY_NAME,
-  SupplierKeys.REPRESENTATIVE,
+  SupplierKeys.NAME,
   SupplierKeys.EMAIL,
   SupplierKeys.SUPPLIER_TYPE,
   SupplierKeys.COUNTRY,
@@ -31,7 +31,7 @@ export const SupplierStrKeys = [
 
 export const SupplierRequiredKeys = [
   SupplierKeys.SUPPLIER_TYPE,
-  SupplierKeys.REPRESENTATIVE,
+  SupplierKeys.NAME,
   SupplierKeys.COMPANY_NAME,
   SupplierKeys.COUNTRY,
   SupplierKeys.CITY,
