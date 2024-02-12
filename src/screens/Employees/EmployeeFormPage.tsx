@@ -23,7 +23,7 @@ import { useDepartmentsQuery } from 'api/Departments/getAllDepartments';
 // import { useManagersQuery } from 'api/Managers/getAllManagers';
 
 interface Props {
-    id?: string;
+    id: string | null;
 };
 
 const EmployeeFormPage = ({ id }: Props) => {

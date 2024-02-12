@@ -39,7 +39,7 @@ import DocumentProjectFinancesBox from 'components/Common/DocumentProjectFinance
 import { PrintInstallments } from 'types/Print';
 
 interface Props {
-    id?: string;
+    id: string | null;
 };
 
 const PoFormPage = ({ id }: Props) => {

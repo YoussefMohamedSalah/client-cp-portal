@@ -33,7 +33,7 @@ import { pcEditInput, useEditPcRequest } from 'api/Documents/PcRequests/editPcRe
 import { useSavePcRequestToArchive } from 'api/Documents/PcRequests/archivePcRequest';
 
 interface Props {
-    id?: string;
+    id: string | null;
 };
 
 const PcFormPage = ({ id }: Props) => {
@@ -103,15 +103,9 @@ const PcFormPage = ({ id }: Props) => {
     useEffect(() => {
         if (!initialized && projectsData && documentData) {
             let document: PettyCashRequest = documentData?.pcRequestDetails?.data!
-            let selectedProject: Project = document?.project!;
 
-            const initialModelData: PettyCashRequest = {
-                ...document!,
-                project: selectedProject || {} as Project,
-            };
-
-            setModelData({ ...initialModelData });
-            setSelectedProject(selectedProject || {} as Project);
+            setModelData(document);
+            setSelectedProject(document.project || {} as Project);
 
             let selectedItems: ItemProps[] = document?.items! || [] as ItemProps[];
             let selectedFiles: FileType[] = document?.files! || [] as FileType[];

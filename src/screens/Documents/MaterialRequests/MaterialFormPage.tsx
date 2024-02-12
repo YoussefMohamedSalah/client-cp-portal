@@ -29,7 +29,7 @@ import { handleServerError, validateInputs } from 'utils/HandlingServerError';
 import { getFormattedTodayDate } from 'utils/DateUtils';
 
 interface Props {
-    id?: string;
+    id: string | null;
 };
 
 const MaterialFormPage = ({ id }: Props) => {

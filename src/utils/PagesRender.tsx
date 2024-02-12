@@ -164,89 +164,66 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 			// ----
 			case PAGES.PO_REQUEST_INFO:
 				return <PoRequestDetails id={id} />;
-			case PAGES.PO_REQUEST:
-				return <PoFormPage id={id} />;
 			case PAGES.PC_REQUEST_INFO:
 				return <PcRequestDetails id={id} />;
-			case PAGES.PC_REQUEST:
-				return <PcFormPage id={id} />;
 			case PAGES.SITE_REQUEST_INFO:
 				return <SiteRequestDetails id={id} />;
-			case PAGES.SITE_REQUEST:
-				return <SiteFormPage id={id} />;
 			case PAGES.EMPLOYEE_REQUEST_INFO:
 				return <EmployeeRequestDetails id={id} />;
-			case PAGES.EMPLOYEE_REQUEST:
-				return <EmployeeRequestFormPage id={id} />;
 			case PAGES.MATERIAL_REQUEST_INFO:
 				return <MaterialRequestDetails id={id} />;
-			case PAGES.MATERIAL_REQUEST:
-				return <MaterialFormPage id={id} />;
 			case PAGES.CONTRACT_INFO:
 				return <ContractDetails id={id} />;
-			case PAGES.CONTRACT:
-				return <ContractFormPage id={id} />;
 			case PAGES.INVOICE_INFO:
 				return <InvoiceDetails id={id} />;
-			case PAGES.INVOICE:
-				return <InvoiceFormPage id={id} />;
 			// ---
 			case PAGES.CUSTOMER_INFO:
 				return <CustomerDetails id={id} />;
-			case PAGES.CUSTOMER:
-				return <CustomerFormPage id={id} />;
 			// ---
 			case PAGES.SUPPLIER_INFO:
 				return <SupplierDetails id={id} />;
-			case PAGES.SUPPLIER:
-				return <SupplierFormPage id={id} />;
 			// ---
 			case PAGES.EMPLOYEE_INFO:
 				return <EmployeeDetails id={id} />;
-			case PAGES.EMPLOYEE:
-				return <EmployeeFormPage id={id} />;
 			// ---
 			case PAGES.SUBCONTRACTOR_INFO:
 				return <SubcontractorDetails id={id} />;
-			case PAGES.SUBCONTRACTOR:
-				return <SubcontractorFormPage id={id} />;
+
 			// ---
 			case PAGES.PROJECT_INFO:
 				return <ProjectDetails id={id} />;
-			case PAGES.PROJECT:
-				return <ProjectFormPage id={id} />;
 		}
 	} else
 		switch (slug) {
 			case PAGES.PO_REQUESTS:
 				return <PoRequests />;
 			case PAGES.PO_REQUEST:
-				return <PoFormPage />;
+				return <PoFormPage id={id ? id : null} />;
 			// ---
 			case PAGES.PC_REQUESTS:
 				return <PcRequests />;
 			case PAGES.PC_REQUEST:
-				return <PcFormPage />;
+				return <PcFormPage id={id ? id : null} />;
 			// ---
 			case PAGES.SITE_REQUESTS:
 				return <SiteRequests />;
 			case PAGES.SITE_REQUEST:
-				return <SiteFormPage />;
+				return <SiteFormPage id={id ? id : null} />;
 			// ---
 			case PAGES.MATERIAL_REQUESTS:
 				return <MaterialRequests />;
 			case PAGES.MATERIAL_REQUEST:
-				return <MaterialFormPage />;
+				return <MaterialFormPage id={id ? id : null} />;
 			// ---
 			case PAGES.EMPLOYEE_REQUESTS:
 				return <EmployeeRequests />;
 			case PAGES.EMPLOYEE_REQUEST:
-				return <EmployeeRequestFormPage />;
+				return <EmployeeRequestFormPage id={id ? id : null} />;
 			// ---
 			case PAGES.CONTRACTS:
 				return <Contracts />;
 			case PAGES.CONTRACT:
-				return <ContractFormPage />;
+				return <ContractFormPage id={id ? id : null} />;
 			// ---
 			case PAGES.INVOICES:
 				return <Invoices />;
@@ -254,27 +231,27 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 			case PAGES.CUSTOMERS:
 				return <Customers />;
 			case PAGES.CUSTOMER:
-				return <CustomerFormPage />;
+				return <CustomerFormPage id={id ? id : null} />;
 			// ---
 			case PAGES.SUPPLIERS:
 				return <Suppliers />;
 			case PAGES.SUPPLIER:
-				return <SupplierFormPage />;
+				return <SupplierFormPage id={id ? id : null} />;
 			// ---
 			case PAGES.EMPLOYEES:
 				return <Employees />;
 			case PAGES.EMPLOYEE:
-				return <EmployeeFormPage />;
+				return <EmployeeFormPage id={id ? id : null} />;
 			// ---
 			case PAGES.SUBCONTRACTORS:
 				return <Subcontractors />;
 			case PAGES.SUBCONTRACTOR:
-				return <SubcontractorFormPage />;
+				return <SubcontractorFormPage id={id ? id : null} />;
 			// ---
 			case PAGES.PROJECTS:
 				return <Projects />;
 			case PAGES.PROJECT:
-				return <ProjectFormPage />;
+				return <ProjectFormPage id={id ? id : null} />;
 
 
 

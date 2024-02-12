@@ -6,7 +6,7 @@ import PageHeader from "components/Common/PageHeader";
 import useApp from "hooks/useApp";
 import { PAGES } from "constants/pages";
 import { calculateWorkFlowStatus } from "utils/CalculateWorkFlowStatus";
-import { ENUMS } from "enums/enums";
+import { STATUS } from "enums/enums";
 import { useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
@@ -22,13 +22,9 @@ const PcRequests: React.FC = () => {
 	if (error) return null;
 
 	let requests: PettyCashRequest[] = [];
-	if (data && data.pcRequests && data.pcRequests.data) {
-		requests = data.pcRequests.data;
-	};
+	if (data?.pcRequests?.data!) requests = data.pcRequests.data;
 
-	const handleClose = () => {
-		setOpen(false);
-	};
+	const handleClose = () => setOpen(false);
 
 	const handleOpen = (request: PettyCashRequest) => {
 		setSelectedDocument(request)
@@ -102,7 +98,7 @@ const PcRequests: React.FC = () => {
 				let gradient = calculateWorkFlowStatus(row.work_flow);
 				return (
 					<span className='pointer' onClick={() => handleOpen(row)}>
-						{row.status === ENUMS.STATUS.ARCHIVED ? (
+						{row.status === STATUS.ARCHIVED ? (
 							<span className="badge bg-black text-white">Archived</span>
 						) : (
 							<span className="badge text-black" style={{ background: gradient }}>{row.status}</span>
@@ -120,6 +116,7 @@ const PcRequests: React.FC = () => {
 				<DocumentsTableActionBtn<PettyCashRequest> data={row} onClickEdit={() => push('/' + PAGES.PC_REQUEST + '/' + row.id)} />
 		}
 	];
+
 	return (
 		<>
 			<div className="container-fluid">
@@ -144,7 +141,7 @@ const PcRequests: React.FC = () => {
 					/>
 				</div>
 			</div>
-			{selectedDocument && selectedDocument.status !== ENUMS.STATUS.ARCHIVED && <WorkFlowStatusModal<PettyCashRequest> handleClose={handleClose} open={open} selectedDocument={selectedDocument} />}
+			{selectedDocument && selectedDocument.status !== STATUS.ARCHIVED && <WorkFlowStatusModal<PettyCashRequest> handleClose={handleClose} open={open} selectedDocument={selectedDocument} />}
 		</>
 	);
 };

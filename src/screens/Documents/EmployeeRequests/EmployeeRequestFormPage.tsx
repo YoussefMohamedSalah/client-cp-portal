@@ -19,8 +19,9 @@ import { IField } from 'types/Forms/formFields';
 import { allowEditActionBtn } from 'utils/ActionsGuards';
 import { getFormattedTodayDate } from 'utils/DateUtils';
 import { handleServerError, validateInputs } from 'utils/HandlingServerError';
+
 interface Props {
-    id?: string;
+    id: string | null;
 };
 
 const EmployeeRequestFormPage = ({ id }: Props) => {

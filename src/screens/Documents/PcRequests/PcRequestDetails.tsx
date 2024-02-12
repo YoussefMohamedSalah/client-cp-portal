@@ -9,7 +9,7 @@ interface Props {
 };
 
 const PcRequestDetails = ({ id }: Props) => {
-    const { data, error, isLoading } = usePcRequestDetailsQuery({ id });
+    const { data, error, isLoading } = usePcRequestDetailsQuery({ idz });
     if (isLoading) return <Loading />;
     if (error) return null;
 

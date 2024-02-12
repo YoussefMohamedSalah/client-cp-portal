@@ -6,9 +6,8 @@ import { SiteRequest } from "types/Site_request";
 import { Contract } from "types/Contract";
 import { Invoice } from "types/Invoice";
 import { isContractType, isEmployeeRequestType, isInvoiceType, isMaterialType, isPettyCashType, isPurchaseOrderType, isSiteType } from './CheckPropsType';
-import { Customer } from "types/Customer";
 
-export const formatDocumentCsvOutput = <T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice | Customer>(data: T[] | undefined): any[] => {
+export const formatDocumentCsvOutput = <T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>(data: T[] | undefined): any[] => {
 	if (!data || data.length === 0) return [];
 	if (isPurchaseOrderType(data[0])) {
 		return formatPurchaseOrderData(data as PurchaseOrderRequest[]);

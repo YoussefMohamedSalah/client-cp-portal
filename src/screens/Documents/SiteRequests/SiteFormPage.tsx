@@ -24,7 +24,7 @@ import { getOptions } from 'utils/GetOptions';
 import { handleServerError, validateInputs } from 'utils/HandlingServerError';
 
 interface Props {
-    id?: string;
+    id: string | null;
 };
 
 const SiteFormPage = ({ id }: Props) => {

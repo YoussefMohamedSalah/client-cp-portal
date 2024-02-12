@@ -24,7 +24,7 @@ import { getOptions } from 'utils/GetOptions';
 import { Employee } from 'types/Employee';
 
 interface Props {
-    id?: string;
+    id: string | null;
 };
 
 const ProjectFormPage = ({ id }: Props) => {

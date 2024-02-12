@@ -72,7 +72,6 @@ function DocumentsDetailsContent<T extends PettyCashRequest | PurchaseOrderReque
 		try {
 			await approveMutation({ type: data.type, id: data.id, note });
 			showSuccess();
-			// handleCloseSubModal();
 			window.location.reload();
 		} catch (err: any) {
 			console.log(err.response?.data?.msg!)
@@ -84,7 +83,6 @@ function DocumentsDetailsContent<T extends PettyCashRequest | PurchaseOrderReque
 		try {
 			await rejectMutation({ type: data.type, id: data.id, note });
 			showSuccess();
-			// handleCloseSubModal();
 			window.location.reload();
 		} catch (err: any) {
 			console.log(err.response?.data?.msg!)
@@ -99,13 +97,13 @@ function DocumentsDetailsContent<T extends PettyCashRequest | PurchaseOrderReque
 	const handleQrCodeUrl = (): string => {
 		let baseUrl = `${process.env.REACT_APP_PUBLIC_URL}`;
 		if (data.id) {
-			if (isPurchaseOrderType(data)) return `${baseUrl}/${PAGES.PO_REQUEST}/${data.id}`;
-			else if (isPettyCashType(data)) return `${baseUrl}/${PAGES.PC_REQUEST}/${data.id}`;
-			else if (isSiteType(data)) return `${baseUrl}/${PAGES.SITE_REQUEST}/${data.id}`;
-			else if (isMaterialType(data)) return `${baseUrl}/${PAGES.MATERIAL_REQUEST}/${data.id}`;
-			else if (isEmployeeRequestType(data)) return `${baseUrl}/${PAGES.EMPLOYEE_REQUEST}/${data.id}`;
-			else if (isContractType(data)) return `${baseUrl}/${PAGES.CONTRACT}/${data.id}`;
-			else if (isInvoiceType(data)) return `${baseUrl}/${PAGES.INVOICE}/${data.id}`;
+			if (isPurchaseOrderType(data)) return `${baseUrl}/${PAGES.PO_REQUEST_INFO}/${data.id}`;
+			else if (isPettyCashType(data)) return `${baseUrl}/${PAGES.PC_REQUEST_INFO}/${data.id}`;
+			else if (isSiteType(data)) return `${baseUrl}/${PAGES.SITE_REQUEST_INFO}/${data.id}`;
+			else if (isMaterialType(data)) return `${baseUrl}/${PAGES.MATERIAL_REQUEST_INFO}/${data.id}`;
+			else if (isEmployeeRequestType(data)) return `${baseUrl}/${PAGES.EMPLOYEE_REQUEST_INFO}/${data.id}`;
+			else if (isContractType(data)) return `${baseUrl}/${PAGES.CONTRACT_INFO}/${data.id}`;
+			else if (isInvoiceType(data)) return `${baseUrl}/${PAGES.INVOICE_INFO}/${data.id}`;
 			else return '';
 		}
 		else return ''
