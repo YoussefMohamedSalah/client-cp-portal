@@ -1,6 +1,7 @@
-import EmployeesAvailability from 'components/Dashboard/EmployeesAvailability';
+import EmployeesAttendence from 'components/Dashboard/EmployeesAttendence';
 import GeneralChartCard from 'components/Charts/GeneralChartCard';
-import { EmployeeInfoChartData, TopHiringSourcesChartData, TotalEmployeesChartData } from 'components/Data/DashboardData';
+import { EmployeeInfoChartData, TopHiringSourcesChartData, TotalEmployeesChartData 
+} from 'components/Data/DashboardData';
 import Loading from 'components/UI/Loading';
 import { useAdminDashboardQuery } from 'api/Dashboard/Dashboard';
 import { Dashboard as DashboardType } from "types/Dashboard";
@@ -43,7 +44,7 @@ const Dashboard: React.FC = () => {
                         <div className="col-xl-4 col-lg-12 col-md-12">
                             <div className="row g-3">
                                 <div className="col-md-6 col-lg-6 col-xl-12">
-                                    <EmployeesAvailability data={dashboard} />
+                                    <EmployeesAttendence data={dashboard} />
                                 </div>
                                 <div className="col-md-6 col-lg-6 col-xl-12">
                                     <GeneralChartCard
