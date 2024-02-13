@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { handleServerError } from "utils/HandlingServerError";
 import { useUI } from "contexts/UIContext";
-import { useReactToPrint } from 'react-to-print';
 import { PettyCashRequest } from "types/Pc_request";
 import { PurchaseOrderRequest } from "types/Po_request";
 import { EmployeeRequest } from "types/Employee_request";
@@ -89,10 +88,6 @@ function DocumentsDetailsContent<T extends PettyCashRequest | PurchaseOrderReque
 			showError(handleServerError(err.response));
 		}
 	};
-
-	const handlePrint = useReactToPrint({
-		content: () => componentRef.current!,
-	});
 
 	const handleQrCodeUrl = (): string => {
 		let baseUrl = `${process.env.REACT_APP_PUBLIC_URL}`;
@@ -190,7 +185,7 @@ function DocumentsDetailsContent<T extends PettyCashRequest | PurchaseOrderReque
 				</div>
 				<div>
 				</div>
-				<DocumentActions<T> document={data} onApprove={handleOpenApproveModal} onReject={handleOpenRejectModal} onPrint={handlePrint} />
+				<DocumentActions<T> document={data} onApprove={handleOpenApproveModal} onReject={handleOpenRejectModal} ref={componentRef} />
 			</div>
 			<ApproveDocumentModal onClose={handleModalClose} handleApprove={handleApprove} show={isApproveModal} />
 			<RejectDocumentModal onClose={handleModalClose} handleReject={handleReject} show={isRejectModal} />

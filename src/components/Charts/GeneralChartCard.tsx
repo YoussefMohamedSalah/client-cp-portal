@@ -2,18 +2,16 @@ import { useState } from "react";
 import Chart from "react-apexcharts";
 
 interface Props {
-    identity: any;
-    Title: any;
-    TitleRight: any;
-    extraDivBody: any;
-    footerBody: any;
+    Title: string;
+    TitleRight?: string | number;
+    extraDivBody?: () => React.ReactNode;
+    footerBody?: React.ReactNode;
     data: any;
-}
+};
 
 type IState = { option: any; series: any };
 
 const GeneralChartCard: React.FC<Props> = ({
-    identity,
     Title,
     TitleRight,
     extraDivBody,

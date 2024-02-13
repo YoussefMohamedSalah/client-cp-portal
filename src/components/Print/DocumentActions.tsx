@@ -6,16 +6,21 @@ import { SiteRequest } from "types/Site_request";
 import { Contract } from 'types/Contract';
 import { Invoice } from "types/Invoice";
 import { allowDocumentsActionsBtns } from 'utils/Helpers';
-
+import { useReactToPrint } from 'react-to-print';
 
 interface Props<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice> {
 	document: T;
+	ref: any;
 	onApprove: () => void;
 	onReject: () => void;
-	onPrint: () => void;
 };
 
-function DocumentActions<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>({ onApprove, onReject, onPrint, document }: Props<T>) {
+function DocumentActions<T extends PettyCashRequest | PurchaseOrderRequest | EmployeeRequest | MaterialRequest | SiteRequest | Contract | Invoice>({ onApprove, onReject, ref, document }: Props<T>) {
+
+	const handlePrint = useReactToPrint({
+		content: () => ref.current!,
+	});
+
 	return (
 		<div className="col-sm d-flex align-items-center justify-content-center gap-2 pt-2">
 			{allowDocumentsActionsBtns(document) && (
@@ -31,7 +36,7 @@ function DocumentActions<T extends PettyCashRequest | PurchaseOrderRequest | Emp
 			<button
 				type="button"
 				className="btn btn-primary btn-md lift"
-				onClick={() => onPrint()}
+				onClick={handlePrint}
 			>
 				<i className="fa fa-print pe-1" /> Print
 			</button>

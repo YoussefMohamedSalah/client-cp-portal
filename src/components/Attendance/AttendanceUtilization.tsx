@@ -133,7 +133,6 @@ const AttendanceUtilization: React.FC<Props> = ({ latitude, longitude }) => {
                             )}
 
                         </div>}
-                    identity="todaytimeutl"
                     data={todayTimeData}
                     footerBody={
                         <>
@@ -173,7 +172,6 @@ const AttendanceUtilization: React.FC<Props> = ({ latitude, longitude }) => {
                                 <span className="fw-bold ms-1">Shift End: {shift_end.slice(0, 5)}</span>
                             </div>
                         </div>}
-                    identity="todaytimeutl"
                     data={todayTimeData}
                     footerBody={
                         <div className="d-flex justify-content-center" onClick={() => handleStartWork()}>

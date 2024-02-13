@@ -277,8 +277,7 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 			// 	return <Settings />;
 			// case PAGES.PROFILE:
 			//   return <Profile />;
-			case PAGES.PROJECTS:
-				return <Projects />;
+
 
 			// case PAGES.INVOICES:
 			// 	// return <InvoicesSample />;
