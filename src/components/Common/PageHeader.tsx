@@ -31,13 +31,13 @@ const PageHeader: React.FC<Props> = ({
 
 	return (
 		<div className="row align-items-center">
-			<div className="border-0 mb-4">
+			<div className="border-0 mb-2">
 				<div className="card-header no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
 					{isBackBtn && (
 						<span
 							onClick={() => navigate(-1)}
 							title=""
-							className="btn btn-primary border lift"
+							className="btn btn-primary border lift mb-1"
 						>
 							<div className="icon">
 								<i className="icofont-bubble-left fs-3" />

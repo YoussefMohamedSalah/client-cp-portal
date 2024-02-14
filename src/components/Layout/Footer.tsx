@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <footer className="bg-body-tertiary text-lg-start mb-2">
+        <footer className="bg-body-tertiary text-lg-start mb-2 rounded-2">
             <div className="d-flex justify-content-between">
                 <div className="p-3">
                     <a className="text-body" href="https://cp-sa.com/"> © {new Date().getFullYear()} All rights reserved.</a>

@@ -17,10 +17,9 @@ const Header = ({ session }: Props) => {
 
 	return (
 		<div className="header">
-			<nav className="navbar py-4">
+			<nav className="navbar pt-2 pb-2">
 				<div className="container-xxl">
 					{/* search */}
-					{/* <SearchBar /> */}
 					<p></p>
 					<div className='d-flex justify-self-end justify-content-end col-lg-6 col-md-6 col-12'>
 						<div className="h-right d-flex align-items-center mr-5 mr-lg-0 order-1 p-2 p-xl-0">
