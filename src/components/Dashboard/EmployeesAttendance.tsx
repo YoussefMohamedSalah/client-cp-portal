@@ -3,17 +3,16 @@ import { Dashboard } from "types/Dashboard";
 /* eslint-disable jsx-a11y/heading-has-content */
 interface Props {
   data: Dashboard;
-}
+};
 
 interface InformationItem {
   icon: React.ReactNode;
   title: string;
   textMutedVariable: number;
 }
-// Availability
-const EmployeesAttendence: React.FC<Props> = ({ data }) => {
+
+const EmployeesAttendance: React.FC<Props> = ({ data }) => {
   const { employee_count, present, absent, late_count } = data;
-  console.log(data);
 
   const information: InformationItem[] = [
     {
@@ -37,6 +36,7 @@ const EmployeesAttendence: React.FC<Props> = ({ data }) => {
       textMutedVariable: late_count,
     },
   ];
+
   return (
     <div className="card">
       <div className="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
@@ -65,4 +65,4 @@ const EmployeesAttendence: React.FC<Props> = ({ data }) => {
   );
 };
 
-export default EmployeesAttendence;
+export default EmployeesAttendance;
