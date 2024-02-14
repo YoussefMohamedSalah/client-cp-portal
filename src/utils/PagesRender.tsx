@@ -12,7 +12,7 @@ import { lazy } from "react";
 
 const Dashboard = lazy(() => import("../screens/Dashboard/Dashboard"));
 const Tenders = lazy(() => import("../screens/Tenders/Tenders"));
-// const Settings = lazy(() => import("../screens/Settings/Settings"));
+const Settings = lazy(() => import("../screens/Settings/Settings"));
 
 
 
@@ -273,8 +273,8 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 			// 	return <DailyReports />;
 			// ---
 
-			// case PAGES.SETTINGS:
-			// 	return <Settings />;
+			case PAGES.SETTINGS:
+				return <Settings />;
 			// case PAGES.PROFILE:
 			//   return <Profile />;
 

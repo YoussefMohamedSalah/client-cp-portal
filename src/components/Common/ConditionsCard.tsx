@@ -14,11 +14,11 @@ const ConditionsCard = ({ conditions, onAddCondition, onEdit, onRemove }: Props)
                 <div className="d-flex flex-column justify-content-center align-items-center">
                     <button
                         type="button"
-                        className="btn btn-success text-white mb-2"
+                        className="btn btn-success text-white"
                         onClick={onAddCondition}
                     >
+                        <i className="fa fa-plus pe-2" />
                         Conditions
-                        <i className="icofont-plus-circle fs-6 ps-2" />
                     </button>
                 </div>
             </div>
