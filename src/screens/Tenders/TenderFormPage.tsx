@@ -21,7 +21,6 @@ import { tenderUpdateInput, useUpdateTender } from "api/Tenders/updateTender";
 import { useDeleteTender } from "api/Tenders/deleteTender";
 import { useTenderDetailsQuery } from "api/Tenders/getTenderDetails";
 import DeleteModal from "components/Modals/DeleteModal";
-import { getFormattedTodayDate } from "utils/DateUtils";
 import { useCustomersQuery } from "api/Customers/getAllCustomers";
 import { useEmployeesQuery } from "api/Employees/getAllEmployees";
 import { Customer } from "types/Customer";
@@ -131,230 +130,61 @@ const TenderFormPage = ({ id }: Props) => {
 
   const formFields: IField[] = [
     {
-      label: "Tender Name",
+      label: "CODE",
       type: "text",
       width: "col-md-4",
-      key: TenderKeys.NAME,
-      value: modelData?.name,
-      onChange: (value: string) => handleModelData(TenderKeys.NAME, value),
-      placeholder: "Enter Tender Name",
+      key: TenderKeys.CODE,
+      value: modelData?.code,
+      onChange: (value: string) => handleModelData(TenderKeys.CODE, value),
+      placeholder: "Enter Code",
       required: true,
     },
     {
-      label: "Customer Name",
+      label: "USER",
       type: "select",
       width: "col-md-4",
-      key: TenderKeys.CUSTOMER,
-      value: modelData?.customer?.name!,
-      onChange: (value: string) => handleModelData(TenderKeys.CUSTOMER, value),
+      key: TenderKeys.USER,
+      value: modelData?.user?.name!,
+      onChange: (value: string) => handleModelData(TenderKeys.USER, value),
       options: customersOptions,
-      placeholder: "Select Customer",
+      placeholder: "Select User",
       required: !isEdit ? true : false,
       disabled: isEdit ? true : false,
     },
     {
-      label: "Tender Manager",
+      label: "DATE",
       type: "select",
       width: "col-md-4",
-      key: TenderKeys.MANAGER,
-      value: modelData?.manager?.name,
-      onChange: (value: string) => handleModelData(TenderKeys.MANAGER, value),
+      key: TenderKeys.DATE,
+      value: modelData?.date!,
+      onChange: (value: string) => handleModelData(TenderKeys.DATE, value),
       options: employeesOptions,
-      placeholder: "Select Manager",
+      placeholder: "Select Date",
     },
 
     {
-      label: "Assign Assistants",
-      type: "multiSelect",
-      width: "col-md-6 mt-0 ",
-      placeholder: "Assign Assistants",
-      key: TenderKeys.ASSISTANTS,
-      value: modelData.assistants! || [],
-      onChange: (value: string) =>
-        handleModelData(TenderKeys.ASSISTANTS, value),
-      options: employeesOptions,
+      label: "HAND OVER DATE",
+      type: "select",
+      width: "col-md-6",
+      key: TenderKeys.HAND_OVER,
+      value: modelData.hand_over! || [],
+      onChange: (value: string) => handleModelData(TenderKeys.HAND_OVER, value),
       required: false,
+      placeholder: "Assign Hand Over Date",
     },
     {
-      label: "LATITUDE",
-      width: "col-md-3",
+      label: "STATUS",
       type: "text",
-      key: TenderKeys.LATITUDE,
+      width: "col-md-3",
+      key: TenderKeys.STATUS,
       value: modelData?.latitude,
-      onChange: (value: string) => handleModelData(TenderKeys.LATITUDE, value),
+      onChange: (value: string) => handleModelData(TenderKeys.STATUS, value),
       placeholder: "",
-    },
-    {
-      label: "LONGITUDE",
-      width: "col-md-3",
-      type: "text",
-      key: TenderKeys.LONGITUDE,
-      value: modelData?.longitude,
-      onChange: (value: string) => handleModelData(TenderKeys.LONGITUDE, value),
-      placeholder: "",
-    },
-    {
-      type: "textarea",
-      label: "Tender Description",
-      key: TenderKeys.DESCRIPTION,
-      value: modelData?.description,
-      onChange: (value: string) =>
-        handleModelData(TenderKeys.DESCRIPTION, value),
-      placeholder: "Enter Description",
-    },
-    {
-      label: "Bid Value",
-      width: "col-md-4",
-      type: "number",
-      key: TenderKeys.BID_VALUE,
-      value: modelData?.bid_value,
-      onChange: (value: string) => handleModelData(TenderKeys.BID_VALUE, value),
-      placeholder: "0",
-      required: true,
-    },
-    {
-      label: "Total Budget",
-      width: "col-md-4",
-      type: "number",
-      key: TenderKeys.TOTAL_BUDGET,
-      value: modelData?.total_budget,
-      onChange: (value: string) =>
-        handleModelData(TenderKeys.TOTAL_BUDGET, value),
-      placeholder: "0",
-      required: true,
-    },
-    {
-      label: "PO Budget",
-      width: "col-md-4",
-      type: "number",
-      info: `${modelData.po_expenses ? modelData.po_expenses : 0}`,
-      key: TenderKeys.PO_BUDGET,
-      value: modelData?.po_budget,
-      onChange: (value: string) => handleModelData(TenderKeys.PO_BUDGET, value),
-      placeholder: "0",
-      required: true,
-    },
-    {
-      label: "PC Budget",
-      width: "col-md-4",
-      type: "number",
-      info: `${modelData.pc_expenses ? modelData.pc_expenses : 0}`,
-      key: TenderKeys.PC_BUDGET,
-      value: modelData?.pc_budget,
-      onChange: (value: string) => handleModelData(TenderKeys.PC_BUDGET, value),
-      placeholder: "0",
-      required: true,
-    },
-    {
-      label: "Staff Budget",
-      width: "col-md-4",
-      type: "number",
-      info: `${modelData.staff_expenses ? modelData.staff_expenses : 0}`,
-      key: TenderKeys.STAFF_BUDGET,
-      value: modelData?.staff_budget,
-      onChange: (value: string) =>
-        handleModelData(TenderKeys.STAFF_BUDGET, value),
-      placeholder: "0",
-      required: true,
-    },
-    {
-      label: "Subcontractor Budget",
-      width: "col-md-4",
-      type: "number",
-      info: `${
-        modelData.subcontractor_expenses ? modelData.subcontractor_expenses : 0
-      }`,
-      key: TenderKeys.SUBCONTRACTOR_BUDGET,
-      value: modelData?.subcontractor_budget,
-      onChange: (value: string) =>
-        handleModelData(TenderKeys.SUBCONTRACTOR_BUDGET, value),
-      placeholder: "0",
-      required: true,
-    },
-    {
-      label: "Contract Number",
-      width: "col-md-4",
-      type: "text",
-      key: TenderKeys.CONTRACT_NUMBER,
-      value: modelData?.contract_number,
-      onChange: (value: string) =>
-        handleModelData(TenderKeys.CONTRACT_NUMBER, value),
-      placeholder: "Contract Number",
-      required: true,
-    },
-    {
-      label: "Contract Date",
-      width: "col-md-4",
-      type: "date",
-      default: `${getFormattedTodayDate()}`,
-      key: TenderKeys.CONTRACT_DATE,
-      value: modelData?.contract_date,
-      onChange: (value: string) =>
-        handleModelData(TenderKeys.CONTRACT_DATE, value),
-      placeholder: "Enter Contract Date",
-      required: true,
-    },
-    {
-      label: "Due Date",
-      width: "col-md-4",
-      type: "date",
-      default: `${getFormattedTodayDate()}`,
-      key: TenderKeys.DELIVERY_DATE,
-      value: modelData?.delivery_date,
-      onChange: (value: string) =>
-        handleModelData(TenderKeys.DELIVERY_DATE, value),
-      placeholder: "Enter Delivery Date",
-      required: true,
-    },
-    {
-      label: "Sites Count",
-      width: "col-md-3",
-      type: "number",
-      key: TenderKeys.SITES_COUNT,
-      value: modelData?.sites_count,
-      onChange: (value: string) =>
-        handleModelData(TenderKeys.SITES_COUNT, value),
-      placeholder: "0",
-    },
-    {
-      label: "Buildings Count",
-      width: "col-md-3",
-      type: "number",
-      key: TenderKeys.BUILDINGS_COUNT,
-      value: modelData?.buildings_count,
-      onChange: (value: string) =>
-        handleModelData(TenderKeys.BUILDINGS_COUNT, value),
-      placeholder: "0",
-    },
-    {
-      label: "Floors Count",
-      width: "col-md-3",
-      type: "number",
-      key: TenderKeys.FLOORS_COUNT,
-      value: modelData?.floors_count,
-      onChange: (value: string) =>
-        handleModelData(TenderKeys.FLOORS_COUNT, value),
-      placeholder: "0",
-    },
-    {
-      label: "Tender thumbnail",
-      width: "col-md-3",
-      type: "file",
-      key: TenderKeys.THUMBNAIL,
-      value: modelData?.thumbnail,
-      onChange: (e: any) => {
-        let thumbnail: File = e.target.files[0];
-        let reader = new FileReader();
-        reader.readAsDataURL(thumbnail);
-        reader.onload = (url) => {
-          handleModelData(TenderKeys.THUMBNAIL, thumbnail);
-        };
-      },
-      placeholder: "Enter Thumbnail",
     },
   ];
 
   // MAIN ACTIONS
+
   const handleCreate = async () => {
     let numbersToValidate = TenderNumKeys;
     let stringsToValidate = TenderStrKeys;

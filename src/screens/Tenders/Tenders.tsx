@@ -34,7 +34,7 @@ const Tenders: React.FC = () => {
       <div className="container-fluid">
         {/* page header */}
         <PageHeader
-          headerTitle={"tenders"}
+          headerTitle={"Tenders"}
           isBtnShow={true}
           btnText={"Create Tender"}
           onClickBtn={() => push("/" + PAGES.TENDER)}

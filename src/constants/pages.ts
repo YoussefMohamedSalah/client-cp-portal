@@ -10,6 +10,8 @@ export enum PAGES {
   DCC = "dcc",
   CHAT = "chat",
   TASKS = "tasks",
+  TASK = "task",
+  Task_INFO = "task_rev",
   PROFILE = "profile",
   TENDERS = "tenders",
   SETTINGS = "settings",
