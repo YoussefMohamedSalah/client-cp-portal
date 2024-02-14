@@ -69,6 +69,7 @@ const SupplierFormPage = lazy(() => import("../screens/Suppliers/SupplierFormPag
 const EmployeeFormPage = lazy(() => import("../screens/Employees/EmployeeFormPage"));
 const SubcontractorFormPage = lazy(() => import("../screens/Subcontractors/SubcontractorFormPage"));
 const ProjectFormPage = lazy(() => import("../screens/Projects/ProjectFormPage"));
+const TenderFormPage = lazy(() => import("../screens/Tenders/TenderFormPage"));
 
 // // EDIT //
 // const PoRequestEditPage = lazy(() => import("../PoRequests/PoRequestEditPage"));
@@ -252,8 +253,11 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 				return <Projects />;
 			case PAGES.PROJECT:
 				return <ProjectFormPage id={id ? id : null} />;
-
-
+			// ---
+			case PAGES.TENDERS:
+				return <Tenders />;
+			case PAGES.TENDER:
+				return <TenderFormPage id={id ? id : null} />;
 
 
 			// case PAGES.INVENTORY:
