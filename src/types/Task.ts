@@ -1,25 +1,18 @@
-import { Company } from './Company';
-// import { Group } from './Group';
-import { User } from './User';
-import { PRIORITY, PROGRESS, TASK_TYPE } from 'enums/enums';
+import { Project } from "./Project";
+import { PRIORITY, PROGRESS, TASK_TYPE } from "enums/enums";
 
-interface Task {
-    id: string;
-    task_type: TASK_TYPE;
-    name: string | null;
-    description: string | null;
-    task_priority: PRIORITY;
-    status: string | null;
-    task_progress: PROGRESS;
-    creator: { id: string, name: string };
-    files: string[];
-    start_at: string;
-    end_at: string | null;
-    company: Company;
-    group: string;
-    users: User[];
-    createdAt: Date;
-    updatedAt: Date;
-}
-
-export default Task;
+export interface Task {
+  id: string;
+  name: string;
+  description: string;
+  files?: File[];
+  project: Project;
+  start_at?: string;
+  end_at?: string;
+  assigned_to?: string;
+  user?: { id: string, name: string };
+  task_priority?: PRIORITY;
+  task_progress?: PROGRESS;
+  task_type: TASK_TYPE;
+  thumbnail?: File;
+};
