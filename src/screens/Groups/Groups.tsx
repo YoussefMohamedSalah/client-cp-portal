@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Group } from "types/Group";
 import { useGroupQuery } from "api/Group/getAllGroups";
-import { useEmployeesGroupsQuery } from "api/employee/getAllWithGroups";
+import { useEmployeesGroupsQuery } from "api/Employees/getAllWithGroups";
 import { Employee } from "types/Employee";
 
 import Loading from "components/UI/Loading";

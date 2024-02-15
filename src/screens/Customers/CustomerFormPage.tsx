@@ -97,13 +97,13 @@ const CustomerFormPage = ({ id }: Props) => {
 
     const formFields: IField[] = [
         {
-            label: "NAME Name",
+            label: "Name",
             type: "text",
             width: "col-md-6",
             key: CustomerKeys.NAME,
             value: modelData?.name,
             onChange: (value: string | any) => handleModelData(CustomerKeys.NAME, value),
-            placeholder: "NAME Name",
+            placeholder: "Name",
             required: true,
         },
         {

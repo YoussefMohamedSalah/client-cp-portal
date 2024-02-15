@@ -20,7 +20,6 @@ import { Project } from 'types/Project';
 import { getOptions } from 'utils/GetOptions';
 import { useProjectsQuery } from 'api/Projects/getAllProjects';
 import { useDepartmentsQuery } from 'api/Departments/getAllDepartments';
-// import { useManagersQuery } from 'api/Managers/getAllManagers';
 
 interface Props {
     id: string | null;
@@ -90,7 +89,7 @@ const EmployeeFormPage = ({ id }: Props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [employeeData]);
 
-    if (employeeIsLoading || departmentIsLoading || projectsIsLoading) return <Loading />;
+    if ((id && employeeIsLoading) || departmentIsLoading || projectsIsLoading) return <Loading />;
     if (employeeError || departmentError || projectsError) return null;
 
     // let managers: Employee[] = managerData?.managers?.data || [] as Employee[];
