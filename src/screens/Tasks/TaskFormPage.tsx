@@ -20,34 +20,22 @@ import { taskUpdateInput, useUpdateTask } from "api/Tasks/updateTask";
 import { useDeleteTask } from "api/Tasks/deleteTask";
 import { useTaskDetailsQuery } from "api/Tasks/getTaskDetails";
 import DeleteModal from "components/Modals/DeleteModal";
-import { useCustomersQuery } from "api/Customers/getAllCustomers";
 import { useEmployeesQuery } from "api/Employees/getAllEmployees";
-import { Customer } from "types/Customer";
 import { getOptions } from "utils/GetOptions";
 import { Employee } from "types/Employee";
-import { SelectedProject } from "types/Project";
+import { Project } from "types/Project";
 import { Task } from "types/Task";
+import { useProjectsQuery } from "api/Projects/getAllProjects";
+import { PRIORITY, PROGRESS, TASK_TYPE } from "enums/enums";
 
 interface Props {
   id: string | null;
-}
-
-enum ModelKeys {
-  NAME = "name",
-  DESCRIPTION = "description",
-  IS_SUBMITTING = "isSubmitting",
-  USER = "user",
-  GROUP = "group",
-  PROJECT = "project",
-  TASK_PRIORITY = "task_priority",
-  FILES = "files",
-  START_DATE = "start_at",
-  END_DATE = "end_at",
-}
+};
 
 const TaskFormPage = ({ id }: Props) => {
   const [initialized, setInitialized] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(id ? true : false);
+  const [selectedProject, setSelectedProject] = useState<Project>({} as Project)
   // -----
   const [modelData, setModelData] = useState<Task>({} as Task);
   const [isModal, setIsModal] = useState<boolean>(false);
@@ -66,16 +54,17 @@ const TaskFormPage = ({ id }: Props) => {
   } = useTaskDetailsQuery({ id });
 
   const {
-    data: customersData,
-    error: customersError,
-    isLoading: customersIsLoading,
-  } = useCustomersQuery({});
+    data: projectsData,
+    error: projectsError,
+    isLoading: projectsIsLoading,
+  } = useProjectsQuery({});
 
   const {
     data: employeesData,
     error: employeesError,
     isLoading: employeesIsLoading,
   } = useEmployeesQuery({});
+
 
   // !Check if this is CREATE OR EDIT Modal
   useEffect(() => {
@@ -96,27 +85,23 @@ const TaskFormPage = ({ id }: Props) => {
   // !Assuming this is EDIT Modal
   useEffect(() => {
     if (!initialized && TaskData) {
-      let Task: Task = TaskData?.task?.data!;
-      setModelData({ ...Task });
+      let task: Task = TaskData?.task?.data!;
+      setModelData({ ...task });
+      if (task.project) {
+        setSelectedProject(task.project)
+      }
       setInitialized(true);
-    }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [TaskData]);
 
-  if (
-    (id && TaskIsLoading) ||
-    (!id && customersIsLoading) ||
-    (!id && employeesIsLoading)
-  )
-    return <Loading />;
-  if ((id && TaskError) || (!id && customersError) || (!id && employeesError))
-    return null;
+  if ((id && TaskIsLoading) || (!id && projectsIsLoading) || (!id && employeesIsLoading)) return <Loading />;
+  if ((id && TaskError) || (!id && projectsError) || (!id && employeesError)) return null;
 
-  let customers: Customer[] = customersData?.customers?.data || [];
-  let employees: Employee[] = employeesData?.employees?.data || [];
-
-  let customersOptions = getOptions(customers, "Select Customer");
-  let employeesOptions = getOptions(employees, "Select");
+  let projects: Project[] = projectsData?.projects?.data || [] as Project[];
+  let employees: Employee[] = employeesData?.employees?.data || [] as Employee[];
+  let projectsOptions = getOptions(projects, "Select Project");
+  let employeesOptions = getOptions(employees, "Select Employee");
 
   const handleModelData = (key: string, value: any) => {
     setModelData({
@@ -126,65 +111,58 @@ const TaskFormPage = ({ id }: Props) => {
   };
 
   const handleReset = () => {
-    // setModelData({
-    //     ...modelData,
-    //     company_name: '',
-    //     vat_on: 0,
-    //     name: "",
-    //     phone_number: "",
-    //     email: "",
-    //     country: "",
-    //     city: "",
-    //     area: "",
-    //     street: "",
-    //     building_number: "",
-    //     postal_code: null,
-    // })
+    setModelData({
+      ...modelData,
+      name: "",
+      description: "",
+      files: [],
+      project: {} as Project,
+      start_at: "",
+      end_at: "",
+      assigned_to: "",
+      task_priority: PRIORITY.LOW,
+      task_progress: PROGRESS.TODO,
+      task_type: TASK_TYPE.INDIVIDUAL_TASK,
+      thumbnail: {} as File,
+    })
   };
 
   const formFields: IField[] = [
-    // {
-    //   label: "Select Project",
-    //   type: "select",
-    //   key: ModelKeys.PROJECT,
-    //   value: modelData?.project,
-    //   options: selectedProject
-    //     ? [
-    //         {
-    //           label: selectedProject.name!,
-    //           value: selectedProject.id,
-    //         },
-    //       ]
-    //     : projects,
-    //   onChange: (value: string | any) =>
-    //     handleModelData(ModelKeys.PROJECT, value),
-    //   placeholder: "Select Project",
-    //   disabled: selectedProject ? true : false,
-    //   hide: isEditModal ? true : false,
-    // },
+    {
+      label: "Select Project",
+      type: "select",
+      key: TaskKeys.PROJECT,
+      value: modelData?.project,
+      options: projectsOptions,
+      onChange: (value: string | any) =>
+        handleModelData(TaskKeys.PROJECT, value),
+      placeholder: "Select Project",
+      disabled: selectedProject ? true : false,
+      hide: isEdit ? true : false,
+    },
     {
       label: "Task Name",
       type: "text",
-      key: ModelKeys.NAME,
+      key: TaskKeys.NAME,
       value: modelData?.name,
-      onChange: (value: string | any) => handleModelData(ModelKeys.NAME, value),
+      onChange: (value: string | any) => handleModelData(TaskKeys.NAME, value),
       placeholder: "Enter Task Name",
       required: true,
     },
     {
       label: "Description",
       type: "textarea",
-      key: ModelKeys.DESCRIPTION,
+      key: TaskKeys.DESCRIPTION,
       value: modelData?.description,
       onChange: (value: string | any) =>
-        handleModelData(ModelKeys.DESCRIPTION, value),
+        handleModelData(TaskKeys.DESCRIPTION, value),
       placeholder: "Enter Description",
       required: true,
     },
     {
       label: "Task Priority",
       type: "select",
-      key: ModelKeys.TASK_PRIORITY,
+      key: TaskKeys.TASK_PRIORITY,
       value: modelData?.task_priority,
       options: [
         {
@@ -205,7 +183,7 @@ const TaskFormPage = ({ id }: Props) => {
         },
       ],
       onChange: (value: string | any) =>
-        handleModelData(ModelKeys.TASK_PRIORITY, value),
+        handleModelData(TaskKeys.TASK_PRIORITY, value),
       placeholder: "Select Task Priority",
       //   default: {
       //     label: SelectedTask?.task_priority,
@@ -215,19 +193,19 @@ const TaskFormPage = ({ id }: Props) => {
     {
       label: "Start Date",
       type: "date",
-      key: ModelKeys.START_DATE,
+      key: TaskKeys.START_DATE,
       value: modelData?.start_at,
       onChange: (value: string | any) =>
-        handleModelData(ModelKeys.START_DATE, value),
+        handleModelData(TaskKeys.START_DATE, value),
       placeholder: "Enter Start Date",
     },
     {
       label: "End Date",
       type: "date",
-      key: ModelKeys.END_DATE,
+      key: TaskKeys.END_DATE,
       value: modelData?.end_at,
       onChange: (value: string | any) =>
-        handleModelData(ModelKeys.END_DATE, value),
+        handleModelData(TaskKeys.END_DATE, value),
       placeholder: "Enter End Date",
     },
   ];

@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
-import { Task, SelectedTask } from "types/Task";
+import { Task } from "types/Task";
 import { http } from "utils/Http";
 
 export const useCreateTask = () => {
