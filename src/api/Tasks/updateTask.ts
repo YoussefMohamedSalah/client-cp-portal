@@ -14,7 +14,7 @@ export const useUpdateTask = () => {
         },
       }
     );
-    return { task: { data: data as any } };
+    return { task: { data: data as Task } };
   });
 };
 
