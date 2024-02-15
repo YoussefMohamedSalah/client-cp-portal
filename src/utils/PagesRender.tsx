@@ -146,7 +146,7 @@ const TenderFormPage = lazy(() => import("../screens/Tenders/TenderFormPage"));
 // const TaskDetails = lazy(() => import("../Tasks/TaskDetails"));
 // const Categories = lazy(() => import("../Category/Category"));
 // const Managers = lazy(() => import("../Manager/Managers"));
-// const Groups = lazy(() => import("../Groups/Groups"));
+const Groups = lazy(() => import("../screens/Groups/Groups"));
 // const EmployeeProfile = lazy(() => import("../Profile/EmployeeProfile"));
 
 // const EnquiresDetail = lazy(() => import("../Tickets/TicketsDetail"));
@@ -282,9 +282,15 @@ export const PagesRender = ({
         return <Projects />;
       case PAGES.PROJECT:
         return <ProjectFormPage id={id ? id : null} />;
-      // ---
+
+      case PAGES.SETTINGS:
+        return <Settings />;
       case PAGES.TENDERS:
         return <Tenders />;
+
+      case PAGES.GROUPS:
+        return <Groups />;
+      // ---
       case PAGES.TENDER:
         return <TenderFormPage id={id ? id : null} />;
       case PAGES.TASKS:

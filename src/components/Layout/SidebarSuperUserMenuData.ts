@@ -377,17 +377,17 @@ export const superUserMenuData: any[] = [
         roles: ["Superuser", "Sub_Superuser"]
     },
 
-    // {
-    //   name: "Groups",
-    //   routerLink: ["/groups"],
-    //   identifier: "Groups",
-    //   iconClass: "icofont-briefcase",
-    //   breadcrumbMessage: "",
-    //   isCategory: false,
-    //   isApp: false,
-    //   children: [],
-    //   roles: ["Superuser", "Sub_Superuser"]
-    // },
+    {
+        name: "Groups",
+        routerLink: ["/groups"],
+        identifier: "Groups",
+        iconClass: "icofont-briefcase",
+        breadcrumbMessage: "",
+        isCategory: false,
+        isApp: false,
+        children: [],
+        roles: ["Superuser", "Sub_Superuser"]
+    },
     // {
     //   name: "Tasks",
     //   routerLink: ["/tasks"],

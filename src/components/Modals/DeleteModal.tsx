@@ -3,7 +3,7 @@ import { Modal } from "react-bootstrap";
 
 interface Props {
 	onClose: () => void;
-	show: any;
+	show: boolean;
 	modalHeader: string;
 	onDelete: () => void;
 	message?: string;
