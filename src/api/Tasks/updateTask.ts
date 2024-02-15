@@ -26,7 +26,7 @@ export const taskUpdateInput = (data: Task): any => {
       task_type: data.task_type,
       task_priority: data.task_priority,
       assigned_to: data.assigned_to,
-      projectId: data.projectId,
+      project: data.project,
       start_at: data.start_at,
       end_at: data.end_at,
     } as Task;
@@ -39,7 +39,7 @@ export const taskUpdateInput = (data: Task): any => {
   data.task_priority &&
     formData.append("task_priority", `${data?.task_priority!}`);
   data.assigned_to && formData.append("assigned_to", `${data?.assigned_to!}`);
-  data.projectId && formData.append("projectId", `${data?.projectId!}`);
+  data.project && formData.append("project", `${data?.project!}`);
   data.start_at && formData.append("start_at", `${data?.start_at!}`);
   data.end_at && formData.append("end_at", `${data?.end_at!}`);
   if (!data.thumbnail) return formData;
