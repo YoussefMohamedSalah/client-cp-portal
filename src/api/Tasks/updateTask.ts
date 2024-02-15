@@ -5,15 +5,11 @@ import { http } from "utils/Http";
 
 export const useUpdateTask = () => {
   return useMutation<any, Error, any>(async (updateInput) => {
-    const { data } = await http.put(
-      ROUTES.TASK + updateInput.id + "/",
-      updateInput.data,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    const { data } = await http.put(ROUTES.TASK + updateInput.id + "/", updateInput.data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return { task: { data: data as Task } };
   });
 };
@@ -36,8 +32,7 @@ export const taskUpdateInput = (data: Task): any => {
   data.name && formData.append("name", data.name);
   data.description && formData.append("description", data?.description!);
   data.task_type && formData.append("task_type", `${data?.task_type!}`);
-  data.task_priority &&
-    formData.append("task_priority", `${data?.task_priority!}`);
+  data.task_priority && formData.append("task_priority", `${data?.task_priority!}`);
   data.assigned_to && formData.append("assigned_to", `${data?.assigned_to!}`);
   data.project && formData.append("project", `${data?.project?.id!}`);
   data.start_at && formData.append("start_at", `${data?.start_at!}`);

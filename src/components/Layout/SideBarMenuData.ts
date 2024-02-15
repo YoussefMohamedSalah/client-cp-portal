@@ -20,7 +20,7 @@ export const SideBarMenuData: any[] = [
         isApp: true,
         children: [],
         roles: ["Superuser", "User", "Manager", "Director"],
-        departments: ["Projects", "Finance", "HR", "Procurement", "Tender"]
+        departments: ["Projects", "Finance", "HR", "Procurement", "Tender"],
       },
       {
         name: "Customers",
@@ -32,7 +32,7 @@ export const SideBarMenuData: any[] = [
         isApp: true,
         children: [],
         roles: ["Superuser", "User", "Manager", "Director"],
-        departments: ["Projects", "Finance", "HR", "Procurement", "Tender"]
+        departments: ["Projects", "Finance", "HR", "Procurement", "Tender"],
       },
       {
         name: "Subcontractors",
@@ -44,11 +44,11 @@ export const SideBarMenuData: any[] = [
         isApp: true,
         children: [],
         roles: ["Superuser", "User", "Manager", "Director"],
-        departments: ["Projects", "Finance", "HR", "Procurement", "Tender"]
+        departments: ["Projects", "Finance", "HR", "Procurement", "Tender"],
       },
     ],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Projects", "Finance", "Procurement", "Tender", "HR"]
+    departments: ["Projects", "Finance", "Procurement", "Tender", "HR"],
   },
   // Requests
   {
@@ -70,7 +70,7 @@ export const SideBarMenuData: any[] = [
         isApp: true,
         children: [],
         roles: ["Superuser", "User", "Manager", "Director"],
-        departments: ["Projects", "Procurement", "Tender", "Finance", "HR"]
+        departments: ["Projects", "Procurement", "Tender", "Finance", "HR"],
       },
       {
         name: "PO Requests",
@@ -82,7 +82,7 @@ export const SideBarMenuData: any[] = [
         isApp: true,
         children: [],
         roles: ["Superuser", "User", "Manager", "Director"],
-        departments: ["Projects", "Procurement", "Tender", "Finance"]
+        departments: ["Projects", "Procurement", "Tender", "Finance"],
       },
       {
         name: "PC Requests",
@@ -94,7 +94,7 @@ export const SideBarMenuData: any[] = [
         isApp: true,
         children: [],
         roles: ["Superuser", "User", "Manager", "Director"],
-        departments: ["Projects", "Procurement", "Tender", "Finance"]
+        departments: ["Projects", "Procurement", "Tender", "Finance"],
       },
       {
         name: "Site Requests",
@@ -106,7 +106,7 @@ export const SideBarMenuData: any[] = [
         isApp: true,
         children: [],
         roles: ["Superuser", "User", "Manager", "Director"],
-        departments: ["Projects", "Procurement", "Tender", "Finance"]
+        departments: ["Projects", "Procurement", "Tender", "Finance"],
       },
       {
         name: "Material Requests",
@@ -118,7 +118,7 @@ export const SideBarMenuData: any[] = [
         isApp: true,
         children: [],
         roles: ["Superuser", "User", "Manager", "Director"],
-        departments: ["Projects", "Procurement", "Tender", "Finance"]
+        departments: ["Projects", "Procurement", "Tender", "Finance"],
       },
       {
         name: "Contracts",
@@ -130,11 +130,11 @@ export const SideBarMenuData: any[] = [
         isApp: false,
         children: [],
         roles: ["Superuser", "User", "Manager", "Director"],
-        departments: ["Projects", "Procurement", "Tender", "Finance"]
+        departments: ["Projects", "Procurement", "Tender", "Finance"],
       },
     ],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Projects", "Finance", "Procurement", "Tender", "HR"]
+    departments: ["Projects", "Finance", "Procurement", "Tender", "HR"],
   },
   // Finances
   {
@@ -156,7 +156,7 @@ export const SideBarMenuData: any[] = [
         isApp: false,
         children: [],
         roles: ["Superuser", "User", "Director", "Manager"],
-        departments: ["Finance"]
+        departments: ["Finance"],
       },
       {
         name: "Project INV",
@@ -168,7 +168,7 @@ export const SideBarMenuData: any[] = [
         isApp: false,
         children: [],
         roles: ["Superuser", "User", "Director", "Manager"],
-        departments: ["Finance"]
+        departments: ["Finance"],
       },
       {
         name: "Cost Center",
@@ -180,7 +180,7 @@ export const SideBarMenuData: any[] = [
         isApp: false,
         children: [],
         roles: ["Superuser", "User", "Manager", "Director"],
-        departments: ["Finance"]
+        departments: ["Finance"],
       },
       {
         name: "Payments",
@@ -192,7 +192,7 @@ export const SideBarMenuData: any[] = [
         isApp: false,
         children: [],
         roles: ["Superuser", "User", "Director", "Manager"],
-        departments: ["Finance"]
+        departments: ["Finance"],
       },
       {
         name: "Expenses",
@@ -204,11 +204,11 @@ export const SideBarMenuData: any[] = [
         isApp: false,
         children: [],
         roles: ["Superuser", "User", "Director", "Manager"],
-        departments: ["Finance"]
+        departments: ["Finance"],
       },
     ],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Finance"]
+    departments: ["Finance"],
   },
   // HR Only
   {
@@ -229,7 +229,7 @@ export const SideBarMenuData: any[] = [
         isCategory: false,
         isApp: true,
         children: [],
-        roles: ["Superuser", "Director", "Manager", "User"]
+        roles: ["Superuser", "Director", "Manager", "User"],
       },
       {
         name: "Employees",
@@ -240,7 +240,7 @@ export const SideBarMenuData: any[] = [
         isCategory: false,
         isApp: true,
         children: [],
-        roles: ["Superuser", "Director", "Manager", "User"]
+        roles: ["Superuser", "Director", "Manager", "User"],
       },
       {
         name: "Attendance",
@@ -251,7 +251,7 @@ export const SideBarMenuData: any[] = [
         isCategory: false,
         isApp: true,
         children: [],
-        roles: ["Superuser", "Director", "Manager", "User"]
+        roles: ["Superuser", "Director", "Manager", "User"],
       },
       {
         name: "Salaries",
@@ -277,7 +277,7 @@ export const SideBarMenuData: any[] = [
       },
     ],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["HR"]
+    departments: ["HR"],
   },
   // HR for all
   {
@@ -298,7 +298,7 @@ export const SideBarMenuData: any[] = [
         isCategory: false,
         isApp: true,
         children: [],
-        roles: ["Superuser", "Director", "Manager"]
+        roles: ["Superuser", "Director", "Manager"],
       },
       {
         name: "Employees",
@@ -309,7 +309,7 @@ export const SideBarMenuData: any[] = [
         isCategory: false,
         isApp: true,
         children: [],
-        roles: ["Superuser", "Director", "Manager"]
+        roles: ["Superuser", "Director", "Manager"],
       },
       {
         name: "Customers",
@@ -320,7 +320,7 @@ export const SideBarMenuData: any[] = [
         isCategory: false,
         isApp: true,
         children: [],
-        roles: ["Superuser", "Director", "Manager"]
+        roles: ["Superuser", "Director", "Manager"],
       },
       {
         name: "Attendance",
@@ -331,7 +331,7 @@ export const SideBarMenuData: any[] = [
         isCategory: false,
         isApp: true,
         children: [],
-        roles: ["Superuser", "Director", "Manager"]
+        roles: ["Superuser", "Director", "Manager"],
       },
       {
         name: "Salaries",
@@ -342,13 +342,12 @@ export const SideBarMenuData: any[] = [
         isCategory: false,
         isApp: true,
         children: [],
-        roles: ["Superuser", "Director", "Manager"]
+        roles: ["Superuser", "Director", "Manager"],
       },
     ],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Projects", "Finance", "Procurement", "Tender"]
+    departments: ["Projects", "Finance", "Procurement", "Tender"],
   },
-
 
   // ******************************** Without Children Menus
   // Procurement Plan
@@ -362,7 +361,7 @@ export const SideBarMenuData: any[] = [
     isApp: false,
     children: [],
     roles: ["Superuser", "Manager", "Director"],
-    departments: ["Projects", "Procurement", "Tender", "Finance"]
+    departments: ["Projects", "Procurement", "Tender", "Finance"],
   },
   // Construction Plan
   {
@@ -375,7 +374,7 @@ export const SideBarMenuData: any[] = [
     isApp: false,
     children: [],
     roles: ["Superuser", "Manager", "Director"],
-    departments: ["Projects", "Procurement", "Tender", "Finance"]
+    departments: ["Projects", "Procurement", "Tender", "Finance"],
   },
   // Inventory
   {
@@ -388,17 +387,8 @@ export const SideBarMenuData: any[] = [
     isApp: false,
     children: [],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Projects", "Procurement", "Tender"]
+    departments: ["Projects", "Procurement", "Tender"],
   },
-
-
-
-
-
-
-
-
-
 
   // *************************************************************
   // <Tender Department>
@@ -412,7 +402,7 @@ export const SideBarMenuData: any[] = [
     isApp: true,
     children: [],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Tender", "Finance", "HR"]
+    departments: ["Tender", "Finance", "HR"],
   },
   // <Marketing Department>
   {
@@ -425,7 +415,7 @@ export const SideBarMenuData: any[] = [
     isApp: true,
     children: [],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Marketing"]
+    departments: ["Marketing"],
   },
 
   // *************************************************************
@@ -440,14 +430,7 @@ export const SideBarMenuData: any[] = [
     isApp: false,
     children: [],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: [
-      "Projects",
-      "HR",
-      "Finance",
-      "Marketing",
-      "Tender",
-      "Procurement"
-    ]
+    departments: ["Projects", "HR", "Finance", "Marketing", "Tender", "Procurement"],
   },
   // {
   //   name: "Reports",
@@ -497,14 +480,7 @@ export const SideBarMenuData: any[] = [
     isApp: false,
     children: [],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: [
-      "Projects",
-      "HR",
-      "Finance",
-      "Marketing",
-      "Tender",
-      "Procurement"
-    ]
+    departments: ["Projects", "HR", "Finance", "Marketing", "Tender", "Procurement"],
   },
   {
     name: "Chat",
@@ -516,14 +492,7 @@ export const SideBarMenuData: any[] = [
     isApp: true,
     children: [],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: [
-      "Projects",
-      "HR",
-      "Finance",
-      "Marketing",
-      "Tender",
-      "Procurement"
-    ]
+    departments: ["Projects", "HR", "Finance", "Marketing", "Tender", "Procurement"],
   },
   {
     name: "Calendar",
@@ -535,12 +504,6 @@ export const SideBarMenuData: any[] = [
     isApp: true,
     children: [],
     roles: ["Superuser", "Manager", "Director"],
-    departments: [
-      "HR",
-      "Finance",
-      "Marketing",
-      "Tender",
-      "Procurement"
-    ]
-  }
+    departments: ["HR", "Finance", "Marketing", "Tender", "Procurement"],
+  },
 ];

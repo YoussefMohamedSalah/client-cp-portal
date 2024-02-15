@@ -27,10 +27,7 @@ export const allowDocumentsActionsBtns = (document: any) => {
       isUserInWorkflow = true;
 
       // Check if the current user is rejected or has a state of true
-      if (
-        document.work_flow[i]?.isRejected === true ||
-        document.work_flow[i]?.state === true
-      ) {
+      if (document.work_flow[i]?.isRejected === true || document.work_flow[i]?.state === true) {
         isAllowed = false;
         break;
       }
@@ -87,24 +84,9 @@ export const checkPermission = (selectPermission: string) => {
   // return hasPermission;
 };
 
-export const checkRole = (
-  roles: string[],
-  departments: string[],
-  session: Session
-) => {
-  if (
-    session?.user?.role === ENUMS.ROLE.SUPERUSER ||
-    session?.user?.role === ENUMS.ROLE.SUB_SUPERUSER
-  )
-    return true;
-  if (
-    !session ||
-    !roles ||
-    roles.length === 0 ||
-    !departments ||
-    departments.length === 0
-  )
-    return false;
+export const checkRole = (roles: string[], departments: string[], session: Session) => {
+  if (session?.user?.role === ENUMS.ROLE.SUPERUSER || session?.user?.role === ENUMS.ROLE.SUB_SUPERUSER) return true;
+  if (!session || !roles || roles.length === 0 || !departments || departments.length === 0) return false;
 
   let hasRole: boolean = false;
   let isDepartmentMember: boolean = false;
@@ -114,8 +96,7 @@ export const checkRole = (
   });
 
   departments.forEach((department) => {
-    if (session.user?.department_info?.name! === department)
-      isDepartmentMember = true;
+    if (session.user?.department_info?.name! === department) isDepartmentMember = true;
   });
 
   if (!hasRole || !isDepartmentMember) return false;

@@ -1,19 +1,14 @@
 export enum SuperUserKeys {
   NAME = "name",
   EMAIL = "email",
-  ROLE = 'role',
+  ROLE = "role",
   PHONE_NUMBER = "phone_number",
-  AVATAR = 'avatar',
-};
+  AVATAR = "avatar",
+}
 
 export const SuperUserNumKeys = [];
 
-export const SuperUserStrKeys = [
-  SuperUserKeys.NAME,
-  SuperUserKeys.EMAIL,
-  SuperUserKeys.ROLE,
-  SuperUserKeys.AVATAR,
-];
+export const SuperUserStrKeys = [SuperUserKeys.NAME, SuperUserKeys.EMAIL, SuperUserKeys.ROLE, SuperUserKeys.AVATAR];
 
 export const SuperUserRequiredKeys = [
   SuperUserKeys.NAME,
@@ -22,6 +17,4 @@ export const SuperUserRequiredKeys = [
   SuperUserKeys.ROLE,
 ];
 
-export const SuperUserUpdateRequiredKeys = [
-  SuperUserKeys.ROLE,
-];
+export const SuperUserUpdateRequiredKeys = [SuperUserKeys.ROLE];

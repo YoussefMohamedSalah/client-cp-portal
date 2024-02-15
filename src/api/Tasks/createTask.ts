@@ -32,8 +32,7 @@ export const taskInput = (data: Task): any => {
   data.name && formData.append("name", data.name);
   data.description && formData.append("description", data?.description!);
   data.task_type && formData.append("task_type", `${data?.task_type!}`);
-  data.task_priority &&
-    formData.append("task_priority", `${data?.task_priority!}`);
+  data.task_priority && formData.append("task_priority", `${data?.task_priority!}`);
   data.assigned_to && formData.append("assigned_to", `${data?.assigned_to!}`);
   data.project && formData.append("project", `${data?.project?.id!}`);
   data.start_at && formData.append("start_at", `${data?.start_at!}`);

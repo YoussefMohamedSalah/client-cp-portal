@@ -49,14 +49,8 @@ body {
   --bs-table-accent-bg: var(--color-300);
 }
 
-table.dataTable.dtr-inline.collapsed
-  > tbody
-  > tr[role="row"]
-  > td:first-child:before,
-table.dataTable.dtr-inline.collapsed
-  > tbody
-  > tr[role="row"]
-  > th:first-child:before {
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child:before {
   top: 50%;
   background-color: var(--card-color) !important;
   transform: translateY(-50%);

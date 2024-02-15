@@ -8,8 +8,5 @@ export const getAllManagers = async ({ queryKey }: any) => {
 };
 
 export const useManagersQuery = (options: any) => {
-  return useQuery<{ managers: { data: any } }, Error>(
-    [ROUTES.MANAGER, options],
-    getAllManagers
-  );
+  return useQuery<{ managers: { data: any } }, Error>([ROUTES.MANAGER, options], getAllManagers);
 };

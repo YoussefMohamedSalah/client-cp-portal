@@ -4,7 +4,7 @@ import { ROUTES } from "constants/routes";
 import { SiteRequest } from "types/Site_request";
 
 export const useCreateSiteRequest = () => {
-  return useMutation<any, Error, any>(async createInput => {
+  return useMutation<any, Error, any>(async (createInput) => {
     const { projectId } = createInput;
     const { data } = await http.post(ROUTES.SITE_REQUEST, { ...createInput, projectId });
     return { siteRequest: { data: data as SiteRequest } };
@@ -16,5 +16,5 @@ export const siteRequestInput = (data: any): any => {
     subject: data.subject ? data.subject : null,
     date: data.date ? data.date : null,
     description: data.description ? data.description : null,
-  }
+  };
 };

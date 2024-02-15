@@ -8,8 +8,5 @@ export const getAllProjects = async ({ queryKey }: any) => {
 };
 
 export const useProjectsQuery = (options: any) => {
-  return useQuery<{ projects: { data: any } }, Error>(
-    [ROUTES.CO_PROJECTS, options],
-    getAllProjects
-  );
+  return useQuery<{ projects: { data: any } }, Error>([ROUTES.CO_PROJECTS, options], getAllProjects);
 };

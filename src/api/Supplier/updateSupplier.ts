@@ -4,7 +4,7 @@ import { Supplier } from "types/Supplier";
 import { http } from "utils/Http";
 
 export const useUpdateSupplier = () => {
-  return useMutation<any, Error, any>(async updateInput => {
+  return useMutation<any, Error, any>(async (updateInput) => {
     const { data } = await http.put(ROUTES.SUPPLIER + updateInput.id, updateInput.data);
     return { supplier: { data: data as Supplier } };
   });

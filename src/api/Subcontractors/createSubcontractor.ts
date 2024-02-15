@@ -4,7 +4,7 @@ import { Subcontractor } from "types/Subcontractor";
 import http from "utils/Http";
 
 export const useCreateSubcontractor = () => {
-  return useMutation<any, Error, Subcontractor>(async createInput => {
+  return useMutation<any, Error, Subcontractor>(async (createInput) => {
     const { data } = await http.post(ROUTES.SUBCONTRACTOR, createInput);
     return { subcontractor: { data: data as Subcontractor } };
   });
@@ -24,5 +24,5 @@ export const subcontractorInput = (data: Subcontractor): any => {
     street: data.street,
     building_number: data.building_number,
     postal_code: data.postal_code,
-  }
+  };
 };

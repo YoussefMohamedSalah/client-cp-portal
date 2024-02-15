@@ -19,13 +19,12 @@ import lgAvatar10 from "../../assets/images/lg/avatar1.jpg";
 import lgAvatar11 from "../../assets/images/lg/avatar1.jpg";
 import lgAvatar12 from "../../assets/images/lg/avatar1.jpg";
 
-
 export const TimesheetListData: any = {
   title: "Timesheet List",
   columns: [
     {
       name: "PROJECT NAME",
-      selector: () => { },
+      selector: () => {},
       sortable: true,
       cell: () => (
         <select className="form-select">
@@ -43,78 +42,42 @@ export const TimesheetListData: any = {
     {
       name: "MON",
       selector: (row: any) => (
-        <input
-          type="time"
-          className="form-control"
-          id="timepickerded29"
-          value={row.mon}
-          onChange={() => { }}
-        />
+        <input type="time" className="form-control" id="timepickerded29" value={row.mon} onChange={() => {}} />
       ),
       sortable: true,
     },
     {
       name: "TUE",
       selector: (row: any) => (
-        <input
-          type="time"
-          className="form-control"
-          id="timepickerded29"
-          value={row.tue}
-          onChange={() => { }}
-        />
+        <input type="time" className="form-control" id="timepickerded29" value={row.tue} onChange={() => {}} />
       ),
       sortable: true,
     },
     {
       name: "WED",
       selector: (row: any) => (
-        <input
-          type="time"
-          className="form-control"
-          id="timepickerded29"
-          value={row.wed}
-          onChange={() => { }}
-        />
+        <input type="time" className="form-control" id="timepickerded29" value={row.wed} onChange={() => {}} />
       ),
       sortable: true,
     },
     {
       name: "THUR",
       selector: (row: any) => (
-        <input
-          type="time"
-          className="form-control"
-          id="timepickerded29"
-          value={row.thur}
-          onChange={() => { }}
-        />
+        <input type="time" className="form-control" id="timepickerded29" value={row.thur} onChange={() => {}} />
       ),
       sortable: true,
     },
     {
       name: "FRI",
       selector: (row: any) => (
-        <input
-          type="time"
-          className="form-control"
-          id="timepickerded29"
-          value={row.fri}
-          onChange={() => { }}
-        />
+        <input type="time" className="form-control" id="timepickerded29" value={row.fri} onChange={() => {}} />
       ),
       sortable: true,
     },
     {
       name: "SAT",
       selector: (row: any) => (
-        <input
-          type="time"
-          className="form-control"
-          id="timepickerded29"
-          value={row.sat}
-          onChange={() => { }}
-        />
+        <input type="time" className="form-control" id="timepickerded29" value={row.sat} onChange={() => {}} />
       ),
       sortable: true,
     },
@@ -130,13 +93,9 @@ export const TimesheetListData: any = {
     },
     {
       name: "",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       cell: () => (
-        <div
-          className="btn-group"
-          role="group"
-          aria-label="Basic outlined example"
-        >
+        <div className="btn-group" role="group" aria-label="Basic outlined example">
           <button type="button" className="btn btn-outline-secondary">
             <i className="icofont-edit text-success"></i>
           </button>
@@ -268,18 +227,13 @@ export const LeadersListData: any = {
     },
     {
       name: "ASSIGNED STAFF",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: true,
       cell: (row: any) => {
         return (
           <div className="avatar-list avatar-list-stacked px-3">
             {row.assignedStaff.map((data: any, index: number) => (
-              <img
-                key={"image" + index}
-                className="avatar rounded-circle sm"
-                src={data}
-                alt=""
-              />
+              <img key={"image" + index} className="avatar rounded-circle sm" src={data} alt="" />
             ))}
             <span className="avatar rounded-circle text-center pointer sm">
               <i className="icofont-ui-add"></i>
@@ -290,20 +244,16 @@ export const LeadersListData: any = {
     },
     {
       name: "STATUS",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: true,
       cell: (row: any) => <span className="badge bg-success">{row.status}</span>,
     },
     {
       name: "ACTION",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: true,
       cell: () => (
-        <div
-          className="btn-group"
-          role="group"
-          aria-label="Basic outlined example"
-        >
+        <div className="btn-group" role="group" aria-label="Basic outlined example">
           <button type="button" className="btn btn-outline-secondary">
             <i className="icofont-edit text-success"></i>
           </button>
@@ -425,27 +375,18 @@ export const EnquiresViewData: any = {
     },
     {
       name: "STATUS",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: true,
       cell: (row: any) => (
-        <span
-          className={`badge ${row.status === "Completed" ? "bg-success" : "bg-warning"
-            }`}
-        >
-          {row.status}
-        </span>
+        <span className={`badge ${row.status === "Completed" ? "bg-success" : "bg-warning"}`}>{row.status}</span>
       ),
     },
     {
       name: "ACTION",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: true,
       cell: () => (
-        <div
-          className="btn-group"
-          role="group"
-          aria-label="Basic outlined example"
-        >
+        <div className="btn-group" role="group" aria-label="Basic outlined example">
           <button type="button" className="btn btn-outline-secondary">
             <i className="icofont-edit text-success"></i>
           </button>
@@ -792,28 +733,20 @@ export const HolidaysData: any = {
     },
     {
       name: "HOLIDAY DATE",
-      selector: (row: any) => (
-        <span className={row.txtClass}>{row.holidayDate}</span>
-      ),
+      selector: (row: any) => <span className={row.txtClass}>{row.holidayDate}</span>,
       sortable: true,
     },
     {
       name: "HOLIDAY NAME",
-      selector: (row: any) => (
-        <span className={row.txtClass}>{row.holidayName}</span>
-      ),
+      selector: (row: any) => <span className={row.txtClass}>{row.holidayName}</span>,
       sortable: true,
     },
     {
       name: "ACTION",
-      selector: () => { },
+      selector: () => {},
       sortable: true,
       cell: () => (
-        <div
-          className="btn-group"
-          role="group"
-          aria-label="Basic outlined example"
-        >
+        <div className="btn-group" role="group" aria-label="Basic outlined example">
           <button type="button" className="btn btn-outline-secondary">
             <i className="icofont-edit text-success"></i>
           </button>
@@ -901,7 +834,7 @@ export const LeaveRequestData: any = {
     },
     {
       name: "EMPLOYEE NAME",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: true,
       cell: (row: any) => (
         <>
@@ -933,14 +866,10 @@ export const LeaveRequestData: any = {
     },
     {
       name: "ACTION",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: true,
       cell: () => (
-        <div
-          className="btn-group"
-          role="group"
-          aria-label="Basic outlined example"
-        >
+        <div className="btn-group" role="group" aria-label="Basic outlined example">
           <button type="button" className="btn btn-outline-secondary">
             <i className="icofont-check-circled text-success"></i>
           </button>
@@ -1051,19 +980,11 @@ export const DepartmentsData: any = {
     },
     {
       name: "ACTION",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: true,
       cell: () => (
-        <div
-          className="btn-group"
-          role="group"
-          aria-label="Basic outlined example"
-        >
-          <button
-            className="btn btn-outline-secondary"
-            data-bs-toggle="modal"
-            data-bs-target="#depedit"
-          >
+        <div className="btn-group" role="group" aria-label="Basic outlined example">
+          <button className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#depedit">
             <i className="icofont-edit text-success"></i>
           </button>
           <button className="btn btn-outline-secondary deleterow">
@@ -1158,16 +1079,13 @@ export const PaymentsData: any = {
     },
     {
       name: "STATUS",
-      selector: () => { },
+      selector: () => {},
       sortable: true,
       cell: (row: any) => (
         <span
-          className={`badge ${row.status === "Paid"
-            ? "bg-success"
-            : row.status === "Draf"
-              ? "bg-lavender-purple"
-              : "bg-warning"
-            }`}
+          className={`badge ${
+            row.status === "Paid" ? "bg-success" : row.status === "Draf" ? "bg-lavender-purple" : "bg-warning"
+          }`}
         >
           {row.status}
         </span>
@@ -1256,7 +1174,7 @@ export const ExpensesData: any = {
     },
     {
       name: "ORDER BY",
-      selector: () => { },
+      selector: () => {},
       sortable: true,
       cell: (row: any) => (
         <>
@@ -1278,16 +1196,13 @@ export const ExpensesData: any = {
     },
     {
       name: "STATUS",
-      selector: () => { },
+      selector: () => {},
       sortable: true,
       cell: (row: any) => (
         <span
-          className={`badge ${row.status === "Completed"
-            ? "bg-success"
-            : row.status === "Draf"
-              ? "bg-lavender-purple"
-              : "bg-warning"
-            }`}
+          className={`badge ${
+            row.status === "Completed" ? "bg-success" : row.status === "Draf" ? "bg-lavender-purple" : "bg-warning"
+          }`}
         >
           {row.status}
         </span>
@@ -1295,20 +1210,11 @@ export const ExpensesData: any = {
     },
     {
       name: "ACTION",
-      selector: () => { },
+      selector: () => {},
       sortable: true,
       cell: () => (
-        <div
-          className="btn-group"
-          role="group"
-          aria-label="Basic outlined example"
-        >
-          <button
-            type="button"
-            className="btn btn-outline-secondary"
-            data-bs-toggle="modal"
-            data-bs-target="#expedit"
-          >
+        <div className="btn-group" role="group" aria-label="Basic outlined example">
+          <button type="button" className="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#expedit">
             <i className="icofont-edit text-success"></i>
           </button>
           <button type="button" className="btn btn-outline-secondary deleterow">
@@ -1392,15 +1298,7 @@ export const ProjectCardData: any = [
     sl: "Practice to Perfect",
   },
   {
-    teamImage: [
-      lgAvatar1,
-      lgAvatar3,
-      lgAvatar4,
-      lgAvatar8,
-      lgAvatar5,
-      lgAvatar5,
-      lgAvatar7,
-    ],
+    teamImage: [lgAvatar1, lgAvatar3, lgAvatar4, lgAvatar8, lgAvatar5, lgAvatar5, lgAvatar7],
     logo: "icofont-ui-touch-phone",
     logoBg: "bg-lightyellow",
     title: "Assessment System",
@@ -1414,32 +1312,14 @@ export const ProjectCardData: any = [
     sl: "Switch and Swif",
   },
   {
-    teamImage: [
-      lgAvatar1,
-      lgAvatar3,
-      lgAvatar1,
-      lgAvatar3,
-      lgAvatar4,
-      lgAvatar8,
-      lgAvatar5,
-      lgAvatar5,
-      lgAvatar7,
-    ],
+    teamImage: [lgAvatar1, lgAvatar3, lgAvatar1, lgAvatar3, lgAvatar4, lgAvatar8, lgAvatar5, lgAvatar5, lgAvatar7],
     logo: "icofont-dashboard-web",
     logoBg: "light-orange-bg",
     title: "Development",
     sl: "Gob Geeklords",
   },
   {
-    teamImage: [
-      lgAvatar1,
-      lgAvatar3,
-      lgAvatar4,
-      lgAvatar8,
-      lgAvatar5,
-      lgAvatar5,
-      lgAvatar7,
-    ],
+    teamImage: [lgAvatar1, lgAvatar3, lgAvatar4, lgAvatar8, lgAvatar5, lgAvatar5, lgAvatar7],
     logo: "icofont-tasks",
     logoBg: "bg-lightblue",
     title: "Student Records",
@@ -1460,17 +1340,7 @@ export const ProjectCardData: any = [
     sl: "Switch and Swif",
   },
   {
-    teamImage: [
-      lgAvatar1,
-      lgAvatar3,
-      lgAvatar1,
-      lgAvatar3,
-      lgAvatar4,
-      lgAvatar8,
-      lgAvatar5,
-      lgAvatar5,
-      lgAvatar7,
-    ],
+    teamImage: [lgAvatar1, lgAvatar3, lgAvatar1, lgAvatar3, lgAvatar4, lgAvatar8, lgAvatar5, lgAvatar5, lgAvatar7],
     logo: "icofont-dashboard-web",
     logoBg: "light-orange-bg",
     title: "Development",
@@ -1689,9 +1559,7 @@ export const TimeAttendanceData: any = {
     },
     {
       name: "PUNCHOU TIME",
-      selector: (row: any) => (
-        <span className="text-danger">{row.punchoutTime}</span>
-      ),
+      selector: (row: any) => <span className="text-danger">{row.punchoutTime}</span>,
       sortable: true,
     },
     {
@@ -1702,20 +1570,14 @@ export const TimeAttendanceData: any = {
     {
       name: "HALF DAY",
       selector: (row: any) => (
-        <i
-          className={`icofont-close-circled ${row.halfDay ? "text-success" : "text-danger"
-            }`}
-        ></i>
+        <i className={`icofont-close-circled ${row.halfDay ? "text-success" : "text-danger"}`}></i>
       ),
       sortable: true,
     },
     {
       name: "FULL DAY",
       selector: (row: any) => (
-        <i
-          className={`icofont-close-circled ${row.fullDay ? "text-success" : "text-danger"
-            }`}
-        ></i>
+        <i className={`icofont-close-circled ${row.fullDay ? "text-success" : "text-danger"}`}></i>
       ),
       sortable: true,
     },

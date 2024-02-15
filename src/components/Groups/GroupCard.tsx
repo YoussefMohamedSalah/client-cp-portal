@@ -1,8 +1,8 @@
 import { Group } from "types/Group";
 import { Employee } from "types/Employee";
-import DeleteModal from 'components/Modals/DeleteModal';
+import DeleteModal from "components/Modals/DeleteModal";
 import { useState } from "react";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import { GroupsOutlinedIcon } from "components/Icons/MuiIcons";
 import AddRemoveGroupEmployeeModal from "./AddRemoveGroupEmployeeModal";
 import GroupModal from "./GroupModal";
@@ -13,7 +13,7 @@ interface Props {
   group: Group;
   employees: Employee[];
   onDelete: (id: string) => void;
-};
+}
 
 const GroupCard: React.FC<Props> = ({ group, employees, onDelete }) => {
   const [modal, setModal] = useState<ModalType>("");
@@ -34,14 +34,21 @@ const GroupCard: React.FC<Props> = ({ group, employees, onDelete }) => {
               <div className="col ps-0">
                 <h5 className="card-title mb-1">{group?.name}</h5>
                 <p className="card-text mb-2">{group?.description}</p>
-                <Button onClick={() => setModal("add_emp")} size="small" variant="contained" className="bg-primary text-white" startIcon={<GroupsOutlinedIcon />}>
+                <Button
+                  onClick={() => setModal("add_emp")}
+                  size="small"
+                  variant="contained"
+                  className="bg-primary text-white"
+                  startIcon={<GroupsOutlinedIcon />}
+                >
                   Members: {group?.members?.length!}
                 </Button>
               </div>
             </div>
             <div className="btn-group" role="group" aria-label="Basic outlined example">
               <button type="button" className="btn btn-outline-secondary" onClick={() => setModal("edit")}>
-                <i className="icofont-edit text-success" /></button>
+                <i className="icofont-edit text-success" />
+              </button>
               <button type="button" className="btn btn-outline-secondary deleterow" onClick={() => setModal("delete")}>
                 <i className="icofont-close-circled text-danger"></i>
               </button>
@@ -49,12 +56,7 @@ const GroupCard: React.FC<Props> = ({ group, employees, onDelete }) => {
           </div>
         </div>
       </div>
-      <GroupModal
-        employees={employees}
-        show={modal === "edit"}
-        selectedGroup={group}
-        onClose={handleCloseModal}
-      />
+      <GroupModal employees={employees} show={modal === "edit"} selectedGroup={group} onClose={handleCloseModal} />
       <DeleteModal
         show={modal === "delete"}
         message={`Are you sure you want to delete ${group.name}?`}

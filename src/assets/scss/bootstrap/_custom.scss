@@ -684,7 +684,9 @@
   color: var(--text-color);
   border: 1px solid var(--border-color);
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 
   &:hover {
     background-color: var(--color-200);
@@ -711,9 +713,7 @@
 .accordion-content {
   display: none;
   padding: 1rem;
-  background-color: var(
-    --card-color
-  ) !important; /* Set background color to card color */
+  background-color: var(--card-color) !important; /* Set background color to card color */
   border: 1px solid var(--border-color) !important;
 }
 

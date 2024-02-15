@@ -59,11 +59,7 @@ const Expenses: React.FC<Props> = () => {
         cell: (row: any) => (
           <span
             className={`badge ${
-              row.status === "Completed"
-                ? "bg-success"
-                : row.status === "Draf"
-                ? "bg-lavender-purple"
-                : "bg-warning"
+              row.status === "Completed" ? "bg-success" : row.status === "Draf" ? "bg-lavender-purple" : "bg-warning"
             }`}
           >
             {row.status}
@@ -75,24 +71,15 @@ const Expenses: React.FC<Props> = () => {
         selector: () => {},
         sortable: true,
         cell: (row: any) => (
-          <div
-            className="btn-group"
-            role="group"
-            aria-label="Basic outlined example"
-          >
+          <div className="btn-group" role="group" aria-label="Basic outlined example">
             <button
               type="button"
               className="btn btn-outline-secondary"
-              onClick={() =>
-                setState({ ...state, isModal: true, isEditModalData: row })
-              }
+              onClick={() => setState({ ...state, isModal: true, isEditModalData: row })}
             >
               <i className="icofont-edit text-success"></i>
             </button>
-            <button
-              type="button"
-              className="btn btn-outline-secondary deleterow"
-            >
+            <button type="button" className="btn btn-outline-secondary deleterow">
               <i className="icofont-ui-delete text-danger"></i>
             </button>
           </div>
@@ -144,9 +131,7 @@ const Expenses: React.FC<Props> = () => {
         }}
       >
         <Modal.Header closeButton>
-          <Modal.Title className="fw-bold">
-            {state.isEditModalData ? "Edit" : "Add"} Expenses
-          </Modal.Title>
+          <Modal.Title className="fw-bold">{state.isEditModalData ? "Edit" : "Add"} Expenses</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="mb-3">
@@ -173,9 +158,7 @@ const Expenses: React.FC<Props> = () => {
                     className="form-control"
                     id="depone"
                     onClick={() => {}}
-                    value={
-                      state.isEditModalData ? state.isEditModalData.orderby : ""
-                    }
+                    value={state.isEditModalData ? state.isEditModalData.orderby : ""}
                   />
                 </div>
                 <div className="col-sm-6">
@@ -187,9 +170,7 @@ const Expenses: React.FC<Props> = () => {
                     className="form-control"
                     id="abc"
                     onClick={() => {}}
-                    value={
-                      state.isEditModalData ? state.isEditModalData.date : ""
-                    }
+                    value={state.isEditModalData ? state.isEditModalData.date : ""}
                   />
                 </div>
               </div>
@@ -203,9 +184,7 @@ const Expenses: React.FC<Props> = () => {
                     className="form-control"
                     id="deptwo"
                     onClick={() => {}}
-                    value={
-                      state.isEditModalData ? state.isEditModalData.from : ""
-                    }
+                    value={state.isEditModalData ? state.isEditModalData.from : ""}
                   />
                 </div>
                 <div className="col-sm-6">

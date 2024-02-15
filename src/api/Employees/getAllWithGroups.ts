@@ -11,6 +11,6 @@ export const getAllEmployeesWithGroups = async ({ queryKey }: any) => {
 export const useEmployeesGroupsQuery = (options: any) => {
   return useQuery<{ employees: { data: Employee[] } }, Error>(
     [ROUTES.EMPLOYEE_GROUPS, options],
-    getAllEmployeesWithGroups
+    getAllEmployeesWithGroups,
   );
 };

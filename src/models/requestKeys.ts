@@ -4,13 +4,13 @@ export enum PoRequestKeys {
   DESCRIPTION = "description",
   DATE = "date",
   SUPPLIER = "supplier",
-  PRICING = 'pricing',
-  DELIVERY_DATE = 'delivery_date',
-  AVAILABILITY = 'availability',
-  TRANSPORTATION = 'transportation',
-  FILES = 'files',
-  FILE = 'file',
-};
+  PRICING = "pricing",
+  DELIVERY_DATE = "delivery_date",
+  AVAILABILITY = "availability",
+  TRANSPORTATION = "transportation",
+  FILES = "files",
+  FILE = "file",
+}
 
 export enum PcRequestKeys {
   SUBJECT = "subject",
@@ -18,13 +18,13 @@ export enum PcRequestKeys {
   DESCRIPTION = "description",
   DATE = "date",
   SUPPLIER = "supplier",
-  PRICING = 'pricing',
-  DELIVERY_DATE = 'delivery_date',
-  AVAILABILITY = 'availability',
-  TRANSPORTATION = 'transportation',
-  FILES = 'files',
-  FILE = 'file',
-};
+  PRICING = "pricing",
+  DELIVERY_DATE = "delivery_date",
+  AVAILABILITY = "availability",
+  TRANSPORTATION = "transportation",
+  FILES = "files",
+  FILE = "file",
+}
 
 export enum MaterialRequestKeys {
   SUBJECT = "subject",
@@ -32,13 +32,13 @@ export enum MaterialRequestKeys {
   DESCRIPTION = "description",
   DATE = "date",
   SUPPLIER = "supplier",
-  PRICING = 'pricing',
-  DELIVERY_DATE = 'delivery_date',
-  AVAILABILITY = 'availability',
-  TRANSPORTATION = 'transportation',
-  FILES = 'files',
-  FILE = 'file',
-};
+  PRICING = "pricing",
+  DELIVERY_DATE = "delivery_date",
+  AVAILABILITY = "availability",
+  TRANSPORTATION = "transportation",
+  FILES = "files",
+  FILE = "file",
+}
 
 export enum SiteRequestKeys {
   SUBJECT = "subject",
@@ -46,8 +46,8 @@ export enum SiteRequestKeys {
   DESCRIPTION = "description",
   DATE = "date",
   SUPPLIER = "supplier",
-  PRICING = 'pricing',
-  DELIVERY_DATE = 'delivery_date',
-  AVAILABILITY = 'availability',
-  TRANSPORTATION = 'transportation',
+  PRICING = "pricing",
+  DELIVERY_DATE = "delivery_date",
+  AVAILABILITY = "availability",
+  TRANSPORTATION = "transportation",
 }

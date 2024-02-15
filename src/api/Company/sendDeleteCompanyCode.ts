@@ -8,5 +8,3 @@ export const useSendDeleteCompanyCode = () => {
     return { data: { data: data as any } };
   });
 };
-
-

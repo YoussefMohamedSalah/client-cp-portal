@@ -4,8 +4,8 @@ import { http } from "utils/Http";
 import { PurchaseOrderRequest } from "types/Po_request";
 
 export const useSavePoRequestToArchive = () => {
-  return useMutation<any, Error, any>(async createInput => {
-    const { data } = await http.post(ROUTES.PO_REQUEST + 'archive/', createInput, {
+  return useMutation<any, Error, any>(async (createInput) => {
+    const { data } = await http.post(ROUTES.PO_REQUEST + "archive/", createInput, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

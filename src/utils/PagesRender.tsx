@@ -1,7 +1,6 @@
 import { PAGES } from "constants/pages";
 import { lazy } from "react";
 
-
 const Dashboard = lazy(() => import("../screens/Dashboard/Dashboard"));
 const Tenders = lazy(() => import("../screens/Tenders/Tenders"));
 const Settings = lazy(() => import("../screens/Settings/Settings"));
@@ -14,109 +13,49 @@ const TenderDetails = lazy(() => import("../screens/Tenders/TenderDetails"));
 // const Dcc = lazy(() => import("../Dcc/Dcc"));
 
 // TABLES DATA //
-const PoRequests = lazy(
-  () => import("../screens/Documents/PoRequests/PoRequests")
-);
-const PcRequests = lazy(
-  () => import("../screens/Documents/PcRequests/PcRequests")
-);
-const SiteRequests = lazy(
-  () => import("../screens/Documents/SiteRequests/SiteRequests")
-);
-const MaterialRequests = lazy(
-  () => import("../screens/Documents/MaterialRequests/MaterialRequests")
-);
-const EmployeeRequests = lazy(
-  () => import("../screens/Documents/EmployeeRequests/EmployeeRequests")
-);
-const Contracts = lazy(
-  () => import("../screens/Documents/Contracts/Contracts")
-);
+const PoRequests = lazy(() => import("../screens/Documents/PoRequests/PoRequests"));
+const PcRequests = lazy(() => import("../screens/Documents/PcRequests/PcRequests"));
+const SiteRequests = lazy(() => import("../screens/Documents/SiteRequests/SiteRequests"));
+const MaterialRequests = lazy(() => import("../screens/Documents/MaterialRequests/MaterialRequests"));
+const EmployeeRequests = lazy(() => import("../screens/Documents/EmployeeRequests/EmployeeRequests"));
+const Contracts = lazy(() => import("../screens/Documents/Contracts/Contracts"));
 const Invoices = lazy(() => import("../screens/Documents/Invoices/Invoices"));
 // ---
 const Customers = lazy(() => import("../screens/Customers/Customers"));
 const Suppliers = lazy(() => import("../screens/Suppliers/Suppliers"));
 const Employees = lazy(() => import("../screens/Employees/Employees"));
-const Subcontractors = lazy(
-  () => import("../screens/Subcontractors/Subcontractors")
-);
+const Subcontractors = lazy(() => import("../screens/Subcontractors/Subcontractors"));
 const Projects = lazy(() => import("../screens/Projects/Projects"));
 
 // DOCUMENT PAGE DETAILS //
-const PoRequestDetails = lazy(
-  () => import("../screens/Documents/PoRequests/PoRequestDetails")
-);
-const PcRequestDetails = lazy(
-  () => import("../screens/Documents/PcRequests/PcRequestDetails")
-);
-const SiteRequestDetails = lazy(
-  () => import("../screens/Documents/SiteRequests/SiteRequestDetails")
-);
-const MaterialRequestDetails = lazy(
-  () => import("../screens/Documents/MaterialRequests/MaterialRequestDetails")
-);
-const EmployeeRequestDetails = lazy(
-  () => import("../screens/Documents/EmployeeRequests/EmployeeRequestDetails")
-);
-const ContractDetails = lazy(
-  () => import("../screens/Documents/Contracts/ContractDetails")
-);
-const InvoiceDetails = lazy(
-  () => import("../screens/Documents/Invoices/InvoiceDetails")
-);
+const PoRequestDetails = lazy(() => import("../screens/Documents/PoRequests/PoRequestDetails"));
+const PcRequestDetails = lazy(() => import("../screens/Documents/PcRequests/PcRequestDetails"));
+const SiteRequestDetails = lazy(() => import("../screens/Documents/SiteRequests/SiteRequestDetails"));
+const MaterialRequestDetails = lazy(() => import("../screens/Documents/MaterialRequests/MaterialRequestDetails"));
+const EmployeeRequestDetails = lazy(() => import("../screens/Documents/EmployeeRequests/EmployeeRequestDetails"));
+const ContractDetails = lazy(() => import("../screens/Documents/Contracts/ContractDetails"));
+const InvoiceDetails = lazy(() => import("../screens/Documents/Invoices/InvoiceDetails"));
 // ---
-const CustomerDetails = lazy(
-  () => import("../screens/Customers/CustomerDetails")
-);
-const SupplierDetails = lazy(
-  () => import("../screens/Suppliers/SupplierDetails")
-);
-const EmployeeDetails = lazy(
-  () => import("../screens/Employees/EmployeeDetails")
-);
-const SubcontractorDetails = lazy(
-  () => import("../screens/Subcontractors/SubcontractorDetails")
-);
+const CustomerDetails = lazy(() => import("../screens/Customers/CustomerDetails"));
+const SupplierDetails = lazy(() => import("../screens/Suppliers/SupplierDetails"));
+const EmployeeDetails = lazy(() => import("../screens/Employees/EmployeeDetails"));
+const SubcontractorDetails = lazy(() => import("../screens/Subcontractors/SubcontractorDetails"));
 const ProjectDetails = lazy(() => import("../screens/Projects/ProjectDetails"));
 
 // CREATE //
-const PoFormPage = lazy(
-  () => import("../screens/Documents/PoRequests/PoFormPage")
-);
-const PcFormPage = lazy(
-  () => import("../screens/Documents/PcRequests/PcFormPage")
-);
-const SiteFormPage = lazy(
-  () => import("../screens/Documents/SiteRequests/SiteFormPage")
-);
-const MaterialFormPage = lazy(
-  () => import("../screens/Documents/MaterialRequests/MaterialFormPage")
-);
-const EmployeeRequestFormPage = lazy(
-  () => import("../screens/Documents/EmployeeRequests/EmployeeRequestFormPage")
-);
-const ContractFormPage = lazy(
-  () => import("../screens/Documents/Contracts/ContractFormPage")
-);
-const InvoiceFormPage = lazy(
-  () => import("../screens/Documents/Invoices/InvoiceFormPage")
-);
+const PoFormPage = lazy(() => import("../screens/Documents/PoRequests/PoFormPage"));
+const PcFormPage = lazy(() => import("../screens/Documents/PcRequests/PcFormPage"));
+const SiteFormPage = lazy(() => import("../screens/Documents/SiteRequests/SiteFormPage"));
+const MaterialFormPage = lazy(() => import("../screens/Documents/MaterialRequests/MaterialFormPage"));
+const EmployeeRequestFormPage = lazy(() => import("../screens/Documents/EmployeeRequests/EmployeeRequestFormPage"));
+const ContractFormPage = lazy(() => import("../screens/Documents/Contracts/ContractFormPage"));
+const InvoiceFormPage = lazy(() => import("../screens/Documents/Invoices/InvoiceFormPage"));
 // ---
-const CustomerFormPage = lazy(
-  () => import("../screens/Customers/CustomerFormPage")
-);
-const SupplierFormPage = lazy(
-  () => import("../screens/Suppliers/SupplierFormPage")
-);
-const EmployeeFormPage = lazy(
-  () => import("../screens/Employees/EmployeeFormPage")
-);
-const SubcontractorFormPage = lazy(
-  () => import("../screens/Subcontractors/SubcontractorFormPage")
-);
-const ProjectFormPage = lazy(
-  () => import("../screens/Projects/ProjectFormPage")
-);
+const CustomerFormPage = lazy(() => import("../screens/Customers/CustomerFormPage"));
+const SupplierFormPage = lazy(() => import("../screens/Suppliers/SupplierFormPage"));
+const EmployeeFormPage = lazy(() => import("../screens/Employees/EmployeeFormPage"));
+const SubcontractorFormPage = lazy(() => import("../screens/Subcontractors/SubcontractorFormPage"));
+const ProjectFormPage = lazy(() => import("../screens/Projects/ProjectFormPage"));
 const TenderFormPage = lazy(() => import("../screens/Tenders/TenderFormPage"));
 
 // // EDIT //
@@ -161,10 +100,7 @@ export interface PagesRenderProps {
   id?: string;
 }
 
-export const PagesRender = ({
-  slug,
-  id,
-}: PagesRenderProps): React.ReactNode => {
+export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => {
   if (id) {
     switch (slug) {
       // case PAGES.PROJECTS:
@@ -333,25 +269,12 @@ export const PagesRender = ({
         return <TaskFormPage />;
       // ---
 
-
-
-
-
-
-
-
-
-
-
-
-
       // ---
       case PAGES.SETTINGS:
         return <Settings />;
 
       case PAGES.GROUPS:
         return <Groups />;
-
 
       // case PAGES.INVENTORY:
       // 	return <Inventory />;

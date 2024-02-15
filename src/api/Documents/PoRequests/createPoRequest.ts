@@ -4,7 +4,7 @@ import { http } from "utils/Http";
 import { PurchaseOrderRequest } from "types/Po_request";
 
 export const useCreatePoRequest = () => {
-  return useMutation<any, Error, any>(async createInput => {
+  return useMutation<any, Error, any>(async (createInput) => {
     const { data } = await http.post(ROUTES.PO_REQUEST, createInput, {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -25,7 +25,7 @@ export const poRequestInput = (data: any): any => {
       material_availability: data.material_availability ? data.material_availability : null,
       description: data.description ? data.description : null,
       supplierId: data.supplier ? data.supplier.id : null,
-      projectId: data.projectId ? data.projectId : '',
+      projectId: data.projectId ? data.projectId : "",
       // --------
       items: data.items ? data.items : null,
       conditions: data.conditions ? data.conditions : null,
@@ -41,28 +41,28 @@ export const poRequestInput = (data: any): any => {
   }
 
   const formData = new FormData();
-  (data.id) && formData.append("id", data.id);
-  (data.sub_total) && formData.append("sub_total", data?.sub_total! || 0);
-  (data.vat) && formData.append("vat", data.vat || 0);
-  (data.discount) && formData.append("discount", data?.discount! || 0);
-  (data.total) && formData.append("total", data.total || 0);
+  data.id && formData.append("id", data.id);
+  data.sub_total && formData.append("sub_total", data?.sub_total! || 0);
+  data.vat && formData.append("vat", data.vat || 0);
+  data.discount && formData.append("discount", data?.discount! || 0);
+  data.total && formData.append("total", data.total || 0);
   // --
-  (data.items) && formData.append("items", data?.items!);
-  (data.conditions) && formData.append("conditions", data.conditions);
-  (data.default_conditions) && formData.append("default_conditions", data.default_conditions);
-  (data.installments) && formData.append("installments", data?.installments!);
-  (data.payment_type) && formData.append("payment_type", data?.payment_type!);
-  (!data.payment_type) && formData.append("payment_type", "cash");
+  data.items && formData.append("items", data?.items!);
+  data.conditions && formData.append("conditions", data.conditions);
+  data.default_conditions && formData.append("default_conditions", data.default_conditions);
+  data.installments && formData.append("installments", data?.installments!);
+  data.payment_type && formData.append("payment_type", data?.payment_type!);
+  !data.payment_type && formData.append("payment_type", "cash");
   // --
-  (data.transportation) && formData.append("transportation", data.transportation);
-  (data.delivery_date) && formData.append("delivery_date", data.delivery_date);
-  (data.material_availability) && formData.append("material_availability", data.material_availability);
-  (data.supplier) && formData.append("supplierId", data.supplier.id);
-  (data.subject) && formData.append("subject", data.subject);
-  (data.description) && formData.append("description", data.description);
-  (data.date) && formData.append("date", data.date);
-  (data.filesNameSet) && formData.append("filesNameSet", data.filesNameSet);
-  (data.projectId) && formData.append("projectId", data.projectId);
+  data.transportation && formData.append("transportation", data.transportation);
+  data.delivery_date && formData.append("delivery_date", data.delivery_date);
+  data.material_availability && formData.append("material_availability", data.material_availability);
+  data.supplier && formData.append("supplierId", data.supplier.id);
+  data.subject && formData.append("subject", data.subject);
+  data.description && formData.append("description", data.description);
+  data.date && formData.append("date", data.date);
+  data.filesNameSet && formData.append("filesNameSet", data.filesNameSet);
+  data.projectId && formData.append("projectId", data.projectId);
   for (let file of data.files) {
     formData.append("files", file);
   }

@@ -4,7 +4,7 @@ import { Customer } from "types/Customer";
 import http from "utils/Http";
 
 export const useCreateCustomer = () => {
-  return useMutation<any, Error, Customer>(async createInput => {
+  return useMutation<any, Error, Customer>(async (createInput) => {
     const { data } = await http.post(ROUTES.CUSTOMER, createInput);
     return { customer: { data: data as Customer } };
   });
@@ -24,5 +24,5 @@ export const customerInput = (data: Customer): any => {
     street: data.street,
     building_number: data.building_number,
     postal_code: data.postal_code,
-  }
+  };
 };

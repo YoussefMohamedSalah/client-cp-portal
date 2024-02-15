@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy } from "react";
 
 const SessionLayout = lazy(() => import("./layouts/SessionLayout"));
 

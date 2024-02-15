@@ -9,8 +9,5 @@ export const getAllSuppliers = async ({ queryKey }: any) => {
 };
 
 export const useSuppliersQuery = (options: any) => {
-  return useQuery<{ suppliers: { data: any } }, Error>(
-    [ROUTES.CO_EMPLOYEES, options],
-    getAllSuppliers
-  );
+  return useQuery<{ suppliers: { data: any } }, Error>([ROUTES.CO_EMPLOYEES, options], getAllSuppliers);
 };

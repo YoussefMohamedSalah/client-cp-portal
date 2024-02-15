@@ -3,7 +3,7 @@ export enum GroupKeys {
   DESCRIPTION = "description",
   MEMBERS = "members",
   PERMISSIONS = "permissions",
-};
+}
 
 export const GroupNumKeys = [];
 export const GroupStrKeys = [GroupKeys.NAME, GroupKeys.DESCRIPTION];

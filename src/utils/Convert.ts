@@ -17,7 +17,6 @@ export const sumDateRange = (startDate: string, endDate: string) => {
   return diffDays;
 };
 
-
 export const calculateDurationDate = (startDate: string, endDate: string) => {
   if (!startDate || !endDate) return 0;
   let date1: any = new Date(startDate);
@@ -38,13 +37,17 @@ export const calculateProjectPercentage = (startDate: string, endDate: string) =
   return Math.round((daysDiff / total) * 100);
 };
 
-export const calculateWorkingPercentage = (shift_start: string, shift_end: string, total_Shift_Hours: string): number => {
+export const calculateWorkingPercentage = (
+  shift_start: string,
+  shift_end: string,
+  total_Shift_Hours: string,
+): number => {
   if (!shift_start || !shift_end || !total_Shift_Hours) return 0;
 
-  let shiftStartHours = shift_start.split(':')[0];
-  let shiftStartMinutes = shift_start.split(':')[1];
-  let totalShiftHours = total_Shift_Hours.split(':')[0];
-  let totalShiftMinutes = total_Shift_Hours.split(':')[1];
+  let shiftStartHours = shift_start.split(":")[0];
+  let shiftStartMinutes = shift_start.split(":")[1];
+  let totalShiftHours = total_Shift_Hours.split(":")[0];
+  let totalShiftMinutes = total_Shift_Hours.split(":")[1];
   let shiftStartInMinutes = parseInt(shiftStartHours) * 60 + parseInt(shiftStartMinutes);
   let totalShiftInMinutes = parseInt(totalShiftHours) * 60 + parseInt(totalShiftMinutes);
 
@@ -53,9 +56,9 @@ export const calculateWorkingPercentage = (shift_start: string, shift_end: strin
   let currentMinute = currentTime.getMinutes();
   let currentInMinutes = currentHour * 60 + currentMinute;
 
-  let workingPercentage = (currentInMinutes - shiftStartInMinutes) / totalShiftInMinutes * 100;
+  let workingPercentage = ((currentInMinutes - shiftStartInMinutes) / totalShiftInMinutes) * 100;
   let workingPercentageNumber = parseInt(workingPercentage.toFixed(2));
 
   if (workingPercentageNumber >= 100) return 100;
   return parseInt(workingPercentage.toFixed(2));
-}
+};

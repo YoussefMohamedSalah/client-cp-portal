@@ -1,22 +1,19 @@
 export enum CustomerKeys {
-  NAME = 'name',
-  COMPANY_NAME = 'company_name',
+  NAME = "name",
+  COMPANY_NAME = "company_name",
   PHONE_NUMBER = "phone_number",
   EMAIL = "email",
-  CUSTOMER_TYPE = 'customer_type',
-  VAT_ON = 'vat_on',
-  COUNTRY = 'country',
-  CITY = 'city',
-  AREA = 'area',
-  STREET = 'street',
-  BUILDING_NUMBER = 'building_number',
-  POSTAL_CODE = 'postal_code',
-};
+  CUSTOMER_TYPE = "customer_type",
+  VAT_ON = "vat_on",
+  COUNTRY = "country",
+  CITY = "city",
+  AREA = "area",
+  STREET = "street",
+  BUILDING_NUMBER = "building_number",
+  POSTAL_CODE = "postal_code",
+}
 
-export const CustomerNumKeys = [
-  CustomerKeys.VAT_ON,
-  CustomerKeys.POSTAL_CODE,
-];
+export const CustomerNumKeys = [CustomerKeys.VAT_ON, CustomerKeys.POSTAL_CODE];
 
 export const CustomerStrKeys = [
   CustomerKeys.AREA,

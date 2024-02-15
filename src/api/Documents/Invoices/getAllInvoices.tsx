@@ -4,10 +4,10 @@ import { http } from "utils/Http";
 import { Invoice } from "types/Invoice";
 
 export const getAllInvoices = async () => {
-    const { data } = await http.get(ROUTES.INVOICES);
-    return { invoices: { data: data as Invoice[] } };
+  const { data } = await http.get(ROUTES.INVOICES);
+  return { invoices: { data: data as Invoice[] } };
 };
 
 export const useGetAllInvoicesQuery = () => {
-    return useQuery({ queryKey: ['invoices'], queryFn: getAllInvoices })
+  return useQuery({ queryKey: ["invoices"], queryFn: getAllInvoices });
 };

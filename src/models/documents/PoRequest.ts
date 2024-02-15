@@ -3,20 +3,20 @@ export enum PoRequestKeys {
   PROJECT = "project",
   SUPPLIER = "supplier",
   DATE = "date",
-  DELIVERY_DATE = 'delivery_date',
-  AVAILABILITY = 'material_availability',
-  TRANSPORTATION = 'transportation',
+  DELIVERY_DATE = "delivery_date",
+  AVAILABILITY = "material_availability",
+  TRANSPORTATION = "transportation",
   DESCRIPTION = "description",
   CONDITIONS = "conditions",
   INSTALLMENTS = "installments",
   PAYMENT_TYPE = "payment_type",
-  ITEMS = 'items',
+  ITEMS = "items",
   VAT = "vat",
-  TOTAL = 'total',
+  TOTAL = "total",
   DISCOUNT = "discount",
-  FILES = 'files',
-  FILE = 'file',
-};
+  FILES = "files",
+  FILE = "file",
+}
 
 export const PoRequestNumKeys = [];
 

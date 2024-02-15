@@ -9,8 +9,5 @@ export const getDepartmentDetails = async ({ queryKey }: any) => {
 };
 
 export const useDepartmentDetails = (options: any) => {
-  return useQuery<{ department: { data: any } }, Error>(
-    [ROUTES.CATEGORY, options],
-    getDepartmentDetails
-  );
+  return useQuery<{ department: { data: any } }, Error>([ROUTES.CATEGORY, options], getDepartmentDetails);
 };

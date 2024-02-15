@@ -9,8 +9,5 @@ export const getAllGroups = async ({ queryKey }: any) => {
 };
 
 export const useGroupQuery = (options: QueryOptionsType) => {
-  return useQuery<{ groups: { data: any } }, Error>(
-    [ROUTES.CO_GROUPS, options],
-    getAllGroups
-  );
+  return useQuery<{ groups: { data: any } }, Error>([ROUTES.CO_GROUPS, options], getAllGroups);
 };

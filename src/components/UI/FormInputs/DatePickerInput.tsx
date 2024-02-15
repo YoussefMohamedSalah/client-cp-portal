@@ -1,6 +1,6 @@
-import moment from 'moment';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { styled } from '@mui/material/styles';
+import moment from "moment";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { styled } from "@mui/material/styles";
 
 interface Props {
   label?: string;
@@ -22,37 +22,37 @@ interface Props {
 
 const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
   // Apply styling to the underlying TextField
-  '& .MuiInputBase-input': {
-    color: '#888888',
+  "& .MuiInputBase-input": {
+    color: "#888888",
   },
 
-  '& .MuiInputLabel-root': {
-    color: '#888888',
+  "& .MuiInputLabel-root": {
+    color: "#888888",
   },
 
-  '& .Mui-focused': {
-    '& .MuiInputLabel-root': {
-      color: '#888888',
+  "& .Mui-focused": {
+    "& .MuiInputLabel-root": {
+      color: "#888888",
     },
   },
 
   // Add styling for the borders
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      borderColor: '#888888', // Set the border color
+  "& .MuiOutlinedInput-root": {
+    "& fieldset": {
+      borderColor: "#888888", // Set the border color
     },
-    '&:hover fieldset': {
-      borderColor: '#888888', // Set the border color on hover
+    "&:hover fieldset": {
+      borderColor: "#888888", // Set the border color on hover
     },
-    '&.Mui-focused fieldset': {
-      borderColor: '#888888', // Set the border color when focused
+    "&.Mui-focused fieldset": {
+      borderColor: "#888888", // Set the border color when focused
     },
   },
 }));
 
 const DatePickerInput = ({ onChange, value, defaultValue, required, disabled, label }: Props) => {
   const handleFormatDateBeforeResponding = (dateObject: any) => {
-    const stringDate = dateObject.format('YYYY-MM-DD');
+    const stringDate = dateObject.format("YYYY-MM-DD");
     onChange(stringDate);
   };
 
@@ -60,10 +60,10 @@ const DatePickerInput = ({ onChange, value, defaultValue, required, disabled, la
     <StyledDatePicker
       value={moment(value)}
       disabled={disabled}
-      sx={{ margin: '8px 0' }}
+      sx={{ margin: "8px 0" }}
       onChange={(newValue: any) => handleFormatDateBeforeResponding(newValue)}
-      slotProps={{ textField: { size: 'small', fullWidth: true, required: required ? true : false } }}
-      views={['year', 'month', 'day']}
+      slotProps={{ textField: { size: "small", fullWidth: true, required: required ? true : false } }}
+      views={["year", "month", "day"]}
       label={label}
     />
   );

@@ -2,30 +2,19 @@ import { Modal } from "react-bootstrap";
 import React, { useState } from "react";
 import { Employee } from "types/Employee";
 import { getImageUrl } from "utils/Helpers";
-import {
-  removeMemberFromGroupInput,
-  useRemoveMemberFromGroup,
-} from "api/Group/RemoveFromGroup";
+import { removeMemberFromGroupInput, useRemoveMemberFromGroup } from "api/Group/RemoveFromGroup";
 import { useUI } from "contexts/UIContext";
 import { handleServerError } from "utils/HandlingServerError";
-import {
-  addMemberToGroupInput,
-  useAddMemberToGroup,
-} from "api/Group/addToGroup";
+import { addMemberToGroupInput, useAddMemberToGroup } from "api/Group/addToGroup";
 
 interface Props {
   show: boolean;
   groupId?: string;
   employees: Employee[];
   onClose: (reload: boolean) => void;
-};
+}
 
-const AddRemoveGroupEmployeeModal: React.FC<Props> = ({
-  show,
-  groupId,
-  employees,
-  onClose
-}) => {
+const AddRemoveGroupEmployeeModal: React.FC<Props> = ({ show, groupId, employees, onClose }) => {
   const [searchResult, setSearchResult] = useState<Employee[]>([]);
   const [notFound, setNotFound] = useState<boolean>(false);
   const { showError, showSuccess } = useUI();
@@ -82,9 +71,7 @@ const AddRemoveGroupEmployeeModal: React.FC<Props> = ({
       return group?.id! === groupId;
     });
 
-    let isExists = existingMemberArray
-      ? existingMemberArray?.includes(true)
-      : false;
+    let isExists = existingMemberArray ? existingMemberArray?.includes(true) : false;
 
     if (isExists) return removeMember(employee);
     assignMember(employee);
@@ -98,12 +85,7 @@ const AddRemoveGroupEmployeeModal: React.FC<Props> = ({
       <Modal.Body>
         <div className="inviteby_email scroll_div">
           <div className="input-group mb-3">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search Employee"
-              onChange={handleSearch}
-            />
+            <input type="text" className="form-control" placeholder="Search Employee" onChange={handleSearch} />
           </div>
           {/* view search result view for employee and group */}
           {searchResult && searchResult.length > 0 && (
@@ -126,11 +108,7 @@ const AddRemoveGroupEmployeeModal: React.FC<Props> = ({
                     >
                       <div className="d-flex align-items-center flex-column flex-sm-column flex-md-row">
                         <div className="no-thumbnail mb-2 mb-md-0">
-                          <img
-                            className="avatar lg rounded-circle"
-                            src={getImageUrl(employee?.avatar!)}
-                            alt=""
-                          />
+                          <img className="avatar lg rounded-circle" src={getImageUrl(employee?.avatar!)} alt="" />
                         </div>
 
                         <div className="flex-fill ms-3 text-truncate">
@@ -139,14 +117,13 @@ const AddRemoveGroupEmployeeModal: React.FC<Props> = ({
                           </h6>
                           <span className="text-muted">
                             {employee?.groups?.length!
-                              ? `Member In ${employee?.groups
-                                ?.length!} Group${employee?.groups?.length! > 1 ? "s" : ""
-                              }`
+                              ? `Member In ${employee?.groups?.length!} Group${
+                                  employee?.groups?.length! > 1 ? "s" : ""
+                                }`
                               : ""}{" "}
                           </span>
                           <span className="text-muted">
-                            {employee?.department_info?.name &&
-                              ` - ${employee?.department_info?.name}`}{" "}
+                            {employee?.department_info?.name && ` - ${employee?.department_info?.name}`}{" "}
                           </span>
                         </div>
 
@@ -192,11 +169,7 @@ const AddRemoveGroupEmployeeModal: React.FC<Props> = ({
       </Modal.Body>
 
       <Modal.Footer>
-        <button
-          type="button"
-          className="btn btn-primary"
-          onClick={() => onClose(false)}
-        >
+        <button type="button" className="btn btn-primary" onClick={() => onClose(false)}>
           Cancel
         </button>
       </Modal.Footer>

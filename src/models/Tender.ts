@@ -13,7 +13,4 @@ export const TenderNumKeys = [];
 
 export const TenderStrKeys = [TenderKeys.HAND_OVER, TenderKeys.DESCRIPTION];
 
-export const TenderRequiredKeys = [
-  TenderKeys.DESCRIPTION,
-  TenderKeys.HAND_OVER,
-];
+export const TenderRequiredKeys = [TenderKeys.DESCRIPTION, TenderKeys.HAND_OVER];

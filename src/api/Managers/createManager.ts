@@ -3,7 +3,7 @@ import { ROUTES } from "constants/routes";
 import { http } from "utils/Http";
 
 export const useCreateManager = () => {
-  return useMutation<any, Error, any>(async createInput => {
+  return useMutation<any, Error, any>(async (createInput) => {
     const { data } = await http.post(ROUTES.MANAGER, createInput);
     return { data: { data: data as any } };
   });
@@ -21,6 +21,6 @@ export const managerInput = (data: any): any => {
     phone: data.phone!,
     department: data.department!,
     description: data.description!,
-    user_permissions: data.user_permissions!
-  }
+    user_permissions: data.user_permissions!,
+  };
 };

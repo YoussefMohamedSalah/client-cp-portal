@@ -8,13 +8,11 @@ export interface AddMemberToGroupInputType {
 }
 
 export const useAddMemberToGroup = () => {
-  return useMutation<any, Error, AddMemberToGroupInputType>(
-    async (updateInput) => {
-      const { groupId, user } = updateInput;
-      const { data } = await http.put(ROUTES.GROUP_ADD + groupId, { user });
-      return { group: { data: data as any } };
-    }
-  );
+  return useMutation<any, Error, AddMemberToGroupInputType>(async (updateInput) => {
+    const { groupId, user } = updateInput;
+    const { data } = await http.put(ROUTES.GROUP_ADD + groupId, { user });
+    return { group: { data: data as any } };
+  });
 };
 
 export const addMemberToGroupInput = (data: AddMemberToGroupInputType): any => {

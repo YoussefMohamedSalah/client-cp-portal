@@ -9,12 +9,10 @@ export const getProjectDetails = async ({ queryKey }: any) => {
   if (_params.id) {
     const { data } = await http.get(ROUTES.PROJECT + _params.id);
     return { project: { data: data as Project } };
-  } return null;
+  }
+  return null;
 };
 
 export const useProjectDetailsQuery = (options: any) => {
-  return useQuery(
-    [ROUTES.PROJECT, options],
-    getProjectDetails
-  );
+  return useQuery([ROUTES.PROJECT, options], getProjectDetails);
 };

@@ -3,18 +3,13 @@ import { ROUTES } from "constants/routes";
 import { Project } from "types/Project";
 import { http } from "utils/Http";
 
-
 export const useUpdateProject = () => {
-  return useMutation<any, Error, any>(async updateInput => {
-    const { data } = await http.put(
-      ROUTES.PROJECT + updateInput.id + "/",
-      updateInput.data,
-      {
-        headers: {
-          'Content-Type': "multipart/form-data"
-        }
-      }
-    );
+  return useMutation<any, Error, any>(async (updateInput) => {
+    const { data } = await http.put(ROUTES.PROJECT + updateInput.id + "/", updateInput.data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return { project: { data: data as any } };
   });
 };
@@ -69,7 +64,7 @@ export const projectUpdateInput = (data: Project): any => {
   formData.append("floors_count", `${data.floors_count ? data.floors_count : 0}`);
   formData.append("contract_number", `${data?.contract_number!}`);
   formData.append("manager", `${data?.manager!}`);
-  formData.append("assistants", `${data?.assistants!}`)
+  formData.append("assistants", `${data?.assistants!}`);
   formData.append("project_status", `${data?.project_status!}`);
   formData.append("comments", `${data?.comments!}`);
   formData.append("members", `${data?.members!}`);
