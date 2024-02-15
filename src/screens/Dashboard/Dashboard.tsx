@@ -19,7 +19,7 @@ const Dashboard: React.FC = () => {
     chartData.options.series = chartSeries;
     return (
         <>
-            {data ? (
+            {dashboard ? (
                 <div className="container-xxl">
                     <div className="row clearfix g-3">
                         <div className="col-xl-8 col-lg-12 col-md-12 flex-column">

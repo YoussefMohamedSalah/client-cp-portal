@@ -2,23 +2,23 @@ import Loading from "components/UI/Loading";
 import PageHeader from "components/Common/PageHeader";
 import useApp from "hooks/useApp";
 import { PAGES } from "constants/pages";
-import { Tender } from "types/Tender";
 import { useUI } from "contexts/UIContext";
 import { handleServerError } from "utils/HandlingServerError";
-import { useDeleteTender } from "api/Tenders/deleteTender";
-import { useTendersQuery } from "api/Tenders/getAllTenders";
-import TenderCard from "components/Tenders/TenderCard";
+import { Task } from "types/Task";
+import { useDeleteTask } from "api/Tasks/deleteTask";
+import TaskCard from "components/Tasks/TaskCard";
+import { useTasksQuery } from "api/Tasks/getAllTasks";
 
-const Tenders: React.FC = () => {
-  const { mutateAsync: deleteMutation } = useDeleteTender();
-  const { data, error, isLoading } = useTendersQuery({});
+const Tasks: React.FC = () => {
+  const { mutateAsync: deleteMutation } = useDeleteTask();
+  const { data, error, isLoading } = useTasksQuery({});
   const { showError, showSuccess } = useUI();
   const { push } = useApp();
 
   if (isLoading) return <Loading />;
   if (error) return null;
 
-  let tenders: Tender[] = data.tenders.data! || [] as Tender[];
+  let tasks: Task[] = data.tasks.data! || [] as Task[];
 
   const handleDelete = async (id: string) => {
     try {
@@ -34,16 +34,16 @@ const Tenders: React.FC = () => {
       <div className="container-fluid">
         {/* page header */}
         <PageHeader
-          headerTitle={"Tenders"}
+          headerTitle={"Tasks"}
           isBtnShow={true}
-          btnText={"Create Tender"}
-          onClickBtn={() => push("/" + PAGES.TENDER)}
+          btnText={"Create Tasks"}
+          onClickBtn={() => push("/" + PAGES.TASK)}
         />
         {/* table data */}
         <div className="row g-3 py-1 pb-4">
-          {tenders.map((tender: Tender) => (
-            <div key={tender.id}>
-              <TenderCard tender={tender} onDelete={handleDelete} />
+          {tasks.map((task: Task) => (
+            <div key={task.id}>
+              <TaskCard task={task} onDelete={handleDelete} />
             </div>
           ))}
         </div>
@@ -52,4 +52,4 @@ const Tenders: React.FC = () => {
   );
 };
 
-export default Tenders;
+export default Tasks;

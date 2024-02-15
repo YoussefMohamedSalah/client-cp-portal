@@ -1,5 +1,7 @@
 import { PAGES } from "constants/pages";
 import { lazy } from "react";
+import TaskFormPage from "screens/Tasks/TaskFormPage";
+import Tasks from "screens/Tasks/Tasks";
 
 const Dashboard = lazy(() => import("../screens/Dashboard/Dashboard"));
 const Tenders = lazy(() => import("../screens/Tenders/Tenders"));
@@ -111,6 +113,7 @@ const SubcontractorFormPage = lazy(
 const ProjectFormPage = lazy(
   () => import("../screens/Projects/ProjectFormPage")
 );
+const TenderFormPage = lazy(() => import("../screens/Tenders/TenderFormPage"));
 
 // // EDIT //
 // const PoRequestEditPage = lazy(() => import("../PoRequests/PoRequestEditPage"));
@@ -287,6 +290,14 @@ export const PagesRender = ({
 
       case PAGES.GROUPS:
         return <Groups />;
+      // ---
+      case PAGES.TENDER:
+        return <TenderFormPage id={id ? id : null} />;
+      case PAGES.TASKS:
+        return <Tasks />;
+      case PAGES.TASK:
+        return <TaskFormPage id={id ? id : null} />;
+
       // case PAGES.INVENTORY:
       // 	return <Inventory />;
 
@@ -304,6 +315,8 @@ export const PagesRender = ({
       // 	return <DailyReports />;
       // ---
 
+      // case PAGES.SETTINGS:
+      // 	return <Settings />;
       // case PAGES.PROFILE:
       //   return <Profile />;
 
@@ -312,6 +325,9 @@ export const PagesRender = ({
       // 	return <ComingSoon />;
       // case PAGES.PROFILE:
       // 	return <EmployeeProfile />;
+      // case PAGES.TENDERS:
+      //   return <Tenders />;
+
       // case PAGES.TASKS:
       // 	return <Tasks />;
 
@@ -346,6 +362,8 @@ export const PagesRender = ({
       // 	return <EnquiresDetail />;
       // case PAGES.MANAGERS:
       // 	return <Managers />;
+      // case PAGES.GROUPS:
+      // 	return <Groups />;
 
       default:
         return <Dashboard />;
