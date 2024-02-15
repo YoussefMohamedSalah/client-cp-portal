@@ -30,7 +30,7 @@ const DashboardLayout = ({ session }: Props) => {
 
 	let paramsObj: PagesRenderProps = {
 		slug: slug ? slug : null,
-		id: id ? id : null,
+		id: id ? id : undefined,
 	};
 
 	if (!initialized) return <Loading />;

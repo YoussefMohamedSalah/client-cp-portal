@@ -27,7 +27,7 @@ export interface Invoice {
         current_count: number;
     }>;
     vat: number | null;
-    contract_id: string | null;
+    contract_id?: string;
     files: string[];
     user: { id: string; name: string };
     project_details: { id: string; name: string };

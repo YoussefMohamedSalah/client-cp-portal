@@ -33,7 +33,7 @@ import { pcEditInput, useEditPcRequest } from 'api/Documents/PcRequests/editPcRe
 import { useSavePcRequestToArchive } from 'api/Documents/PcRequests/archivePcRequest';
 
 interface Props {
-    id: string | null;
+    id?: string;
 };
 
 const PcFormPage = ({ id }: Props) => {

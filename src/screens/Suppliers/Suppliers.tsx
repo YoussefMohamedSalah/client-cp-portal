@@ -19,7 +19,7 @@ const Suppliers: React.FC = () => {
     if (isLoading) return <Loading />;
     if (error) return null;
 
-    let suppliers: Supplier[] = data.suppliers.data! || [] as Supplier[];
+    let suppliers: Supplier[] = data?.suppliers?.data! || [] as Supplier[];
 
     const handleDelete = async (id: string) => {
         try {

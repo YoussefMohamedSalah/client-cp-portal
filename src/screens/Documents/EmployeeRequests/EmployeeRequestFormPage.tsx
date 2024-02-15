@@ -21,7 +21,7 @@ import { getFormattedTodayDate } from 'utils/DateUtils';
 import { handleServerError, validateInputs } from 'utils/HandlingServerError';
 
 interface Props {
-    id: string | null;
+    id?: string;
 };
 
 const EmployeeRequestFormPage = ({ id }: Props) => {

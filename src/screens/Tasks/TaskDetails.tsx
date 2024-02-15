@@ -1,10 +1,10 @@
 import React from 'react'
 
 interface Props {
-    id?: string;
-};
+    id: string;
+}
 
-const InvoiceFormPage = ({ id }: Props) => {
+const TaskDetails = ({ id }: Props) => {
     return (
         <div>
 
@@ -12,4 +12,4 @@ const InvoiceFormPage = ({ id }: Props) => {
     )
 }
 
-export default InvoiceFormPage
+export default TaskDetails

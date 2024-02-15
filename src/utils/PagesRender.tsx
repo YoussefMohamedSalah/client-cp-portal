@@ -1,11 +1,15 @@
 import { PAGES } from "constants/pages";
 import { lazy } from "react";
-import TaskFormPage from "screens/Tasks/TaskFormPage";
-import Tasks from "screens/Tasks/Tasks";
+
 
 const Dashboard = lazy(() => import("../screens/Dashboard/Dashboard"));
 const Tenders = lazy(() => import("../screens/Tenders/Tenders"));
 const Settings = lazy(() => import("../screens/Settings/Settings"));
+
+const TaskDetails = lazy(() => import("../screens/Tasks/TaskDetails"));
+const TaskFormPage = lazy(() => import("../screens/Tasks/TaskFormPage"));
+const Tasks = lazy(() => import("../screens/Tasks/Tasks"));
+const TenderDetails = lazy(() => import("../screens/Tenders/TenderDetails"));
 
 // const Dcc = lazy(() => import("../Dcc/Dcc"));
 
@@ -154,7 +158,7 @@ const Groups = lazy(() => import("../screens/Groups/Groups"));
 
 export interface PagesRenderProps {
   slug: string | null;
-  id: string | null;
+  id?: string;
 }
 
 export const PagesRender = ({
@@ -194,66 +198,101 @@ export const PagesRender = ({
       // ----
       case PAGES.PO_REQUEST_INFO:
         return <PoRequestDetails id={id} />;
+      case PAGES.PO_REQUEST:
+        return <PoFormPage id={id} />;
+      // ---
       case PAGES.PC_REQUEST_INFO:
         return <PcRequestDetails id={id} />;
+      case PAGES.PC_REQUEST:
+        return <PcFormPage id={id} />;
+      // ---
       case PAGES.SITE_REQUEST_INFO:
         return <SiteRequestDetails id={id} />;
+      case PAGES.SITE_REQUEST:
+        return <SiteFormPage id={id} />;
+      // ---
       case PAGES.EMPLOYEE_REQUEST_INFO:
         return <EmployeeRequestDetails id={id} />;
+      case PAGES.EMPLOYEE:
+        return <EmployeeFormPage id={id} />;
+      // ---
       case PAGES.MATERIAL_REQUEST_INFO:
         return <MaterialRequestDetails id={id} />;
+      case PAGES.MATERIAL_REQUEST:
+        return <MaterialFormPage id={id} />;
+      // ---
       case PAGES.CONTRACT_INFO:
         return <ContractDetails id={id} />;
+      case PAGES.CONTRACT:
+        return <ContractFormPage id={id} />;
+      // ---
       case PAGES.INVOICE_INFO:
         return <InvoiceDetails id={id} />;
       // ---
       case PAGES.CUSTOMER_INFO:
         return <CustomerDetails id={id} />;
+      case PAGES.CUSTOMER:
+        return <CustomerFormPage id={id} />;
       // ---
       case PAGES.SUPPLIER_INFO:
         return <SupplierDetails id={id} />;
+      case PAGES.SUPPLIER:
+        return <SupplierFormPage id={id} />;
       // ---
       case PAGES.EMPLOYEE_INFO:
         return <EmployeeDetails id={id} />;
       // ---
       case PAGES.SUBCONTRACTOR_INFO:
         return <SubcontractorDetails id={id} />;
-
+      case PAGES.SUBCONTRACTOR:
+        return <SubcontractorFormPage id={id} />;
       // ---
       case PAGES.PROJECT_INFO:
         return <ProjectDetails id={id} />;
+      case PAGES.PROJECT:
+        return <ProjectFormPage id={id} />;
+      // ---
+      case PAGES.TENDER_INFO:
+        return <TenderDetails id={id} />;
+      case PAGES.TENDER:
+        return <TenderFormPage id={id} />;
+      // ---
+      case PAGES.Task_INFO:
+        return <TaskDetails id={id} />;
+      case PAGES.TASK:
+        return <TaskFormPage id={id} />;
     }
   } else
     switch (slug) {
       case PAGES.PO_REQUESTS:
         return <PoRequests />;
       case PAGES.PO_REQUEST:
-        return <PoFormPage id={id ? id : null} />;
+        return <PoFormPage />;
       // ---
       case PAGES.PC_REQUESTS:
         return <PcRequests />;
       case PAGES.PC_REQUEST:
-        return <PcFormPage id={id ? id : null} />;
+        return <PcFormPage />;
       // ---
       case PAGES.SITE_REQUESTS:
         return <SiteRequests />;
       case PAGES.SITE_REQUEST:
-        return <SiteFormPage id={id ? id : null} />;
+        return <SiteFormPage />;
       // ---
       case PAGES.MATERIAL_REQUESTS:
         return <MaterialRequests />;
       case PAGES.MATERIAL_REQUEST:
-        return <MaterialFormPage id={id ? id : null} />;
+        return <MaterialFormPage />;
       // ---
       case PAGES.EMPLOYEE_REQUESTS:
         return <EmployeeRequests />;
       case PAGES.EMPLOYEE_REQUEST:
-        return <EmployeeRequestFormPage id={id ? id : null} />;
+        return <EmployeeRequestFormPage />;
       // ---
       case PAGES.CONTRACTS:
         return <Contracts />;
       case PAGES.CONTRACT:
-        return <ContractFormPage id={id ? id : null} />;
+        return <ContractFormPage />;
       // ---
       case PAGES.INVOICES:
         return <Invoices />;
@@ -261,46 +300,59 @@ export const PagesRender = ({
       case PAGES.CUSTOMERS:
         return <Customers />;
       case PAGES.CUSTOMER:
-        return <CustomerFormPage id={id ? id : null} />;
+        return <CustomerFormPage />;
       // ---
       case PAGES.SUPPLIERS:
         return <Suppliers />;
       case PAGES.SUPPLIER:
-        return <SupplierFormPage id={id ? id : null} />;
+        return <SupplierFormPage />;
       // ---
       case PAGES.EMPLOYEES:
         return <Employees />;
       case PAGES.EMPLOYEE:
-        return <EmployeeFormPage id={id ? id : null} />;
+        return <EmployeeFormPage />;
       // ---
       case PAGES.SUBCONTRACTORS:
         return <Subcontractors />;
       case PAGES.SUBCONTRACTOR:
-        return <SubcontractorFormPage id={id ? id : null} />;
+        return <SubcontractorFormPage />;
       // ---
       case PAGES.PROJECTS:
         return <Projects />;
       case PAGES.PROJECT:
-        return <ProjectFormPage id={id ? id : null} />;
-
-      case PAGES.SETTINGS:
-        return <Settings />;
+        return <ProjectFormPage />;
+      // ---
       case PAGES.TENDERS:
         return <Tenders />;
-
-      case PAGES.GROUPS:
-        return <Groups />;
-      // ---
       case PAGES.TENDER:
-        return <TenderFormPage id={id ? id : null} />;
+        return <TenderFormPage />;
+      // ---
       case PAGES.TASKS:
         return <Tasks />;
       case PAGES.TASK:
-        return <TaskFormPage id={id ? id : null} />;
+        return <TaskFormPage />;
+      // ---
 
 
+
+
+
+
+
+
+
+
+
+
+
+      // ---
       case PAGES.SETTINGS:
         return <Settings />;
+
+      case PAGES.GROUPS:
+        return <Groups />;
+
+
       // case PAGES.INVENTORY:
       // 	return <Inventory />;
 

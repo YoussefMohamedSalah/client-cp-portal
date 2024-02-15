@@ -24,7 +24,7 @@ import { useProjectsQuery } from "api/Projects/getAllProjects";
 import { PRIORITY, PROGRESS, TASK_TYPE } from "enums/enums";
 
 interface Props {
-  id: string | null;
+  id?: string;
 };
 
 const TaskFormPage = ({ id }: Props) => {

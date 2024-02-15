@@ -24,7 +24,7 @@ import DeleteModal from "components/Modals/DeleteModal";
 import { getFormattedTodayDate } from "utils/DateUtils";
 
 interface Props {
-  id: string | null;
+  id?: string;
 };
 
 const TenderFormPage = ({ id }: Props) => {

@@ -19,7 +19,7 @@ import { useCustomerDetailsQuery } from 'api/Customers/getCustomerDetails';
 import DeleteModal from 'components/Modals/DeleteModal';
 
 interface Props {
-    id: string | null;
+    id?: string;
 };
 
 const CustomerFormPage = ({ id }: Props) => {

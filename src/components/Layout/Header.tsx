@@ -13,7 +13,7 @@ interface Props {
 
 const Header = ({ session }: Props) => {
 	const { isLoading, error, data } = useNotificationsQuery({});
-	const notifications: Notification[] = data?.notifications.data! || [] as Notification[];
+	const notifications: Notification[] = data?.notifications?.data! || [] as Notification[];
 
 	return (
 		<div className="header">

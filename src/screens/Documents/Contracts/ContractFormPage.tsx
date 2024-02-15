@@ -39,7 +39,7 @@ import { useSubcontractorsQuery } from 'api/Subcontractors/getAllSubcontractors'
 import { editContractInput, useEditContract } from 'api/Documents/Contracts/editContract';
 
 interface Props {
-    id: string | null;
+    id?: string;
 };
 
 const ContractFormPage = ({ id }: Props) => {

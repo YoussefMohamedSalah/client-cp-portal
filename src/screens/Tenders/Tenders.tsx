@@ -18,7 +18,7 @@ const Tenders: React.FC = () => {
   if (isLoading) return <Loading />;
   if (error) return null;
 
-  let tenders: Tender[] = data.tenders.data! || [] as Tender[];
+  let tenders: Tender[] = data?.tenders.data! || [] as Tender[];
 
   const handleDelete = async (id: string) => {
     try {

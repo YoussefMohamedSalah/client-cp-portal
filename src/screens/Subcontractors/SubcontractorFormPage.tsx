@@ -19,7 +19,7 @@ import { subcontractorUpdateInput, useUpdateSubcontractor } from 'api/Subcontrac
 import { useSubcontractorDetailsQuery } from 'api/Subcontractors/getSubcontractor';
 
 interface Props {
-    id: string | null;
+    id?: string;
 };
 
 const SubcontractorFormPage = ({ id }: Props) => {

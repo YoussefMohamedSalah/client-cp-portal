@@ -18,7 +18,7 @@ const Tasks: React.FC = () => {
   if (isLoading) return <Loading />;
   if (error) return null;
 
-  let tasks: Task[] = data.tasks.data! || [] as Task[];
+  let tasks: Task[] = data?.tasks.data! || [] as Task[];
 
   const handleDelete = async (id: string) => {
     try {
