@@ -280,6 +280,13 @@ export const PagesRender = ({
       case PAGES.PROJECT:
         return <ProjectFormPage id={id ? id : null} />;
 
+      case PAGES.SETTINGS:
+        return <Settings />;
+      case PAGES.TENDERS:
+        return <Tenders />;
+
+      case PAGES.GROUPS:
+        return <Groups />;
       // case PAGES.INVENTORY:
       // 	return <Inventory />;
 
@@ -297,8 +304,6 @@ export const PagesRender = ({
       // 	return <DailyReports />;
       // ---
 
-      case PAGES.SETTINGS:
-        return <Settings />;
       // case PAGES.PROFILE:
       //   return <Profile />;
 
@@ -307,9 +312,6 @@ export const PagesRender = ({
       // 	return <ComingSoon />;
       // case PAGES.PROFILE:
       // 	return <EmployeeProfile />;
-      case PAGES.TENDERS:
-        return <Tenders />;
-
       // case PAGES.TASKS:
       // 	return <Tasks />;
 
@@ -344,8 +346,6 @@ export const PagesRender = ({
       // 	return <EnquiresDetail />;
       // case PAGES.MANAGERS:
       // 	return <Managers />;
-      case PAGES.GROUPS:
-        return <Groups />;
 
       default:
         return <Dashboard />;

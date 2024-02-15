@@ -16,5 +16,5 @@ export const groupInput = (data: CreateGroup): CreateGroup => {
     members: data.members!,
     description: data.description!,
     managers: data.managers!,
-  };
+  } as any;
 };

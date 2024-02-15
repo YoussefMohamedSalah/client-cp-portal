@@ -1,19 +1,26 @@
 import { Group } from "types/Group";
-import AddRemoveGroupEmployeeModal from "./AddRemoveGroupEmployeeModal";
-import { SelectedEmployee } from "types/Employee";
-import DeleteModal from "./DeleteModal";
+import { Employee } from "types/Employee";
+import DeleteModal from 'components/Modals/DeleteModal';
 import { useState } from "react";
-import EditGroupModal from "./EditGroupModal";
+import Button from '@mui/material/Button';
+import { GroupsOutlinedIcon } from "components/Icons/MuiIcons";
+import AddRemoveGroupEmployeeModal from "./AddRemoveGroupEmployeeModal";
+import GroupModal from "./GroupModal";
+
+type ModalType = "delete" | "edit" | "create" | "add_emp" | "";
 
 interface Props {
   group: Group;
-  employees: SelectedEmployee[];
-}
+  employees: Employee[];
+  onDelete: (id: string) => void;
+};
 
-const GroupCard: React.FC<Props> = ({ group, employees }) => {
-  const [isRemoved, setIsRemoved] = useState<boolean>(false);
-
-  if (isRemoved) return null;
+const GroupCard: React.FC<Props> = ({ group, employees, onDelete }) => {
+  const [modal, setModal] = useState<ModalType>("");
+  const handleCloseModal = (reload = false) => {
+    if (reload) window.location.reload();
+    setModal("");
+  };
 
   return (
     <div className="col">
@@ -26,51 +33,41 @@ const GroupCard: React.FC<Props> = ({ group, employees }) => {
               </div>
               <div className="col ps-0">
                 <h5 className="card-title mb-1">{group?.name}</h5>
-
                 <p className="card-text mb-2">{group?.description}</p>
-
-                <AddRemoveGroupEmployeeModal
-                  className="d-flex align-items-center"
-                  employees={employees}
-                  groupId={group.id}
-                >
-                  <i className="icofont-group-students"></i>
-
-                  <span className="badge bg-light text-dark ms-2">
-                    {group?.members?.length} Members
-                  </span>
-
-                  <span className="avatar rounded-circle text-center pointer sm">
-                    <i className="icofont-ui-add"></i>
-                  </span>
-                </AddRemoveGroupEmployeeModal>
+                <Button onClick={() => setModal("add_emp")} size="small" variant="contained" className="bg-primary text-white" startIcon={<GroupsOutlinedIcon />}>
+                  Members: {group?.members?.length!}
+                </Button>
               </div>
             </div>
-
-            <div
-              className="btn-group"
-              role="group"
-              aria-label="Basic outlined example"
-            >
-              <EditGroupModal
-                className="btn btn-outline-secondary"
-                employees={employees}
-                group={group}
-              >
-                <i className="icofont-edit text-success"></i>
-              </EditGroupModal>
-
-              <DeleteModal
-                className="btn btn-outline-secondary"
-                groupId={group.id}
-                isRemoved={() => setIsRemoved(true)}
-              >
-                <i className="icofont-ui-delete text-danger"></i>
-              </DeleteModal>
+            <div className="btn-group" role="group" aria-label="Basic outlined example">
+              <button type="button" className="btn btn-outline-secondary" onClick={() => setModal("edit")}>
+                <i className="icofont-edit text-success" /></button>
+              <button type="button" className="btn btn-outline-secondary deleterow" onClick={() => setModal("delete")}>
+                <i className="icofont-close-circled text-danger"></i>
+              </button>
             </div>
           </div>
         </div>
       </div>
+      <GroupModal
+        employees={employees}
+        show={modal === "edit"}
+        selectedGroup={group}
+        onClose={handleCloseModal}
+      />
+      <DeleteModal
+        show={modal === "delete"}
+        message={`Are you sure you want to delete ${group.name}?`}
+        modalHeader={`Delete ${group.name}`}
+        onDelete={() => onDelete(group.id)}
+        onClose={handleCloseModal}
+      />
+      <AddRemoveGroupEmployeeModal
+        show={modal === "add_emp"}
+        employees={employees}
+        groupId={group.id}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 };
