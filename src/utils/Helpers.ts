@@ -4,7 +4,7 @@ import { Session } from "types/Session";
 export const getImageUrl = (url: string) => {
   const baseUrl = process.env.REACT_APP_API_BASE_URL;
   if (baseUrl && url) return baseUrl + url;
-  else return 'https://via.placeholder.com/150'
+  else return "https://via.placeholder.com/150";
 };
 
 export const allowDocumentsActionsBtns = (document: any) => {
@@ -13,7 +13,7 @@ export const allowDocumentsActionsBtns = (document: any) => {
   let viewType = localStorage.getItem("view") || null;
   if (!viewType) return false;
   // Check the viewType
-  if (viewType && viewType !== 'admin') {
+  if (viewType && viewType !== "admin") {
     return false;
   }
 
@@ -27,7 +27,10 @@ export const allowDocumentsActionsBtns = (document: any) => {
       isUserInWorkflow = true;
 
       // Check if the current user is rejected or has a state of true
-      if (document.work_flow[i]?.isRejected === true || document.work_flow[i]?.state === true) {
+      if (
+        document.work_flow[i]?.isRejected === true ||
+        document.work_flow[i]?.state === true
+      ) {
         isAllowed = false;
         break;
       }
@@ -46,16 +49,18 @@ export const allowDocumentsActionsBtns = (document: any) => {
   }
 
   // Check other conditions
-  if (document.status === STATUS.ARCHIVED ||
+  if (
+    document.status === STATUS.ARCHIVED ||
     document.status === STATUS.APPROVED ||
     document.status === STATUS.REJECTED ||
-    makerId === session.user?.id!) {
+    makerId === session.user?.id!
+  ) {
     return false;
-  };
+  }
 
   // Check the viewType
   if (!viewType) return false;
-  if (viewType && viewType !== 'admin') {
+  if (viewType && viewType !== "admin") {
     return false;
   }
 
@@ -63,10 +68,10 @@ export const allowDocumentsActionsBtns = (document: any) => {
 };
 
 export const isAdminView = () => {
-  let viewType = localStorage.getItem("view") || null
+  let viewType = localStorage.getItem("view") || null;
   let isAdmin: boolean = false;
-  if (viewType && viewType === 'admin') isAdmin = true
-  return isAdmin
+  if (viewType && viewType === "admin") isAdmin = true;
+  return isAdmin;
 };
 
 export const checkPermission = (selectPermission: string) => {
@@ -82,9 +87,24 @@ export const checkPermission = (selectPermission: string) => {
   // return hasPermission;
 };
 
-export const checkRole = (roles: string[], departments: string[], session: Session) => {
-  if (session?.user?.role === ENUMS.ROLE.SUPERUSER || session?.user?.role === ENUMS.ROLE.SUB_SUPERUSER) return true;
-  if (!session || !roles || roles.length === 0 || !departments || departments.length === 0) return false;
+export const checkRole = (
+  roles: string[],
+  departments: string[],
+  session: Session
+) => {
+  if (
+    session?.user?.role === ENUMS.ROLE.SUPERUSER ||
+    session?.user?.role === ENUMS.ROLE.SUB_SUPERUSER
+  )
+    return true;
+  if (
+    !session ||
+    !roles ||
+    roles.length === 0 ||
+    !departments ||
+    departments.length === 0
+  )
+    return false;
 
   let hasRole: boolean = false;
   let isDepartmentMember: boolean = false;
@@ -94,9 +114,15 @@ export const checkRole = (roles: string[], departments: string[], session: Sessi
   });
 
   departments.forEach((department) => {
-    if (session.user?.department_info?.name! === department) isDepartmentMember = true;
+    if (session.user?.department_info?.name! === department)
+      isDepartmentMember = true;
   });
 
   if (!hasRole || !isDepartmentMember) return false;
   else return true;
+};
+
+export const checkIfExist = (array: any[], item: any) => {
+  if (array && array.length === 0) return false;
+  return array?.some((element: any) => element === item) || [];
 };
