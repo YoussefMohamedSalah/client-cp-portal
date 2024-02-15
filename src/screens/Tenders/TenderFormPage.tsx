@@ -21,15 +21,11 @@ import { tenderUpdateInput, useUpdateTender } from "api/Tenders/updateTender";
 import { useDeleteTender } from "api/Tenders/deleteTender";
 import { useTenderDetailsQuery } from "api/Tenders/getTenderDetails";
 import DeleteModal from "components/Modals/DeleteModal";
-import { useCustomersQuery } from "api/Customers/getAllCustomers";
-import { useEmployeesQuery } from "api/Employees/getAllEmployees";
-import { Customer } from "types/Customer";
-import { getOptions } from "utils/GetOptions";
-import { Employee } from "types/Employee";
+import { getFormattedTodayDate } from "utils/DateUtils";
 
 interface Props {
   id: string | null;
-}
+};
 
 const TenderFormPage = ({ id }: Props) => {
   const [initialized, setInitialized] = useState<boolean>(false);
@@ -50,18 +46,6 @@ const TenderFormPage = ({ id }: Props) => {
     error: TenderError,
     isLoading: TenderIsLoading,
   } = useTenderDetailsQuery({ id });
-
-  const {
-    data: customersData,
-    error: customersError,
-    isLoading: customersIsLoading,
-  } = useCustomersQuery({});
-
-  const {
-    data: employeesData,
-    error: employeesError,
-    isLoading: employeesIsLoading,
-  } = useEmployeesQuery({});
 
   // !Check if this is CREATE OR EDIT Modal
   useEffect(() => {
@@ -89,20 +73,8 @@ const TenderFormPage = ({ id }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [TenderData]);
 
-  if (
-    (id && TenderIsLoading) ||
-    (!id && customersIsLoading) ||
-    (!id && employeesIsLoading)
-  )
-    return <Loading />;
-  if ((id && TenderError) || (!id && customersError) || (!id && employeesError))
-    return null;
-
-  let customers: Customer[] = customersData?.customers?.data || [];
-  let employees: Employee[] = employeesData?.employees?.data || [];
-
-  let customersOptions = getOptions(customers, "Select Customer");
-  let employeesOptions = getOptions(employees, "Select");
+  if (id && TenderIsLoading) return <Loading />;
+  if (id && TenderError) return null;
 
   const handleModelData = (key: string, value: any) => {
     setModelData({
@@ -112,78 +84,76 @@ const TenderFormPage = ({ id }: Props) => {
   };
 
   const handleReset = () => {
-    // setModelData({
-    //     ...modelData,
-    //     company_name: '',
-    //     vat_on: 0,
-    //     name: "",
-    //     phone_number: "",
-    //     email: "",
-    //     country: "",
-    //     city: "",
-    //     area: "",
-    //     street: "",
-    //     building_number: "",
-    //     postal_code: null,
-    // })
+    setModelData({
+      ...modelData,
+      date: `${getFormattedTodayDate()}`,
+      hand_over: `${getFormattedTodayDate()}`,
+      description: "",
+      comments: [],
+    })
   };
 
   const formFields: IField[] = [
     {
-      label: "CODE",
-      type: "text",
-      width: "col-md-4",
-      key: TenderKeys.CODE,
-      value: modelData?.code,
-      onChange: (value: string) => handleModelData(TenderKeys.CODE, value),
-      placeholder: "Enter Code",
+      label: "Date",
+      type: "date",
+      width: "col-md-6",
+      key: TenderKeys.DATE,
+      value: modelData?.date,
+      onChange: (value: string | any) =>
+        handleModelData(TenderKeys.DATE, value),
+      placeholder: "Date",
+    },
+    {
+      label: "Hand Over Date",
+      type: "date",
+      width: "col-md-6",
+      key: TenderKeys.HAND_OVER,
+      value: modelData?.hand_over,
+      onChange: (value: string | any) =>
+        handleModelData(TenderKeys.HAND_OVER, value),
+      placeholder: "Hand Over Date",
+      required: true,
+      default: `${getFormattedTodayDate()}`
+    },
+    {
+      label: "Description",
+      width: "col-md-12",
+      type: "textarea",
+      key: TenderKeys.DESCRIPTION,
+      value: modelData?.description,
+      onChange: (value: string | any) =>
+        handleModelData(TenderKeys.DESCRIPTION, value),
+      placeholder: "Enter Description",
       required: true,
     },
     {
-      label: "USER",
-      type: "select",
-      width: "col-md-4",
-      key: TenderKeys.USER,
-      value: modelData?.user?.name!,
-      onChange: (value: string) => handleModelData(TenderKeys.USER, value),
-      options: customersOptions,
-      placeholder: "Select User",
-      required: !isEdit ? true : false,
-      disabled: isEdit ? true : false,
+      label: "Tender Files",
+      width: "col-md-12",
+      type: "file",
+      key: TenderKeys.FILES,
+      value: modelData?.files,
+      onChange: (e: any) => {
+        let file: File = e.target?.files[0]!;
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (url) => {
+          handleModelData(TenderKeys.FILES, file)
+        };
+      },
+      placeholder: "Enter Thumbnail",
     },
     {
-      label: "DATE",
-      type: "select",
-      width: "col-md-4",
-      key: TenderKeys.DATE,
-      value: modelData?.date!,
-      onChange: (value: string) => handleModelData(TenderKeys.DATE, value),
-      options: employeesOptions,
-      placeholder: "Select Date",
-    },
-
-    {
-      label: "HAND OVER DATE",
-      type: "select",
-      width: "col-md-6",
-      key: TenderKeys.HAND_OVER,
-      value: modelData.hand_over! || [],
-      onChange: (value: string) => handleModelData(TenderKeys.HAND_OVER, value),
-      required: false,
-      placeholder: "Assign Hand Over Date",
-    },
-    {
-      label: "STATUS",
-      type: "text",
-      width: "col-md-3",
-      key: TenderKeys.STATUS,
-      value: modelData?.latitude,
-      onChange: (value: string) => handleModelData(TenderKeys.STATUS, value),
-      placeholder: "",
+      label: "Comment",
+      width: "col-md-12",
+      type: "textarea",
+      key: TenderKeys.COMMENTS,
+      value: modelData?.comments,
+      onChange: (value: string | any) =>
+        handleModelData(TenderKeys.COMMENTS, value),
+      placeholder: "Enter Comment",
     },
   ];
-
-  // MAIN ACTIONS
 
   const handleCreate = async () => {
     let numbersToValidate = TenderNumKeys;
