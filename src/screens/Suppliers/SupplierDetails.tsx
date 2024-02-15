@@ -4,7 +4,6 @@ interface Props {
     id?: string;
 };
 
-
 const SupplierDetails = ({ id }: Props) => {
     return (
         <div>

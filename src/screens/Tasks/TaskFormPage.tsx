@@ -5,12 +5,7 @@ import Loading from "components/UI/Loading";
 import { PAGES } from "constants/pages";
 import { useUI } from "contexts/UIContext";
 import useApp from "hooks/useApp";
-import {
-  TaskKeys,
-  TaskNumKeys,
-  TaskStrKeys,
-  TaskRequiredKeys,
-} from "models/Task";
+import { TaskKeys, TaskNumKeys, TaskStrKeys, TaskRequiredKeys, } from "models/Task";
 import { useEffect, useState } from "react";
 import { inputsValidationType } from "types/Error";
 import { IField } from "types/Forms/formFields";
@@ -64,7 +59,6 @@ const TaskFormPage = ({ id }: Props) => {
     error: employeesError,
     isLoading: employeesIsLoading,
   } = useEmployeesQuery({});
-
 
   // !Check if this is CREATE OR EDIT Modal
   useEffect(() => {

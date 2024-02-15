@@ -292,6 +292,9 @@ export const PagesRender = ({
       case PAGES.TASK:
         return <TaskFormPage id={id ? id : null} />;
 
+
+      case PAGES.SETTINGS:
+        return <Settings />;
       // case PAGES.INVENTORY:
       // 	return <Inventory />;
 
@@ -308,9 +311,6 @@ export const PagesRender = ({
       // case PAGES.DAILY_REPORTS:
       // 	return <DailyReports />;
       // ---
-
-      // case PAGES.SETTINGS:
-      // 	return <Settings />;
       // case PAGES.PROFILE:
       //   return <Profile />;
 
