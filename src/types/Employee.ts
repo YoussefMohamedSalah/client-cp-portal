@@ -32,6 +32,7 @@ export interface Employee {
     site_role: string;
     site_job: string;
     joining_date: string;
+    groups?: any[];
     iban_number: number | null
 };
 

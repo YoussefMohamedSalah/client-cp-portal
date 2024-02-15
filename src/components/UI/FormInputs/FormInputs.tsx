@@ -8,6 +8,7 @@ import OptionsSelectOne from './OptionsSelectOne';
 import PasswordInput from './PasswordInput';
 import TextInput from './TextInput';
 import { IField } from 'types/Forms/formFields';
+import TimePickerInput from './TimePickerInput';
 
 interface Props {
 	formFields: IField[];
@@ -25,6 +26,9 @@ const FormInputs: React.FC<Props> = ({ formFields, grid, block = false }) => {
 
 							{/* Date */}
 							{formInfo.type === "date" && !formInfo.hide && <DatePickerInput placeholder={formInfo.placeholder} value={formInfo.value} onChange={formInfo.onChange} defaultValue={formInfo.default} hidden={formInfo.hide} disabled={formInfo.disabled} label={formInfo.label} required={formInfo.required} />}
+
+							{/* Time */}
+							{formInfo.type === "time" && !formInfo.hide && <TimePickerInput placeholder={formInfo.placeholder} value={formInfo.value} onChange={formInfo.onChange} defaultValue={formInfo.default} hidden={formInfo.hide} disabled={formInfo.disabled} label={formInfo.label} required={formInfo.required} />}
 
 							{/* Password */}
 							{formInfo.type === "password" && !formInfo.hide && <PasswordInput placeholder={formInfo.placeholder} value={formInfo.value} onChange={formInfo.onChange} defaultValue={formInfo.default} hidden={formInfo.hide} disabled={formInfo.disabled} label={formInfo.label} required={formInfo.required} />}

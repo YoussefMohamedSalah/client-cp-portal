@@ -1,6 +1,10 @@
 export enum CompanyKeys {
   NAME = "name",
+  EMAIL = "email",
+  VAT = "vat",
   ADDRESS = "address",
+  PHONE_NUMBER = "phone_number",
+  CURRENCY = "currency",
   SIZE = 'size',
   LOGO = 'logo',
   SHIFT_START = 'shift_start',

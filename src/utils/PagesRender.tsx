@@ -5,7 +5,7 @@ import Tasks from "screens/Tasks/Tasks";
 
 const Dashboard = lazy(() => import("../screens/Dashboard/Dashboard"));
 const Tenders = lazy(() => import("../screens/Tenders/Tenders"));
-// const Settings = lazy(() => import("../screens/Settings/Settings"));
+const Settings = lazy(() => import("../screens/Settings/Settings"));
 
 // const Dcc = lazy(() => import("../Dcc/Dcc"));
 
@@ -319,8 +319,8 @@ export const PagesRender = ({
       // 	return <ComingSoon />;
       // case PAGES.PROFILE:
       // 	return <EmployeeProfile />;
-      case PAGES.TENDERS:
-        return <Tenders />;
+      // case PAGES.TENDERS:
+      //   return <Tenders />;
 
       // case PAGES.TASKS:
       // 	return <Tasks />;

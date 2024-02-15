@@ -9,7 +9,7 @@ interface InformationItem {
   icon: React.ReactNode;
   title: string;
   textMutedVariable: number;
-}
+};
 
 const EmployeesAttendance: React.FC<Props> = ({ data }) => {
   const { employee_count, present, absent, late_count } = data;
