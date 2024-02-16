@@ -10,6 +10,6 @@ export const useGetAllInventoryItems = () => {
       ROUTES.INVENTORY + ROUTES.INVENTORY_ITEM + id
     );
 
-    return data as InventoryItem[];
+    return { inventoryItems: { data: data as InventoryItem[] } };
   });
 };

@@ -9,7 +9,7 @@ export const getSingleItem = async ({ queryKey }: any) => {
   const [_key, _params] = queryKey;
   const { data } = await http.get(ROUTES.INVENTORY_ITEM + _params.id);
 
-  return data as InventoryItem;
+  return { inventoryItem: { data: data as InventoryItem } };
 };
 
 export const useGetSingleItemQuery = (options: QueryOptionsType) => {
