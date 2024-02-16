@@ -65,17 +65,17 @@ const TaskFormPage = ({ id }: Props) => {
   }, []);
 
   // !Assuming this is EDIT Modal
-  useEffect(() => {
-    if (!initialized && TaskData) {
-      let task: Task = TaskData?.task?.data!;
-      setModelData({ ...task });
-      if (task.project) {
-        setSelectedProject(task.project);
-      }
-      setInitialized(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [TaskData]);
+  // useEffect(() => {
+  //   if (!initialized && TaskData) {
+  //     let task: Task = TaskData?.task?.data!;
+  //     setModelData({ ...task });
+  //     if (task.project) {
+  //       setSelectedProject(task.project);
+  //     }
+  //     setInitialized(true);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [TaskData]);
 
   if ((id && TaskIsLoading) || (!id && projectsIsLoading) || (!id && employeesIsLoading)) return <Loading />;
   if ((id && TaskError) || (!id && projectsError) || (!id && employeesError)) return null;
@@ -98,23 +98,22 @@ const TaskFormPage = ({ id }: Props) => {
       name: "",
       description: "",
       files: [],
-      project: {} as Project,
       start_at: "",
       end_at: "",
       assigned_to: "",
       task_priority: PRIORITY.LOW,
-      task_progress: PROGRESS.TODO,
       task_type: TASK_TYPE.INDIVIDUAL_TASK,
       thumbnail: {} as File,
     });
   };
+  
 
   const formFields: IField[] = [
     {
       label: "Select Project",
       type: "select",
       key: TaskKeys.PROJECT,
-      value: modelData?.project,
+      value: modelData?.projectId,
       options: projectsOptions,
       onChange: (value: string | any) => handleModelData(TaskKeys.PROJECT, value),
       placeholder: "Select Project",

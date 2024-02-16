@@ -243,8 +243,8 @@ const TenderFormPage = ({ id }: Props) => {
         show={isModal}
         onClose={() => setIsModal(false)}
         onDelete={handleDelete}
-        message={`Are you sure you want to delete ${modelData.name}?`}
-        modalHeader={`Delete ${modelData.name}`}
+        message={`Are you sure you want to delete ${modelData.code}?`}
+        modalHeader={`Delete ${modelData.code}`}
       />
     </div>
   );
