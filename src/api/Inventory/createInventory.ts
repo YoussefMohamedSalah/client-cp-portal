@@ -6,6 +6,6 @@ import { ROUTES } from "constants/routes";
 export const useCreateInventory = () => {
   return useMutation<any, Error, Inventory>(async (createInput) => {
     const { data } = await http.post(ROUTES.INVENTORY, createInput);
-    return data;
+    return { inventory: { data: data as Inventory } };
   });
 };

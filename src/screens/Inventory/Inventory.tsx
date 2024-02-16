@@ -19,7 +19,7 @@ const InventoryPage = () => {
   if (InventoriesIsLoading) return <Loading />;
   if (InventoriesError) return null;
 
-  let inventories: Inventory[] = InventoriesData?.inventories?.data || [];
+  let inventories: Inventory[] = InventoriesData?.inventories?.data || [] as Inventory[];
 
   if (inventories && inventories.length === 0)
     return <NoTableData text={"No Data To Be Shown..."} />;

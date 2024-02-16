@@ -77,7 +77,7 @@ const InventoryDetails: React.FC<Props> = ({ id }) => {
   if (inventoryIsLoading) return <Loading />;
   if (inventoryError) return null;
 
-  let inventory: Inventory = inventoryData || ({} as Inventory);
+  let inventory: Inventory = inventoryData?.inventory?.data! || ({} as Inventory);
   let items: InventoryItem[] = inventory.items || [];
   let inventoryName =
     inventory.type === ENUMS.INVENTORY_TYPE.MASTER

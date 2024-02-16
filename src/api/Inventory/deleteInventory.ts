@@ -7,6 +7,6 @@ export const useDeleteInventory = () => {
   return useMutation<any, Error, Inventory>(async (createInput) => {
     const { id } = createInput;
     const { data } = await http.delete(ROUTES.INVENTORY + id);
-    return data;
+    return { data: { data: data as any } };
   });
 };

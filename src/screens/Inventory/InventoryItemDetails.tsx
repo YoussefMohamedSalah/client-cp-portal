@@ -1,5 +1,6 @@
 import React, { lazy } from "react";
 import { useGetSingleItemQuery } from "api/InventoryItem/getSingleItem";
+import { InventoryItem } from "types/Inventory";
 
 const Loading = lazy(() => import("../../components/UI/Loading"));
 
@@ -16,7 +17,10 @@ const InventoryItemDetails: React.FC<Props> = ({ id }) => {
 
   if (itemIsLoading) return <Loading />;
   if (itemError) return null;
-  return <div>this is inventory Item Details: {itemData.name}</div>;
+
+  let item: InventoryItem = itemData?.inventoryItem.data! || {} as InventoryItem;
+
+  return <div>this is inventory Item Details: {item.name}</div>;
 };
 
 export default InventoryItemDetails;
