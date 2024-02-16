@@ -23,7 +23,7 @@ import { handleServerError, validateInputs } from "utils/HandlingServerError";
 const PageHeader = lazy(() => import("../../components/Common/PageHeader"));
 const Loading = lazy(() => import("../../components/UI/Loading"));
 const InventoryItemModal = lazy(
-  () => import("../../components/Inventory/InventoryItemModal")
+  () => import("../../components/InventoryItems/InventoryItemModal")
 );
 const DeleteModal = lazy(() => import("../../components/Modals/DeleteModal"));
 const InventoryItemCard = lazy(

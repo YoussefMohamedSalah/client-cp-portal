@@ -1,8 +1,6 @@
-// !ERROR this component must be in components/inventoryItems
 import { Modal } from "react-bootstrap";
 import { InventoryItem } from "types/Inventory";
-// !ERROR this is not where we should import correction : InventoryItem
-import { InventoryKeys } from "models/Inventory";
+import { InventoryItemKeys } from "models/InventoryItem";
 import { IField } from "types/Forms/formFields";
 
 import Button from "components/UI/Button";
@@ -32,17 +30,15 @@ const InventoryItemModal: React.FC<Props> = ({
   selectedItem,
   isEditModal,
 }) => {
-
-  // !ERROR fix this after you change the import.line 5
   const formFields: IField[] = [
     {
       label: "Item Name",
       type: "text",
       width: "col-md-6",
-      key: InventoryKeys.NAME,
+      key: InventoryItemKeys.NAME,
       value: isEditModal ? selectedItem?.name : modelData?.name,
       onChange: (value: string | any) =>
-        handleModelData(InventoryKeys.NAME, value),
+        handleModelData(InventoryItemKeys.NAME, value),
       placeholder: "Enter Item Name",
       required: true,
     },
@@ -50,10 +46,10 @@ const InventoryItemModal: React.FC<Props> = ({
       label: "Item Price",
       type: "text",
       width: "col-md-6",
-      key: InventoryKeys.PRICE,
+      key: InventoryItemKeys.PRICE,
       value: isEditModal ? selectedItem?.price : modelData?.price,
       onChange: (value: string | any) =>
-        handleModelData(InventoryKeys.PRICE, Number(value)),
+        handleModelData(InventoryItemKeys.PRICE, Number(value)),
       placeholder: "Item Price",
       required: true,
     },
@@ -61,10 +57,10 @@ const InventoryItemModal: React.FC<Props> = ({
       label: "Item Count",
       type: "text",
       width: "col-md-6",
-      key: InventoryKeys.COUNT,
+      key: InventoryItemKeys.COUNT,
       value: isEditModal ? selectedItem?.count : modelData?.count,
       onChange: (value: string | any) =>
-        handleModelData(InventoryKeys.COUNT, value),
+        handleModelData(InventoryItemKeys.COUNT, value),
       placeholder: "Item Count",
       required: true,
     },
@@ -73,14 +69,14 @@ const InventoryItemModal: React.FC<Props> = ({
       label: "Item Image",
       width: "col-md-6",
       type: "file",
-      key: InventoryKeys.THUMBNAIL,
+      key: InventoryItemKeys.THUMBNAIL,
       value: modelData?.thumbnail,
       onChange: (e: any) => {
         let thumbnail: File = e.target.files[0];
         let reader = new FileReader();
         reader.readAsDataURL(thumbnail);
         reader.onload = (url) => {
-          handleModelData(InventoryKeys.THUMBNAIL, thumbnail);
+          handleModelData(InventoryItemKeys.THUMBNAIL, thumbnail);
         };
       },
       placeholder: "Item Image",
@@ -93,10 +89,7 @@ const InventoryItemModal: React.FC<Props> = ({
         <Modal.Title className="fw-bold">{modalHeader}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {/* // !ERROR remove the modal-body */}
-        <div className="modal-body">
-          <FormInputs formFields={formFields} grid={true} />
-        </div>
+        <FormInputs formFields={formFields} grid={true} />
       </Modal.Body>
       <Modal.Footer>
         <Button

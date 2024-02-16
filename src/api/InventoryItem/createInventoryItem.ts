@@ -14,8 +14,8 @@ export const useCreateInventoryItem = () => {
         },
       }
     );
-    // !ERROR this should take type InventoryItem
-    return { inventoryItem: { data: data as any } };
+
+    return { inventoryItem: { data: data as InventoryItem } };
   });
 };
 

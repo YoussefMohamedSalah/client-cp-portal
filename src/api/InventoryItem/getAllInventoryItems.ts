@@ -9,8 +9,7 @@ export const useGetAllInventoryItems = () => {
     const { data } = await http.get(
       ROUTES.INVENTORY + ROUTES.INVENTORY_ITEM + id
     );
-    // !ERROR this should take type InventoryItem[]
-    // !    return { inventoryItems: { data: data as InventoryItem[] } };
-    return data;
+
+    return data as InventoryItem[];
   });
 };

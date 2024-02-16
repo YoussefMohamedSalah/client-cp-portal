@@ -1,5 +1,5 @@
-import InventoryItemModal from "components/Inventory/InventoryItemModal";
-import { ENUMS } from "enums/enums";
+import InventoryItemModal from "components/InventoryItems/InventoryItemModal";
+import { INVENTORY_TYPE } from "enums/enums";
 import { PAGES } from "constants/pages";
 import useApp from "hooks/useApp";
 import { useState } from "react";
@@ -14,13 +14,11 @@ import { handleServerError, validateInputs } from "utils/HandlingServerError";
 import { useUI } from "contexts/UIContext";
 import { inputsValidationType } from "types/Error";
 
-
-// !ERROR this is not where we should import correction : InventoryItem
 import {
-  InventoryNumKeys,
-  InventoryRequiredKeys,
-  InventoryStrKeys,
-} from "models/Inventory";
+  InventoryItemNumKeys,
+  InventoryItemRequiredKeys,
+  InventoryItemStrKeys,
+} from "models/InventoryItem";
 
 interface Props {
   inventory: Inventory;
@@ -75,9 +73,9 @@ const InventoryCard: React.FC<Props> = ({ inventory }) => {
   };
 
   const handleCreateItem = async () => {
-    let numbersToValidate = InventoryNumKeys;
-    let stringsToValidate = InventoryStrKeys;
-    let requiredToValidate = InventoryRequiredKeys;
+    let numbersToValidate = InventoryItemNumKeys;
+    let stringsToValidate = InventoryItemStrKeys;
+    let requiredToValidate = InventoryItemRequiredKeys;
 
     const validationData: inputsValidationType = {
       requiredToValidate,
@@ -117,13 +115,12 @@ const InventoryCard: React.FC<Props> = ({ inventory }) => {
               </div>
               <span className="small text-muted project_name fw-bold">
                 {" "}
-                {/* // !ERROR Import should be directly from INVENTORY_TYPE instead ENUMS.INVENTORY_TYPE */}
-                {inventory.type === ENUMS.INVENTORY_TYPE.MASTER
+                {inventory.type === INVENTORY_TYPE.MASTER
                   ? "Company Main Inventory"
                   : "Projects's Inventory"}{" "}
               </span>
               <h6 className="mb-0 fw-bold  fs-6  mb-2">
-                {inventory.type === ENUMS.INVENTORY_TYPE.MASTER
+                {inventory.type === INVENTORY_TYPE.MASTER
                   ? "Company Main Inventory"
                   : `${inventory.project_info.name!}'s Inventory`}
               </h6>
@@ -142,7 +139,7 @@ const InventoryCard: React.FC<Props> = ({ inventory }) => {
               >
                 <i className="icofont-edit text-success" />
               </button>
-              {inventory.type !== ENUMS.INVENTORY_TYPE.MASTER && (
+              {inventory.type !== INVENTORY_TYPE.MASTER && (
                 <button
                   type="button"
                   className="btn btn-outline-secondary"
