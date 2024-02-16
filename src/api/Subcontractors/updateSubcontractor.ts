@@ -4,7 +4,7 @@ import { Subcontractor } from "types/Subcontractor";
 import http from "utils/Http";
 
 export const useUpdateSubcontractor = () => {
-  return useMutation<any, Error, any>(async updateInput => {
+  return useMutation<any, Error, any>(async (updateInput) => {
     const { data } = await http.put(ROUTES.SUBCONTRACTOR + updateInput.id, updateInput.data);
     return { subcontractor: { data: data as Subcontractor } };
   });

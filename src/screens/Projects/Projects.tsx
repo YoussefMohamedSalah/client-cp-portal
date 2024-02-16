@@ -10,46 +10,46 @@ import { useProjectsQuery } from "api/Projects/getAllProjects";
 import ProjectCard from "components/Projects/ProjectCard";
 
 const Projects: React.FC = () => {
-    const { mutateAsync: deleteMutation } = useDeleteProject();
-    const { data, error, isLoading } = useProjectsQuery({});
-    const { showError, showSuccess } = useUI();
-    const { push } = useApp();
+  const { mutateAsync: deleteMutation } = useDeleteProject();
+  const { data, error, isLoading } = useProjectsQuery({});
+  const { showError, showSuccess } = useUI();
+  const { push } = useApp();
 
-    if (isLoading) return <Loading />;
-    if (error) return null;
+  if (isLoading) return <Loading />;
+  if (error) return null;
 
-    let projects: Project[] = data.projects.data! || [] as Project[];
+  let projects: Project[] = data.projects.data! || ([] as Project[]);
 
-    const handleDelete = async (id: string) => {
-        try {
-            await deleteMutation(id);
-            showSuccess();
-        } catch (err: any) {
-            showError(handleServerError(err.response));
-        }
-    };
+  const handleDelete = async (id: string) => {
+    try {
+      await deleteMutation(id);
+      showSuccess();
+    } catch (err: any) {
+      showError(handleServerError(err.response));
+    }
+  };
 
-    return (
-        <>
-            <div className="container-fluid">
-                {/* page header */}
-                <PageHeader
-                    headerTitle={'Projects'}
-                    isBtnShow={true}
-                    btnText={"Create Project"}
-                    onClickBtn={() => push("/" + PAGES.PROJECT)}
-                />
-                {/* table data */}
-                <div className="row g-3 py-1 pb-4">
-                    {projects.map((project: Project) => (
-                        <div key={project.id}>
-                            <ProjectCard project={project} onDelete={handleDelete} />
-                        </div>
-                    ))}
-                </div>
+  return (
+    <>
+      <div className="container-fluid">
+        {/* page header */}
+        <PageHeader
+          headerTitle={"Projects"}
+          isBtnShow={true}
+          btnText={"Create Project"}
+          onClickBtn={() => push("/" + PAGES.PROJECT)}
+        />
+        {/* table data */}
+        <div className="row g-3 py-1 pb-4">
+          {projects.map((project: Project) => (
+            <div key={project.id}>
+              <ProjectCard project={project} onDelete={handleDelete} />
             </div>
-        </>
-    );
+          ))}
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default Projects;

@@ -12,8 +12,5 @@ export const getEmployeeDetails = async ({ queryKey }: any) => {
 };
 
 export const useEmployeeDetailsQuery = (options: any) => {
-  return useQuery<{ employee: { data: Employee } }, Error>(
-    [ROUTES.EMPLOYEE, options],
-    getEmployeeDetails
-  );
+  return useQuery<{ employee: { data: Employee } }, Error>([ROUTES.EMPLOYEE, options], getEmployeeDetails);
 };

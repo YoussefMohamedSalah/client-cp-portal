@@ -4,10 +4,10 @@ import { http } from "utils/Http";
 import { SiteRequest } from "types/Site_request";
 
 export const getAllSiteRequests = async () => {
-    const { data } = await http.get(ROUTES.SITE_REQUESTS);
-    return { siteRequests: { data: data as SiteRequest[] } };
+  const { data } = await http.get(ROUTES.SITE_REQUESTS);
+  return { siteRequests: { data: data as SiteRequest[] } };
 };
 
 export const useGetAllSiteRequestsQuery = () => {
-    return useQuery({ queryKey: ['siteRequests'], queryFn: getAllSiteRequests })
+  return useQuery({ queryKey: ["siteRequests"], queryFn: getAllSiteRequests });
 };

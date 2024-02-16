@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import {
-  calculateProjectPercentage,
-  sumDaysLeftFromToDay,
-} from "utils/Convert";
+import { calculateProjectPercentage, sumDaysLeftFromToDay } from "utils/Convert";
 import { ProgressBar } from "react-bootstrap";
 import useApp from "hooks/useApp";
 import { PAGES } from "constants/pages";
@@ -58,9 +55,7 @@ const TaskCard = ({ task, onDelete }: Props) => {
                     <div className="col-xl-5 col-12">
                       <div
                         className="d-flex gap-3 align-items-center pointer"
-                        onClick={() =>
-                          push("/" + PAGES.Task_INFO + "/" + task.id)
-                        }
+                        onClick={() => push("/" + PAGES.Task_INFO + "/" + task.id)}
                       >
                         <h3 className="primary">{task.name}</h3>
                         <span className="small bg-success text-white py-1 px-2 rounded align-self-start">
@@ -91,9 +86,7 @@ const TaskCard = ({ task, onDelete }: Props) => {
                           TransitionComponent={Zoom}
                           title={
                             <React.Fragment>
-                              <Typography color="inherit">
-                                {task?.name!}
-                              </Typography>
+                              <Typography color="inherit">{task?.name!}</Typography>
                               <b className="border-top-0">{task.description}</b>
                             </React.Fragment>
                           }
@@ -118,21 +111,14 @@ const TaskCard = ({ task, onDelete }: Props) => {
                       </div>
                     </div>
                     <div className="col-xl-1 col-12 text-end">
-                      <IconButton
-                        aria-label="delete"
-                        size="medium"
-                        color="error"
-                        onClick={() => setIsModal(true)}
-                      >
+                      <IconButton aria-label="delete" size="medium" color="error" onClick={() => setIsModal(true)}>
                         <DeleteIcon fontSize="inherit" />
                       </IconButton>
                       <IconButton
                         aria-label="edit"
                         size="medium"
                         color="primary"
-                        onClick={() =>
-                          push("/" + PAGES.PROJECT + "/" + task.id)
-                        }
+                        onClick={() => push("/" + PAGES.PROJECT + "/" + task.id)}
                       >
                         <EditOutlinedIcon fontSize="inherit" />
                       </IconButton>
@@ -145,10 +131,7 @@ const TaskCard = ({ task, onDelete }: Props) => {
                         variant="success"
                         now={15}
                         style={{
-                          width: `${calculateProjectPercentage(
-                            task?.start_at!,
-                            task?.end_at!
-                          )}30%`,
+                          width: `${calculateProjectPercentage(task?.start_at!, task?.end_at!)}30%`,
                         }}
                       />
                     </ProgressBar>

@@ -11,8 +11,5 @@ export const getCustomerDetails = async ({ queryKey }: any) => {
 };
 
 export const useCustomerDetailsQuery = (options: any) => {
-  return useQuery(
-    [ROUTES.CUSTOMER, options],
-    getCustomerDetails
-  );
+  return useQuery([ROUTES.CUSTOMER, options], getCustomerDetails);
 };

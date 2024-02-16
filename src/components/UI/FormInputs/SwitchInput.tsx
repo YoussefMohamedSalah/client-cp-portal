@@ -1,6 +1,6 @@
-import * as React from 'react';
-import Switch from '@mui/material/Switch';
-import { IOption } from 'types/Forms/option';
+import * as React from "react";
+import Switch from "@mui/material/Switch";
+import { IOption } from "types/Forms/option";
 
 interface Props {
   label?: string;
@@ -31,12 +31,12 @@ const SwitchInput = ({ onChange, value, defaultValue, required, disabled }: Prop
         setChecked(event.target.checked);
       }}
       required={required}
-      sx={{ margin: '8px 0' }}
+      sx={{ margin: "8px 0" }}
       disabled={disabled}
       size="small"
-      inputProps={{ 'aria-label': 'controlled' }}
+      inputProps={{ "aria-label": "controlled" }}
     />
   );
-}
+};
 
 export default SwitchInput;

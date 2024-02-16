@@ -8,5 +8,3 @@ export const useDeleteCompany = () => {
     return { data: { data: data as any } };
   });
 };
-
-

@@ -1,15 +1,11 @@
-import React from 'react'
+import React from "react";
 
 interface Props {
-    id: string | null;
-};
-
-const InvoiceFormPage = ({ id }: Props) => {
-    return (
-        <div>
-
-        </div>
-    )
+  id?: string;
 }
 
-export default InvoiceFormPage
+const InvoiceFormPage = ({ id }: Props) => {
+  return <div></div>;
+};
+
+export default InvoiceFormPage;

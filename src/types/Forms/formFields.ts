@@ -4,22 +4,22 @@ export interface IFormField {
   name: string;
 
   type:
-  | "text"
-  | "email"
-  | "password"
-  | "number"
-  | "date"
-  | "time"
-  | "datetime-local"
-  | "checkbox"
-  | "radio"
-  | "select"
-  | "hidden"
-  | "multi select"
-  | "image"
-  | "checkboxes"
-  | "editor"
-  | "textarea";
+    | "text"
+    | "email"
+    | "password"
+    | "number"
+    | "date"
+    | "time"
+    | "datetime-local"
+    | "checkbox"
+    | "radio"
+    | "select"
+    | "hidden"
+    | "multi select"
+    | "image"
+    | "checkboxes"
+    | "editor"
+    | "textarea";
   label?: string;
   placeholder?: string;
   disabled?: boolean;
@@ -28,7 +28,7 @@ export interface IFormField {
   defaultValue?: any;
   multiple?: boolean;
   rows?: number;
-};
+}
 
 export interface IField {
   label: string;
@@ -47,4 +47,4 @@ export interface IField {
   default?: any;
   info?: string;
   required?: boolean;
-};
+}

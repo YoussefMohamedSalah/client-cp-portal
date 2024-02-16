@@ -10,10 +10,9 @@ export interface Task {
   start_at?: string;
   end_at?: string;
   assigned_to?: string;
-  user?: { id: string, name: string };
+  user?: { id: string; name: string };
   task_priority?: PRIORITY;
   task_progress?: PROGRESS;
   task_type: TASK_TYPE;
   thumbnail?: File;
 };
-

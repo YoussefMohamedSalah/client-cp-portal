@@ -4,9 +4,9 @@ import { http } from "utils/Http";
 import { Contract } from "types/Contract";
 
 export const useSaveContractToArchive = () => {
-  return useMutation<any, Error, any>(async createInput => {
+  return useMutation<any, Error, any>(async (createInput) => {
     const { projectId } = createInput;
-    const { data } = await http.post(ROUTES.CONTRACT + 'archive/' + projectId, createInput.data, {
+    const { data } = await http.post(ROUTES.CONTRACT + "archive/" + projectId, createInput.data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

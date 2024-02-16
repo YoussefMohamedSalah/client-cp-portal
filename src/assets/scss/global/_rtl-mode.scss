@@ -300,9 +300,9 @@ body.rtl_mode {
         border-bottom-left-radius: 0;
       }
     }
-    > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(
-        .valid-feedback
-      ):not(.invalid-tooltip):not(.invalid-feedback) {
+    > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(
+        .invalid-feedback
+      ) {
       margin-right: -1px;
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
@@ -580,25 +580,13 @@ body.rtl_mode {
       }
     }
   }
-  table.dataTable.dtr-inline.collapsed
-    > tbody
-    > tr[role="row"]
-    > td:first-child,
-  table.dataTable.dtr-inline.collapsed
-    > tbody
-    > tr[role="row"]
-    > th:first-child {
+  table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child,
+  table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child {
     padding-right: 30px;
     padding-left: 0px;
   }
-  table.dataTable.dtr-inline.collapsed
-    > tbody
-    > tr[role="row"]
-    > td:first-child:before,
-  table.dataTable.dtr-inline.collapsed
-    > tbody
-    > tr[role="row"]
-    > th:first-child:before {
+  table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:before,
+  table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child:before {
     left: unset;
     right: 4px;
   }

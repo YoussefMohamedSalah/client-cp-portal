@@ -4,10 +4,7 @@ export enum InventoryKeys {
   // ITEMS_VALUE = "items_value",
   THUMBNAIL = "thumbnail",
   // PROJECT_INFO = "project_info",
-};
-
-
-
+}
 
 export const GroupNumKeys = [];
 

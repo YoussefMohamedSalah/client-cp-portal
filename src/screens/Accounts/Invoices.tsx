@@ -6,7 +6,7 @@ import InvoiceList from "components/Invoices/InvoiceList";
 import SampleInvoice from "components/Invoices/SampleInvoice";
 import EmailInvoice from "components/Invoices/EmailInvoice";
 
-interface Props { }
+interface Props {}
 
 const Invoices: React.FC<Props> = () => {
   return (

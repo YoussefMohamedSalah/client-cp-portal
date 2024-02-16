@@ -8,8 +8,5 @@ export const getAllEmployees = async ({ queryKey }: any) => {
 };
 
 export const useEmployeesQuery = (options: any) => {
-  return useQuery<{ employees: { data: any } }, Error>(
-    [ROUTES.CO_EMPLOYEES, options],
-    getAllEmployees
-  );
+  return useQuery<{ employees: { data: any } }, Error>([ROUTES.CO_EMPLOYEES, options], getAllEmployees);
 };

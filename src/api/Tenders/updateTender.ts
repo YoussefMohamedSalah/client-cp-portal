@@ -5,15 +5,11 @@ import { http } from "utils/Http";
 
 export const useUpdateTender = () => {
   return useMutation<any, Error, any>(async (updateInput) => {
-    const { data } = await http.put(
-      ROUTES.TENDER + updateInput.id + "/",
-      updateInput.data,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    const { data } = await http.put(ROUTES.TENDER + updateInput.id + "/", updateInput.data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
     return { tender: { data: data as any } };
   });
 };
@@ -64,14 +60,8 @@ export const tenderUpdateInput = (data: Tender): any => {
   formData.append("delivery_date", data?.delivery_date!);
   formData.append("duration", `${data?.duration!}`);
   formData.append("sites_count", `${data.sites_count ? data.sites_count : 0}`);
-  formData.append(
-    "buildings_count",
-    `${data.buildings_count ? data.buildings_count : 0}`
-  );
-  formData.append(
-    "floors_count",
-    `${data.floors_count ? data.floors_count : 0}`
-  );
+  formData.append("buildings_count", `${data.buildings_count ? data.buildings_count : 0}`);
+  formData.append("floors_count", `${data.floors_count ? data.floors_count : 0}`);
   formData.append("contract_number", `${data?.contract_number!}`);
   formData.append("manager", `${data?.manager!}`);
   formData.append("assistants", `${data?.assistants!}`);

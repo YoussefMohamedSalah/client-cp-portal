@@ -1,1 +1,1 @@
-declare module 'react-data-table-component';
+declare module "react-data-table-component";

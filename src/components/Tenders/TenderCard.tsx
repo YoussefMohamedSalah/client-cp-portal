@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import {
-  calculateProjectPercentage,
-  sumDaysLeftFromToDay,
-} from "utils/Convert";
+import { calculateProjectPercentage, sumDaysLeftFromToDay } from "utils/Convert";
 import { ProgressBar } from "react-bootstrap";
 import useApp from "hooks/useApp";
 import { PAGES } from "constants/pages";
@@ -58,9 +55,7 @@ const TenderCard = ({ tender, onDelete }: Props) => {
                     <div className="col-xl-5 col-12">
                       <div
                         className="d-flex gap-3 align-items-center pointer"
-                        onClick={() =>
-                          push("/" + PAGES.TENDER_INFO + "/" + tender.id)
-                        }
+                        onClick={() => push("/" + PAGES.TENDER_INFO + "/" + tender.id)}
                       >
                         <h3 className="primary">{tender.name}</h3>
                         <span className="small bg-success text-white py-1 px-2 rounded align-self-start">
@@ -91,12 +86,8 @@ const TenderCard = ({ tender, onDelete }: Props) => {
                           TransitionComponent={Zoom}
                           title={
                             <React.Fragment>
-                              <Typography color="inherit">
-                                {tender?.name!}
-                              </Typography>
-                              <b className="border-top-0">
-                                {tender.description}
-                              </b>
+                              <Typography color="inherit">{tender?.name!}</Typography>
+                              <b className="border-top-0">{tender.description}</b>
                             </React.Fragment>
                           }
                         >
@@ -115,27 +106,19 @@ const TenderCard = ({ tender, onDelete }: Props) => {
                           className="bg-success text-white"
                           startIcon={<AccessTimeOutlinedIcon />}
                         >
-                          {sumDaysLeftFromToDay(tender?.delivery_date!)} Days
-                          Left
+                          {sumDaysLeftFromToDay(tender?.delivery_date!)} Days Left
                         </Button>
                       </div>
                     </div>
                     <div className="col-xl-1 col-12 text-end">
-                      <IconButton
-                        aria-label="delete"
-                        size="medium"
-                        color="error"
-                        onClick={() => setIsModal(true)}
-                      >
+                      <IconButton aria-label="delete" size="medium" color="error" onClick={() => setIsModal(true)}>
                         <DeleteIcon fontSize="inherit" />
                       </IconButton>
                       <IconButton
                         aria-label="edit"
                         size="medium"
                         color="primary"
-                        onClick={() =>
-                          push("/" + PAGES.PROJECT + "/" + tender.id)
-                        }
+                        onClick={() => push("/" + PAGES.PROJECT + "/" + tender.id)}
                       >
                         <EditOutlinedIcon fontSize="inherit" />
                       </IconButton>
@@ -148,10 +131,7 @@ const TenderCard = ({ tender, onDelete }: Props) => {
                         variant="success"
                         now={15}
                         style={{
-                          width: `${calculateProjectPercentage(
-                            tender?.contract_date!,
-                            tender?.delivery_date!
-                          )}30%`,
+                          width: `${calculateProjectPercentage(tender?.contract_date!, tender?.delivery_date!)}30%`,
                         }}
                       />
                     </ProgressBar>

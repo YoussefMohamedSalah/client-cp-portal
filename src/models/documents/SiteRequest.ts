@@ -7,13 +7,6 @@ export enum SiteRequestKeys {
 
 export const SiteRequestNumKeys = [];
 
-export const SiteRequestStrKeys = [
-  SiteRequestKeys.DATE,
-  SiteRequestKeys.PROJECT,
-];
+export const SiteRequestStrKeys = [SiteRequestKeys.DATE, SiteRequestKeys.PROJECT];
 
-export const SiteRequestRequiredKeys = [
-  SiteRequestKeys.DATE,
-  SiteRequestKeys.PROJECT,
-  SiteRequestKeys.SUBJECT,
-];
+export const SiteRequestRequiredKeys = [SiteRequestKeys.DATE, SiteRequestKeys.PROJECT, SiteRequestKeys.SUBJECT];

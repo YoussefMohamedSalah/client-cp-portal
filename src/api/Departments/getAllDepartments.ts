@@ -8,8 +8,5 @@ export const getAllDepartments = async ({ queryKey }: any) => {
 };
 
 export const useDepartmentsQuery = (options: any) => {
-  return useQuery<{ departments: { data: any } }, Error>(
-    [ROUTES.DEPARTMENTS, options],
-    getAllDepartments
-  );
+  return useQuery<{ departments: { data: any } }, Error>([ROUTES.DEPARTMENTS, options], getAllDepartments);
 };

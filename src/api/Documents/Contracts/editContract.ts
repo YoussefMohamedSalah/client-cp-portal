@@ -4,7 +4,7 @@ import { http } from "utils/Http";
 import { Contract } from "types/Contract";
 
 export const useEditContract = () => {
-  return useMutation<any, Error, any>(async updateInput => {
+  return useMutation<any, Error, any>(async (updateInput) => {
     const { id } = updateInput;
     const { data } = await http.put(ROUTES.CONTRACT + id, updateInput.data, {
       headers: {
@@ -23,8 +23,8 @@ export const editContractInput = (data: any): any => {
       conditions: data.conditions,
       default_conditions: data.default_conditions ? data.default_conditions : null,
       date: data.date,
-      removedFilesNameSet: data.removedFilesNameSet ? data.removedFilesNameSet : '[]',
-      addedFilesNameSet: data.addedFilesNameSet ? data.addedFilesNameSet : '[]',
+      removedFilesNameSet: data.removedFilesNameSet ? data.removedFilesNameSet : "[]",
+      addedFilesNameSet: data.addedFilesNameSet ? data.addedFilesNameSet : "[]",
       is_archived: data.is_archived ? data.is_archived : null,
       // --------
       sub_total: data.sub_total ? data.sub_total : null,
@@ -34,24 +34,22 @@ export const editContractInput = (data: any): any => {
     } as any;
   }
 
-
   const formData = new FormData();
-  (data.sub_total) && formData.append("sub_total", data?.sub_total! || 0);
-  (data.vat) && formData.append("vat", data.vat || 0);
-  (data.discount) && formData.append("discount", data?.discount! || 0);
-  (data.total) && formData.append("total", data.total || 0);
-  (data.projectId) && formData.append("projectId", data.projectId);
-  (data.date) && formData.append("date", data.date);
-  (data.items) && formData.append("items", data?.items!);
-  (data.conditions) && formData.append("conditions", data.conditions);
-  (data.default_conditions) && formData.append("default_conditions", data.default_conditions);
-  (data.subcontractorId) && formData.append("subcontractor", data.subcontractor.id);
-  (data.removedFilesNameSet) && formData.append("removedFilesNameSet", data.removedFilesNameSet);
-  (data.addedFilesNameSet) && formData.append("addedFilesNameSet", data.addedFilesNameSet);
-  (data.is_archived) && formData.append("is_archived", data.is_archived);
+  data.sub_total && formData.append("sub_total", data?.sub_total! || 0);
+  data.vat && formData.append("vat", data.vat || 0);
+  data.discount && formData.append("discount", data?.discount! || 0);
+  data.total && formData.append("total", data.total || 0);
+  data.projectId && formData.append("projectId", data.projectId);
+  data.date && formData.append("date", data.date);
+  data.items && formData.append("items", data?.items!);
+  data.conditions && formData.append("conditions", data.conditions);
+  data.default_conditions && formData.append("default_conditions", data.default_conditions);
+  data.subcontractorId && formData.append("subcontractor", data.subcontractor.id);
+  data.removedFilesNameSet && formData.append("removedFilesNameSet", data.removedFilesNameSet);
+  data.addedFilesNameSet && formData.append("addedFilesNameSet", data.addedFilesNameSet);
+  data.is_archived && formData.append("is_archived", data.is_archived);
   for (let file of data.uploadedFiles) {
     formData.append("files", file);
   }
   return formData;
 };
-

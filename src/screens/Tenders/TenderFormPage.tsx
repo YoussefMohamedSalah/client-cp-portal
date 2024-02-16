@@ -5,12 +5,7 @@ import Loading from "components/UI/Loading";
 import { PAGES } from "constants/pages";
 import { useUI } from "contexts/UIContext";
 import useApp from "hooks/useApp";
-import {
-  TenderKeys,
-  TenderNumKeys,
-  TenderStrKeys,
-  TenderRequiredKeys,
-} from "models/Tender";
+import { TenderKeys, TenderNumKeys, TenderStrKeys, TenderRequiredKeys } from "models/Tender";
 import { useEffect, useState } from "react";
 import { inputsValidationType } from "types/Error";
 import { IField } from "types/Forms/formFields";
@@ -24,8 +19,8 @@ import DeleteModal from "components/Modals/DeleteModal";
 import { getFormattedTodayDate } from "utils/DateUtils";
 
 interface Props {
-  id: string | null;
-};
+  id?: string;
+}
 
 const TenderFormPage = ({ id }: Props) => {
   const [initialized, setInitialized] = useState<boolean>(false);
@@ -41,11 +36,7 @@ const TenderFormPage = ({ id }: Props) => {
   const { showError, showSuccess } = useUI();
   const { push } = useApp();
 
-  const {
-    data: TenderData,
-    error: TenderError,
-    isLoading: TenderIsLoading,
-  } = useTenderDetailsQuery({ id });
+  const { data: TenderData, error: TenderError, isLoading: TenderIsLoading } = useTenderDetailsQuery({ id });
 
   // !Check if this is CREATE OR EDIT Modal
   useEffect(() => {
@@ -90,7 +81,7 @@ const TenderFormPage = ({ id }: Props) => {
       hand_over: `${getFormattedTodayDate()}`,
       description: "",
       comments: [],
-    })
+    });
   };
 
   const formFields: IField[] = [
@@ -100,8 +91,7 @@ const TenderFormPage = ({ id }: Props) => {
       width: "col-md-6",
       key: TenderKeys.DATE,
       value: modelData?.date,
-      onChange: (value: string | any) =>
-        handleModelData(TenderKeys.DATE, value),
+      onChange: (value: string | any) => handleModelData(TenderKeys.DATE, value),
       placeholder: "Date",
     },
     {
@@ -110,11 +100,10 @@ const TenderFormPage = ({ id }: Props) => {
       width: "col-md-6",
       key: TenderKeys.HAND_OVER,
       value: modelData?.hand_over,
-      onChange: (value: string | any) =>
-        handleModelData(TenderKeys.HAND_OVER, value),
+      onChange: (value: string | any) => handleModelData(TenderKeys.HAND_OVER, value),
       placeholder: "Hand Over Date",
       required: true,
-      default: `${getFormattedTodayDate()}`
+      default: `${getFormattedTodayDate()}`,
     },
     {
       label: "Description",
@@ -122,8 +111,7 @@ const TenderFormPage = ({ id }: Props) => {
       type: "textarea",
       key: TenderKeys.DESCRIPTION,
       value: modelData?.description,
-      onChange: (value: string | any) =>
-        handleModelData(TenderKeys.DESCRIPTION, value),
+      onChange: (value: string | any) => handleModelData(TenderKeys.DESCRIPTION, value),
       placeholder: "Enter Description",
       required: true,
     },
@@ -138,7 +126,7 @@ const TenderFormPage = ({ id }: Props) => {
         let reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = (url) => {
-          handleModelData(TenderKeys.FILES, file)
+          handleModelData(TenderKeys.FILES, file);
         };
       },
       placeholder: "Enter Thumbnail",
@@ -149,8 +137,7 @@ const TenderFormPage = ({ id }: Props) => {
       type: "textarea",
       key: TenderKeys.COMMENTS,
       value: modelData?.comments,
-      onChange: (value: string | any) =>
-        handleModelData(TenderKeys.COMMENTS, value),
+      onChange: (value: string | any) => handleModelData(TenderKeys.COMMENTS, value),
       placeholder: "Enter Comment",
     },
   ];
@@ -221,12 +208,7 @@ const TenderFormPage = ({ id }: Props) => {
   if (!initialized) return <></>;
   return (
     <div className="container-xxl">
-      <PageHeader
-        headerTitle={""}
-        isBtnShow={false}
-        btnText={""}
-        isBackBtn={true}
-      />
+      <PageHeader headerTitle={""} isBtnShow={false} btnText={""} isBackBtn={true} />
       <div className="row g-3 pb-3 pb-xl-0">
         <div>
           <FormInputs formFields={formFields} grid={true} block={true} />
@@ -234,21 +216,11 @@ const TenderFormPage = ({ id }: Props) => {
         <div className="col-sm d-flex align-items-center justify-content-center gap-2">
           {isEdit ? (
             <>
-              <Button
-                className="lift"
-                content="Cancel"
-                onClick={() => push("/" + PAGES.TENDERS)}
-                variant="secondary"
-              />
+              <Button className="lift" content="Cancel" onClick={() => push("/" + PAGES.TENDERS)} variant="secondary" />
             </>
           ) : (
             <>
-              <Button
-                className="lift"
-                content="Reset"
-                onClick={handleReset}
-                variant="secondary"
-              />
+              <Button className="lift" content="Reset" onClick={handleReset} variant="secondary" />
             </>
           )}
           {isEdit ? (
@@ -257,11 +229,7 @@ const TenderFormPage = ({ id }: Props) => {
             </>
           ) : (
             <>
-              <Button
-                className="lift"
-                content="Create"
-                onClick={handleCreate}
-              />
+              <Button className="lift" content="Create" onClick={handleCreate} />
             </>
           )}
           <Button

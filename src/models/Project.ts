@@ -21,7 +21,7 @@ export enum ProjectKeys {
   ASSISTANTS = "assistants",
   CUSTOMER = "customer",
   THUMBNAIL = "thumbnail",
-  FILES = "files"
+  FILES = "files",
 }
 
 export const ProjectNumKeys = [

@@ -12,7 +12,7 @@ export const EmployeeInfoChartData: any = {
     grid: {
       show: false,
       xaxis: { lines: { show: false } },
-      yaxis: { lines: { show: false } }
+      yaxis: { lines: { show: false } },
     },
     stroke: { width: 4, curve: "smooth", colors: ["var(--chart-color2)"] },
     xaxis: {
@@ -25,14 +25,14 @@ export const EmployeeInfoChartData: any = {
         "5/11/2023",
         "6/11/2023",
         "7/11/2023",
-        "8/11/2023"
+        "8/11/2023",
       ],
       tickAmount: 10,
       labels: {
         formatter: function (value: any, timestamp: any, opts: any) {
           return opts.dateFormatter(new Date(timestamp), "dd MMM");
-        }
-      }
+        },
+      },
     },
     fill: {
       type: "gradient",
@@ -43,18 +43,18 @@ export const EmployeeInfoChartData: any = {
         type: "horizontal",
         opacityFrom: 1,
         opacityTo: 1,
-        stops: [0, 100, 100, 100]
-      }
+        stops: [0, 100, 100, 100],
+      },
     },
     markers: {
       size: 3,
       colors: ["#FFA41B"],
       strokeColors: "#ffffff",
       strokeWidth: 2,
-      hover: { size: 7 }
+      hover: { size: 7 },
     },
-    yaxis: { show: false, min: -10, max: 50 }
-  }
+    yaxis: { show: false, min: -10, max: 50 },
+  },
 };
 
 export const TotalEmployeesChartData: any = {
@@ -69,10 +69,10 @@ export const TotalEmployeesChartData: any = {
     responsive: [
       {
         breakpoint: 480,
-        options: { chart: { width: 200 }, legend: { position: "bottom" } }
-      }
-    ]
-  }
+        options: { chart: { width: 200 }, legend: { position: "bottom" } },
+      },
+    ],
+  },
 };
 
 export const TopHiringSourcesChartData: any = {
@@ -80,60 +80,42 @@ export const TopHiringSourcesChartData: any = {
     series: [
       {
         name: "Teacher",
-        data: [45, 25, 44, 23, 25, 41, 32, 25, 22, 65, 22, 29]
+        data: [45, 25, 44, 23, 25, 41, 32, 25, 22, 65, 22, 29],
       },
       {
         name: "Assessment System",
-        data: [45, 12, 25, 22, 19, 22, 29, 23, 23, 25, 41, 32]
+        data: [45, 12, 25, 22, 19, 22, 29, 23, 23, 25, 41, 32],
       },
       {
         name: "Student",
-        data: [45, 25, 32, 25, 22, 65, 44, 23, 25, 41, 22, 29]
+        data: [45, 25, 32, 25, 22, 65, 44, 23, 25, 41, 22, 29],
       },
       {
         name: "Manger",
-        data: [32, 25, 22, 11, 22, 29, 16, 25, 9, 23, 25, 13]
-      }
+        data: [32, 25, 22, 11, 22, 29, 16, 25, 9, 23, 25, 13],
+      },
     ],
     chart: {
       type: "bar",
       height: 300,
       stacked: true,
       toolbar: { show: false },
-      zoom: { enabled: true }
+      zoom: { enabled: true },
     },
-    colors: [
-      "var(--chart-color1)",
-      "var(--chart-color2)",
-      "var(--chart-color3)",
-      "var(--chart-color4)"
-    ],
+    colors: ["var(--chart-color1)", "var(--chart-color2)", "var(--chart-color3)", "var(--chart-color4)"],
     responsive: [
       {
         breakpoint: 480,
-        options: { legend: { position: "bottom", offsetX: -10, offsetY: 0 } }
-      }
+        options: { legend: { position: "bottom", offsetX: -10, offsetY: 0 } },
+      },
     ],
     xaxis: {
-      categories: [
-        "Jan",
-        "Feb",
-        "March",
-        "Apr",
-        "May",
-        "Jun",
-        "July",
-        "Aug",
-        "Sept",
-        "Oct",
-        "Nov",
-        "Dec"
-      ]
+      categories: ["Jan", "Feb", "March", "Apr", "May", "Jun", "July", "Aug", "Sept", "Oct", "Nov", "Dec"],
     },
     legend: { position: "top", horizontalAlign: "right" },
     dataLabels: { enabled: false },
-    fill: { opacity: 1 }
-  }
+    fill: { opacity: 1 },
+  },
 }; // top, bottom // left, right
 
 export const IncomeAnalyticsChartData: any = {
@@ -148,10 +130,10 @@ export const IncomeAnalyticsChartData: any = {
           legend: {
             position: "bottom",
             markers: { fillColors: "var(--chart-color1)" },
-            labels: { colors: "var(--chart-color1)" }
-          }
-        }
-      }
+            labels: { colors: "var(--chart-color1)" },
+          },
+        },
+      },
     ],
     chart: { height: 336, type: "polarArea", toolbar: { show: false } },
     labels: ["France", "India", "Canada", "Italy", "Japan", "Us"],
@@ -163,156 +145,107 @@ export const IncomeAnalyticsChartData: any = {
         "var(--chart-color3)",
         "var(--chart-color4)",
         "var(--chart-color5)",
-        "var(--chart-color6)"
-      ]
+        "var(--chart-color6)",
+      ],
     },
     stroke: { width: 1, colors: undefined },
     yaxis: { show: false },
     legend: { position: "bottom", horizontalAlign: "center" },
     plotOptions: { polarArea: { rings: { strokeWidth: 0 } } },
     theme: {
-      monochrome: { enabled: true, shadeTo: "light", shadeIntensity: 0.6 }
-    }
-  }
+      monochrome: { enabled: true, shadeTo: "light", shadeIntensity: 0.6 },
+    },
+  },
 }; // left, right, top, bottom // left, right, center
 
 export const ProjectTimelineChartData: any = {
   options: {
     chart: { height: 407, type: "rangeBar", toolbar: { show: false } },
     plotOptions: { bar: { horizontal: true } },
-    colors: [
-      "var(--chart-color1)",
-      "var(--chart-color2)",
-      "var(--chart-color4)"
-    ],
+    colors: ["var(--chart-color1)", "var(--chart-color2)", "var(--chart-color4)"],
     series: [
       {
         name: "Justin",
         data: [
           {
             x: "Design",
-            y: [
-              new Date("2020-03-02").getTime(),
-              new Date("2020-03-04").getTime()
-            ]
+            y: [new Date("2020-03-02").getTime(), new Date("2020-03-04").getTime()],
           },
           {
             x: "MobileApp",
-            y: [
-              new Date("2020-03-02").getTime(),
-              new Date("2020-03-04").getTime()
-            ]
+            y: [new Date("2020-03-02").getTime(), new Date("2020-03-04").getTime()],
           },
           {
             x: "Infography",
-            y: [
-              new Date("2020-03-04").getTime(),
-              new Date("2020-03-07").getTime()
-            ]
+            y: [new Date("2020-03-04").getTime(), new Date("2020-03-07").getTime()],
           },
           {
             x: "Protoyping",
-            y: [
-              new Date("2020-03-11").getTime(),
-              new Date("2020-03-12").getTime()
-            ]
+            y: [new Date("2020-03-11").getTime(), new Date("2020-03-12").getTime()],
           },
           {
             x: "Development",
-            y: [
-              new Date("2020-03-02").getTime(),
-              new Date("2020-03-03").getTime()
-            ]
-          }
-        ]
+            y: [new Date("2020-03-02").getTime(), new Date("2020-03-03").getTime()],
+          },
+        ],
       },
       {
         name: "Michael",
         data: [
           {
             x: "Design",
-            y: [
-              new Date("2020-03-01").getTime(),
-              new Date("2020-03-03").getTime()
-            ]
+            y: [new Date("2020-03-01").getTime(), new Date("2020-03-03").getTime()],
           },
           {
             x: "MobileApp",
-            y: [
-              new Date("2020-03-03").getTime(),
-              new Date("2020-03-07").getTime()
-            ]
+            y: [new Date("2020-03-03").getTime(), new Date("2020-03-07").getTime()],
           },
           {
             x: "Infography",
-            y: [
-              new Date("2020-03-06").getTime(),
-              new Date("2020-03-09").getTime()
-            ]
+            y: [new Date("2020-03-06").getTime(), new Date("2020-03-09").getTime()],
           },
           {
             x: "Protoyping",
-            y: [
-              new Date("2020-03-10").getTime(),
-              new Date("2020-03-11").getTime()
-            ]
+            y: [new Date("2020-03-10").getTime(), new Date("2020-03-11").getTime()],
           },
           {
             x: "Development",
-            y: [
-              new Date("2020-03-01").getTime(),
-              new Date("2020-03-02").getTime()
-            ]
-          }
-        ]
+            y: [new Date("2020-03-01").getTime(), new Date("2020-03-02").getTime()],
+          },
+        ],
       },
       {
         name: "Jason",
         data: [
           {
             x: "Design",
-            y: [
-              new Date("2020-03-03").getTime(),
-              new Date("2020-03-05").getTime()
-            ]
+            y: [new Date("2020-03-03").getTime(), new Date("2020-03-05").getTime()],
           },
           {
             x: "MobileApp",
-            y: [
-              new Date("2020-03-01").getTime(),
-              new Date("2020-03-09").getTime()
-            ]
+            y: [new Date("2020-03-01").getTime(), new Date("2020-03-09").getTime()],
           },
           {
             x: "Infography",
-            y: [
-              new Date("2020-03-05").getTime(),
-              new Date("2020-03-08").getTime()
-            ]
+            y: [new Date("2020-03-05").getTime(), new Date("2020-03-08").getTime()],
           },
           {
             x: "Protoyping",
-            y: [
-              new Date("2020-03-11").getTime(),
-              new Date("2020-03-17").getTime()
-            ]
+            y: [new Date("2020-03-11").getTime(), new Date("2020-03-17").getTime()],
           },
           {
             x: "Development",
-            y: [
-              new Date("2020-03-03").getTime(),
-              new Date("2020-03-05").getTime()
-            ]
-          }
-        ]
-      }
+            y: [new Date("2020-03-03").getTime(), new Date("2020-03-05").getTime()],
+          },
+        ],
+      },
     ],
     yaxis: {
       min: new Date("2020-03-01").getTime(),
-      max: new Date("2020-03-14").getTime()
+      max: new Date("2020-03-14").getTime(),
     },
-    xaxis: { type: "datetime" }
-  }
+    xaxis: { type: "datetime" },
+  },
 };
 
 export const ClientInvoicesData: any = {
@@ -320,34 +253,36 @@ export const ClientInvoicesData: any = {
   columns: [
     {
       name: "NO",
-      selector: () => { },
+      selector: () => {},
       sortable: true,
-      cell: (row: any) =>
+      cell: (row: any) => (
         <a href="invoices" className="fw-bold text-secondary">
           #{row.no}
         </a>
+      ),
     },
     { name: "PROJECT", selector: (row: any) => row.project, sortable: true },
     {
       name: "START DATE",
       selector: (row: any) => row.startdate,
-      sortable: true
+      sortable: true,
     },
     { name: "EDN DATE", selector: (row: any) => row.enddate, sortable: true },
     { name: "AMOUNT", selector: (row: any) => row.amount, sortable: true },
     {
       name: "STATUS",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: true,
-      cell: (row: any) =>
+      cell: (row: any) => (
         <span
-          className={`badge ${row.status === "Paid"
-            ? "bg-success"
-            : row.status === "Pending" ? `bg-warning` : "bg-lavender-purple"}`}
+          className={`badge ${
+            row.status === "Paid" ? "bg-success" : row.status === "Pending" ? `bg-warning` : "bg-lavender-purple"
+          }`}
         >
           {row.status}
         </span>
-    }
+      ),
+    },
   ],
   rows: [
     {
@@ -356,7 +291,7 @@ export const ClientInvoicesData: any = {
       startdate: "10-01-2021",
       createDate: "10-02-2021",
       amount: "$3250",
-      status: "Pending"
+      status: "Pending",
     },
     {
       no: "00002",
@@ -364,7 +299,7 @@ export const ClientInvoicesData: any = {
       startdate: "12-02-2021",
       createDate: "10-04-2021",
       amount: "$1578",
-      status: "Paid"
+      status: "Paid",
     },
     {
       no: "00003",
@@ -372,7 +307,7 @@ export const ClientInvoicesData: any = {
       startdate: "18-02-2021",
       createDate: "20-04-2021",
       amount: "$1978",
-      status: "Draft"
+      status: "Draft",
     },
     {
       no: "00004",
@@ -380,9 +315,9 @@ export const ClientInvoicesData: any = {
       startdate: "28-02-2021",
       createDate: "30-04-2021",
       amount: "$1973",
-      status: "Draf"
-    }
-  ]
+      status: "Draf",
+    },
+  ],
 };
 
 export const InvoiceData: any = [
@@ -392,7 +327,7 @@ export const InvoiceData: any = [
     occupation: "Box of Crayons",
     address: "2211 Jones Avenue,Winston Salem FL 27107",
     rate: "50",
-    appliedData: "23 Feb, 2021"
+    appliedData: "23 Feb, 2021",
   },
   {
     image: Avatar2,
@@ -400,7 +335,7 @@ export const InvoiceData: any = [
     occupation: "Fast Cad",
     address: "3154 Sampson Street,Aurora CT 80014",
     rate: "43",
-    appliedData: "14 Apr, 2021"
+    appliedData: "14 Apr, 2021",
   },
   {
     image: Avatar3,
@@ -408,7 +343,7 @@ export const InvoiceData: any = [
     occupation: "Gob Geeklords",
     address: "49 Stamford Road. West Chicago, IL 60185",
     rate: "25",
-    appliedData: "16 Mar, 2021"
+    appliedData: "16 Mar, 2021",
   },
   {
     image: Avatar4,
@@ -416,7 +351,7 @@ export const InvoiceData: any = [
     occupation: "Java Dalia",
     address: "2698 Northumberland. Melbourne, FL 32904",
     rate: "55",
-    appliedData: "17 Mar, 2021"
+    appliedData: "17 Mar, 2021",
   },
   {
     image: Avatar5,
@@ -424,7 +359,7 @@ export const InvoiceData: any = [
     occupation: "Practice to Perfect",
     address: "35 Gubener Str. Emmering, FL 32904",
     rate: "28",
-    appliedData: "12 Feb, 2021"
+    appliedData: "12 Feb, 2021",
   },
   {
     image: Avatar6,
@@ -432,6 +367,6 @@ export const InvoiceData: any = [
     occupation: "Rhinestone",
     address: "70 Bowman St. South Windsor, CT 06074",
     rate: "65",
-    appliedData: "18 Feb, 2021"
-  }
+    appliedData: "18 Feb, 2021",
+  },
 ];

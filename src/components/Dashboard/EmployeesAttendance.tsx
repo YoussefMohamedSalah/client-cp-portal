@@ -3,13 +3,13 @@ import { Dashboard } from "types/Dashboard";
 /* eslint-disable jsx-a11y/heading-has-content */
 interface Props {
   data: Dashboard;
-};
+}
 
 interface InformationItem {
   icon: React.ReactNode;
   title: string;
   textMutedVariable: number;
-};
+}
 
 const EmployeesAttendance: React.FC<Props> = ({ data }) => {
   const { employee_count, present, absent, late_count } = data;
@@ -51,9 +51,7 @@ const EmployeesAttendance: React.FC<Props> = ({ data }) => {
                   <div className="card-body ">
                     {info.icon}
                     <h6 className="mt-3 mb-0 fw-bold small-14">{info.title}</h6>
-                    <span className="text-muted">
-                      {info.textMutedVariable ? info.textMutedVariable : 0}
-                    </span>
+                    <span className="text-muted">{info.textMutedVariable ? info.textMutedVariable : 0}</span>
                   </div>
                 </div>
               </div>

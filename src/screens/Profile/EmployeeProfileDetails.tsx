@@ -1,9 +1,15 @@
+<<<<<<< HEAD
+=======
+import React from "react";
+
+>>>>>>> develop
 // this will contain the employee profile page
 // to be showing for any other employee.
 
 // ANY MUTUAL COMPONENTS WOULD BE AT COMPONENTS/ACCOUNT
 // mutual components will be shared with deferent Props
 
+<<<<<<< HEAD
 import DataTable from "react-data-table-component";
 import { TimeAttendanceData } from "components/Data/AppData";
 import { EmployeesYearlyStatusData } from "components/Data/ChartData";
@@ -132,4 +138,10 @@ const EmployeeProfileDetails: React.FC<Props> = () => {
   );
 };
 
+=======
+const EmployeeProfileDetails = () => {
+  return <div></div>;
+};
+
+>>>>>>> develop
 export default EmployeeProfileDetails;

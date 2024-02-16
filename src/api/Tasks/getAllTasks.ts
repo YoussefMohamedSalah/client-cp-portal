@@ -9,8 +9,5 @@ export const getAllTasks = async ({ queryKey }: any) => {
 };
 
 export const useTasksQuery = (options: any) => {
-  return useQuery<{ tasks: { data: Task[] } }, Error>(
-    [ROUTES.CO_TASKS, options],
-    getAllTasks
-  );
+  return useQuery<{ tasks: { data: Task[] } }, Error>([ROUTES.CO_TASKS, options], getAllTasks);
 };

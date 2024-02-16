@@ -4,9 +4,9 @@ import http from "utils/Http";
 import { useMutation } from "@tanstack/react-query";
 
 interface DeleteDocumentProps {
-  type: string,
-  id: string
-};
+  type: string;
+  id: string;
+}
 
 export const useDeleteDocument = () => {
   return useMutation<any, Error, any>(async (variables: DeleteDocumentProps) => {

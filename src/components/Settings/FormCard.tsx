@@ -1,21 +1,17 @@
-import FormInputs from 'components/UI/FormInputs/FormInputs';
-import React from 'react'
-import { IField } from 'types/Forms/formFields';
+import FormInputs from "components/UI/FormInputs/FormInputs";
+import React from "react";
+import { IField } from "types/Forms/formFields";
 
 interface Props {
   title: string;
   formFields: IField[];
   onSave: () => void;
-};
-
+}
 
 const FormCard = ({ title, formFields, onSave }: Props) => {
   return (
     <div className="card">
-      <div
-        className="card-header d-flex align-items-center"
-        style={{ height: "3rem" }}
-      >
+      <div className="card-header d-flex align-items-center" style={{ height: "3rem" }}>
         {title}
       </div>
       <hr className="mt-0 mb-3" />
@@ -26,7 +22,7 @@ const FormCard = ({ title, formFields, onSave }: Props) => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FormCard
+export default FormCard;

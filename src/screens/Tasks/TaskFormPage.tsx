@@ -5,12 +5,7 @@ import Loading from "components/UI/Loading";
 import { PAGES } from "constants/pages";
 import { useUI } from "contexts/UIContext";
 import useApp from "hooks/useApp";
-import {
-  TaskKeys,
-  TaskNumKeys,
-  TaskStrKeys,
-  TaskRequiredKeys,
-} from "models/Task";
+import { TaskKeys, TaskNumKeys, TaskStrKeys, TaskRequiredKeys } from "models/Task";
 import { useEffect, useState } from "react";
 import { inputsValidationType } from "types/Error";
 import { IField } from "types/Forms/formFields";
@@ -29,13 +24,13 @@ import { useProjectsQuery } from "api/Projects/getAllProjects";
 import { PRIORITY, PROGRESS, TASK_TYPE } from "enums/enums";
 
 interface Props {
-  id: string | null;
-};
+  id?: string;
+}
 
 const TaskFormPage = ({ id }: Props) => {
   const [initialized, setInitialized] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(id ? true : false);
-  const [selectedProject, setSelectedProject] = useState<Project>({} as Project)
+  const [selectedProject, setSelectedProject] = useState<Project>({} as Project);
   // -----
   const [modelData, setModelData] = useState<Task>({} as Task);
   const [isModal, setIsModal] = useState<boolean>(false);
@@ -47,24 +42,11 @@ const TaskFormPage = ({ id }: Props) => {
   const { showError, showSuccess } = useUI();
   const { push } = useApp();
 
-  const {
-    data: TaskData,
-    error: TaskError,
-    isLoading: TaskIsLoading,
-  } = useTaskDetailsQuery({ id });
+  const { data: TaskData, error: TaskError, isLoading: TaskIsLoading } = useTaskDetailsQuery({ id });
 
-  const {
-    data: projectsData,
-    error: projectsError,
-    isLoading: projectsIsLoading,
-  } = useProjectsQuery({});
+  const { data: projectsData, error: projectsError, isLoading: projectsIsLoading } = useProjectsQuery({});
 
-  const {
-    data: employeesData,
-    error: employeesError,
-    isLoading: employeesIsLoading,
-  } = useEmployeesQuery({});
-
+  const { data: employeesData, error: employeesError, isLoading: employeesIsLoading } = useEmployeesQuery({});
 
   // !Check if this is CREATE OR EDIT Modal
   useEffect(() => {
@@ -88,18 +70,18 @@ const TaskFormPage = ({ id }: Props) => {
       let task: Task = TaskData?.task?.data!;
       setModelData({ ...task });
       if (task.project) {
-        setSelectedProject(task.project)
+        setSelectedProject(task.project);
       }
       setInitialized(true);
-    };
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [TaskData]);
 
   if ((id && TaskIsLoading) || (!id && projectsIsLoading) || (!id && employeesIsLoading)) return <Loading />;
   if ((id && TaskError) || (!id && projectsError) || (!id && employeesError)) return null;
 
-  let projects: Project[] = projectsData?.projects?.data || [] as Project[];
-  let employees: Employee[] = employeesData?.employees?.data || [] as Employee[];
+  let projects: Project[] = projectsData?.projects?.data || ([] as Project[]);
+  let employees: Employee[] = employeesData?.employees?.data || ([] as Employee[]);
   let projectsOptions = getOptions(projects, "Select Project");
   let employeesOptions = getOptions(employees, "Select Employee");
 
@@ -124,7 +106,7 @@ const TaskFormPage = ({ id }: Props) => {
       task_progress: PROGRESS.TODO,
       task_type: TASK_TYPE.INDIVIDUAL_TASK,
       thumbnail: {} as File,
-    })
+    });
   };
 
   const formFields: IField[] = [
@@ -134,8 +116,7 @@ const TaskFormPage = ({ id }: Props) => {
       key: TaskKeys.PROJECT,
       value: modelData?.project,
       options: projectsOptions,
-      onChange: (value: string | any) =>
-        handleModelData(TaskKeys.PROJECT, value),
+      onChange: (value: string | any) => handleModelData(TaskKeys.PROJECT, value),
       placeholder: "Select Project",
       disabled: selectedProject ? true : false,
       hide: isEdit ? true : false,
@@ -154,8 +135,7 @@ const TaskFormPage = ({ id }: Props) => {
       type: "textarea",
       key: TaskKeys.DESCRIPTION,
       value: modelData?.description,
-      onChange: (value: string | any) =>
-        handleModelData(TaskKeys.DESCRIPTION, value),
+      onChange: (value: string | any) => handleModelData(TaskKeys.DESCRIPTION, value),
       placeholder: "Enter Description",
       required: true,
     },
@@ -182,8 +162,7 @@ const TaskFormPage = ({ id }: Props) => {
           value: "Critical",
         },
       ],
-      onChange: (value: string | any) =>
-        handleModelData(TaskKeys.TASK_PRIORITY, value),
+      onChange: (value: string | any) => handleModelData(TaskKeys.TASK_PRIORITY, value),
       placeholder: "Select Task Priority",
       //   default: {
       //     label: SelectedTask?.task_priority,
@@ -195,8 +174,7 @@ const TaskFormPage = ({ id }: Props) => {
       type: "date",
       key: TaskKeys.START_DATE,
       value: modelData?.start_at,
-      onChange: (value: string | any) =>
-        handleModelData(TaskKeys.START_DATE, value),
+      onChange: (value: string | any) => handleModelData(TaskKeys.START_DATE, value),
       placeholder: "Enter Start Date",
     },
     {
@@ -204,8 +182,7 @@ const TaskFormPage = ({ id }: Props) => {
       type: "date",
       key: TaskKeys.END_DATE,
       value: modelData?.end_at,
-      onChange: (value: string | any) =>
-        handleModelData(TaskKeys.END_DATE, value),
+      onChange: (value: string | any) => handleModelData(TaskKeys.END_DATE, value),
       placeholder: "Enter End Date",
     },
   ];
@@ -278,12 +255,7 @@ const TaskFormPage = ({ id }: Props) => {
   if (!initialized) return <></>;
   return (
     <div className="container-xxl">
-      <PageHeader
-        headerTitle={""}
-        isBtnShow={false}
-        btnText={""}
-        isBackBtn={true}
-      />
+      <PageHeader headerTitle={""} isBtnShow={false} btnText={""} isBackBtn={true} />
       <div className="row g-3 pb-3 pb-xl-0">
         <div>
           <FormInputs formFields={formFields} grid={true} block={true} />
@@ -291,21 +263,11 @@ const TaskFormPage = ({ id }: Props) => {
         <div className="col-sm d-flex align-items-center justify-content-center gap-2">
           {isEdit ? (
             <>
-              <Button
-                className="lift"
-                content="Cancel"
-                onClick={() => push("/" + PAGES.TASKS)}
-                variant="secondary"
-              />
+              <Button className="lift" content="Cancel" onClick={() => push("/" + PAGES.TASKS)} variant="secondary" />
             </>
           ) : (
             <>
-              <Button
-                className="lift"
-                content="Reset"
-                onClick={handleReset}
-                variant="secondary"
-              />
+              <Button className="lift" content="Reset" onClick={handleReset} variant="secondary" />
             </>
           )}
           {isEdit ? (
@@ -314,18 +276,10 @@ const TaskFormPage = ({ id }: Props) => {
             </>
           ) : (
             <>
-              <Button
-                className="lift"
-                content="Create"
-                onClick={handleCreate}
-              />
+              <Button className="lift" content="Create" onClick={handleCreate} />
             </>
           )}
-          <Button
-            className="lift"
-            content="details"
-            onClick={() => push("/" + PAGES.Task_INFO + "/" + modelData.id)}
-          />
+          <Button className="lift" content="details" onClick={() => push("/" + PAGES.Task_INFO + "/" + modelData.id)} />
         </div>
       </div>
       <DeleteModal
