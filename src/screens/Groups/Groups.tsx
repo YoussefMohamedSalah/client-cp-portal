@@ -18,7 +18,6 @@ const Groups = () => {
   const { showError, showSuccess } = useUI();
 
   const { data: groupData, error: groupError, isLoading: groupIsLoading } = useGroupQuery({});
-
   const { data: employeesData, error: employeeError, isLoading: employeeIsLoading } = useEmployeesGroupsQuery({});
 
   let groups: Group[] = groupData?.groups?.data || [];

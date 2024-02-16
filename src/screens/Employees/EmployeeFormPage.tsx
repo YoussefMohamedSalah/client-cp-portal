@@ -48,7 +48,6 @@ const EmployeeFormPage = ({ id }: Props) => {
   // } = useManagersQuery({});
 
   const { data: projectsData, error: projectsError, isLoading: projectsIsLoading } = useProjectsQuery({});
-
   const { data: departmentData, error: departmentError, isLoading: departmentIsLoading } = useDepartmentsQuery({});
 
   // !Check if this is CREATE OR EDIT Modal
