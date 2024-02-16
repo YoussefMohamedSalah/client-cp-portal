@@ -6,6 +6,8 @@ import Button from "@mui/material/Button";
 import { GroupsOutlinedIcon } from "components/Icons/MuiIcons";
 import AddRemoveGroupEmployeeModal from "./AddRemoveGroupEmployeeModal";
 import GroupModal from "./GroupModal";
+import { getOptions } from "utils/GetOptions";
+import ListFilterWithSelect from "components/Common/LIstFilterWithSelect";
 
 type ModalType = "delete" | "edit" | "create" | "add_emp" | "";
 
@@ -22,6 +24,9 @@ const GroupCard: React.FC<Props> = ({ group, employees, onDelete }) => {
     setModal("");
   };
 
+  let groupMembersOptions = getOptions(group?.members!, null);
+  let employeesOptions = getOptions(employees, null);
+
   return (
     <div className="col">
       <div className="card border-0 shadow">
@@ -34,15 +39,12 @@ const GroupCard: React.FC<Props> = ({ group, employees, onDelete }) => {
               <div className="col ps-0">
                 <h5 className="card-title mb-1">{group?.name}</h5>
                 <p className="card-text mb-2">{group?.description}</p>
-                <Button
-                  onClick={() => setModal("add_emp")}
-                  size="small"
-                  variant="contained"
-                  className="bg-primary text-white"
-                  startIcon={<GroupsOutlinedIcon />}
-                >
-                  Members: {group?.members?.length!}
-                </Button>
+                <ListFilterWithSelect
+                  btnText={"Members"}
+                  headerText={"Control Members"}
+                  baseOptions={employeesOptions}
+                  selectedOptions={groupMembersOptions}
+                />
               </div>
             </div>
             <div className="btn-group" role="group" aria-label="Basic outlined example">
