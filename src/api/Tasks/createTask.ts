@@ -14,6 +14,8 @@ export const useCreateTask = () => {
   });
 };
 
+
+
 export const taskInput = (data: Task): any => {
   if (!data.thumbnail?.size) {
     return {

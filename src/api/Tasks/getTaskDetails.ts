@@ -6,8 +6,11 @@ import { http } from "utils/Http";
 export const getTaskDetails = async ({ queryKey }: any) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_key, _params] = queryKey;
-  const { data } = await http.get(ROUTES.TASK + _params.id);
-  return { task: { data: data as Task } };
+  if(_params.id){
+    const { data } = await http.get(ROUTES.TASK + _params.id);
+    return { task: { data: data as Task } }}
+    else return null
+  
 };
 
 export const useTaskDetailsQuery = (options: any) => {
