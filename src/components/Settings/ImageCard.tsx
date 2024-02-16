@@ -43,6 +43,17 @@ const ImageCard = ({ defaultUrl, title, onSave }: Props) => {
                         backgroundColor: "#cccccc"
                     }}
                 >
+                    {/* 
+                         <img
+    
+                    src={
+                      uploadedSign ||
+                      getImageUrl(employeeData?.sign!) ||
+                      "https://placehold.co/600x600/FFFFFF/cccccc/png"
+                    }
+                    alt=""
+                  />
+                    */}
                     <img
                         className="mb-2"
                         style={{

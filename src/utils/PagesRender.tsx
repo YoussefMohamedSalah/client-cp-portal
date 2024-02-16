@@ -115,6 +115,10 @@ const ProjectFormPage = lazy(
 );
 const TenderFormPage = lazy(() => import("../screens/Tenders/TenderFormPage"));
 
+const EmployeeProfileDetails = lazy(
+  () => import("../screens/Profile/EmployeeProfileDetails")
+);
+
 // // EDIT //
 // const PoRequestEditPage = lazy(() => import("../PoRequests/PoRequestEditPage"));
 // const PcRequestEditPage = lazy(() => import("../PcRequests/PcRequestEditPage"));
@@ -291,6 +295,8 @@ export const PagesRender = ({
         return <Tasks />;
       case PAGES.TASK:
         return <TaskFormPage id={id ? id : null} />;
+      case PAGES.PROFILE:
+        return <EmployeeProfileDetails />;
 
       // case PAGES.INVENTORY:
       // 	return <Inventory />;

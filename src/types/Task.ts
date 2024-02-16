@@ -16,3 +16,4 @@ export interface Task {
   task_type: TASK_TYPE;
   thumbnail?: File;
 };
+
