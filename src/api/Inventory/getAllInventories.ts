@@ -1,0 +1,16 @@
+import { useQuery } from "@tanstack/react-query";
+import { http } from "utils/Http";
+import { ROUTES } from "constants/routes";
+import { QueryOptionsType } from "types/QueryOptions";
+
+export const getAllInventories = async ({ queryKey }: any) => {
+  const { data } = await http.get(ROUTES.CO_INVENTORIES);
+  return { inventories: { data: data as any } };
+};
+
+export const useInventoriesQuery = (options: QueryOptionsType) => {
+  return useQuery<{ inventories: { data: any } }, Error>(
+    [ROUTES.CO_INVENTORIES, options],
+    getAllInventories
+  );
+};
