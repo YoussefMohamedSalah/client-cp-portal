@@ -6,9 +6,7 @@ import { ROUTES } from "constants/routes";
 export const useGetAllInventoryItems = () => {
   return useMutation<any, Error, InventoryItem>(async (createInput) => {
     const { id } = createInput;
-    const { data } = await http.get(
-      ROUTES.INVENTORY + ROUTES.INVENTORY_ITEM + id
-    );
+    const { data } = await http.get(ROUTES.INVENTORY + ROUTES.INVENTORY_ITEM + id);
 
     return { inventoryItems: { data: data as InventoryItem[] } };
   });

@@ -9,21 +9,14 @@ interface Props {
   item: InventoryItem;
 }
 
-const InventoryItemCard: React.FC<Props> = ({
-  onClickEdit,
-  onClickDelete,
-  item,
-}) => {
+const InventoryItemCard: React.FC<Props> = ({ onClickEdit, onClickDelete, item }) => {
   const { push } = useApp();
 
   return (
     <div className="card">
       <div className="card-body">
         <div className="d-flex align-items-center justify-content-between mt-5">
-          <div
-            className="lesson_name pointer"
-            onClick={() => push("/" + PAGES.INVENTORY_ITEM + "/" + item.id)}
-          >
+          <div className="lesson_name pointer" onClick={() => push("/" + PAGES.INVENTORY_ITEM + "/" + item.id)}>
             <div className="project-block light-info-bg">
               <img
                 src={getImageUrl(item?.thumbnail!)}
@@ -33,11 +26,7 @@ const InventoryItemCard: React.FC<Props> = ({
             </div>
             <h6 className="mb-0 fw-bold fs-6 ">{item.name!}</h6>
           </div>
-          <div
-            className="btn-group"
-            role="group"
-            aria-label="Basic outlined example"
-          >
+          <div className="btn-group" role="group" aria-label="Basic outlined example">
             <button
               type="button"
               className="btn btn-outline-secondary"

@@ -1,34 +1,20 @@
 import React, { useState, lazy } from "react";
 import { ENUMS } from "enums/enums";
 import { useSingleInventoryQuery } from "api/Inventory/getSingleInventory";
-import {
-  inventoryItemInput,
-  useCreateInventoryItem,
-} from "api/InventoryItem/createInventoryItem";
+import { inventoryItemInput, useCreateInventoryItem } from "api/InventoryItem/createInventoryItem";
 import { useDeleteInventoryItem } from "api/InventoryItem/deleteInventoryItem";
-import {
-  inventoryItemUpdateInput,
-  useUpdateInventoryItem,
-} from "api/InventoryItem/updateInventoryItem";
+import { inventoryItemUpdateInput, useUpdateInventoryItem } from "api/InventoryItem/updateInventoryItem";
 import { Inventory, InventoryItem } from "types/Inventory";
 import { inputsValidationType } from "types/Error";
-import {
-  InventoryItemNumKeys,
-  InventoryItemRequiredKeys,
-  InventoryItemStrKeys,
-} from "models/InventoryItem";
+import { InventoryItemNumKeys, InventoryItemRequiredKeys, InventoryItemStrKeys } from "models/InventoryItem";
 import { useUI } from "contexts/UIContext";
 import { handleServerError, validateInputs } from "utils/HandlingServerError";
 
 const PageHeader = lazy(() => import("../../components/Common/PageHeader"));
 const Loading = lazy(() => import("../../components/UI/Loading"));
-const InventoryItemModal = lazy(
-  () => import("../../components/InventoryItems/InventoryItemModal")
-);
+const InventoryItemModal = lazy(() => import("../../components/InventoryItems/InventoryItemModal"));
 const DeleteModal = lazy(() => import("../../components/Modals/DeleteModal"));
-const InventoryItemCard = lazy(
-  () => import("../../components/Inventory/InventoryItemCard")
-);
+const InventoryItemCard = lazy(() => import("../../components/Inventory/InventoryItemCard"));
 
 interface Props {
   id: string;
@@ -54,25 +40,14 @@ const INITIAlIZE_DATA: State = {
 
 const InventoryDetails: React.FC<Props> = ({ id }) => {
   const [state, setState] = useState<State>(INITIAlIZE_DATA);
-  const {
-    isModal,
-    modelData,
-    isEditModal,
-    isDeleteModal,
-    modalHeader,
-    selectedItem,
-  } = state;
+  const { isModal, modelData, isEditModal, isDeleteModal, modalHeader, selectedItem } = state;
 
   const { mutateAsync: createMutation } = useCreateInventoryItem();
   const { mutateAsync: updateItemMutation } = useUpdateInventoryItem();
   const { mutateAsync: deleteItemMutation } = useDeleteInventoryItem();
   const { showError, showSuccess } = useUI();
 
-  let {
-    data: inventoryData,
-    error: inventoryError,
-    isLoading: inventoryIsLoading,
-  } = useSingleInventoryQuery({ id });
+  let { data: inventoryData, error: inventoryError, isLoading: inventoryIsLoading } = useSingleInventoryQuery({ id });
 
   if (inventoryIsLoading) return <Loading />;
   if (inventoryError) return null;

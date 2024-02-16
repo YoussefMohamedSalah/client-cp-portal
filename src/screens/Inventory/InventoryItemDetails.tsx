@@ -9,16 +9,12 @@ interface Props {
 }
 
 const InventoryItemDetails: React.FC<Props> = ({ id }) => {
-  let {
-    data: itemData,
-    error: itemError,
-    isLoading: itemIsLoading,
-  } = useGetSingleItemQuery({ id });
+  let { data: itemData, error: itemError, isLoading: itemIsLoading } = useGetSingleItemQuery({ id });
 
   if (itemIsLoading) return <Loading />;
   if (itemError) return null;
 
-  let item: InventoryItem = itemData?.inventoryItem.data! || {} as InventoryItem;
+  let item: InventoryItem = itemData?.inventoryItem.data! || ({} as InventoryItem);
 
   return <div>this is inventory Item Details: {item.name}</div>;
 };

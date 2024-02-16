@@ -5,15 +5,11 @@ import { ROUTES } from "constants/routes";
 
 export const useCreateInventoryItem = () => {
   return useMutation<any, Error, any>(async (createInput) => {
-    const { data } = await http.post(
-      ROUTES.INVENTORY_ITEM + createInput.inventoryId,
-      createInput.data,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }
-    );
+    const { data } = await http.post(ROUTES.INVENTORY_ITEM + createInput.inventoryId, createInput.data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
     return { inventoryItem: { data: data as InventoryItem } };
   });

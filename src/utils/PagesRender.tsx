@@ -75,14 +75,10 @@ const EmployeeProfileDetails = lazy(() => import("../screens/Profile/EmployeePro
 
 // const DailyReports = lazy(() => import("../DailyReports/DailyReports"));
 
-const InventoryItemDetails = lazy(
-  () => import("../screens//Inventory/InventoryItemDetails")
-);
+const InventoryItemDetails = lazy(() => import("../screens//Inventory/InventoryItemDetails"));
 // const ContractDetails = lazy(() => import("../Contracts/ContractDetails"));
 
-const InventoryDetails = lazy(
-  () => import("../screens/Inventory/InventoryDetails")
-);
+const InventoryDetails = lazy(() => import("../screens/Inventory/InventoryDetails"));
 const Inventory = lazy(() => import("../screens/Inventory/Inventory"));
 // const Tasks = lazy(() => import("../Tasks/Tasks"));
 // const Tickets = lazy(() => import("../Tickets/TicketsView"));

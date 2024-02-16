@@ -4,25 +4,18 @@ import { useInventoriesQuery } from "api/Inventory/getAllInventories";
 
 const PageHeader = lazy(() => import("../../components/Common/PageHeader"));
 const Loading = lazy(() => import("../../components/UI/Loading"));
-const InventoryCard = lazy(
-  () => import("../../components/Inventory/InventoryCard")
-);
+const InventoryCard = lazy(() => import("../../components/Inventory/InventoryCard"));
 const NoTableData = lazy(() => import("../../components/Common/NoTableData"));
 
 const InventoryPage = () => {
-  const {
-    data: InventoriesData,
-    error: InventoriesError,
-    isLoading: InventoriesIsLoading,
-  } = useInventoriesQuery({});
+  const { data: InventoriesData, error: InventoriesError, isLoading: InventoriesIsLoading } = useInventoriesQuery({});
 
   if (InventoriesIsLoading) return <Loading />;
   if (InventoriesError) return null;
 
-  let inventories: Inventory[] = InventoriesData?.inventories?.data || [] as Inventory[];
+  let inventories: Inventory[] = InventoriesData?.inventories?.data || ([] as Inventory[]);
 
-  if (inventories && inventories.length === 0)
-    return <NoTableData text={"No Data To Be Shown..."} />;
+  if (inventories && inventories.length === 0) return <NoTableData text={"No Data To Be Shown..."} />;
 
   return (
     <div className="container-xxl">

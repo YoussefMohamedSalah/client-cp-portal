@@ -37,8 +37,7 @@ const InventoryItemModal: React.FC<Props> = ({
       width: "col-md-6",
       key: InventoryItemKeys.NAME,
       value: isEditModal ? selectedItem?.name : modelData?.name,
-      onChange: (value: string | any) =>
-        handleModelData(InventoryItemKeys.NAME, value),
+      onChange: (value: string | any) => handleModelData(InventoryItemKeys.NAME, value),
       placeholder: "Enter Item Name",
       required: true,
     },
@@ -48,8 +47,7 @@ const InventoryItemModal: React.FC<Props> = ({
       width: "col-md-6",
       key: InventoryItemKeys.PRICE,
       value: isEditModal ? selectedItem?.price : modelData?.price,
-      onChange: (value: string | any) =>
-        handleModelData(InventoryItemKeys.PRICE, Number(value)),
+      onChange: (value: string | any) => handleModelData(InventoryItemKeys.PRICE, Number(value)),
       placeholder: "Item Price",
       required: true,
     },
@@ -59,8 +57,7 @@ const InventoryItemModal: React.FC<Props> = ({
       width: "col-md-6",
       key: InventoryItemKeys.COUNT,
       value: isEditModal ? selectedItem?.count : modelData?.count,
-      onChange: (value: string | any) =>
-        handleModelData(InventoryItemKeys.COUNT, value),
+      onChange: (value: string | any) => handleModelData(InventoryItemKeys.COUNT, value),
       placeholder: "Item Count",
       required: true,
     },
@@ -92,18 +89,9 @@ const InventoryItemModal: React.FC<Props> = ({
         <FormInputs formFields={formFields} grid={true} />
       </Modal.Body>
       <Modal.Footer>
-        <Button
-          className="lift"
-          content="Cancel"
-          onClick={onClose}
-          variant="dark"
-        />
-        {isAddModal && (
-          <Button className="lift" content="Create" onClick={onCreate} />
-        )}
-        {isEditModal && (
-          <Button className="lift" content="Save" onClick={onUpdate} />
-        )}
+        <Button className="lift" content="Cancel" onClick={onClose} variant="dark" />
+        {isAddModal && <Button className="lift" content="Create" onClick={onCreate} />}
+        {isEditModal && <Button className="lift" content="Save" onClick={onUpdate} />}
       </Modal.Footer>
     </Modal>
   );
