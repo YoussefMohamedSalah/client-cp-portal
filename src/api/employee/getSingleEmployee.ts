@@ -9,8 +9,5 @@ export const getSingleEmployee = async ({ queryKey }: any) => {
 };
 
 export const useSingleEmployeeQuery = (options: QueryOptionsType) => {
-  return useQuery<{ employee: { data: any } }, Error>(
-    [ROUTES.EMPLOYEE, options],
-    getSingleEmployee
-  );
+  return useQuery<{ employee: { data: any } }, Error>([ROUTES.EMPLOYEE, options], getSingleEmployee);
 };

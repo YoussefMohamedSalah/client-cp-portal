@@ -15,4 +15,4 @@ export interface Task {
   task_progress?: PROGRESS;
   task_type: TASK_TYPE;
   thumbnail?: File;
-};
+}

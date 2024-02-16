@@ -3,8 +3,7 @@ function generateData(baseval, count, yrange) {
   var series = [];
   while (i < count) {
     var x = Math.floor(Math.random() * (750 - 1 + 1)) + 1;
-    var y =
-      Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+    var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
     var z = Math.floor(Math.random() * (75 - 15 + 1)) + 15;
 
     series.push([x, y, z]);
@@ -19,12 +18,11 @@ function generateData1(count, yrange) {
   var series = [];
   while (i < count) {
     var x = "w" + (i + 1).toString();
-    var y =
-      Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+    var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
 
     series.push({
       x: x,
-      y: y
+      y: y,
     });
     i++;
   }
@@ -36,8 +34,7 @@ function generateDayWiseTimeSeries(baseval, count, yrange) {
   var series = [];
   while (i < count) {
     var x = baseval;
-    var y =
-      Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+    var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
 
     series.push([x, y]);
     baseval += 86400000;
@@ -60,12 +57,12 @@ export const chartOverView = [
           height: 350,
           type: "line",
           toolbar: {
-            show: false
-          }
+            show: false,
+          },
         },
         colors: ["#0d6efd", "#ffd55d"],
         stroke: {
-          width: [0, 4]
+          width: [0, 4],
         },
         // labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         labels: [
@@ -80,38 +77,38 @@ export const chartOverView = [
           "09 Jan 2001",
           "10 Jan 2001",
           "11 Jan 2001",
-          "12 Jan 2001"
+          "12 Jan 2001",
         ],
         xaxis: {
-          type: "datetime"
+          type: "datetime",
         },
         yaxis: [
           {
             title: {
-              text: "Website Blog"
-            }
+              text: "Website Blog",
+            },
           },
           {
             opposite: true,
             title: {
-              text: "Social Media"
-            }
-          }
-        ]
+              text: "Social Media",
+            },
+          },
+        ],
       },
       series: [
         {
           name: "Website Blog",
           type: "column",
-          data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
+          data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160],
         },
         {
           name: "Social Media",
           type: "line",
-          data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
-        }
-      ]
-    }
+          data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16],
+        },
+      ],
+    },
   },
   {
     title: "Simple Bubble",
@@ -127,44 +124,44 @@ export const chartOverView = [
           height: 350,
           type: "bubble",
           toolbar: {
-            show: false
-          }
+            show: false,
+          },
         },
         colors: ["#ffd55d", "#0d6efd"],
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
         fill: {
-          opacity: 0.8
+          opacity: 0.8,
         },
         title: {
-          text: "Simple Bubble Chart"
+          text: "Simple Bubble Chart",
         },
         xaxis: {
           tickAmount: 12,
-          type: "category"
+          type: "category",
         },
         yaxis: {
-          max: 70
-        }
+          max: 70,
+        },
       },
       series: [
         {
           name: "Bubble1",
           data: generateData(new Date("11 Feb 2019 GMT").getTime(), 20, {
             min: 10,
-            max: 60
-          })
+            max: 60,
+          }),
         },
         {
           name: "Bubble2",
           data: generateData(new Date("11 Feb 2019 GMT").getTime(), 20, {
             min: 10,
-            max: 60
-          })
-        }
-      ]
-    }
+            max: 60,
+          }),
+        },
+      ],
+    },
   },
   {
     title: "Area Datetime",
@@ -186,10 +183,10 @@ export const chartOverView = [
                 text: "Support",
                 style: {
                   color: "#fff",
-                  background: "#ffd55d"
-                }
-              }
-            }
+                  background: "#ffd55d",
+                },
+              },
+            },
           ],
           xaxis: [
             {
@@ -201,37 +198,37 @@ export const chartOverView = [
                 text: "Rally",
                 style: {
                   color: "#fff",
-                  background: "#ffd55d"
-                }
-              }
-            }
-          ]
+                  background: "#ffd55d",
+                },
+              },
+            },
+          ],
         },
         chart: {
           type: "area",
           height: 288,
           toolbar: {
-            show: false
-          }
+            show: false,
+          },
         },
         colors: ["#ffd55d"],
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
         markers: {
           size: 0,
-          style: "hollow"
+          style: "hollow",
         },
         xaxis: {
           type: "datetime",
           min: new Date("01 Mar 2012").getTime(),
           tickAmount: 6,
-          show: false
+          show: false,
         },
         tooltip: {
           x: {
-            format: "dd MMM yyyy"
-          }
+            format: "dd MMM yyyy",
+          },
         },
         fill: {
           type: "gradient",
@@ -239,21 +236,21 @@ export const chartOverView = [
             shadeIntensity: 1,
             opacityFrom: 0.7,
             opacityTo: 0.9,
-            stops: [0, 100]
-          }
+            stops: [0, 100],
+          },
         },
         stroke: {
           show: true,
           curve: "smooth",
-          width: 2
+          width: 2,
         },
         grid: {
           yaxis: {
             lines: {
-              show: false
-            }
-          }
-        }
+              show: false,
+            },
+          },
+        },
       },
       series: [
         {
@@ -532,11 +529,11 @@ export const chartOverView = [
             [1361487600000, 38.55],
             [1361746800000, 38.11],
             [1361833200000, 38.59],
-            [1361919600000, 39.6]
-          ]
-        }
-      ]
-    }
+            [1361919600000, 39.6],
+          ],
+        },
+      ],
+    },
   },
   {
     title: "Stacked Area",
@@ -553,90 +550,78 @@ export const chartOverView = [
           type: "area",
           stacked: true,
           toolbar: {
-            show: false
+            show: false,
           },
           events: {
-            selection: function(chart, e) {
+            selection: function (chart, e) {
               console.log(new Date(e.xaxis.min));
-            }
-          }
+            },
+          },
         },
 
         colors: ["#ffd55d", "#ff7f81", "#e4bd51"],
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
         fill: {
           type: "gradient",
           gradient: {
             opacityFrom: 0.6,
-            opacityTo: 0.8
-          }
+            opacityTo: 0.8,
+          },
         },
 
         legend: {
           position: "top",
           horizontalAlign: "right",
-          show: true
+          show: true,
         },
         xaxis: {
-          type: "datetime"
+          type: "datetime",
         },
         grid: {
           yaxis: {
             lines: {
-              show: false
-            }
+              show: false,
+            },
           },
           padding: {
             top: 20,
             right: 0,
             bottom: 0,
-            left: 0
-          }
+            left: 0,
+          },
         },
         stroke: {
           show: true,
           curve: "smooth",
-          width: 2
-        }
+          width: 2,
+        },
       },
       series: [
         {
           name: "South",
-          data: generateDayWiseTimeSeries(
-            new Date("11 Feb 2017 GMT").getTime(),
-            20,
-            {
-              min: 10,
-              max: 60
-            }
-          )
+          data: generateDayWiseTimeSeries(new Date("11 Feb 2017 GMT").getTime(), 20, {
+            min: 10,
+            max: 60,
+          }),
         },
         {
           name: "North",
-          data: generateDayWiseTimeSeries(
-            new Date("11 Feb 2017 GMT").getTime(),
-            20,
-            {
-              min: 10,
-              max: 20
-            }
-          )
+          data: generateDayWiseTimeSeries(new Date("11 Feb 2017 GMT").getTime(), 20, {
+            min: 10,
+            max: 20,
+          }),
         },
         {
           name: "Central",
-          data: generateDayWiseTimeSeries(
-            new Date("11 Feb 2017 GMT").getTime(),
-            20,
-            {
-              min: 10,
-              max: 15
-            }
-          )
-        }
-      ]
-    }
+          data: generateDayWiseTimeSeries(new Date("11 Feb 2017 GMT").getTime(), 20, {
+            min: 10,
+            max: 15,
+          }),
+        },
+      ],
+    },
   },
   {
     title: "Basic Column",
@@ -650,68 +635,58 @@ export const chartOverView = [
       options: {
         chart: {
           height: 350,
-          type: "bar"
+          type: "bar",
         },
         colors: ["#ffd55d", "#0d6efd", "#868e96"],
         plotOptions: {
           bar: {
             horizontal: false,
             columnWidth: "55%",
-            endingShape: "rounded"
-          }
+            endingShape: "rounded",
+          },
         },
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
         stroke: {
           show: true,
           width: 2,
-          colors: ["transparent"]
+          colors: ["transparent"],
         },
         xaxis: {
-          categories: [
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct"
-          ]
+          categories: ["Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct"],
         },
         yaxis: {
           title: {
-            text: "$ (thousands)"
-          }
+            text: "$ (thousands)",
+          },
         },
         fill: {
-          opacity: 1
+          opacity: 1,
         },
         tooltip: {
           y: {
-            formatter: function(val) {
+            formatter: function (val) {
               return "$ " + val + " thousands";
-            }
-          }
-        }
+            },
+          },
+        },
       },
       series: [
         {
           name: "Net Profit",
-          data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
+          data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
         },
         {
           name: "Revenue",
-          data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
+          data: [76, 85, 101, 98, 87, 105, 91, 114, 94],
         },
         {
           name: "Free Cash Flow",
-          data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
-        }
-      ]
-    }
+          data: [35, 41, 36, 26, 45, 48, 52, 53, 41],
+        },
+      ],
+    },
   },
   {
     title: "Basic Heatmap Chart",
@@ -725,82 +700,82 @@ export const chartOverView = [
       options: {
         chart: {
           height: 350,
-          type: "heatmap"
+          type: "heatmap",
         },
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
         colors: ["#ffd55d"],
         title: {
-          text: "HeatMap Chart (Single color)"
-        }
+          text: "HeatMap Chart (Single color)",
+        },
       },
       series: [
         {
           name: "Metric1",
           data: generateData1(18, {
             min: 0,
-            max: 90
-          })
+            max: 90,
+          }),
         },
         {
           name: "Metric2",
           data: generateData1(18, {
             min: 0,
-            max: 90
-          })
+            max: 90,
+          }),
         },
         {
           name: "Metric3",
           data: generateData1(18, {
             min: 0,
-            max: 90
-          })
+            max: 90,
+          }),
         },
         {
           name: "Metric4",
           data: generateData1(18, {
             min: 0,
-            max: 90
-          })
+            max: 90,
+          }),
         },
         {
           name: "Metric5",
           data: generateData1(18, {
             min: 0,
-            max: 90
-          })
+            max: 90,
+          }),
         },
         {
           name: "Metric6",
           data: generateData1(18, {
             min: 0,
-            max: 90
-          })
+            max: 90,
+          }),
         },
         {
           name: "Metric7",
           data: generateData1(18, {
             min: 0,
-            max: 90
-          })
+            max: 90,
+          }),
         },
         {
           name: "Metric8",
           data: generateData1(18, {
             min: 0,
-            max: 90
-          })
+            max: 90,
+          }),
         },
         {
           name: "Metric9",
           data: generateData1(18, {
             min: 0,
-            max: 90
-          })
-        }
-      ]
-    }
+            max: 90,
+          }),
+        },
+      ],
+    },
   },
   {
     title: "Basic Scatter Chart",
@@ -816,38 +791,38 @@ export const chartOverView = [
           height: 350,
           type: "scatter",
           toolbar: {
-            show: false
+            show: false,
           },
           zoom: {
             enabled: true,
-            type: "xy"
-          }
+            type: "xy",
+          },
         },
         colors: ["#ffd55d", "#0d6efd"],
         grid: {
           yaxis: {
             lines: {
-              show: false
-            }
+              show: false,
+            },
           },
           padding: {
             top: 20,
             right: 0,
             bottom: 0,
-            left: 0
-          }
+            left: 0,
+          },
         },
         xaxis: {
           tickAmount: 10,
           labels: {
-            formatter: function(val) {
+            formatter: function (val) {
               return parseFloat(val).toFixed(1);
-            }
-          }
+            },
+          },
         },
         yaxis: {
-          tickAmount: 7
-        }
+          tickAmount: 7,
+        },
       },
       series: [
         {
@@ -883,8 +858,8 @@ export const chartOverView = [
             [27.1, 0],
             [29.9, 1.5],
             [27.1, 0.8],
-            [22.1, 2]
-          ]
+            [22.1, 2],
+          ],
         },
         {
           name: "Pink",
@@ -919,11 +894,11 @@ export const chartOverView = [
             [27.1, 10],
             [2.9, 11.5],
             [7.1, 10.8],
-            [2.1, 12]
-          ]
-        }
-      ]
-    }
+            [2.1, 12],
+          ],
+        },
+      ],
+    },
   },
   {
     title: "Timeline",
@@ -939,21 +914,21 @@ export const chartOverView = [
           height: 350,
           type: "rangeBar",
           toolbar: {
-            show: false
-          }
+            show: false,
+          },
         },
         plotOptions: {
           bar: {
-            horizontal: true
-          }
+            horizontal: true,
+          },
         },
         colors: ["#ffd55d", "#0d6efd"],
         yaxis: {
           min: new Date("2019-03-01").getTime(),
-          max: new Date("2019-03-14").getTime()
+          max: new Date("2019-03-14").getTime(),
         },
         xaxis: {
-          type: "datetime"
+          type: "datetime",
         },
         fill: {
           type: "gradient",
@@ -965,9 +940,9 @@ export const chartOverView = [
             inverseColors: true,
             opacityFrom: 1,
             opacityTo: 1,
-            stops: [50, 0, 100, 100]
-          }
-        }
+            stops: [50, 0, 100, 100],
+          },
+        },
       },
       series: [
         {
@@ -975,69 +950,45 @@ export const chartOverView = [
           data: [
             {
               x: "Design",
-              y: [
-                new Date("2019-03-02").getTime(),
-                new Date("2019-03-03").getTime()
-              ]
+              y: [new Date("2019-03-02").getTime(), new Date("2019-03-03").getTime()],
             },
             {
               x: "Code",
-              y: [
-                new Date("2019-03-02").getTime(),
-                new Date("2019-03-04").getTime()
-              ]
+              y: [new Date("2019-03-02").getTime(), new Date("2019-03-04").getTime()],
             },
             {
               x: "Test",
-              y: [
-                new Date("2019-03-04").getTime(),
-                new Date("2019-03-07").getTime()
-              ]
+              y: [new Date("2019-03-04").getTime(), new Date("2019-03-07").getTime()],
             },
             {
               x: "Deployment",
-              y: [
-                new Date("2019-03-11").getTime(),
-                new Date("2019-03-12").getTime()
-              ]
-            }
-          ]
+              y: [new Date("2019-03-11").getTime(), new Date("2019-03-12").getTime()],
+            },
+          ],
         },
         {
           name: "Joe",
           data: [
             {
               x: "Design",
-              y: [
-                new Date("2019-03-01").getTime(),
-                new Date("2019-03-02").getTime()
-              ]
+              y: [new Date("2019-03-01").getTime(), new Date("2019-03-02").getTime()],
             },
             {
               x: "Code",
-              y: [
-                new Date("2019-03-03").getTime(),
-                new Date("2019-03-07").getTime()
-              ]
+              y: [new Date("2019-03-03").getTime(), new Date("2019-03-07").getTime()],
             },
             {
               x: "Test",
-              y: [
-                new Date("2019-03-06").getTime(),
-                new Date("2019-03-09").getTime()
-              ]
+              y: [new Date("2019-03-06").getTime(), new Date("2019-03-09").getTime()],
             },
             {
               x: "Deployment",
-              y: [
-                new Date("2019-03-10").getTime(),
-                new Date("2019-03-11").getTime()
-              ]
-            }
-          ]
-        }
-      ]
-    }
+              y: [new Date("2019-03-10").getTime(), new Date("2019-03-11").getTime()],
+            },
+          ],
+        },
+      ],
+    },
   },
   {
     title: "Basic Bar",
@@ -1053,30 +1004,30 @@ export const chartOverView = [
           height: 350,
           type: "bar",
           toolbar: {
-            show: false
-          }
+            show: false,
+          },
         },
         colors: ["#ffd55d"],
         grid: {
           yaxis: {
             lines: {
-              show: false
-            }
+              show: false,
+            },
           },
           padding: {
             top: 0,
             right: 0,
             bottom: 0,
-            left: 0
-          }
+            left: 0,
+          },
         },
         plotOptions: {
           bar: {
-            horizontal: true
-          }
+            horizontal: true,
+          },
         },
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
         xaxis: {
           categories: [
@@ -1089,16 +1040,16 @@ export const chartOverView = [
             "Japan",
             "United States",
             "China",
-            "Germany"
-          ]
-        }
+            "Germany",
+          ],
+        },
       },
       series: [
         {
-          data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
-        }
-      ]
-    }
+          data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380],
+        },
+      ],
+    },
   },
   {
     title: "Basic CandleStick",
@@ -1114,277 +1065,277 @@ export const chartOverView = [
           height: 350,
           type: "candlestick",
           toolbar: {
-            show: false
-          }
+            show: false,
+          },
         },
         plotOptions: {
           candlestick: {
             colors: {
               upward: "#ffd55d",
-              downward: "#0d6efd"
+              downward: "#0d6efd",
             },
             wick: {
-              useFillColor: true
-            }
-          }
+              useFillColor: true,
+            },
+          },
         },
         xaxis: {
-          type: "datetime"
+          type: "datetime",
         },
         yaxis: {
           tooltip: {
-            enabled: true
-          }
-        }
+            enabled: true,
+          },
+        },
       },
       series: [
         {
           data: [
             {
               x: new Date(1538778600000),
-              y: [6629.81, 6650.5, 6623.04, 6633.33]
+              y: [6629.81, 6650.5, 6623.04, 6633.33],
             },
             {
               x: new Date(1538780400000),
-              y: [6632.01, 6643.59, 6620, 6630.11]
+              y: [6632.01, 6643.59, 6620, 6630.11],
             },
             {
               x: new Date(1538782200000),
-              y: [6630.71, 6648.95, 6623.34, 6635.65]
+              y: [6630.71, 6648.95, 6623.34, 6635.65],
             },
             {
               x: new Date(1538784000000),
-              y: [6635.65, 6651, 6629.67, 6638.24]
+              y: [6635.65, 6651, 6629.67, 6638.24],
             },
             {
               x: new Date(1538785800000),
-              y: [6638.24, 6640, 6620, 6624.47]
+              y: [6638.24, 6640, 6620, 6624.47],
             },
             {
               x: new Date(1538787600000),
-              y: [6624.53, 6636.03, 6621.68, 6624.31]
+              y: [6624.53, 6636.03, 6621.68, 6624.31],
             },
             {
               x: new Date(1538789400000),
-              y: [6624.61, 6632.2, 6617, 6626.02]
+              y: [6624.61, 6632.2, 6617, 6626.02],
             },
             {
               x: new Date(1538791200000),
-              y: [6627, 6627.62, 6584.22, 6603.02]
+              y: [6627, 6627.62, 6584.22, 6603.02],
             },
             {
               x: new Date(1538793000000),
-              y: [6605, 6608.03, 6598.95, 6604.01]
+              y: [6605, 6608.03, 6598.95, 6604.01],
             },
             {
               x: new Date(1538794800000),
-              y: [6604.5, 6614.4, 6602.26, 6608.02]
+              y: [6604.5, 6614.4, 6602.26, 6608.02],
             },
             {
               x: new Date(1538796600000),
-              y: [6608.02, 6610.68, 6601.99, 6608.91]
+              y: [6608.02, 6610.68, 6601.99, 6608.91],
             },
             {
               x: new Date(1538798400000),
-              y: [6608.91, 6618.99, 6608.01, 6612]
+              y: [6608.91, 6618.99, 6608.01, 6612],
             },
             {
               x: new Date(1538800200000),
-              y: [6612, 6615.13, 6605.09, 6612]
+              y: [6612, 6615.13, 6605.09, 6612],
             },
             {
               x: new Date(1538802000000),
-              y: [6612, 6624.12, 6608.43, 6622.95]
+              y: [6612, 6624.12, 6608.43, 6622.95],
             },
             {
               x: new Date(1538803800000),
-              y: [6623.91, 6623.91, 6615, 6615.67]
+              y: [6623.91, 6623.91, 6615, 6615.67],
             },
             {
               x: new Date(1538805600000),
-              y: [6618.69, 6618.74, 6610, 6610.4]
+              y: [6618.69, 6618.74, 6610, 6610.4],
             },
             {
               x: new Date(1538807400000),
-              y: [6611, 6622.78, 6610.4, 6614.9]
+              y: [6611, 6622.78, 6610.4, 6614.9],
             },
             {
               x: new Date(1538809200000),
-              y: [6614.9, 6626.2, 6613.33, 6623.45]
+              y: [6614.9, 6626.2, 6613.33, 6623.45],
             },
             {
               x: new Date(1538811000000),
-              y: [6623.48, 6627, 6618.38, 6620.35]
+              y: [6623.48, 6627, 6618.38, 6620.35],
             },
             {
               x: new Date(1538812800000),
-              y: [6619.43, 6620.35, 6610.05, 6615.53]
+              y: [6619.43, 6620.35, 6610.05, 6615.53],
             },
             {
               x: new Date(1538814600000),
-              y: [6615.53, 6617.93, 6610, 6615.19]
+              y: [6615.53, 6617.93, 6610, 6615.19],
             },
             {
               x: new Date(1538816400000),
-              y: [6615.19, 6621.6, 6608.2, 6620]
+              y: [6615.19, 6621.6, 6608.2, 6620],
             },
             {
               x: new Date(1538818200000),
-              y: [6619.54, 6625.17, 6614.15, 6620]
+              y: [6619.54, 6625.17, 6614.15, 6620],
             },
             {
               x: new Date(1538820000000),
-              y: [6620.33, 6634.15, 6617.24, 6624.61]
+              y: [6620.33, 6634.15, 6617.24, 6624.61],
             },
             {
               x: new Date(1538821800000),
-              y: [6625.95, 6626, 6611.66, 6617.58]
+              y: [6625.95, 6626, 6611.66, 6617.58],
             },
             {
               x: new Date(1538823600000),
-              y: [6619, 6625.97, 6595.27, 6598.86]
+              y: [6619, 6625.97, 6595.27, 6598.86],
             },
             {
               x: new Date(1538825400000),
-              y: [6598.86, 6598.88, 6570, 6587.16]
+              y: [6598.86, 6598.88, 6570, 6587.16],
             },
             {
               x: new Date(1538827200000),
-              y: [6588.86, 6600, 6580, 6593.4]
+              y: [6588.86, 6600, 6580, 6593.4],
             },
             {
               x: new Date(1538829000000),
-              y: [6593.99, 6598.89, 6585, 6587.81]
+              y: [6593.99, 6598.89, 6585, 6587.81],
             },
             {
               x: new Date(1538830800000),
-              y: [6587.81, 6592.73, 6567.14, 6578]
+              y: [6587.81, 6592.73, 6567.14, 6578],
             },
             {
               x: new Date(1538832600000),
-              y: [6578.35, 6581.72, 6567.39, 6579]
+              y: [6578.35, 6581.72, 6567.39, 6579],
             },
             {
               x: new Date(1538834400000),
-              y: [6579.38, 6580.92, 6566.77, 6575.96]
+              y: [6579.38, 6580.92, 6566.77, 6575.96],
             },
             {
               x: new Date(1538836200000),
-              y: [6575.96, 6589, 6571.77, 6588.92]
+              y: [6575.96, 6589, 6571.77, 6588.92],
             },
             {
               x: new Date(1538838000000),
-              y: [6588.92, 6594, 6577.55, 6589.22]
+              y: [6588.92, 6594, 6577.55, 6589.22],
             },
             {
               x: new Date(1538839800000),
-              y: [6589.3, 6598.89, 6589.1, 6596.08]
+              y: [6589.3, 6598.89, 6589.1, 6596.08],
             },
             {
               x: new Date(1538841600000),
-              y: [6597.5, 6600, 6588.39, 6596.25]
+              y: [6597.5, 6600, 6588.39, 6596.25],
             },
             {
               x: new Date(1538843400000),
-              y: [6598.03, 6600, 6588.73, 6595.97]
+              y: [6598.03, 6600, 6588.73, 6595.97],
             },
             {
               x: new Date(1538845200000),
-              y: [6595.97, 6602.01, 6588.17, 6602]
+              y: [6595.97, 6602.01, 6588.17, 6602],
             },
             {
               x: new Date(1538847000000),
-              y: [6602, 6607, 6596.51, 6599.95]
+              y: [6602, 6607, 6596.51, 6599.95],
             },
             {
               x: new Date(1538848800000),
-              y: [6600.63, 6601.21, 6590.39, 6591.02]
+              y: [6600.63, 6601.21, 6590.39, 6591.02],
             },
             {
               x: new Date(1538850600000),
-              y: [6591.02, 6603.08, 6591, 6591]
+              y: [6591.02, 6603.08, 6591, 6591],
             },
             {
               x: new Date(1538852400000),
-              y: [6591, 6601.32, 6585, 6592]
+              y: [6591, 6601.32, 6585, 6592],
             },
             {
               x: new Date(1538854200000),
-              y: [6593.13, 6596.01, 6590, 6593.34]
+              y: [6593.13, 6596.01, 6590, 6593.34],
             },
             {
               x: new Date(1538856000000),
-              y: [6593.34, 6604.76, 6582.63, 6593.86]
+              y: [6593.34, 6604.76, 6582.63, 6593.86],
             },
             {
               x: new Date(1538857800000),
-              y: [6593.86, 6604.28, 6586.57, 6600.01]
+              y: [6593.86, 6604.28, 6586.57, 6600.01],
             },
             {
               x: new Date(1538859600000),
-              y: [6601.81, 6603.21, 6592.78, 6596.25]
+              y: [6601.81, 6603.21, 6592.78, 6596.25],
             },
             {
               x: new Date(1538861400000),
-              y: [6596.25, 6604.2, 6590, 6602.99]
+              y: [6596.25, 6604.2, 6590, 6602.99],
             },
             {
               x: new Date(1538863200000),
-              y: [6602.99, 6606, 6584.99, 6587.81]
+              y: [6602.99, 6606, 6584.99, 6587.81],
             },
             {
               x: new Date(1538865000000),
-              y: [6587.81, 6595, 6583.27, 6591.96]
+              y: [6587.81, 6595, 6583.27, 6591.96],
             },
             {
               x: new Date(1538866800000),
-              y: [6591.97, 6596.07, 6585, 6588.39]
+              y: [6591.97, 6596.07, 6585, 6588.39],
             },
             {
               x: new Date(1538868600000),
-              y: [6587.6, 6598.21, 6587.6, 6594.27]
+              y: [6587.6, 6598.21, 6587.6, 6594.27],
             },
             {
               x: new Date(1538870400000),
-              y: [6596.44, 6601, 6590, 6596.55]
+              y: [6596.44, 6601, 6590, 6596.55],
             },
             {
               x: new Date(1538872200000),
-              y: [6598.91, 6605, 6596.61, 6600.02]
+              y: [6598.91, 6605, 6596.61, 6600.02],
             },
             {
               x: new Date(1538874000000),
-              y: [6600.55, 6605, 6589.14, 6593.01]
+              y: [6600.55, 6605, 6589.14, 6593.01],
             },
             {
               x: new Date(1538875800000),
-              y: [6593.15, 6605, 6592, 6603.06]
+              y: [6593.15, 6605, 6592, 6603.06],
             },
             {
               x: new Date(1538877600000),
-              y: [6603.07, 6604.5, 6599.09, 6603.89]
+              y: [6603.07, 6604.5, 6599.09, 6603.89],
             },
             {
               x: new Date(1538879400000),
-              y: [6604.44, 6604.44, 6600, 6603.5]
+              y: [6604.44, 6604.44, 6600, 6603.5],
             },
             {
               x: new Date(1538881200000),
-              y: [6603.5, 6603.99, 6597.5, 6603.86]
+              y: [6603.5, 6603.99, 6597.5, 6603.86],
             },
             {
               x: new Date(1538883000000),
-              y: [6603.85, 6605, 6600, 6604.07]
+              y: [6603.85, 6605, 6600, 6604.07],
             },
             {
               x: new Date(1538884800000),
-              y: [6604.98, 6606, 6604.07, 6606]
-            }
-          ]
-        }
-      ]
-    }
-  }
+              y: [6604.98, 6606, 6604.07, 6606],
+            },
+          ],
+        },
+      ],
+    },
+  },
 ];
 
 export const apexSparkData = [
@@ -1395,11 +1346,11 @@ export const apexSparkData = [
           type: "area",
           height: 160,
           sparkline: {
-            enabled: true
-          }
+            enabled: true,
+          },
         },
         stroke: {
-          width: 2
+          width: 2,
         },
         colors: ["#0d6efd"],
         title: {
@@ -1407,49 +1358,24 @@ export const apexSparkData = [
           offsetX: 0,
           style: {
             fontSize: "24px",
-            cssClass: "apexcharts-yaxis-title"
-          }
+            cssClass: "apexcharts-yaxis-title",
+          },
         },
         subtitle: {
           text: "Sales",
           offsetX: 0,
           style: {
             fontSize: "14px",
-            cssClass: "apexcharts-yaxis-title"
-          }
-        }
+            cssClass: "apexcharts-yaxis-title",
+          },
+        },
       },
       series: [
         {
-          data: [
-            45,
-            36,
-            21,
-            16,
-            91,
-            52,
-            82,
-            45,
-            36,
-            12,
-            61,
-            19,
-            52,
-            82,
-            45,
-            36,
-            21,
-            61,
-            9,
-            52,
-            82,
-            36,
-            95,
-            3
-          ]
-        }
-      ]
-    }
+          data: [45, 36, 21, 16, 91, 52, 82, 45, 36, 12, 61, 19, 52, 82, 45, 36, 21, 61, 9, 52, 82, 36, 95, 3],
+        },
+      ],
+    },
   },
   {
     chartData: {
@@ -1458,11 +1384,11 @@ export const apexSparkData = [
           type: "area",
           height: 160,
           sparkline: {
-            enabled: true
-          }
+            enabled: true,
+          },
         },
         stroke: {
-          width: 2
+          width: 2,
         },
         colors: ["#0d6efd"],
         title: {
@@ -1470,49 +1396,24 @@ export const apexSparkData = [
           offsetX: 0,
           style: {
             fontSize: "24px",
-            cssClass: "apexcharts-yaxis-title"
-          }
+            cssClass: "apexcharts-yaxis-title",
+          },
         },
         subtitle: {
           text: "Expenses",
           offsetX: 0,
           style: {
             fontSize: "14px",
-            cssClass: "apexcharts-yaxis-title"
-          }
-        }
+            cssClass: "apexcharts-yaxis-title",
+          },
+        },
       },
       series: [
         {
-          data: [
-            47,
-            45,
-            54,
-            38,
-            56,
-            24,
-            65,
-            31,
-            37,
-            39,
-            62,
-            51,
-            35,
-            41,
-            35,
-            27,
-            93,
-            53,
-            61,
-            27,
-            54,
-            43,
-            19,
-            46
-          ]
-        }
-      ]
-    }
+          data: [47, 45, 54, 38, 56, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46],
+        },
+      ],
+    },
   },
   {
     chartData: {
@@ -1521,11 +1422,11 @@ export const apexSparkData = [
           type: "area",
           height: 160,
           sparkline: {
-            enabled: true
-          }
+            enabled: true,
+          },
         },
         stroke: {
-          width: 2
+          width: 2,
         },
         colors: ["#ffd55d"],
         title: {
@@ -1533,50 +1434,25 @@ export const apexSparkData = [
           offsetX: 0,
           style: {
             fontSize: "24px",
-            cssClass: "apexcharts-yaxis-title"
-          }
+            cssClass: "apexcharts-yaxis-title",
+          },
         },
         subtitle: {
           text: "Profits",
           offsetX: 0,
           style: {
             fontSize: "14px",
-            cssClass: "apexcharts-yaxis-title"
-          }
-        }
+            cssClass: "apexcharts-yaxis-title",
+          },
+        },
       },
       series: [
         {
-          data: [
-            62,
-            51,
-            35,
-            41,
-            35,
-            27,
-            93,
-            53,
-            61,
-            27,
-            54,
-            43,
-            19,
-            46,
-            47,
-            45,
-            54,
-            38,
-            56,
-            24,
-            65,
-            31,
-            37,
-            39
-          ]
-        }
-      ]
-    }
-  }
+          data: [62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46, 47, 45, 54, 38, 56, 24, 65, 31, 37, 39],
+        },
+      ],
+    },
+  },
 ];
 
 export const radarChartData = [
@@ -1586,18 +1462,18 @@ export const radarChartData = [
       options: {
         chart: {
           height: 350,
-          type: "radar"
+          type: "radar",
         },
         colors: ["#ffd55d"],
-        labels: ["January", "February", "March", "April", "May", "June"]
+        labels: ["January", "February", "March", "April", "May", "June"],
       },
       series: [
         {
           name: "Series 1",
-          data: [80, 50, 30, 40, 100, 20]
-        }
-      ]
-    }
+          data: [80, 50, 30, 40, 100, 20],
+        },
+      ],
+    },
   },
   {
     title: "Radar Multiple Series",
@@ -1610,36 +1486,36 @@ export const radarChartData = [
             enabled: true,
             blur: 1,
             left: 1,
-            top: 1
-          }
+            top: 1,
+          },
         },
         colors: ["#ffd55d", "#0d6efd", "#ff7f81"],
         stroke: {
-          width: 0
+          width: 0,
         },
         fill: {
-          opacity: 0.4
+          opacity: 0.4,
         },
         markers: {
-          size: 0
+          size: 0,
         },
-        labels: ["2011", "2012", "2013", "2014", "2015", "2016"]
+        labels: ["2011", "2012", "2013", "2014", "2015", "2016"],
       },
       series: [
         {
           name: "Series 1",
-          data: [80, 50, 30, 40, 100, 20]
+          data: [80, 50, 30, 40, 100, 20],
         },
         {
           name: "Series 2",
-          data: [20, 30, 40, 80, 20, 80]
+          data: [20, 30, 40, 80, 20, 80],
         },
         {
           name: "Series 3",
-          data: [44, 76, 78, 13, 43, 10]
-        }
-      ]
-    }
+          data: [44, 76, 78, 13, 43, 10],
+        },
+      ],
+    },
   },
   {
     title: "Radar with Polygon Fill",
@@ -1647,62 +1523,54 @@ export const radarChartData = [
       options: {
         chart: {
           height: 350,
-          type: "radar"
+          type: "radar",
         },
-        labels: [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ],
+        labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
         plotOptions: {
           radar: {
             size: 140,
             polygons: {
               strokeColor: "#e9e9e9",
               fill: {
-                colors: ["#f8f8f8", "#fff"]
-              }
-            }
-          }
+                colors: ["#f8f8f8", "#fff"],
+              },
+            },
+          },
         },
         colors: ["#ffd55d"],
         markers: {
           size: 4,
           colors: ["#fff"],
           strokeColor: "#ffd55d",
-          strokeWidth: 2
+          strokeWidth: 2,
         },
         tooltip: {
           y: {
-            formatter: function(val) {
+            formatter: function (val) {
               return val;
-            }
-          }
+            },
+          },
         },
         yaxis: {
           tickAmount: 7,
           labels: {
-            formatter: function(val, i) {
+            formatter: function (val, i) {
               if (i % 2 === 0) {
                 return val;
               } else {
                 return "";
               }
-            }
-          }
-        }
+            },
+          },
+        },
       },
       series: [
         {
           name: "Series 1",
-          data: [20, 100, 40, 30, 50, 80, 33]
-        }
-      ]
-    }
+          data: [20, 100, 40, 30, 50, 80, 33],
+        },
+      ],
+    },
   },
   {
     title: "Simple Donut",
@@ -1710,15 +1578,15 @@ export const radarChartData = [
       options: {
         chart: {
           height: 250,
-          type: "donut"
+          type: "donut",
         },
         dataLabels: {
-          enabled: false
+          enabled: false,
         },
         legend: {
           position: "top",
           horizontalAlign: "center",
-          show: true
+          show: true,
         },
         colors: ["#004660", "#09536e", "#ffd55d", "#34738a"],
         responsive: [
@@ -1726,17 +1594,17 @@ export const radarChartData = [
             breakpoint: 480,
             options: {
               chart: {
-                width: 200
+                width: 200,
               },
               legend: {
-                position: "bottom"
-              }
-            }
-          }
-        ]
+                position: "bottom",
+              },
+            },
+          },
+        ],
       },
-      series: [44, 55, 41, 17]
-    }
+      series: [44, 55, 41, 17],
+    },
   },
   {
     title: "Stroked Gauge",
@@ -1744,7 +1612,7 @@ export const radarChartData = [
       options: {
         chart: {
           height: 250,
-          type: "radialBar"
+          type: "radialBar",
         },
         colors: ["#ffd55d"],
         plotOptions: {
@@ -1755,18 +1623,18 @@ export const radarChartData = [
               name: {
                 fontSize: "16px",
                 color: undefined,
-                offsetY: 120
+                offsetY: 120,
               },
               value: {
                 offsetY: 76,
                 fontSize: "22px",
                 color: undefined,
-                formatter: function(val) {
+                formatter: function (val) {
                   return val + "%";
-                }
-              }
-            }
-          }
+                },
+              },
+            },
+          },
         },
         fill: {
           type: "gradient",
@@ -1776,17 +1644,17 @@ export const radarChartData = [
             inverseColors: false,
             opacityFrom: 1,
             opacityTo: 1,
-            stops: [0, 50, 65, 91]
-          }
+            stops: [0, 50, 65, 91],
+          },
         },
         stroke: {
-          dashArray: 4
+          dashArray: 4,
         },
-        labels: ["Median Ratio"]
+        labels: ["Median Ratio"],
       },
-      series: [67]
-    }
-  }
+      series: [67],
+    },
+  },
 ];
 
 export const simpleChartTileData = [
@@ -1798,39 +1666,39 @@ export const simpleChartTileData = [
           width: 100,
           height: 35,
           sparkline: {
-            enabled: true
-          }
+            enabled: true,
+          },
         },
         stroke: {
-          width: 2
+          width: 2,
         },
         colors: ["#ffd55d"],
 
         tooltip: {
           fixed: {
-            enabled: false
+            enabled: false,
           },
           x: {
-            show: false
+            show: false,
           },
           y: {
             title: {
-              formatter: function(seriesName) {
+              formatter: function (seriesName) {
                 return "";
-              }
-            }
+              },
+            },
           },
           marker: {
-            show: false
-          }
-        }
+            show: false,
+          },
+        },
       },
       series: [
         {
-          data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
-        }
-      ]
-    }
+          data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54],
+        },
+      ],
+    },
   },
   {
     chartData: {
@@ -1840,38 +1708,38 @@ export const simpleChartTileData = [
           width: 100,
           height: 35,
           sparkline: {
-            enabled: true
-          }
+            enabled: true,
+          },
         },
         stroke: {
-          width: 2
+          width: 2,
         },
         colors: ["#ffd55d"],
         tooltip: {
           fixed: {
-            enabled: false
+            enabled: false,
           },
           x: {
-            show: false
+            show: false,
           },
           y: {
             title: {
-              formatter: function(seriesName) {
+              formatter: function (seriesName) {
                 return "";
-              }
-            }
+              },
+            },
           },
           marker: {
-            show: false
-          }
-        }
+            show: false,
+          },
+        },
       },
       series: [
         {
-          data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14]
-        }
-      ]
-    }
+          data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14],
+        },
+      ],
+    },
   },
   {
     chartData: {
@@ -1881,49 +1749,49 @@ export const simpleChartTileData = [
           width: 100,
           height: 35,
           sparkline: {
-            enabled: true
-          }
+            enabled: true,
+          },
         },
         stroke: {
-          width: 2
+          width: 2,
         },
         plotOptions: {
           bar: {
-            columnWidth: "80%"
-          }
+            columnWidth: "80%",
+          },
         },
         colors: ["#ffd55d"],
         labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
         xaxis: {
           crosshairs: {
-            width: 1
-          }
+            width: 1,
+          },
         },
         tooltip: {
           fixed: {
-            enabled: false
+            enabled: false,
           },
           x: {
-            show: false
+            show: false,
           },
           y: {
             title: {
-              formatter: function(seriesName) {
+              formatter: function (seriesName) {
                 return "";
-              }
-            }
+              },
+            },
           },
           marker: {
-            show: false
-          }
-        }
+            show: false,
+          },
+        },
       },
       series: [
         {
-          data: [47, 45, 74, 14, 56, 74, 14, 11, 7, 39, 82]
-        }
-      ]
-    }
+          data: [47, 45, 74, 14, 56, 74, 14, 11, 7, 39, 82],
+        },
+      ],
+    },
   },
   {
     chartData: {
@@ -1933,69 +1801,69 @@ export const simpleChartTileData = [
           width: 100,
           height: 35,
           sparkline: {
-            enabled: true
-          }
+            enabled: true,
+          },
         },
         stroke: {
-          width: 2
+          width: 2,
         },
         plotOptions: {
           bar: {
-            columnWidth: "80%"
-          }
+            columnWidth: "80%",
+          },
         },
         colors: ["#ffd55d"],
         labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
         xaxis: {
           crosshairs: {
-            width: 1
-          }
+            width: 1,
+          },
         },
         tooltip: {
           fixed: {
-            enabled: false
+            enabled: false,
           },
           x: {
-            show: false
+            show: false,
           },
           y: {
             title: {
-              formatter: function(seriesName) {
+              formatter: function (seriesName) {
                 return "";
-              }
-            }
+              },
+            },
           },
           marker: {
-            show: false
-          }
-        }
+            show: false,
+          },
+        },
       },
       series: [
         {
-          data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
-        }
-      ]
-    }
-  }
+          data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54],
+        },
+      ],
+    },
+  },
 ];
 
 export const TodayTimeUtilisationData = {
   options: {
     chart: {
       height: 250,
-      type: "radialBar"
+      type: "radialBar",
     },
     colors: ["var(--chart-color1)"],
     plotOptions: {
       radialBar: {
         hollow: {
-          size: "70%"
-        }
-      }
+          size: "70%",
+        },
+      },
     },
     series: [70],
-    labels: ["Working"]
-  }
+    labels: ["Working"],
+  },
 };
 
 export const circleChart = [
@@ -2005,21 +1873,21 @@ export const circleChart = [
       options: {
         chart: {
           height: 250,
-          type: "radialBar"
+          type: "radialBar",
         },
         colors: ["#0d6efd"],
         plotOptions: {
           radialBar: {
             hollow: {
-              size: "70%"
-            }
-          }
+              size: "70%",
+            },
+          },
         },
         series: [70],
-        labels: ["Cricket"]
+        labels: ["Cricket"],
       },
-      series: [70]
-    }
+      series: [70],
+    },
   },
   {
     title: "Circle Chart Multiple",
@@ -2027,33 +1895,33 @@ export const circleChart = [
       options: {
         chart: {
           height: 250,
-          type: "radialBar"
+          type: "radialBar",
         },
         colors: ["#004660", "#0d6efd", "#ff7f81", "#44b39b"],
         plotOptions: {
           radialBar: {
             dataLabels: {
               name: {
-                fontSize: "22px"
+                fontSize: "22px",
               },
               value: {
-                fontSize: "16px"
+                fontSize: "16px",
               },
               total: {
                 show: true,
                 label: "Total",
-                formatter: function(w) {
+                formatter: function (w) {
                   // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
                   return 249;
-                }
-              }
-            }
-          }
+                },
+              },
+            },
+          },
         },
-        labels: ["Apples", "Oranges", "Bananas", "Berries"]
+        labels: ["Apples", "Oranges", "Bananas", "Berries"],
       },
-      series: [44, 55, 67, 83]
-    }
+      series: [44, 55, 67, 83],
+    },
   },
   {
     title: "Circle Gradient",
@@ -2063,8 +1931,8 @@ export const circleChart = [
           height: 250,
           type: "radialBar",
           toolbar: {
-            show: true
-          }
+            show: true,
+          },
         },
         colors: ["#0d6efd"],
         plotOptions: {
@@ -2085,8 +1953,8 @@ export const circleChart = [
                 top: 3,
                 left: 0,
                 blur: 4,
-                opacity: 0.24
-              }
+                opacity: 0.24,
+              },
             },
             track: {
               background: "#fff",
@@ -2097,8 +1965,8 @@ export const circleChart = [
                 top: -3,
                 left: 0,
                 blur: 4,
-                opacity: 0.35
-              }
+                opacity: 0.35,
+              },
             },
 
             dataLabels: {
@@ -2107,18 +1975,18 @@ export const circleChart = [
                 offsetY: -10,
                 show: true,
                 color: "#888",
-                fontSize: "17px"
+                fontSize: "17px",
               },
               value: {
-                formatter: function(val) {
+                formatter: function (val) {
                   return parseInt(val);
                 },
                 color: "#111",
                 fontSize: "36px",
-                show: true
-              }
-            }
-          }
+                show: true,
+              },
+            },
+          },
         },
         fill: {
           type: "gradient",
@@ -2130,18 +1998,18 @@ export const circleChart = [
             inverseColors: true,
             opacityFrom: 1,
             opacityTo: 1,
-            stops: [0, 100]
-          }
+            stops: [0, 100],
+          },
         },
 
         stroke: {
-          lineCap: "round"
+          lineCap: "round",
         },
-        labels: ["Percent"]
+        labels: ["Percent"],
       },
-      series: [75]
-    }
-  }
+      series: [75],
+    },
+  },
 ];
 
 export const EmployeesYearlyStatusData = {
@@ -2150,55 +2018,42 @@ export const EmployeesYearlyStatusData = {
       height: 350,
       type: "line",
       toolbar: {
-        show: false
-      }
+        show: false,
+      },
     },
     colors: ["var(--chart-color1)", "var(--chart-color2)"],
     series: [
       {
         name: "Working Hours",
         type: "column",
-        data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
+        data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160],
       },
       {
         name: "Employees Progress",
         type: "line",
-        data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
-      }
+        data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16],
+      },
     ],
     stroke: {
-      width: [0, 4]
+      width: [0, 4],
     },
     //labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    labels: [
-      "2001",
-      "2002",
-      "2003",
-      "2004",
-      "2005",
-      "2006",
-      "2007",
-      "2008",
-      "2009",
-      "2010",
-      "2011",
-      "2012"
-    ],
+    labels: ["2001", "2002", "2003", "2004", "2005", "2006", "2007", "2008", "2009", "2010", "2011", "2012"],
     xaxis: {
-      type: "datetime"
+      type: "datetime",
     },
     yaxis: [
       {
         title: {
-          text: "Working Hours"
-        }
+          text: "Working Hours",
+        },
       },
       {
         opposite: true,
         title: {
-          text: "Employees Progress"
-        }
-      }
-    ]
-  }
+          text: "Employees Progress",
+        },
+      },
+    ],
+  },
 };

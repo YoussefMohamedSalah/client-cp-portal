@@ -6,9 +6,9 @@ export const useUpdateUserSign = () => {
   return useMutation<any, Error, any>(async (createInput) => {
     const data = http.put(ROUTES.USER_SIGN, createInput, {
       headers: {
-        'Content-Type': "multipart/form-data"
+        "Content-Type": "multipart/form-data",
       },
-    })
+    });
     return data;
   });
 };

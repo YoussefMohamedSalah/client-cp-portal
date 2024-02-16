@@ -13,9 +13,9 @@ const ClientTaskCard: React.FC = () => {
   let groupsTasks: Task[] = tasksData?.groupsTasks!;
   let individualTasks: Task[] = tasksData?.individualTasks!;
   let tasks: Task[] = [];
-  if (companyTasks) tasks = [...tasks, ...companyTasks]
-  if (groupsTasks) tasks = [...tasks, ...groupsTasks]
-  if (individualTasks) tasks = [...tasks, ...individualTasks]
+  if (companyTasks) tasks = [...tasks, ...companyTasks];
+  if (groupsTasks) tasks = [...tasks, ...groupsTasks];
+  if (individualTasks) tasks = [...tasks, ...individualTasks];
 
   return (
     <div className="card mb-3">
@@ -25,16 +25,16 @@ const ClientTaskCard: React.FC = () => {
       <div className="card-body">
         <div className="planned_task client_task">
           {tasks && tasks.length > 0 ? (
-            <div
-              className="dd container horizontal-scrollable overflow-x-scroll "
-              data-plugin="nestable"
-            >
+            <div className="dd container horizontal-scrollable overflow-x-scroll " data-plugin="nestable">
               <div className="d-flex g-3 mb-3">
                 <>
                   {tasks.map((task, index) => {
                     return (
                       <>
-                        <div className="dd-handle w-auto me-2 d-flex flex-column justify-content-between" style={{ minWidth: "19rem", minHeight: '12rem' }}>
+                        <div
+                          className="dd-handle w-auto me-2 d-flex flex-column justify-content-between"
+                          style={{ minWidth: "19rem", minHeight: "12rem" }}
+                        >
                           <div>
                             <div className="task-info d-flex align-items-center justify-content-between">
                               <h6 className="light-info-bg py-1 px-2 rounded-1 d-inline-block fw-bold small-14 mb-0">
@@ -46,10 +46,8 @@ const ClientTaskCard: React.FC = () => {
                                 </span>
                               </div>
                             </div>
-                            <div style={{ maxHeight: '2rem', overflow: '' }}>
-                              <p className="py-2 mb-0" >
-                                {getShortString(`${task.description}`, 140)}
-                              </p>
+                            <div style={{ maxHeight: "2rem", overflow: "" }}>
+                              <p className="py-2 mb-0">{getShortString(`${task.description}`, 140)}</p>
                             </div>
                           </div>
                           <div className="tikit-info row g-3 align-items-center ">
@@ -62,17 +60,18 @@ const ClientTaskCard: React.FC = () => {
                           </div>
                         </div>
                       </>
-                    )
+                    );
                   })}
                 </>
               </div>
             </div>
           ) : (
             <>
-              <div className="dd-handle me-2 d-flex flex-column justify-content-center align-items-center" style={{ minWidth: "19rem", minHeight: '12rem' }}>
-                <div>
-                  No Tasks Yet
-                </div>
+              <div
+                className="dd-handle me-2 d-flex flex-column justify-content-center align-items-center"
+                style={{ minWidth: "19rem", minHeight: "12rem" }}
+              >
+                <div>No Tasks Yet</div>
               </div>
             </>
           )}

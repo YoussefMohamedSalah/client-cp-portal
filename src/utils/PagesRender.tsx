@@ -58,9 +58,7 @@ const SubcontractorFormPage = lazy(() => import("../screens/Subcontractors/Subco
 const ProjectFormPage = lazy(() => import("../screens/Projects/ProjectFormPage"));
 const TenderFormPage = lazy(() => import("../screens/Tenders/TenderFormPage"));
 
-const EmployeeProfileDetails = lazy(
-  () => import("../screens/Profile/EmployeeProfileDetails")
-);
+const EmployeeProfileDetails = lazy(() => import("../screens/Profile/EmployeeProfileDetails"));
 
 // // EDIT //
 // const PoRequestEditPage = lazy(() => import("../PoRequests/PoRequestEditPage"));
