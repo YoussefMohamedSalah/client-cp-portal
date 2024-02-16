@@ -1,3 +1,4 @@
+import { Project } from "./Project";
 
 
 export interface Task {
@@ -12,6 +13,7 @@ export interface Task {
   assigned_to?: string;
   task_type: string;
   thumbnail?: File;
+  project:Project
   
 };
 
