@@ -1,5 +1,7 @@
+// !ERROR this component must be in components/inventoryItems
 import { Modal } from "react-bootstrap";
 import { InventoryItem } from "types/Inventory";
+// !ERROR this is not where we should import correction : InventoryItem
 import { InventoryKeys } from "models/Inventory";
 import { IField } from "types/Forms/formFields";
 
@@ -30,6 +32,8 @@ const InventoryItemModal: React.FC<Props> = ({
   selectedItem,
   isEditModal,
 }) => {
+
+  // !ERROR fix this after you change the import.line 5
   const formFields: IField[] = [
     {
       label: "Item Name",
@@ -89,6 +93,7 @@ const InventoryItemModal: React.FC<Props> = ({
         <Modal.Title className="fw-bold">{modalHeader}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        {/* // !ERROR remove the modal-body */}
         <div className="modal-body">
           <FormInputs formFields={formFields} grid={true} />
         </div>

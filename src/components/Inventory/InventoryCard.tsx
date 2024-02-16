@@ -13,6 +13,9 @@ import {
 import { handleServerError, validateInputs } from "utils/HandlingServerError";
 import { useUI } from "contexts/UIContext";
 import { inputsValidationType } from "types/Error";
+
+
+// !ERROR this is not where we should import correction : InventoryItem
 import {
   InventoryNumKeys,
   InventoryRequiredKeys,
@@ -86,7 +89,6 @@ const InventoryCard: React.FC<Props> = ({ inventory }) => {
     let errors = validateInputs(validationData);
     if (errors.length > 0) return showError(errors);
 
-    // modelData.inventoryId = ''
     try {
       let createInput = inventoryItemInput(modelData);
       await createMutation({
@@ -115,6 +117,7 @@ const InventoryCard: React.FC<Props> = ({ inventory }) => {
               </div>
               <span className="small text-muted project_name fw-bold">
                 {" "}
+                {/* // !ERROR Import should be directly from INVENTORY_TYPE instead ENUMS.INVENTORY_TYPE */}
                 {inventory.type === ENUMS.INVENTORY_TYPE.MASTER
                   ? "Company Main Inventory"
                   : "Projects's Inventory"}{" "}

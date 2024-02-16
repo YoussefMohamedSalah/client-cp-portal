@@ -14,6 +14,8 @@ export const useUpdateInventoryItem = () => {
         },
       }
     );
+    // !ERROR this should take type InventoryItem
+    // !    return { inventoryItem: { data: data as InventoryItem } };
     return { inventoryItem: { data: data as any } };
   });
 };
