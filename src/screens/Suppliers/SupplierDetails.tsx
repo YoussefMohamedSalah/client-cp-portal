@@ -1,16 +1,11 @@
-import React from 'react'
+import React from "react";
 
 interface Props {
-    id?: string;
-};
-
-
-const SupplierDetails = ({ id }: Props) => {
-    return (
-        <div>
-
-        </div>
-    )
+  id?: string;
 }
 
-export default SupplierDetails
+const SupplierDetails = ({ id }: Props) => {
+  return <div></div>;
+};
+
+export default SupplierDetails;

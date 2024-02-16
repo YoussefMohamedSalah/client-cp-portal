@@ -1,15 +1,13 @@
-import React, { Suspense } from 'react';
-import ReactDOM from 'react-dom/client';
+import React, { Suspense } from "react";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
-import { redirectToWWW } from 'utils/RedirectToWWW';
-import reportWebVitals from './reportWebVitals';
-import App from 'App';
-import Providers from 'Providers';
+import { redirectToWWW } from "utils/RedirectToWWW";
+import reportWebVitals from "./reportWebVitals";
+import App from "App";
+import Providers from "Providers";
 import "assets/scss/main.scss";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 
 redirectToWWW();
 
@@ -22,7 +20,7 @@ root.render(
         </Providers>
       </Suspense>
     </Router>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
 
 // If you want to start measuring performance in your app, pass a function

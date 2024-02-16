@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const BillingSettings = () => {
-    return (
-        <div>
+  return <div></div>;
+};
 
-        </div>
-    )
-}
-
-export default BillingSettings
+export default BillingSettings;

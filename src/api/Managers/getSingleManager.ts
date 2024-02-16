@@ -9,8 +9,5 @@ export const getSingleEmployee = async ({ queryKey }: any) => {
 };
 
 export const useSingleEmployee = (options: any) => {
-  return useQuery<{ manager: { data: any } }, Error>(
-    [ROUTES.EMPLOYEE, options],
-    getSingleEmployee
-  );
+  return useQuery<{ manager: { data: any } }, Error>([ROUTES.EMPLOYEE, options], getSingleEmployee);
 };

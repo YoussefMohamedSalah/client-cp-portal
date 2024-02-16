@@ -38,16 +38,10 @@ class InvoiceList extends React.Component {
                     <span>{" " + d.appliedData}</span>
                   </div>
                   <div className="card-hover-show">
-                    <a
-                      className="btn btn-sm btn-white border lift me-1"
-                      href="!#"
-                    >
+                    <a className="btn btn-sm btn-white border lift me-1" href="!#">
                       Download
                     </a>
-                    <a
-                      className="btn btn-sm btn-white border lift me-1"
-                      href="!#"
-                    >
+                    <a className="btn btn-sm btn-white border lift me-1" href="!#">
                       Send
                     </a>
                     <a className="btn btn-sm btn-white border lift" href="!#">

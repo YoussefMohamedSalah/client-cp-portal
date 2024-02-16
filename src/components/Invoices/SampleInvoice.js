@@ -137,16 +137,12 @@ class SampleInvoice extends React.Component {
                 <div className="col-lg-12">
                   <h6>Terms &amp; Condition</h6>
                   <p className="text-muted">
-                    Contrary to popular belief, Lorem Ipsum is not simply random
-                    text. It has roots in a piece of classical Latin literature
-                    from 45 BC, making it over
+                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                    classical Latin literature from 45 BC, making it over
                   </p>
                 </div>
                 <div className="col-lg-12 text-end">
-                  <button
-                    type="button"
-                    className="btn btn-outline-secondary btn-lg my-1"
-                  >
+                  <button type="button" className="btn btn-outline-secondary btn-lg my-1">
                     <i className="fa fa-print"></i> Print
                   </button>
                   <button type="button" className="btn btn-primary btn-lg my-1">

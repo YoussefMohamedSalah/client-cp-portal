@@ -1,16 +1,12 @@
-import React from 'react'
+import React from "react";
 
 interface Props {
-    title: string;
-    onSave: () => void;
-};
-
-const DocumentCard = ({ title, onSave }: Props) => {
-    return (
-        <div>
-
-        </div>
-    )
+  title: string;
+  onSave: () => void;
 }
 
-export default DocumentCard
+const DocumentCard = ({ title, onSave }: Props) => {
+  return <div></div>;
+};
+
+export default DocumentCard;

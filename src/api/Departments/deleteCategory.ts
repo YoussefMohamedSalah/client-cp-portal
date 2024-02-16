@@ -4,7 +4,7 @@ import { ROUTES } from "constants/routes";
 import { http } from "utils/Http";
 
 export const useDeleteDepartment = () => {
-  return useMutation<any, Error, any>(async updateInput => {
+  return useMutation<any, Error, any>(async (updateInput) => {
     const { data } = await http.delete(ROUTES.CATEGORY + updateInput.id + "/");
     return { department: { data: data as any } };
   });

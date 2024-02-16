@@ -10,8 +10,5 @@ export const getAllAssignedMembers = async ({ queryKey }: any) => {
 };
 
 export const useAssignedMembersQuery = (options: any) => {
-  return useQuery<{ employees: { data: any } }, Error>(
-    [ROUTES.EMPLOYEE_PROJECT, options],
-    getAllAssignedMembers
-  );
+  return useQuery<{ employees: { data: any } }, Error>([ROUTES.EMPLOYEE_PROJECT, options], getAllAssignedMembers);
 };

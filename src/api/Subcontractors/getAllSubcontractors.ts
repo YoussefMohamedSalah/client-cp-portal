@@ -9,8 +9,5 @@ export const getAllSubcontractor = async ({ queryKey }: any) => {
 };
 
 export const useSubcontractorsQuery = (options: any) => {
-  return useQuery<{ subcontractors: { data: any } }, Error>(
-    [ROUTES.CO_SUBCONTRACTORS, options],
-    getAllSubcontractor
-  );
+  return useQuery<{ subcontractors: { data: any } }, Error>([ROUTES.CO_SUBCONTRACTORS, options], getAllSubcontractor);
 };

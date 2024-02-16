@@ -4,7 +4,7 @@ import { http } from "utils/Http";
 import { Contract, CreateContract } from "types/Contract";
 
 export const useCreateContract = () => {
-  return useMutation<any, Error, any>(async createInput => {
+  return useMutation<any, Error, any>(async (createInput) => {
     const { projectId } = createInput;
     const { data } = await http.post(ROUTES.CONTRACT + projectId, createInput.data, {
       headers: {
@@ -31,18 +31,17 @@ export const contractInput = (data: any): any => {
     } as CreateContract;
   }
 
-
   const formData = new FormData();
-  (data.sub_total) && formData.append("sub_total", data?.sub_total!);
-  (data.vat) && formData.append("vat", data.vat!);
-  (data.discount) && formData.append("discount", data?.discount!);
-  (data.total) && formData.append("total", data.total!);
-  (data.date) && formData.append("date", data.date);
-  (data.items) && formData.append("items", data?.items!);
-  (data.conditions) && formData.append("conditions", data.conditions);
-  (data.default_conditions) && formData.append("default_conditions", data.default_conditions);
-  (data.subcontractor) && formData.append("subcontractor", data.subcontractor);
-  (data.filesNameSet) && formData.append("filesNameSet", data.filesNameSet);
+  data.sub_total && formData.append("sub_total", data?.sub_total!);
+  data.vat && formData.append("vat", data.vat!);
+  data.discount && formData.append("discount", data?.discount!);
+  data.total && formData.append("total", data.total!);
+  data.date && formData.append("date", data.date);
+  data.items && formData.append("items", data?.items!);
+  data.conditions && formData.append("conditions", data.conditions);
+  data.default_conditions && formData.append("default_conditions", data.default_conditions);
+  data.subcontractor && formData.append("subcontractor", data.subcontractor);
+  data.filesNameSet && formData.append("filesNameSet", data.filesNameSet);
   for (let file of data.files) {
     formData.append("files", file);
   }

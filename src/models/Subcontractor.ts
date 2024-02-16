@@ -1,22 +1,19 @@
 export enum SubcontractorKeys {
-  NAME = 'name',
-  COMPANY_NAME = 'company_name',
+  NAME = "name",
+  COMPANY_NAME = "company_name",
   PHONE_NUMBER = "phone_number",
   EMAIL = "email",
-  SUBCONTRACTOR_TYPE = 'subcontractor_type',
-  VAT_ON = 'vat_on',
-  COUNTRY = 'country',
-  CITY = 'city',
-  AREA = 'area',
-  STREET = 'street',
-  BUILDING_NUMBER = 'building_number',
-  POSTAL_CODE = 'postal_code',
-};
+  SUBCONTRACTOR_TYPE = "subcontractor_type",
+  VAT_ON = "vat_on",
+  COUNTRY = "country",
+  CITY = "city",
+  AREA = "area",
+  STREET = "street",
+  BUILDING_NUMBER = "building_number",
+  POSTAL_CODE = "postal_code",
+}
 
-export const SubcontractorNumKeys = [
-  SubcontractorKeys.VAT_ON,
-  SubcontractorKeys.POSTAL_CODE,
-];
+export const SubcontractorNumKeys = [SubcontractorKeys.VAT_ON, SubcontractorKeys.POSTAL_CODE];
 
 export const SubcontractorStrKeys = [
   SubcontractorKeys.AREA,

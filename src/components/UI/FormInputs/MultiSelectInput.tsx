@@ -1,9 +1,9 @@
-import { useAutocomplete, AutocompleteGetTagProps } from '@mui/base/useAutocomplete';
-import CheckIcon from '@mui/icons-material/Check';
-import CloseIcon from '@mui/icons-material/Close';
-import { styled } from '@mui/material/styles';
-import { autocompleteClasses } from '@mui/material/Autocomplete';
-import { IOption } from 'types/Forms/option';
+import { useAutocomplete, AutocompleteGetTagProps } from "@mui/base/useAutocomplete";
+import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
+import { styled } from "@mui/material/styles";
+import { autocompleteClasses } from "@mui/material/Autocomplete";
+import { IOption } from "types/Forms/option";
 
 interface Props {
   label?: string;
@@ -14,18 +14,21 @@ interface Props {
   placeholder?: string;
 }
 
-const Root = styled('div')(({ theme }) => `
+const Root = styled("div")(
+  ({ theme }) => `
   font-size: 14px;
   position: relative;
-`);
+`,
+);
 
-const Label = styled('label')`
+const Label = styled("label")`
   padding: 0 0 4px;
   line-height: 1.5;
   display: block;
 `;
 
-const InputWrapper = styled('div')(({ theme }) => `
+const InputWrapper = styled("div")(
+  ({ theme }) => `
   border-radius: 4px;
   padding: 3px;
   display: flex;
@@ -48,7 +51,8 @@ const InputWrapper = styled('div')(({ theme }) => `
     margin: 0;
     outline: 0;
   }
-`);
+`,
+);
 
 interface TagProps extends ReturnType<AutocompleteGetTagProps> {
   label: string;
@@ -64,7 +68,8 @@ function Tag(props: TagProps) {
   );
 }
 
-const StyledTag = styled(Tag)<TagProps>(({ theme }) => `
+const StyledTag = styled(Tag)<TagProps>(
+  ({ theme }) => `
   display: flex;
   align-items: center;
   height: 24px;
@@ -89,9 +94,11 @@ const StyledTag = styled(Tag)<TagProps>(({ theme }) => `
     padding: 0px;
     margin: 0px 5px;
   }
-`);
+`,
+);
 
-const Listbox = styled('ul')(({ theme }) => `
+const Listbox = styled("ul")(
+  ({ theme }) => `
   margin: 2px 0 0;
   padding: 0;
   position: absolute;
@@ -134,8 +141,8 @@ const Listbox = styled('ul')(({ theme }) => `
       color: currentColor;
     }
   }
-`);
-
+`,
+);
 
 const MultiSelectInput = ({ options, label, onChange, defaultValue, disabled, placeholder }: Props) => {
   const {
@@ -150,7 +157,7 @@ const MultiSelectInput = ({ options, label, onChange, defaultValue, disabled, pl
     focused,
     setAnchorEl,
   } = useAutocomplete({
-    id: 'customized-hook-demo',
+    id: "customized-hook-demo",
     disabled,
     value: defaultValue,
     multiple: true,
@@ -165,8 +172,7 @@ const MultiSelectInput = ({ options, label, onChange, defaultValue, disabled, pl
     <Root>
       <div {...getRootProps()}>
         <Label {...getInputLabelProps()}>{label! || ""}</Label>
-        <InputWrapper ref={setAnchorEl} className={focused ? 'focused' : ''}
-        >
+        <InputWrapper ref={setAnchorEl} className={focused ? "focused" : ""}>
           {value.map((option: IOption, index: number) => (
             <StyledTag label={option?.label! || ""} {...getTagProps({ index })} />
           ))}
@@ -174,7 +180,7 @@ const MultiSelectInput = ({ options, label, onChange, defaultValue, disabled, pl
         </InputWrapper>
       </div>
       {groupedOptions && groupedOptions?.length > 0 ? (
-        <Listbox {...getListboxProps()} >
+        <Listbox {...getListboxProps()}>
           {(groupedOptions as typeof options)?.map((option, index) => (
             <li {...getOptionProps({ option, index })}>
               <span>{option?.label! || ""}</span>
@@ -185,6 +191,6 @@ const MultiSelectInput = ({ options, label, onChange, defaultValue, disabled, pl
       ) : null}
     </Root>
   );
-}
+};
 
 export default MultiSelectInput;

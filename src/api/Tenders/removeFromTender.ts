@@ -8,20 +8,16 @@ export interface RemoveMemberFromTenderInputType {
 }
 
 export const useRemoveMemberFromTender = () => {
-  return useMutation<any, Error, RemoveMemberFromTenderInputType>(
-    async (updateInput) => {
-      const { tenderId, memberId } = updateInput;
-      const { data } = await http.put(ROUTES.TENDER_REMOVE + tenderId, {
-        memberId,
-      });
-      return { group: { data: data as any } };
-    }
-  );
+  return useMutation<any, Error, RemoveMemberFromTenderInputType>(async (updateInput) => {
+    const { tenderId, memberId } = updateInput;
+    const { data } = await http.put(ROUTES.TENDER_REMOVE + tenderId, {
+      memberId,
+    });
+    return { group: { data: data as any } };
+  });
 };
 
-export const removeMemberFromProjectInput = (
-  data: RemoveMemberFromTenderInputType
-): any => {
+export const removeMemberFromProjectInput = (data: RemoveMemberFromTenderInputType): any => {
   return {
     tenderId: data.tenderId,
     memberId: data.memberId,

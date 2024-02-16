@@ -3,19 +3,12 @@ export enum PcRequestKeys {
   PROJECT = "project",
   DATE = "date",
   DESCRIPTION = "description",
-  FILES = 'files',
-  FILE = 'file',
-};
+  FILES = "files",
+  FILE = "file",
+}
 
 export const PcRequestNumKeys = [];
 
-export const PcRequestStrKeys = [
-  PcRequestKeys.DATE,
-  PcRequestKeys.PROJECT,
-];
+export const PcRequestStrKeys = [PcRequestKeys.DATE, PcRequestKeys.PROJECT];
 
-export const PcRequestRequiredKeys = [
-  PcRequestKeys.DATE,
-  PcRequestKeys.PROJECT,
-  PcRequestKeys.SUBJECT,
-];
+export const PcRequestRequiredKeys = [PcRequestKeys.DATE, PcRequestKeys.PROJECT, PcRequestKeys.SUBJECT];

@@ -1,3 +1,3 @@
 export interface Department {
-    title: string
-};
+  title: string;
+}

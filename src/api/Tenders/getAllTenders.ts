@@ -8,8 +8,5 @@ export const getAllTenders = async ({ queryKey }: any) => {
 };
 
 export const useTendersQuery = (options: any) => {
-  return useQuery<{ tenders: { data: any } }, Error>(
-    [ROUTES.CO_TENDERS, options],
-    getAllTenders
-  );
+  return useQuery<{ tenders: { data: any } }, Error>([ROUTES.CO_TENDERS, options], getAllTenders);
 };

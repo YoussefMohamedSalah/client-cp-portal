@@ -11,8 +11,5 @@ export const getSubcontractorDetails = async ({ queryKey }: any) => {
 };
 
 export const useSubcontractorDetailsQuery = (options: any) => {
-  return useQuery(
-    [ROUTES.SUBCONTRACTOR, options],
-    getSubcontractorDetails
-  );
+  return useQuery([ROUTES.SUBCONTRACTOR, options], getSubcontractorDetails);
 };

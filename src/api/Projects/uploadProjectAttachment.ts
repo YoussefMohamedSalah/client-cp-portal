@@ -4,7 +4,7 @@ import { ProjectAttachment } from "types/Project";
 import { http } from "utils/Http";
 
 export const useUploadProjectAttachment = () => {
-  return useMutation<any, Error, FormData>(async createInput => {
+  return useMutation<any, Error, FormData>(async (createInput) => {
     const { data } = await http.post(ROUTES.PROJECT_ATTACHMENT, createInput, {
       headers: {
         "Content-Type": "multipart/form-data",

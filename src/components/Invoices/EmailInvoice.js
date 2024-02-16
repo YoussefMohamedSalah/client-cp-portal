@@ -20,9 +20,7 @@ class EmailInvoice extends React.Component {
                         </tr>
                         <tr>
                           <td className="py-2">
-                            <h4 className="text-center">
-                              Thanks for using PXL Inc.
-                            </h4>
+                            <h4 className="text-center">Thanks for using PXL Inc.</h4>
                           </td>
                         </tr>
                         <tr>
@@ -31,8 +29,7 @@ class EmailInvoice extends React.Component {
                               <tbody>
                                 <tr>
                                   <td className="py-3 text-center">
-                                    Attn: <strong>Ryan MacLeod</strong> Winston
-                                    Salem FL 27107
+                                    Attn: <strong>Ryan MacLeod</strong> Winston Salem FL 27107
                                     <br />
                                     Email: RyanmacLeod@gmail.com
                                     <br />
@@ -45,24 +42,17 @@ class EmailInvoice extends React.Component {
                                     <table className="table table-bordered w-100">
                                       <tbody>
                                         <tr>
-                                          <td
-                                            className="text-left"
-                                            style={{ textAlign: "left" }}
-                                          >
+                                          <td className="text-left" style={{ textAlign: "left" }}>
                                             Extended License
                                           </td>
                                           <td>$ 20.99</td>
                                         </tr>
                                         <tr>
-                                          <td style={{ textAlign: "left" }}>
-                                            1 year subcription
-                                          </td>
+                                          <td style={{ textAlign: "left" }}>1 year subcription</td>
                                           <td>$ 19.99</td>
                                         </tr>
                                         <tr>
-                                          <td style={{ textAlign: "left" }}>
-                                            Instalation and Customization
-                                          </td>
+                                          <td style={{ textAlign: "left" }}>Instalation and Customization</td>
                                           <td>$ 8.00</td>
                                         </tr>
                                         <tr>
@@ -99,8 +89,7 @@ class EmailInvoice extends React.Component {
                       <tbody>
                         <tr className="">
                           <td className="aligncenter py-4 text-align content-block">
-                            Questions? Email{" "}
-                            <a href="mailto:">info@pixelwibes.com</a>
+                            Questions? Email <a href="mailto:">info@pixelwibes.com</a>
                           </td>
                         </tr>
                       </tbody>

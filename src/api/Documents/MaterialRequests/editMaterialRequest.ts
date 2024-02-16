@@ -4,7 +4,7 @@ import { http } from "utils/Http";
 import { MaterialRequest } from "types/Material_request";
 
 export const useEditMaterialRequest = () => {
-  return useMutation<any, Error, any>(async updateInput => {
+  return useMutation<any, Error, any>(async (updateInput) => {
     const { id } = updateInput;
     const { data } = await http.put(ROUTES.MATERIAL_REQUEST + id, updateInput.data, {
       headers: {
@@ -30,17 +30,16 @@ export const materialEditInput = (data: any): any => {
   }
 
   const formData = new FormData();
-  (data.id) && formData.append("id", data.id);
-  (data.subject) && formData.append("subject", data.subject);
-  (data.description) && formData.append("description", data.description);
-  (data.items) && formData.append("items", data?.items!);
-  (data.date) && formData.append("date", data.date);
-  (data.removedFilesNameSet) && formData.append("removedFilesNameSet", data.removedFilesNameSet);
-  (data.addedFilesNameSet) && formData.append("addedFilesNameSet", data.addedFilesNameSet);
-  (data.is_archived) && formData.append("is_archived", data.is_archived);
+  data.id && formData.append("id", data.id);
+  data.subject && formData.append("subject", data.subject);
+  data.description && formData.append("description", data.description);
+  data.items && formData.append("items", data?.items!);
+  data.date && formData.append("date", data.date);
+  data.removedFilesNameSet && formData.append("removedFilesNameSet", data.removedFilesNameSet);
+  data.addedFilesNameSet && formData.append("addedFilesNameSet", data.addedFilesNameSet);
+  data.is_archived && formData.append("is_archived", data.is_archived);
   for (let file of data.files) {
     formData.append("files", file);
   }
   return formData;
 };
-

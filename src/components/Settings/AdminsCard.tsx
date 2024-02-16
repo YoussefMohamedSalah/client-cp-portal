@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const AdminsCard = () => {
-    return (
-        <div>
+  return <div></div>;
+};
 
-        </div>
-    )
-}
-
-export default AdminsCard
+export default AdminsCard;

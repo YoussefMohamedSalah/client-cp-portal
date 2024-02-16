@@ -4,8 +4,8 @@ import { useMutation } from "@tanstack/react-query";
 import http from "utils/Http";
 
 export const useLogin = () => {
-	return useMutation<any, Error, AuthLoginInput>(async (createInput) => {
-		const { data } = await http.post(ROUTES.LOGIN, createInput);
-		return data;
-	});
+  return useMutation<any, Error, AuthLoginInput>(async (createInput) => {
+    const { data } = await http.post(ROUTES.LOGIN, createInput);
+    return data;
+  });
 };

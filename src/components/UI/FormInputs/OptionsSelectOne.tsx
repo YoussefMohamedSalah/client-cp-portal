@@ -1,7 +1,7 @@
-import React from 'react';
-import TextField from '@mui/material/TextField';
-import Autocomplete, { AutocompleteInputChangeReason } from '@mui/material/Autocomplete';
-import { IOption } from 'types/Forms/option';
+import React from "react";
+import TextField from "@mui/material/TextField";
+import Autocomplete, { AutocompleteInputChangeReason } from "@mui/material/Autocomplete";
+import { IOption } from "types/Forms/option";
 
 interface Props {
   label?: string;
@@ -12,18 +12,10 @@ interface Props {
   onChange: (value: any) => void;
   placeholder?: string;
   required?: boolean;
-};
+}
 
-const OptionsSelectOne = React.memo(({
-  options,
-  label,
-  onChange,
-  defaultValue,
-  disabled,
-  value,
-  required
-}: Props) => {
-  const getOptionLabel = (option: string | IOption) => (typeof option === 'string' ? option : option?.label || '');
+const OptionsSelectOne = React.memo(({ options, label, onChange, defaultValue, disabled, value, required }: Props) => {
+  const getOptionLabel = (option: string | IOption) => (typeof option === "string" ? option : option?.label || "");
   const filterOptions = (options: (string | IOption)[], { inputValue }: { inputValue: string }) => {
     const inputValueLowerCase = inputValue.toLowerCase();
     const filteredOptions = options.filter((option) => {
@@ -40,21 +32,21 @@ const OptionsSelectOne = React.memo(({
       sx={{
         minWidth: "150px",
         // border: '1px solid #888888',
-        '& .MuiInputLabel-root': {
-          color: '#888888!important', // Label color
+        "& .MuiInputLabel-root": {
+          color: "#888888!important", // Label color
         },
-        '& .MuiOutlinedInput-root': {
-          '& fieldset': {
-            borderColor: '#888888!important', // Border color
+        "& .MuiOutlinedInput-root": {
+          "& fieldset": {
+            borderColor: "#888888!important", // Border color
           },
-          '&:hover fieldset': {
-            borderColor: '#40a9ff',
+          "&:hover fieldset": {
+            borderColor: "#40a9ff",
           },
-          '&.Mui-focused fieldset': {
-            borderColor: '#40a9ff',
+          "&.Mui-focused fieldset": {
+            borderColor: "#40a9ff",
           },
-          '& input': {
-            color: '#888888!important', // Input text color
+          "& input": {
+            color: "#888888!important", // Input text color
           },
         },
       }}
@@ -65,7 +57,7 @@ const OptionsSelectOne = React.memo(({
       defaultValue={defaultValue}
       getOptionLabel={getOptionLabel}
       onChange={(event: any, newValue: string | IOption | null) => {
-        if (typeof newValue === 'string') {
+        if (typeof newValue === "string") {
           onChange(newValue);
         } else if (newValue !== null) {
           onChange(newValue?.value);
@@ -74,7 +66,7 @@ const OptionsSelectOne = React.memo(({
         }
       }}
       onInputChange={(event, newInputValue: string, reason: AutocompleteInputChangeReason) => {
-        if (reason === 'input') {
+        if (reason === "input") {
           onChange(newInputValue);
         }
       }}
@@ -84,14 +76,14 @@ const OptionsSelectOne = React.memo(({
       filterOptions={filterOptions}
       renderInput={(params) => (
         <TextField
-          sx={{ margin: '8px 0' }}
+          sx={{ margin: "8px 0" }}
           placeholder={label}
           required={required}
           {...params}
           label={label}
           InputProps={{
             ...params.InputProps,
-            type: 'search',
+            type: "search",
           }}
         />
       )}

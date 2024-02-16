@@ -8,8 +8,5 @@ export const getUserTodayAttendance = async ({ queryKey }: any) => {
 };
 
 export const useAttendanceQuery = (options: any) => {
-  return useQuery<{ attendance: { data: any } }, Error>(
-    [ROUTES.ATTENDANCE_STATUS, options],
-    getUserTodayAttendance,
-  );
+  return useQuery<{ attendance: { data: any } }, Error>([ROUTES.ATTENDANCE_STATUS, options], getUserTodayAttendance);
 };
