@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
-import { Task } from "types/Task";
+import {  Task } from "types/Task";
 import { http } from "utils/Http";
 
 export const useUpdateTask = () => {
@@ -22,10 +22,10 @@ export const taskUpdateInput = (data: Task): any => {
       task_type: data.task_type,
       task_priority: data.task_priority,
       assigned_to: data.assigned_to,
-      project: data.project.id,
+      projectId: data.projectId,
       start_at: data.start_at,
       end_at: data.end_at,
-    } as any;
+    } as Task;
   }
 
   const formData = new FormData();
@@ -34,7 +34,7 @@ export const taskUpdateInput = (data: Task): any => {
   data.task_type && formData.append("task_type", `${data?.task_type!}`);
   data.task_priority && formData.append("task_priority", `${data?.task_priority!}`);
   data.assigned_to && formData.append("assigned_to", `${data?.assigned_to!}`);
-  data.project && formData.append("project", `${data?.project?.id!}`);
+  data.projectId && formData.append("projectId", `${data?.projectId!}`);
   data.start_at && formData.append("start_at", `${data?.start_at!}`);
   data.end_at && formData.append("end_at", `${data?.end_at!}`);
   if (!data.thumbnail) return formData;
