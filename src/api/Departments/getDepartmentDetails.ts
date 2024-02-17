@@ -5,12 +5,11 @@ import { http } from "utils/Http";
 
 export const getDepartmentDetails = async ({ queryKey }: any) => {
   const [_params] = queryKey;
-  if(_params.id){
+  if (_params.id) {
     const { data } = await http.post(ROUTES.CATEGORY + _params.id + "/");
-  return { department: { data: data as Department } };
+    return { department: { data: data as Department } };
   }
   return null;
-  
 };
 
 export const useDepartmentDetails = (options: any) => {

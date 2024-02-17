@@ -6,12 +6,11 @@ import { Invoice } from "types/Invoice";
 export const getInvoiceDetails = async ({ queryKey }: any) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_key, _params] = queryKey;
-  if(_params.id){
+  if (_params.id) {
     const { data } = await http.get(ROUTES.INVOICE + _params.id);
-  return { invoiceDetails: { data: data as Invoice } };
+    return { invoiceDetails: { data: data as Invoice } };
   }
-  return null
-  
+  return null;
 };
 
 export const useInvoiceDetailsQuery = (options: any) => {

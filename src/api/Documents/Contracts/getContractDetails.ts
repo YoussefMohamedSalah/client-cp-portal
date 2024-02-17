@@ -6,12 +6,11 @@ import { Contract } from "types/Contract";
 export const getContractDetails = async ({ queryKey }: any) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_key, _params] = queryKey;
-  if(_params.id){
+  if (_params.id) {
     const { data } = await http.get(ROUTES.CONTRACT + _params.id);
     return { contractDetails: { data: data as Contract } };
   }
-  return null
- 
+  return null;
 };
 
 export const useContractDetailsQuery = (options: any) => {

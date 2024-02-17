@@ -20,15 +20,15 @@ export const tenderInput = (data: Tender): any => {
       description: data.description,
       date: data.date,
       hand_over: data.hand_over,
-      comments: data.comments
-    } as SelectedTender
+      comments: data.comments,
+    } as SelectedTender;
   }
 
   const formData = new FormData();
   data.id && formData.append("id", data.id);
   data.description && formData.append("description", data?.description!);
-  data.date && formData.append("data",data?.date);
-  data.hand_over && formData.append("hand_over",data?.hand_over);
+  data.date && formData.append("data", data?.date);
+  data.hand_over && formData.append("hand_over", data?.hand_over);
   data.comments && formData.append("comments", `${data?.comments!}`);
   if (!data.thumbnail) return formData;
   formData.append("thumbnail", data.thumbnail);

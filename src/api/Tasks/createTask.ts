@@ -14,8 +14,6 @@ export const useCreateTask = () => {
   });
 };
 
-
-
 export const taskInput = (data: Task): any => {
   if (!data.thumbnail?.size) {
     return {
@@ -31,7 +29,7 @@ export const taskInput = (data: Task): any => {
   }
 
   const formData = new FormData();
-  
+
   data.name && formData.append("name", data.name);
   data.description && formData.append("description", data?.description!);
   data.task_type && formData.append("task_type", `${data?.task_type!}`);

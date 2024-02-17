@@ -1,8 +1,7 @@
 import { Project } from "./Project";
 
-
 export interface Task {
-  id:string;
+  id: string;
   name: string;
   description: string;
   task_priority: string;
@@ -13,10 +12,8 @@ export interface Task {
   assigned_to?: string;
   task_type: string;
   thumbnail?: File;
-  project:Project
-  
-};
-
+  project: Project;
+}
 
 export interface SelectedTask {
   id: string;
@@ -25,11 +22,11 @@ export interface SelectedTask {
   task_priority?: string;
   task_progress?: string;
   created_at?: string;
-  user?: { id: string, name: string };
+  user?: { id: string; name: string };
   projectId?: string;
   start_at?: string;
   end_at?: string;
   assigned_to?: string;
   task_type?: string;
   files?: any[];
-};
+}

@@ -1,5 +1,3 @@
-
-
 import { ENUMS } from "enums/enums";
 
 export interface Tender {
@@ -7,13 +5,12 @@ export interface Tender {
   code: string;
   status: typeof ENUMS.STATUS;
   description?: string;
-  user: { id: string, name: string };
+  user: { id: string; name: string };
   date: string;
   hand_over: string;
   files: string[];
   comments: Comment[];
   thumbnail?: File;
-  
 }
 
 export interface SelectedTender {
@@ -21,7 +18,7 @@ export interface SelectedTender {
   code?: string;
   status?: typeof ENUMS.STATUS;
   description?: string;
-  user?: { id: string, name: string };
+  user?: { id: string; name: string };
   date?: string;
   hand_over?: string;
   files: string[];
@@ -34,5 +31,3 @@ export interface CreateTenderInput {
   files: File[];
   comments: Comment[];
 }
-
-

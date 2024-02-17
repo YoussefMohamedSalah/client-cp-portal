@@ -16,13 +16,10 @@ import { useDeleteTask } from "api/Tasks/deleteTask";
 import { useTaskDetailsQuery } from "api/Tasks/getTaskDetails";
 import DeleteModal from "components/Modals/DeleteModal";
 import { useEmployeesQuery } from "api/Employees/getAllEmployees";
-
-import { Employee } from "types/Employee";
 import { Project } from "types/Project";
 import { Task } from "types/Task";
 import { useProjectsQuery } from "api/Projects/getAllProjects";
-import { PRIORITY, PROGRESS, TASK_TYPE } from "enums/enums";
-import { useProjectDetailsQuery } from "api/Projects/getProjectDetails";
+import { PRIORITY, TASK_TYPE } from "enums/enums";
 import { getOptions } from "utils/GetOptions";
 
 interface Props {
@@ -32,10 +29,7 @@ interface Props {
 const TaskFormPage = ({ id }: Props) => {
   const [initialized, setInitialized] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(id ? true : false);
-
-  const [selectedProject, setSelectedProject] = useState<Project>({} as Project);
   // -----
-  const { data, error, isLoading } = useProjectsQuery({});
   const [modelData, setModelData] = useState<Task>({} as Task);
   const [isModal, setIsModal] = useState<boolean>(false);
   // -----
@@ -47,15 +41,8 @@ const TaskFormPage = ({ id }: Props) => {
   const { push } = useApp();
 
   const { data: TaskData, error: TaskError, isLoading: TaskIsLoading } = useTaskDetailsQuery({ id });
-  
- 
- 
   const { data: projectsData, error: projectsError, isLoading: projectsIsLoading } = useProjectsQuery({});
-console.log(projectsData)
   const { data: employeesData, error: employeesError, isLoading: employeesIsLoading } = useEmployeesQuery({});
- 
-
-  
 
   // !Check if this is CREATE OR EDIT Modal
   useEffect(() => {
@@ -74,25 +61,20 @@ console.log(projectsData)
   }, []);
 
   // !Assuming this is EDIT Modal
-  // useEffect(() => {
-  //   if (!initialized && TaskData) {
-  //     let task: Task = TaskData?.task?.data!;
-  //     setModelData({ ...task });
-  //     if (task.project) {
-  //       setSelectedProject(task.project);
-  //     }
-  //     setInitialized(true);
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [TaskData]);
+  useEffect(() => {
+    if (!initialized && TaskData) {
+      let task: Task = TaskData?.task?.data! || ({} as Task);
+      setModelData({ ...task });
+      setInitialized(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [TaskData]);
 
   if ((id && TaskIsLoading) || (!id && projectsIsLoading) || (!id && employeesIsLoading)) return <Loading />;
   if ((id && TaskError) || (!id && projectsError) || (!id && employeesError)) return null;
 
   let projects: Project[] = projectsData?.projects?.data || ([] as Project[]);
- console.log(projects)
   let projectsOptions = getOptions(projects, "Select Project");
-  
 
   const handleModelData = (key: string, value: any) => {
     setModelData({
@@ -115,7 +97,6 @@ console.log(projectsData)
       thumbnail: {} as File,
     });
   };
-  
 
   const formFields: IField[] = [
     {
@@ -129,7 +110,6 @@ console.log(projectsData)
       required: !isEdit ? true : false,
       disabled: isEdit ? true : false,
     },
-   
     {
       label: "Task Name",
       type: "text",
@@ -173,10 +153,6 @@ console.log(projectsData)
       ],
       onChange: (value: string | any) => handleModelData(TaskKeys.TASK_PRIORITY, value),
       placeholder: "Select Task Priority",
-        // default: {
-        //   label: SelectedTask?.task_priority,
-        //   value: SelectedTask?.task_priority,
-        // },
     },
     {
       label: "Start Date",
@@ -195,92 +171,6 @@ console.log(projectsData)
       placeholder: "Enter End Date",
     },
   ];
-
-  // [
-  //   {
-  //     label: "Select Project",
-  //     type: "select",
-  //     key: ModelKeys.PROJECT,
-  //     value: modelData?.project,
-  //     options: selectedProject ? [{
-  //       label: selectedProject.name!,
-  //       value: selectedProject.id
-  //     }] : projects,
-  //     onChange: (value: string | any) => handleModelData(ModelKeys.PROJECT, value),
-  //     placeholder: "Select Project",
-  //     disabled: selectedProject ? true : false,
-  //     hide: isEditModal ? true : false,
-  //   },
-  //   {
-  //     label: "Task Name",
-  //     type: "text",
-  //     key: ModelKeys.NAME,
-  //     value: modelData?.name,
-  //     onChange: (value: string | any) => handleModelData(ModelKeys.NAME, value),
-  //     placeholder: "Enter Task Name",
-  //     required: true,
-  //   },
-  //   {
-  //     label: "Description",
-  //     type: "textarea",
-  //     key: ModelKeys.DESCRIPTION,
-  //     value: modelData?.description,
-  //     onChange: (value: string | any) =>
-  //       handleModelData(ModelKeys.DESCRIPTION, value),
-  //     placeholder: "Enter Description",
-  //     required: true,
-  //   },
-  //   {
-  //     label: "Task Priority",
-  //     type: "select",
-  //     key: ModelKeys.TASK_PRIORITY,
-  //     value: modelData?.task_priority,
-  //     options: [
-  //       {
-  //         label: "High",
-  //         value: "High",
-  //       },
-  //       {
-  //         label: "Medium",
-  //         value: 'Medium',
-  //       },
-  //       {
-  //         label: "Low",
-  //         value: "Low",
-  //       },
-  //       {
-  //         label: "Critical",
-  //         value: "Critical",
-  //       }
-  //     ],
-  //     onChange: (value: string | any) => handleModelData(ModelKeys.TASK_PRIORITY, value),
-  //     placeholder: "Select Task Priority",
-  //     default: {
-  //       label: SelectedTask?.task_priority,
-  //       value: SelectedTask?.task_priority
-  //     }
-  //   },
-  //   {
-  //     label: "Start Date",
-  //     type: "date",
-  //     key: ModelKeys.START_DATE,
-  //     value: modelData?.start_at,
-  //     onChange: (value: string | any) =>
-  //       handleModelData(ModelKeys.START_DATE, value),
-  //     placeholder: "Enter Start Date",
-  //   },
-  //   {
-  //     label: "End Date",
-  //     type: "date",
-  //     key: ModelKeys.END_DATE,
-  //     value: modelData?.end_at,
-  //     onChange: (value: string | any) =>
-  //       handleModelData(ModelKeys.END_DATE, value),
-  //     placeholder: "Enter End Date",
-  //   },
-  // ]
-
-  // MAIN ACTIONS
 
   const handleCreate = async () => {
     let numbersToValidate = TaskNumKeys;

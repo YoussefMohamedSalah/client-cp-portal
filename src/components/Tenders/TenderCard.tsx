@@ -19,7 +19,7 @@ import {
   AccessTimeOutlinedIcon,
   EditOutlinedIcon,
 } from "components/Icons/MuiIcons";
-import {Tender} from "types/Tender";
+import { Tender } from "types/Tender";
 
 interface Props {
   tender: Tender;
