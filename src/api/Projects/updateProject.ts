@@ -5,7 +5,7 @@ import { http } from "utils/Http";
 
 export const useUpdateProject = () => {
   return useMutation<any, Error, any>(async (updateInput) => {
-    const { data } = await http.put(ROUTES.PROJECT + updateInput.id + "/", updateInput.data, {
+    const { data } = await http.put(ROUTES.PROJECT + updateInput.id, updateInput.data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

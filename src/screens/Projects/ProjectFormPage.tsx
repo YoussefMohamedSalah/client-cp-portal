@@ -67,7 +67,7 @@ const ProjectFormPage = ({ id }: Props) => {
   useEffect(() => {
     if (!initialized && projectData) {
       let project: Project = projectData?.project?.data!;
-      setModelData({ ...project });
+      setModelData({ ...project, assistants: project.managers || [] });
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
