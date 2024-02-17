@@ -25,7 +25,9 @@ export const useChangePassword = () => {
 
 export const useResetPasswordSend = () => {
   return useMutation<any, Error, resetPasswordType>(async (createInput) => {
-    const { data } = await http.post(ROUTES.RESET_PASSWORD, { email: createInput.email });
+    const { data } = await http.post(ROUTES.RESET_PASSWORD, {
+      email: createInput.email,
+    });
     return data;
   });
 };

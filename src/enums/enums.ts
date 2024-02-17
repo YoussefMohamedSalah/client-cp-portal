@@ -89,6 +89,11 @@ export enum STATUS {
   ARCHIVED = "Archived",
 }
 
+export enum INVENTORY_TYPE {
+  MASTER = "master_inventory",
+  PROJECT = "project_inventory",
+}
+
 export enum DOCUMENT_TYPE {
   PURCHASE_ORDER = "purchase_order_request",
   PETTY_CASH = "petty_cash_request",

@@ -1,13 +1,10 @@
 export enum InventoryKeys {
-  // TYPE = "type",
-  // ITEMS_COUNT = "items_count",
-  // ITEMS_VALUE = "items_value",
+  NAME = "name",
   THUMBNAIL = "thumbnail",
-  // PROJECT_INFO = "project_info",
 }
 
-export const GroupNumKeys = [];
+export const InventoryNumKeys = [];
 
-export const GroupStrKeys = [];
+export const InventoryStrKeys = [];
 
-export const GroupRequiredKeys = [];
+export const InventoryRequiredKeys = [];

@@ -103,6 +103,28 @@ export const checkRole = (roles: string[], departments: string[], session: Sessi
   else return true;
 };
 
+export const getPriorityBadge = (status: string) => {
+  switch (status) {
+    case ENUMS.PRIORITY.LOW:
+      return "badge rounded-pill bg-yalow text-wite";
+    case ENUMS.PRIORITY.MEDIUM:
+      return "badge rounded-pill bg-blue text-wite";
+    case ENUMS.PRIORITY.HIGH:
+      return "badge rounded-pill bg-danger text-white";
+    default:
+      return "badge rounded-pill bg-info text-white";
+  }
+};
+
+export const getShortString = (str: string, length: number) => {
+  if (!str) return "";
+  if (str.length > length) {
+    return str.substring(0, length) + "...";
+  } else {
+    return str;
+  }
+};
+
 export const checkIfExist = (array: any[], item: any) => {
   if (array && array.length === 0) return false;
   return array?.some((element: any) => element === item) || [];

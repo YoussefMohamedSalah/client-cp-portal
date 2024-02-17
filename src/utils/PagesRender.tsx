@@ -58,6 +58,8 @@ const SubcontractorFormPage = lazy(() => import("../screens/Subcontractors/Subco
 const ProjectFormPage = lazy(() => import("../screens/Projects/ProjectFormPage"));
 const TenderFormPage = lazy(() => import("../screens/Tenders/TenderFormPage"));
 
+const EmployeeProfileDetails = lazy(() => import("../screens/Profile/EmployeeProfileDetails"));
+
 // // EDIT //
 // const PoRequestEditPage = lazy(() => import("../PoRequests/PoRequestEditPage"));
 // const PcRequestEditPage = lazy(() => import("../PcRequests/PcRequestEditPage"));
@@ -73,13 +75,11 @@ const TenderFormPage = lazy(() => import("../screens/Tenders/TenderFormPage"));
 
 // const DailyReports = lazy(() => import("../DailyReports/DailyReports"));
 
-// const InventoryDetails = lazy(() => import("../Inventory/InventoryDetails"));
-// const InventoryItemDetails = lazy(() =>
-// 	import("../Inventory/InventoryItemDetails")
-// );
+const InventoryItemDetails = lazy(() => import("../screens//Inventory/InventoryItemDetails"));
 // const ContractDetails = lazy(() => import("../Contracts/ContractDetails"));
 
-// const Inventory = lazy(() => import("../Inventory/Inventory"));
+const InventoryDetails = lazy(() => import("../screens/Inventory/InventoryDetails"));
+const Inventory = lazy(() => import("../screens/Inventory/Inventory"));
 // const Tasks = lazy(() => import("../Tasks/Tasks"));
 // const Tickets = lazy(() => import("../Tickets/TicketsView"));
 // const ChatApp = lazy(() => import("../Chat/ChatApp"));
@@ -113,8 +113,6 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
       //   return <Attendance id={id} />;
       // case PAGES.INVENTORY:
       // 	return <InventoryDetails id={id} />;
-      // case PAGES.INVENTORY_ITEM:
-      // 	return <InventoryItemDetails id={id} />;
 
       // case PAGES.EDIT_PO_REQUEST:
       // 	return <PoRequestEditPage id={id} />;
@@ -187,6 +185,11 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
         return <ProjectDetails id={id} />;
       case PAGES.PROJECT:
         return <ProjectFormPage id={id} />;
+      // ---
+      case PAGES.INVENTORY:
+        return <InventoryDetails id={id} />;
+      case PAGES.INVENTORY_ITEM:
+        return <InventoryItemDetails id={id} />;
       // ---
       case PAGES.TENDER_INFO:
         return <TenderDetails id={id} />;
@@ -267,6 +270,11 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
         return <Tasks />;
       case PAGES.TASK:
         return <TaskFormPage />;
+      // ---
+      case PAGES.INVENTORY:
+        return <Inventory />;
+      case PAGES.PROFILE:
+        return <EmployeeProfileDetails />;
       // ---
 
       // ---

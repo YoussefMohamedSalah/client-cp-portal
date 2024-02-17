@@ -21,7 +21,7 @@ const Employees: React.FC = () => {
   if (isLoading) return <Loading />;
   if (error) return null;
 
-  let employees: Employee[] = data.employees.data! || ([] as Employee[]);
+  let employees: Employee[] = data?.employees.data! || ([] as Employee[]);
 
   const handleDelete = async (id: string) => {
     try {
