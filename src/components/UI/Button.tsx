@@ -13,8 +13,7 @@ const Button: React.FC<Props> = ({ onClick, className, variant, size, content })
     <button
       type="button"
       className={`btn btn-${variant ? variant : "secondary"} btn-${size ? size : "md"} ${className}`}
-      onClick={onClick}
-    >
+      onClick={onClick}>
       {content}
     </button>
   );

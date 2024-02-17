@@ -24,8 +24,7 @@ const TimeLineModal: React.FC<Props> = ({ handleClose, open, timeLine }) => {
                   <div className="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
                     {timeLine?.map((step: any, index: number) => {
                       let isApproval: boolean = step.status === STATUS.APPROVED;
-                      let isEditAction: boolean =
-                        step.status !== STATUS.APPROVED && step.status !== STATUS.REJECTED;
+                      let isEditAction: boolean = step.status !== STATUS.APPROVED && step.status !== STATUS.REJECTED;
                       return (
                         <div key={index} className="vertical-timeline-item vertical-timeline-element">
                           <div>
@@ -38,8 +37,7 @@ const TimeLineModal: React.FC<Props> = ({ handleClose, open, timeLine }) => {
                                 <span className="fw-bold">At : </span> {formatHours(step.date)}
                               </p>
                               <h4
-                                className={`timeline-title  ${isEditAction ? "" : `${isApproval ? "text-success" : "text-danger"}`} `}
-                              >
+                                className={`timeline-title  ${isEditAction ? "" : `${isApproval ? "text-success" : "text-danger"}`} `}>
                                 {step.status} By {step.name}
                               </h4>
                               <p>
@@ -62,8 +60,9 @@ const TimeLineModal: React.FC<Props> = ({ handleClose, open, timeLine }) => {
                                     borderRadius: "6.25rem",
                                     opacity: "0.5",
                                   }}
-                                  className={`inner-circle ${isEditAction ? "pending" : `${isApproval ? "accepted" : "rejected"}`
-                                    } `}
+                                  className={`inner-circle ${
+                                    isEditAction ? "pending" : `${isApproval ? "accepted" : "rejected"}`
+                                  } `}
                                 />
                               </span>
                             </div>

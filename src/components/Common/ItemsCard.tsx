@@ -88,8 +88,7 @@ function ItemsCard<T extends ItemProps>({
                     <div className="col-lg-2 col-6 p-lg-0 d-flex justify-content-center align-items-center flex-column">
                       <span
                         style={{ padding: "10px", minWidth: "6rem", maxWidth: "10rem" }}
-                        className="badge fs-6 text-dark bg-light"
-                      >
+                        className="badge fs-6 text-dark bg-light">
                         <TextInput
                           type="number"
                           placeholder="Total Value"

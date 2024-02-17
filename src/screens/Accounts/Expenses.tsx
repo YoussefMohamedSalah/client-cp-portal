@@ -60,8 +60,7 @@ const Expenses: React.FC<Props> = () => {
           <span
             className={`badge ${
               row.status === "Completed" ? "bg-success" : row.status === "Draf" ? "bg-lavender-purple" : "bg-warning"
-            }`}
-          >
+            }`}>
             {row.status}
           </span>
         ),
@@ -75,8 +74,7 @@ const Expenses: React.FC<Props> = () => {
             <button
               type="button"
               className="btn btn-outline-secondary"
-              onClick={() => setState({ ...state, isModal: true, isEditModalData: row })}
-            >
+              onClick={() => setState({ ...state, isModal: true, isEditModalData: row })}>
               <i className="icofont-edit text-success"></i>
             </button>
             <button type="button" className="btn btn-outline-secondary deleterow">
@@ -101,8 +99,7 @@ const Expenses: React.FC<Props> = () => {
                 className="btn btn-primary btn-set-task w-sm-100"
                 onClick={() => {
                   setState({ ...state, isModal: true });
-                }}
-              >
+                }}>
                 <i className="icofont-plus-circle me-2 fs-6"></i>Add Expenses
               </button>
             </div>
@@ -128,8 +125,7 @@ const Expenses: React.FC<Props> = () => {
         show={state.isModal}
         onHide={() => {
           setState({ ...state, isModal: false, isEditModalData: "" });
-        }}
-      >
+        }}>
         <Modal.Header closeButton>
           <Modal.Title className="fw-bold">{state.isEditModalData ? "Edit" : "Add"} Expenses</Modal.Title>
         </Modal.Header>
@@ -206,8 +202,7 @@ const Expenses: React.FC<Props> = () => {
             className="btn btn-primary"
             onClick={() => {
               setState({ ...state, isModal: false, isEditModalData: "" });
-            }}
-          >
+            }}>
             Done
           </button>
           <button type="button" className="btn btn-primary">

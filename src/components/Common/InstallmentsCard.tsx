@@ -185,8 +185,7 @@ const PoInstallmentsSection = ({ total, onChange, initialInstallments, initialPa
               type="button"
               style={{ padding: "8px 12px", marginTop: "6px" }}
               className="btn btn-success text-white mb-2"
-              onClick={() => handleAddInstallment()}
-            >
+              onClick={() => handleAddInstallment()}>
               Installments
               <i className="icofont-plus-circle fs-6 ps-2" />
             </button>
@@ -261,8 +260,7 @@ const PoInstallmentsSection = ({ total, onChange, initialInstallments, initialPa
               <button
                 type="button"
                 className="btn btn-danger text-white"
-                onClick={() => handleRemoveInstallment(index)}
-              >
+                onClick={() => handleRemoveInstallment(index)}>
                 <i className="fa fa-trash" />
               </button>
             </div>

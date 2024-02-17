@@ -13,8 +13,7 @@ const ToggleSideBarIcon = () => {
             side.classList.add("open");
           }
         }
-      }}
-    >
+      }}>
       <span className="fa fa-bars" />
     </button>
   );

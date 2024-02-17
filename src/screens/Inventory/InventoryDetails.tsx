@@ -206,8 +206,7 @@ const InventoryDetails: React.FC<Props> = ({ id }) => {
                 className="btn btn-primary btn-set-task w-sm-100 me-2"
                 onClick={() => {
                   openModal();
-                }}
-              >
+                }}>
                 <i className="icofont-plus-circle me-2 fs-6"></i>Add Item
               </button>
             </div>

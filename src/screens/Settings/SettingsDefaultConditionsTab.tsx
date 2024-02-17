@@ -94,8 +94,7 @@ const SettingsDefaultConditionsTab = ({ tabKey, defaultConditions }: Props) => {
           className="btn btn-sm btn-primary text-end h-75 m-1 "
           data-bs-toggle="modal"
           data-bs-target="#dremovetask"
-          onClick={handleUpdateDefaultConditions}
-        >
+          onClick={handleUpdateDefaultConditions}>
           Save
         </button>
       </div>

@@ -33,8 +33,7 @@ const ClientTaskCard: React.FC = () => {
                       <>
                         <div
                           className="dd-handle w-auto me-2 d-flex flex-column justify-content-between"
-                          style={{ minWidth: "19rem", minHeight: "12rem" }}
-                        >
+                          style={{ minWidth: "19rem", minHeight: "12rem" }}>
                           <div>
                             <div className="task-info d-flex align-items-center justify-content-between">
                               <h6 className="light-info-bg py-1 px-2 rounded-1 d-inline-block fw-bold small-14 mb-0">
@@ -69,8 +68,7 @@ const ClientTaskCard: React.FC = () => {
             <>
               <div
                 className="dd-handle me-2 d-flex flex-column justify-content-center align-items-center"
-                style={{ minWidth: "19rem", minHeight: "12rem" }}
-              >
+                style={{ minWidth: "19rem", minHeight: "12rem" }}>
                 <div>No Tasks Yet</div>
               </div>
             </>

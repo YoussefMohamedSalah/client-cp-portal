@@ -153,7 +153,7 @@ const PoRequests: React.FC = () => {
     },
     {
       name: "ACTION",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<PurchaseOrderRequest>

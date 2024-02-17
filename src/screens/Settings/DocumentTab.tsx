@@ -133,8 +133,7 @@ const DocumentTab: React.FC<Props> = ({ tabName, tabKey, workflow, defaultCondit
                         type="button"
                         className="btn btn-sm light-success-bg text-end h-75 m-1"
                         data-bs-toggle="modal"
-                        data-bs-target="#dremovetask"
-                      >
+                        data-bs-target="#dremovetask">
                         <i className="icofont-bubble-up" />
                       </button>
                       <button
@@ -142,8 +141,7 @@ const DocumentTab: React.FC<Props> = ({ tabName, tabKey, workflow, defaultCondit
                         type="button"
                         className="btn btn-sm light-danger-bg text-end h-75 m-1"
                         data-bs-toggle="modal"
-                        data-bs-target="#dremovetask"
-                      >
+                        data-bs-target="#dremovetask">
                         <i className="icofont-close" />
                       </button>
                       <button
@@ -151,8 +149,7 @@ const DocumentTab: React.FC<Props> = ({ tabName, tabKey, workflow, defaultCondit
                         type="button"
                         className="btn btn-sm light-warning-bg text-end h-75 m-1"
                         data-bs-toggle="modal"
-                        data-bs-target="#dremovetask"
-                      >
+                        data-bs-target="#dremovetask">
                         <i className="icofont-bubble-down" />
                       </button>
                     </div>
@@ -168,8 +165,7 @@ const DocumentTab: React.FC<Props> = ({ tabName, tabKey, workflow, defaultCondit
             className="btn btn-sm btn-primary text-end h-75 m-1 "
             data-bs-toggle="modal"
             data-bs-target="#dremovetask"
-            onClick={() => onSave(membersArray, tabName)}
-          >
+            onClick={() => onSave(membersArray, tabName)}>
             Save
           </button>
         </div>

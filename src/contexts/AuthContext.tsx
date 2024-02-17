@@ -14,12 +14,12 @@ interface AuthContextValue {
 
 export const AuthContext = createContext<AuthContextValue>({
   session: null,
-  setSession: () => { },
+  setSession: () => {},
   company: null,
-  setCompany: () => { },
+  setCompany: () => {},
   isSuperUser: () => false,
   view: "user",
-  changeView: () => { },
+  changeView: () => {},
 });
 
 export function useAuth() {

@@ -26,8 +26,7 @@ const OldFiles = ({ files, onRemove }: Props) => {
                 onClick={() => {
                   setPreview(file);
                   setIsModal(true);
-                }}
-              >
+                }}>
                 {file.name}
               </button>
               <button type="button" className="btn btn-outline-secondary" onClick={() => onRemove(file)}>

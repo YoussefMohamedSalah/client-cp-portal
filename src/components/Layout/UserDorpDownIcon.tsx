@@ -54,8 +54,7 @@ const UserDorpDownIcon = ({ session }: Props) => {
               style={{ cursor: "pointer" }}
               onClick={() => {
                 push("/profile");
-              }}
-            >
+              }}>
               <div className="d-flex py-1">
                 <img className="avatar rounded-circle" src={getImageUrl(session?.user?.avatar!)} alt="profile" />
                 <div className="flex-fill ms-3">
@@ -75,8 +74,7 @@ const UserDorpDownIcon = ({ session }: Props) => {
             <div
               style={{ cursor: "pointer" }}
               onClick={() => changeView()}
-              className="list-group-item list-group-item-action border-0 "
-            >
+              className="list-group-item list-group-item-action border-0 ">
               <i className="icofont-tasks fs-5 me-3" />
               {view === "admin" ? "User Profile" : "Admin Profile"}
             </div>
@@ -85,8 +83,7 @@ const UserDorpDownIcon = ({ session }: Props) => {
               onClick={() => {
                 push("/profile");
               }}
-              className="list-group-item list-group-item-action border-0 "
-            >
+              className="list-group-item list-group-item-action border-0 ">
               <i className="icofont-ui-user-group fs-6 me-3" />
               profile
             </div>

@@ -1085,8 +1085,7 @@ export const PaymentsData: any = {
         <span
           className={`badge ${
             row.status === "Paid" ? "bg-success" : row.status === "Draf" ? "bg-lavender-purple" : "bg-warning"
-          }`}
-        >
+          }`}>
           {row.status}
         </span>
       ),
@@ -1202,8 +1201,7 @@ export const ExpensesData: any = {
         <span
           className={`badge ${
             row.status === "Completed" ? "bg-success" : row.status === "Draf" ? "bg-lavender-purple" : "bg-warning"
-          }`}
-        >
+          }`}>
           {row.status}
         </span>
       ),

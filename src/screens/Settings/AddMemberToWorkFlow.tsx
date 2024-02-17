@@ -55,15 +55,13 @@ const AddMemberToWorkFlow: React.FC<Props> = ({ onClose, show, onSelect, selecte
                   marginTop: "20px",
                   maxHeight: "500px",
                   overflowY: "scroll",
-                }}
-              >
+                }}>
                 {searchResult.map((employee, index) => {
                   return (
                     <li
                       className="list-group-item py-3 text-center text-md-start dd-handle m-1 pointer"
                       key={index}
-                      onClick={() => onSelect(employee)}
-                    >
+                      onClick={() => onSelect(employee)}>
                       <div className="d-flex align-items-center flex-column flex-sm-column flex-md-row">
                         <div className="no-thumbnail mb-2 mb-md-0">
                           <img className="avatar lg rounded-circle" src={getImageUrl(employee?.avatar!)} alt="" />
@@ -93,8 +91,7 @@ const AddMemberToWorkFlow: React.FC<Props> = ({ onClose, show, onSelect, selecte
                                     height="26"
                                     fill="green"
                                     className="bi bi-check"
-                                    viewBox="0 0 16 16"
-                                  >
+                                    viewBox="0 0 16 16">
                                     <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z" />
                                   </svg>
                                 ) : null}

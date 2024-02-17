@@ -74,8 +74,7 @@ class EmailInvoice extends React.Component {
                             <a
                               href="http://pixelwibes.com/template/my-task/html/dist/invoices.html"
                               rel="noreferrer"
-                              target="_blank"
-                            >
+                              target="_blank">
                               View in browser
                             </a>
                           </td>

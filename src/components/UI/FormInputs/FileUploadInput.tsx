@@ -40,8 +40,7 @@ const FileUploadInput = ({ onChange, disabled, label }: Props) => {
         component="span"
         disabled={disabled}
         endIcon={<CloudUploadIcon />}
-        onClick={handleButtonClick}
-      >
+        onClick={handleButtonClick}>
         {label}
         <VisuallyHiddenInput
           type="file"

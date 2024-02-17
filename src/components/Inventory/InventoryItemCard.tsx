@@ -32,8 +32,7 @@ const InventoryItemCard: React.FC<Props> = ({ onClickEdit, onClickDelete, item }
               className="btn btn-outline-secondary"
               data-bs-toggle="modal"
               data-bs-target="#editItem"
-              onClick={onClickEdit}
-            >
+              onClick={onClickEdit}>
               <i className="icofont-edit text-success" />
             </button>
             <button
@@ -41,8 +40,7 @@ const InventoryItemCard: React.FC<Props> = ({ onClickEdit, onClickDelete, item }
               className="btn btn-outline-secondary"
               data-bs-toggle="modal"
               data-bs-target="#deleteItem"
-              onClick={onClickDelete}
-            >
+              onClick={onClickDelete}>
               <i className="icofont-ui-delete text-danger" />
             </button>
           </div>

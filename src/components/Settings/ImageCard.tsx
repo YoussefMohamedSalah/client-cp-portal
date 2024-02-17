@@ -38,8 +38,7 @@ const ImageCard = ({ defaultUrl, title, onSave }: Props) => {
             height: "13.4rem",
             overflow: "hidden",
             backgroundColor: "#cccccc",
-          }}
-        >
+          }}>
           <img
             className="mb-2"
             style={{

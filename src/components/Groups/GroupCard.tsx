@@ -39,8 +39,7 @@ const GroupCard: React.FC<Props> = ({ group, employees, onDelete }) => {
                   size="small"
                   variant="contained"
                   className="bg-primary text-white"
-                  startIcon={<GroupsOutlinedIcon />}
-                >
+                  startIcon={<GroupsOutlinedIcon />}>
                   Members: {group?.members?.length!}
                 </Button>
               </div>

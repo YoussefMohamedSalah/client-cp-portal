@@ -47,8 +47,7 @@ function WorkFlowStatusModal<
                 <span
                   className="position-absolute pointer"
                   onClick={() => setTimeLineModal(true)}
-                  style={{ top: "0rem", right: "0rem" }}
-                >
+                  style={{ top: "0rem", right: "0rem" }}>
                   <h2 className="font-weight-bold">
                     <i className="icofont-clock-time" />
                   </h2>

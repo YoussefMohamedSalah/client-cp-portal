@@ -277,8 +277,7 @@ export const ClientInvoicesData: any = {
         <span
           className={`badge ${
             row.status === "Paid" ? "bg-success" : row.status === "Pending" ? `bg-warning` : "bg-lavender-purple"
-          }`}
-        >
+          }`}>
           {row.status}
         </span>
       ),

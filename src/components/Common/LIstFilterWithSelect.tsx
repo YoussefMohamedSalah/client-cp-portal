@@ -158,8 +158,7 @@ export default function ListFiltersWithSelect({ data }: Props) {
                 borderBottom: `1px solid ${theme.palette.mode === "light" ? "#eaecef" : "#30363d"}`,
                 padding: "8px 10px",
                 fontWeight: 600,
-              }}
-            >
+              }}>
               Apply labels to this pull request
             </Box>
             <Autocomplete
@@ -212,8 +211,7 @@ export default function ListFiltersWithSelect({ data }: Props) {
                       "& span": {
                         color: theme.palette.mode === "light" ? "#586069" : "#8b949e",
                       },
-                    }}
-                  >
+                    }}>
                     {option.name}
                     <br />
                     {/* <span>{option.business_title}</span> */}

@@ -81,8 +81,7 @@ const PasswordInput = ({ onChange, value, defaultValue, required, disabled, labe
             aria-label="toggle password visibility"
             onClick={handleClickShowPassword}
             onMouseDown={handleMouseDownPassword}
-            edge="end"
-          >
+            edge="end">
             {showPassword ? <VisibilityOff /> : <Visibility />}
           </IconButton>
         </InputAdornment>

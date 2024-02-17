@@ -45,8 +45,7 @@ const NotificationsDropDownIcon = ({ Notifications }: Props) => {
                 style={{
                   top: "-14px",
                   right: "-14px",
-                }}
-              >
+                }}>
                 {pendingNotifications?.length!}
               </Badge>
             )}
@@ -88,8 +87,7 @@ const NotificationsDropDownIcon = ({ Notifications }: Props) => {
             <a
               className="card-footer text-center border-top-0"
               href="#!"
-              onClick={() => push("/" + PAGES.NOTIFICATIONS)}
-            >
+              onClick={() => push("/" + PAGES.NOTIFICATIONS)}>
               View all notifications
             </a>
           </div>

@@ -99,8 +99,7 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
         hideError,
         showSuccess,
         toggleSidebar,
-      }}
-    >
+      }}>
       {children}
     </UIContext.Provider>
   );

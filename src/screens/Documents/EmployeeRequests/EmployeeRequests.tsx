@@ -44,8 +44,7 @@ const EmployeeRequests: React.FC = () => {
       cell: (row: any) => (
         <span
           onClick={() => push(`/${PAGES.EMPLOYEE_REQUEST_INFO}/${row.id}`)}
-          className="fw-bold text-secondary pointer"
-        >
+          className="fw-bold text-secondary pointer">
           {row.code}
         </span>
       ),
@@ -121,7 +120,7 @@ const EmployeeRequests: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<EmployeeRequest>

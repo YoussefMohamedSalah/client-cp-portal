@@ -119,8 +119,7 @@ const EmployeeProfileCard: React.FC<Props> = ({ user }) => {
               <button
                 id="dropdown-basic"
                 className="btn btn-primary dropdown-toggle"
-                onClick={() => setIsModal(!isModal)}
-              >
+                onClick={() => setIsModal(!isModal)}>
                 Change Password
               </button>
               <Modal centered show={isModal} size="sm" onHide={() => setIsModal(false)}>

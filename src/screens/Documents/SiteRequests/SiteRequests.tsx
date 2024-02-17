@@ -101,7 +101,7 @@ const SiteRequests: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<SiteRequest>

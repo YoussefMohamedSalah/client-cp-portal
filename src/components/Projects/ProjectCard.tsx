@@ -55,8 +55,7 @@ const ProjectCard = ({ project, onDelete }: Props) => {
                     <div className="col-xl-5 col-12">
                       <div
                         className="d-flex gap-3 align-items-center pointer"
-                        onClick={() => push("/" + PAGES.PROJECT_INFO + "/" + project.id)}
-                      >
+                        onClick={() => push("/" + PAGES.PROJECT_INFO + "/" + project.id)}>
                         <h3 className="primary">{project.name}</h3>
                         <span className="small bg-success text-white py-1 px-2 rounded align-self-start">
                           {project?.project_status!}
@@ -69,16 +68,14 @@ const ProjectCard = ({ project, onDelete }: Props) => {
                           size="small"
                           variant="contained"
                           className="bg-primary text-white"
-                          startIcon={<GroupsOutlinedIcon />}
-                        >
+                          startIcon={<GroupsOutlinedIcon />}>
                           Members: {project?.members_count!}
                         </Button>
                         <Button
                           size="small"
                           variant="contained"
                           className="bg-secondary text-white"
-                          startIcon={<TaskOutlinedIcon />}
-                        >
+                          startIcon={<TaskOutlinedIcon />}>
                           Tasks: {project?.members_count!}
                         </Button>
                         <HtmlTooltip
@@ -89,14 +86,12 @@ const ProjectCard = ({ project, onDelete }: Props) => {
                               <Typography color="inherit">{project?.name!}</Typography>
                               <b className="border-top-0">{project.description}</b>
                             </React.Fragment>
-                          }
-                        >
+                          }>
                           <Button
                             size="small"
                             variant="contained"
                             className="bg-warning text-white"
-                            startIcon={<InfoOutlinedIcon />}
-                          >
+                            startIcon={<InfoOutlinedIcon />}>
                             About
                           </Button>
                         </HtmlTooltip>
@@ -104,8 +99,7 @@ const ProjectCard = ({ project, onDelete }: Props) => {
                           size="small"
                           variant="contained"
                           className="bg-success text-white"
-                          startIcon={<AccessTimeOutlinedIcon />}
-                        >
+                          startIcon={<AccessTimeOutlinedIcon />}>
                           {sumDaysLeftFromToDay(project?.delivery_date!)} Days Left
                         </Button>
                       </div>
@@ -118,8 +112,7 @@ const ProjectCard = ({ project, onDelete }: Props) => {
                         aria-label="edit"
                         size="medium"
                         color="primary"
-                        onClick={() => push("/" + PAGES.PROJECT + "/" + project.id)}
-                      >
+                        onClick={() => push("/" + PAGES.PROJECT + "/" + project.id)}>
                         <EditOutlinedIcon fontSize="inherit" />
                       </IconButton>
                     </div>

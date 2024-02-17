@@ -97,15 +97,13 @@ const SideBar: React.FC<Props> = ({ session }) => {
       ${isSidebarMini ? "sidebar-mini" : ""}
       ${isOpenSidebar ? "open" : ""}
       `}
-      style={{ backgroundColor: `${view === "admin" && "#2B2730"}` }}
-    >
+      style={{ backgroundColor: `${view === "admin" && "#2B2730"}` }}>
       <div className="d-flex flex-column h-100">
         <span
           onClick={() => {
             push("/");
           }}
-          className="mb-0 brand-icon pointer"
-        >
+          className="mb-0 brand-icon pointer">
           <span className="logo-icon">
             <img src={getImageUrl(session?.company?.logo!)} alt="logo" className="logo" />
           </span>
@@ -122,8 +120,7 @@ const SideBar: React.FC<Props> = ({ session }) => {
                     // to="#!"
                     onClick={(e) => {
                       e.preventDefault();
-                    }}
-                  >
+                    }}>
                     <i className={data.iconClass} />
                     <span>{data.name}</span>
                   </span>
@@ -137,8 +134,7 @@ const SideBar: React.FC<Props> = ({ session }) => {
                     onClick={() => {
                       push(data.routerLink[0]);
                     }}
-                    className={`m-link pointer ${data.routerLink[0] === activeKey ? "active" : ""}`}
-                  >
+                    className={`m-link pointer ${data.routerLink[0] === activeKey ? "active" : ""}`}>
                     <i className={data.iconClass} />
                     <span>{data.name}</span>
                   </span>
@@ -154,8 +150,7 @@ const SideBar: React.FC<Props> = ({ session }) => {
                   onClick={(e) => {
                     e.preventDefault();
                     openChildren("menu-Pages" + index);
-                  }}
-                >
+                  }}>
                   <i className={data.iconClass} />
                   <span>{data.name}</span>
                   <span className="arrow icofont-dotted-down ms-auto text-end fs-5" />
@@ -179,8 +174,7 @@ const SideBar: React.FC<Props> = ({ session }) => {
                             }
                             onClick={() => {
                               push(data.routerLink[0]);
-                            }}
-                          >
+                            }}>
                             {" "}
                             <span>{data.name}</span>
                           </span>
@@ -220,8 +214,7 @@ const SideBar: React.FC<Props> = ({ session }) => {
               ...prevState,
               isSidebarMini: !isSidebarMini,
             }));
-          }}
-        >
+          }}>
           <span className="ms-2">
             <i className="icofont-bubble-right" />
           </span>

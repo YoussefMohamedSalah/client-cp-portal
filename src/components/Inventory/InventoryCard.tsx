@@ -119,8 +119,7 @@ const InventoryCard: React.FC<Props> = ({ inventory }) => {
                 type="button"
                 className="btn btn-outline-secondary"
                 data-bs-toggle="modal"
-                data-bs-target="#editInventory"
-              >
+                data-bs-target="#editInventory">
                 <i className="icofont-edit text-success" />
               </button>
               {inventory.type !== INVENTORY_TYPE.MASTER && (
@@ -128,8 +127,7 @@ const InventoryCard: React.FC<Props> = ({ inventory }) => {
                   type="button"
                   className="btn btn-outline-secondary"
                   data-bs-toggle="modal"
-                  data-bs-target="#deleteInventory"
-                >
+                  data-bs-target="#deleteInventory">
                   <i className="icofont-ui-delete text-danger" />
                 </button>
               )}

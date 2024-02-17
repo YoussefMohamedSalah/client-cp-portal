@@ -43,8 +43,7 @@ const TableSearch: React.FC<Props> = ({ data, terms, classNameContainer, onSearc
           classNameContainer
             ? "order-0 col-lg-7 col-md-6 col-sm-6 col-12 mb-0 mb-md-0"
             : "order-0 col-lg-4 col-md-4 col-sm-12 col-12 mb-3 mb-md-2"
-        }
-      >
+        }>
         <div className="input-group flex-nowrap input-group-lg">
           <button type="button" className="input-group-text" id="addon-wrapping">
             <i className="fa fa-search" />

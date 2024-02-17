@@ -55,8 +55,7 @@ const TaskCard = ({ task, onDelete }: Props) => {
                     <div className="col-xl-5 col-12">
                       <div
                         className="d-flex gap-3 align-items-center pointer"
-                        onClick={() => push("/" + PAGES.Task_INFO + "/" + task.id)}
-                      >
+                        onClick={() => push("/" + PAGES.Task_INFO + "/" + task.id)}>
                         <h3 className="primary">{task.name}</h3>
                         <span className="small bg-success text-white py-1 px-2 rounded align-self-start">
                           {task?.name!}
@@ -69,16 +68,14 @@ const TaskCard = ({ task, onDelete }: Props) => {
                           size="small"
                           variant="contained"
                           className="bg-primary text-white"
-                          startIcon={<GroupsOutlinedIcon />}
-                        >
+                          startIcon={<GroupsOutlinedIcon />}>
                           Members: {task?.id}
                         </Button>
                         <Button
                           size="small"
                           variant="contained"
                           className="bg-secondary text-white"
-                          startIcon={<TaskOutlinedIcon />}
-                        >
+                          startIcon={<TaskOutlinedIcon />}>
                           Tasks: {task?.id}
                         </Button>
                         <HtmlTooltip
@@ -89,14 +86,12 @@ const TaskCard = ({ task, onDelete }: Props) => {
                               <Typography color="inherit">{task?.name!}</Typography>
                               <b className="border-top-0">{task.description}</b>
                             </React.Fragment>
-                          }
-                        >
+                          }>
                           <Button
                             size="small"
                             variant="contained"
                             className="bg-warning text-white"
-                            startIcon={<InfoOutlinedIcon />}
-                          >
+                            startIcon={<InfoOutlinedIcon />}>
                             About
                           </Button>
                         </HtmlTooltip>
@@ -104,8 +99,7 @@ const TaskCard = ({ task, onDelete }: Props) => {
                           size="small"
                           variant="contained"
                           className="bg-success text-white"
-                          startIcon={<AccessTimeOutlinedIcon />}
-                        >
+                          startIcon={<AccessTimeOutlinedIcon />}>
                           {sumDaysLeftFromToDay(task?.start_at!)} Days Left
                         </Button>
                       </div>
@@ -118,8 +112,7 @@ const TaskCard = ({ task, onDelete }: Props) => {
                         aria-label="edit"
                         size="medium"
                         color="primary"
-                        onClick={() => push("/" + PAGES.PROJECT + "/" + task.id)}
-                      >
+                        onClick={() => push("/" + PAGES.PROJECT + "/" + task.id)}>
                         <EditOutlinedIcon fontSize="inherit" />
                       </IconButton>
                     </div>
