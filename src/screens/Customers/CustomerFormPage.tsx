@@ -4,7 +4,7 @@ import FormInputs from "components/UI/FormInputs/FormInputs";
 import Loading from "components/UI/Loading";
 import { PAGES } from "constants/pages";
 import { useUI } from "contexts/UIContext";
-import { SUPPLIER_TYPE } from "enums/enums";
+import { CUSTOMER_TYPE } from "enums/enums";
 import useApp from "hooks/useApp";
 import { CustomerKeys, CustomerNumKeys, CustomerStrKeys, CustomerRequiredKeys } from "models/Customer";
 import { useEffect, useState } from "react";
@@ -49,6 +49,7 @@ const CustomerFormPage = ({ id }: Props) => {
   // !Assuming this is CREATE Modal
   useEffect(() => {
     if (!isEdit) {
+      modelData.customer_type = CUSTOMER_TYPE.COMPANY;
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -148,7 +149,7 @@ const CustomerFormPage = ({ id }: Props) => {
     },
     {
       label: "Vat On",
-      type: "text",
+      type: "number",
       width: "col-md-6",
       key: CustomerKeys.VAT_ON,
       value: modelData?.vat_on,
@@ -204,7 +205,7 @@ const CustomerFormPage = ({ id }: Props) => {
     },
     {
       label: "Postal Code",
-      type: "text",
+      type: "number",
       width: "col-md-3",
       key: CustomerKeys.POSTAL_CODE,
       value: modelData?.postal_code,
@@ -215,7 +216,7 @@ const CustomerFormPage = ({ id }: Props) => {
 
   // MAIN ACTIONS
   const handleCreate = async () => {
-    if (!modelData?.customer_type) modelData.customer_type = SUPPLIER_TYPE.COMPANY;
+    if (!modelData?.customer_type) modelData.customer_type = CUSTOMER_TYPE.COMPANY;
 
     let numbersToValidate = CustomerNumKeys;
     let stringsToValidate = CustomerStrKeys;
@@ -234,8 +235,7 @@ const CustomerFormPage = ({ id }: Props) => {
     try {
       let createInput = customerInput(modelData);
       await createMutation(createInput);
-      push("/" + PAGES.CUSTOMERS);
-      showSuccess();
+      push("/" + PAGES.CUSTOMERS, true);
     } catch (err: any) {
       showError(handleServerError(err.response));
     }
@@ -262,7 +262,7 @@ const CustomerFormPage = ({ id }: Props) => {
         id: modelData.id,
         data: createInput,
       });
-      showSuccess();
+      push("/" + PAGES.CUSTOMERS, true);
     } catch (err: any) {
       showError(handleServerError(err.response));
     }
@@ -320,8 +320,8 @@ const CustomerFormPage = ({ id }: Props) => {
         show={isModal}
         onClose={() => setIsModal(false)}
         onDelete={handleDelete}
-        message={`Are you sure you want to delete this Customer?`}
-        modalHeader={`Delete Customer`}
+        message={`Are you sure you want to delete this ${modelData.name}?`}
+        modalHeader={`Delete ${modelData.name}`}
       />
     </div>
   );

@@ -1,10 +1,10 @@
-import { SUPPLIER_TYPE } from "enums/enums";
+import { CUSTOMER_TYPE } from "enums/enums";
 import { Company } from "./Company";
 import { Project } from "./Project";
 
 export interface Customer {
   id: string;
-  customer_type: SUPPLIER_TYPE;
+  customer_type: CUSTOMER_TYPE;
   code: string;
   company_name: string | null;
   vat_on: number;

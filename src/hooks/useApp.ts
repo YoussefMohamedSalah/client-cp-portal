@@ -1,26 +1,30 @@
+import { useUI } from "contexts/UIContext";
 import { useNavigate } from "react-router-dom";
 
 const useApp = () => {
   const navigate = useNavigate();
+  const { showSuccess } = useUI();
 
-  const handleNavigate = (payload: string) => {
+  const handleNavigate = (payload: string, reload: boolean = false) => {
     var side = document.getElementById("mainSideMenu");
     if (side) {
       if (side.classList.contains("open")) {
         side.classList.remove("open");
       }
     }
-    let fullPath = payload.trim().split("/");
-    if (fullPath.length > 2) {
-      let comingFrom = localStorage.getItem("pathName");
-      localStorage.setItem("backTo", comingFrom ? comingFrom : "/");
+    if (reload) {
+      showSuccess();
+      setTimeout(() => {
+        navigate(payload);
+        window.location.reload(); // Reload the page
+      }, 1000)
+    } else {
+      navigate(payload);
     }
-    localStorage.setItem("pathName", payload);
-    navigate(payload);
   };
 
   return {
-    push: (payload: string) => handleNavigate(payload),
+    push: (payload: string, reload: boolean = false) => handleNavigate(payload, reload),
   };
 };
 

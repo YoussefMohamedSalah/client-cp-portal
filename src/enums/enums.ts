@@ -137,6 +137,11 @@ export enum SUPPLIER_TYPE {
   INDIVIDUAL = "Individual",
 }
 
+export enum CUSTOMER_TYPE {
+  COMPANY = "Company",
+  INDIVIDUAL = "Individual",
+}
+
 export enum SUBCONTRACTOR_TYPE {
   COMPANY = "Company",
   INDIVIDUAL = "Individual",
