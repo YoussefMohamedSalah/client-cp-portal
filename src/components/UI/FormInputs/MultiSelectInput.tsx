@@ -173,8 +173,8 @@ const MultiSelectInput = ({ options, label, onChange, defaultValue, disabled, pl
       <div {...getRootProps()}>
         <Label {...getInputLabelProps()}>{label! || ""}</Label>
         <InputWrapper ref={setAnchorEl} className={focused ? "focused" : ""}>
-          {value.map((option: IOption, index: number) => (
-            <StyledTag label={option?.label! || ""} {...getTagProps({ index })} />
+          {value.map((option: any, index: number) => (
+            <StyledTag label={option?.label! || option?.name! || ""} {...getTagProps({ index })} />
           ))}
           <input {...getInputProps()!} />
         </InputWrapper>

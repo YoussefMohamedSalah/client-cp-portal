@@ -45,12 +45,11 @@ export interface Project {
   manager: { id: string; name: string };
   daily_report_groups: { groupId: string; groupName: string; employees: string[] }[];
   company: Company;
-  assistants?: { label: string; value: string }[];
+  assistants?: Employee[];
   members: any[];
+  managers: Employee[];
+  users: Employee[];
   customer: Customer;
-  users: User[];
-  managers: User[];
-  // group: Group;
   tasks?: any[];
   inventory: Inventory;
   SiteRequests: SiteRequest[];

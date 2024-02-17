@@ -40,7 +40,7 @@ export const projectInput = (data: Project): any => {
       project_status: data.project_status,
       members: data.members,
       customerId: data.customer,
-    } as SelectedProject;
+    } as any;
   }
 
   const formData = new FormData();

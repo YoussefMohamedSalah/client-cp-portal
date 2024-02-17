@@ -42,9 +42,7 @@ const ProjectFormPage = ({ id }: Props) => {
   const { push } = useApp();
 
   const { data: projectData, error: projectError, isLoading: projectIsLoading } = useProjectDetailsQuery({ id });
-
   const { data: customersData, error: customersError, isLoading: customersIsLoading } = useCustomersQuery({});
-
   const { data: employeesData, error: employeesError, isLoading: employeesIsLoading } = useEmployeesQuery({});
 
   // !Check if this is CREATE OR EDIT Modal
@@ -58,6 +56,8 @@ const ProjectFormPage = ({ id }: Props) => {
   // !Assuming this is CREATE Modal
   useEffect(() => {
     if (!isEdit) {
+      modelData.contract_date = `${getFormattedTodayDate()}`;
+      modelData.delivery_date = `${getFormattedTodayDate()}`;
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -83,6 +83,20 @@ const ProjectFormPage = ({ id }: Props) => {
   let employeesOptions = getOptions(employees, "Select");
 
   const handleModelData = (key: string, value: any) => {
+    if (key === ProjectKeys.MANAGER) {
+      value = employees?.find((manager: Employee) => manager.id === value) || ({} as Employee);
+    }
+    if (key === ProjectKeys.ASSISTANTS) {
+      if (value && Array.isArray(value)) {
+        let assistants: Employee[] = [];
+        for (let i = 0; i < value.length; i++) {
+          const id: string = value[i].value! || value[i].id!;
+          let assistant = employees?.find((assistant: Employee) => assistant.id === id) || ({} as Employee);
+          if (assistant && assistant.id) assistants.push(assistant);
+        }
+        value = assistants;
+      }
+    }
     setModelData({
       ...modelData,
       [key]: value,
@@ -90,20 +104,38 @@ const ProjectFormPage = ({ id }: Props) => {
   };
 
   const handleReset = () => {
-    // setModelData({
-    //     ...modelData,
-    //     company_name: '',
-    //     vat_on: 0,
-    //     name: "",
-    //     phone_number: "",
-    //     email: "",
-    //     country: "",
-    //     city: "",
-    //     area: "",
-    //     street: "",
-    //     building_number: "",
-    //     postal_code: null,
-    // })
+    setModelData({
+      ...modelData,
+      name: "",
+      description: "",
+      customer_details: { id: "", name: "" },
+      kpi: 0,
+      longitude: 0,
+      latitude: 0,
+      bid_value: 0,
+      duration: 0,
+      project_status: "",
+      delivery_date: `${getFormattedTodayDate()}`,
+      contract_date: `${getFormattedTodayDate()}`,
+      contract_number: "",
+      sites_count: 0,
+      buildings_count: 0,
+      floors_count: 0,
+      total_budget: 0,
+      po_budget: 0,
+      po_expenses: 0,
+      pc_budget: 0,
+      pc_expenses: 0,
+      staff_budget: 0,
+      staff_expenses: 0,
+      subcontractor_budget: 0,
+      subcontractor_expenses: 0,
+      comments: [{ id: 0, userId: "", userName: "", comment: "", createdAt: "" }],
+      comments_count: 0,
+      members_count: 0,
+      manager: { id: "", name: "" },
+      assistants: [],
+    });
   };
 
   const formFields: IField[] = [
@@ -134,12 +166,11 @@ const ProjectFormPage = ({ id }: Props) => {
       type: "select",
       width: "col-md-4",
       key: ProjectKeys.MANAGER,
-      value: modelData?.manager?.name,
+      value: modelData?.manager?.name!,
       onChange: (value: string) => handleModelData(ProjectKeys.MANAGER, value),
       options: employeesOptions,
       placeholder: "Select Manager",
     },
-
     {
       label: "Assign Assistants",
       type: "multiSelect",
@@ -154,18 +185,17 @@ const ProjectFormPage = ({ id }: Props) => {
     {
       label: "LATITUDE",
       width: "col-md-3",
-      type: "text",
+      type: "number",
       key: ProjectKeys.LATITUDE,
-      value: modelData?.latitude,
+      value: modelData?.latitude! || 0,
       onChange: (value: string) => handleModelData(ProjectKeys.LATITUDE, value),
-      placeholder: "",
     },
     {
       label: "LONGITUDE",
       width: "col-md-3",
-      type: "text",
+      type: "number",
       key: ProjectKeys.LONGITUDE,
-      value: modelData?.longitude,
+      value: modelData?.longitude! || 0,
       onChange: (value: string) => handleModelData(ProjectKeys.LONGITUDE, value),
       placeholder: "",
     },
@@ -182,9 +212,8 @@ const ProjectFormPage = ({ id }: Props) => {
       width: "col-md-4",
       type: "number",
       key: ProjectKeys.BID_VALUE,
-      value: modelData?.bid_value,
+      value: modelData?.bid_value! || 0,
       onChange: (value: string) => handleModelData(ProjectKeys.BID_VALUE, value),
-      placeholder: "0",
       required: true,
     },
     {
@@ -192,9 +221,8 @@ const ProjectFormPage = ({ id }: Props) => {
       width: "col-md-4",
       type: "number",
       key: ProjectKeys.TOTAL_BUDGET,
-      value: modelData?.total_budget,
+      value: modelData?.total_budget! || 0,
       onChange: (value: string) => handleModelData(ProjectKeys.TOTAL_BUDGET, value),
-      placeholder: "0",
       required: true,
     },
     {
@@ -203,9 +231,8 @@ const ProjectFormPage = ({ id }: Props) => {
       type: "number",
       info: `${modelData.po_expenses ? modelData.po_expenses : 0}`,
       key: ProjectKeys.PO_BUDGET,
-      value: modelData?.po_budget,
+      value: modelData?.po_budget! || 0,
       onChange: (value: string) => handleModelData(ProjectKeys.PO_BUDGET, value),
-      placeholder: "0",
       required: true,
     },
     {
@@ -214,9 +241,8 @@ const ProjectFormPage = ({ id }: Props) => {
       type: "number",
       info: `${modelData.pc_expenses ? modelData.pc_expenses : 0}`,
       key: ProjectKeys.PC_BUDGET,
-      value: modelData?.pc_budget,
+      value: modelData?.pc_budget! || 0,
       onChange: (value: string) => handleModelData(ProjectKeys.PC_BUDGET, value),
-      placeholder: "0",
       required: true,
     },
     {
@@ -225,9 +251,8 @@ const ProjectFormPage = ({ id }: Props) => {
       type: "number",
       info: `${modelData.staff_expenses ? modelData.staff_expenses : 0}`,
       key: ProjectKeys.STAFF_BUDGET,
-      value: modelData?.staff_budget,
+      value: modelData?.staff_budget! || 0,
       onChange: (value: string) => handleModelData(ProjectKeys.STAFF_BUDGET, value),
-      placeholder: "0",
       required: true,
     },
     {
@@ -236,9 +261,8 @@ const ProjectFormPage = ({ id }: Props) => {
       type: "number",
       info: `${modelData.subcontractor_expenses ? modelData.subcontractor_expenses : 0}`,
       key: ProjectKeys.SUBCONTRACTOR_BUDGET,
-      value: modelData?.subcontractor_budget,
+      value: modelData?.subcontractor_budget! || 0,
       onChange: (value: string) => handleModelData(ProjectKeys.SUBCONTRACTOR_BUDGET, value),
-      placeholder: "0",
       required: true,
     },
     {
@@ -278,27 +302,24 @@ const ProjectFormPage = ({ id }: Props) => {
       width: "col-md-3",
       type: "number",
       key: ProjectKeys.SITES_COUNT,
-      value: modelData?.sites_count,
+      value: modelData?.sites_count! || 0,
       onChange: (value: string) => handleModelData(ProjectKeys.SITES_COUNT, value),
-      placeholder: "0",
     },
     {
       label: "Buildings Count",
       width: "col-md-3",
       type: "number",
       key: ProjectKeys.BUILDINGS_COUNT,
-      value: modelData?.buildings_count,
+      value: modelData?.buildings_count! || 0,
       onChange: (value: string) => handleModelData(ProjectKeys.BUILDINGS_COUNT, value),
-      placeholder: "0",
     },
     {
       label: "Floors Count",
       width: "col-md-3",
       type: "number",
       key: ProjectKeys.FLOORS_COUNT,
-      value: modelData?.floors_count,
+      value: modelData?.floors_count! || 0,
       onChange: (value: string) => handleModelData(ProjectKeys.FLOORS_COUNT, value),
-      placeholder: "0",
     },
     {
       label: "Project thumbnail",
@@ -332,6 +353,7 @@ const ProjectFormPage = ({ id }: Props) => {
     };
 
     let errors = validateInputs(validationData);
+    console.log(errors);
     if (errors.length > 0) return showError(errors);
 
     try {

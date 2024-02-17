@@ -79,25 +79,24 @@ const EmployeeFormPage = ({ id }: Props) => {
   if ((id && employeeIsLoading) || departmentIsLoading || projectsIsLoading) return <Loading />;
   if (employeeError || departmentError || projectsError) return null;
 
-  // let managers: Employee[] = managerData?.managers?.data || [] as Employee[];
   let projects: Project[] = projectsData?.projects?.data || ([] as Project[]);
   let departments: any[] = departmentData?.departments?.data || [];
 
   let projectsOptions = getOptions(projects, "Select Project");
   let departmentsOptions = getOptions(departments, "Select Department");
 
-  // let managersOptions = managers.map((manager) => {
-  //     return {
-  //         label:
-  //             manager.name +
-  //             " - " +
-  //             manager.department_info?.name
-  //         ,
-  //         value: manager.id,
-  //     };
-  // });
-
   const handleModelData = (key: string, value: any) => {
+    if (key === EmployeeKeys.PROJECT) {
+      if (value && Array.isArray(value)) {
+        let projectsArr: Project[] = [];
+        for (let i = 0; i < value.length; i++) {
+          const id: string = value[i].value! || value[i].id!;
+          let project = projects?.find((project: Project) => project.id === id) || ({} as Project);
+          if (project && project.id) projectsArr.push(project);
+        }
+        value = projectsArr;
+      }
+    }
     setModelData({
       ...modelData,
       [key]: value,
