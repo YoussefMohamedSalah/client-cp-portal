@@ -1,5 +1,5 @@
 import React, { useState, lazy } from "react";
-import { ENUMS } from "enums/enums";
+import { INVENTORY_TYPE } from "enums/enums";
 import { useSingleInventoryQuery } from "api/Inventory/getSingleInventory";
 import { inventoryItemInput, useCreateInventoryItem } from "api/InventoryItem/createInventoryItem";
 import { useDeleteInventoryItem } from "api/InventoryItem/deleteInventoryItem";
@@ -55,7 +55,7 @@ const InventoryDetails: React.FC<Props> = ({ id }) => {
   let inventory: Inventory = inventoryData?.inventory?.data! || ({} as Inventory);
   let items: InventoryItem[] = inventory.items || [];
   let inventoryName =
-    inventory.type === ENUMS.INVENTORY_TYPE.MASTER
+    inventory.type === INVENTORY_TYPE.MASTER
       ? "Master Inventory Items"
       : `${inventory.project_info?.name!}'s Inventory Items`;
 

@@ -17,7 +17,7 @@ const useApp = () => {
       setTimeout(() => {
         navigate(payload);
         window.location.reload(); // Reload the page
-      }, 1000)
+      }, 1000);
     } else {
       navigate(payload);
     }

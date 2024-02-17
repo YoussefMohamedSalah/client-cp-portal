@@ -3,7 +3,7 @@ import { registerValidation } from "validators/Auth/register";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useApp from "hooks/useApp";
 import { useAuth } from "contexts/AuthContext";
-import { ENUMS } from "enums/enums";
+import { ROLE } from "enums/enums";
 import { useUI } from "contexts/UIContext";
 import { useRegister } from "api/Auth/Register";
 import { handleServerError } from "utils/HandlingServerError";
@@ -40,7 +40,7 @@ const Signup: React.FC = () => {
 
   const onSubmit: SubmitHandler<AuthSignupInput> = async (data: AuthSignupInput) => {
     try {
-      const result = await mutateAsync({ ...data, role: ENUMS.ROLE.SUPERUSER });
+      const result = await mutateAsync({ ...data, role: ROLE.SUPERUSER });
       setSession(result);
       setCompany(result.company);
       localStorage.setItem("session", JSON.stringify(result));

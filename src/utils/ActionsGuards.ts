@@ -1,9 +1,9 @@
-import { ENUMS } from "enums/enums";
+import { STATUS, ROLE } from "enums/enums";
 
 export const checkPermission = (selectPermission: string) => {
   let session = JSON.parse(localStorage.getItem("session") || "");
   if (!session) return false;
-  if (session.user.role === ENUMS.ROLE.SUPERUSER) return true;
+  if (session.user.role === ROLE.SUPERUSER) return true;
   return true;
   // !CHECK THIS
   // let hasPermission: boolean = false;
@@ -26,7 +26,7 @@ export const allowDeleteActionBtn = (userId: string, request: any) => {
   let isAllowed: boolean = true;
 
   if (!session.user || session.user.id !== userId) return false;
-  if (request.status === ENUMS.STATUS.APPROVED) return false;
+  if (request.status === STATUS.APPROVED) return false;
 
   if (request.work_flow && request.work_flow.length > 0) {
     for (let i = 0; i < request.work_flow.length; i++) {
@@ -63,7 +63,7 @@ export const allowEditActionBtn = (userId: string, request: any) => {
   let isAllowed: boolean = true;
 
   if (!session.user || session.user.id !== userId) return false;
-  if (request.status === ENUMS.STATUS.APPROVED) return false;
+  if (request.status === STATUS.APPROVED) return false;
 
   if (request.work_flow && request.work_flow.length > 0) {
     for (let i = 0; i < request.work_flow.length; i++) {
@@ -119,9 +119,9 @@ export const allowRejectOrApproveActionBtn = (request: any) => {
 
   // Check other conditions
   if (
-    request.status === ENUMS.STATUS.ARCHIVED ||
-    request.status === ENUMS.STATUS.APPROVED ||
-    request.status === ENUMS.STATUS.REJECTED ||
+    request.status === STATUS.ARCHIVED ||
+    request.status === STATUS.APPROVED ||
+    request.status === STATUS.REJECTED ||
     makerId === session.user?.id!
   ) {
     return false;
@@ -141,12 +141,12 @@ export const allowForwardMaterial = (request: any) => {
   if (!session) return false;
   let isAllowed: boolean = true;
 
-  if (request.status === ENUMS.STATUS.APPROVED) return true;
+  if (request.status === STATUS.APPROVED) return true;
   if (!request.work_flow! || request.work_flow?.length === 0) return true;
 
-  if (request.status === ENUMS.STATUS.ARCHIVED) return false;
-  if (request.status === ENUMS.STATUS.REJECTED) return false;
-  if (request.status === ENUMS.STATUS.PENDING) return false;
+  if (request.status === STATUS.ARCHIVED) return false;
+  if (request.status === STATUS.REJECTED) return false;
+  if (request.status === STATUS.PENDING) return false;
 
   if (request.work_flow! && request.work_flow?.length > 0) {
     for (let i = 0; i < request.work_flow.length; i++) {

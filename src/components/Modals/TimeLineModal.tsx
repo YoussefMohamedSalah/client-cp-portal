@@ -1,9 +1,9 @@
-import { ENUMS } from "enums/enums";
-import "./timeLine.css";
-import "./workFlow.css";
 import * as React from "react";
+import { STATUS } from "enums/enums";
 import { Modal } from "react-bootstrap";
 import { formatDate, formatHours } from "utils/DateUtils";
+import "./timeLine.css";
+import "./workFlow.css";
 
 interface Props {
   handleClose: () => void;
@@ -23,9 +23,9 @@ const TimeLineModal: React.FC<Props> = ({ handleClose, open, timeLine }) => {
                   <h5 className="card-title">Request Timeline</h5>
                   <div className="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">
                     {timeLine?.map((step: any, index: number) => {
-                      let isApproval: boolean = step.status === ENUMS.STATUS.APPROVED;
+                      let isApproval: boolean = step.status === STATUS.APPROVED;
                       let isEditAction: boolean =
-                        step.status !== ENUMS.STATUS.APPROVED && step.status !== ENUMS.STATUS.REJECTED;
+                        step.status !== STATUS.APPROVED && step.status !== STATUS.REJECTED;
                       return (
                         <div key={index} className="vertical-timeline-item vertical-timeline-element">
                           <div>
@@ -62,9 +62,8 @@ const TimeLineModal: React.FC<Props> = ({ handleClose, open, timeLine }) => {
                                     borderRadius: "6.25rem",
                                     opacity: "0.5",
                                   }}
-                                  className={`inner-circle ${
-                                    isEditAction ? "pending" : `${isApproval ? "accepted" : "rejected"}`
-                                  } `}
+                                  className={`inner-circle ${isEditAction ? "pending" : `${isApproval ? "accepted" : "rejected"}`
+                                    } `}
                                 />
                               </span>
                             </div>

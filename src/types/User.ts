@@ -1,14 +1,8 @@
-import { ENUMS } from "enums/enums";
+import { ROLE } from "enums/enums";
 import { Company } from "./Company";
-// import { Department } from "./Department";
-// import { Attendance } from "./attendance";
 import { Notification } from "./Notification";
-// import { Task } from "./task";
-// import { Group } from "./group";
 import { Project } from "./Project";
-// import { Chat } from "./chat";
 import { DailyReportGroup } from "./Daily_report";
-// import { UserKpi } from "./userKpi";
 import { EmployeeRequest } from "./Employee_request";
 import { Task } from "./Task";
 
@@ -32,7 +26,7 @@ export interface User {
   id_number: string | null;
   id_ex_date: string | null;
   business_title: string | null;
-  role: typeof ENUMS.ROLE;
+  role: ROLE;
   is_loggedIn: boolean;
   kpi: number | null;
   working_hours: string | null;

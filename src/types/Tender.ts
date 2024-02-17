@@ -1,9 +1,9 @@
-import { ENUMS } from "enums/enums";
+import { STATUS } from "enums/enums";
 
 export interface Tender {
   id: string;
   code: string;
-  status: typeof ENUMS.STATUS;
+  status: STATUS;
   description?: string;
   user: { id: string; name: string };
   date: string;
@@ -16,7 +16,7 @@ export interface Tender {
 export interface SelectedTender {
   id: string;
   code?: string;
-  status?: typeof ENUMS.STATUS;
+  status?: STATUS;
   description?: string;
   user?: { id: string; name: string };
   date?: string;

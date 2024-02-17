@@ -1,4 +1,4 @@
-import { ENUMS } from "enums/enums";
+import { ROLE } from "enums/enums";
 import { Session } from "types/Session";
 
 export const getLocaleSession = (): Session | null => {
@@ -46,7 +46,7 @@ export const updateSessionCompany = async () => {
 
 export const isSuperUserRole = (role: string): boolean => {
   if (role) {
-    if (role === ENUMS.ROLE.SUPERUSER || role === ENUMS.ROLE.SUB_SUPERUSER) {
+    if (role === ROLE.SUPERUSER || role === ROLE.SUB_SUPERUSER) {
       return true;
     } else return false;
   } else return false;

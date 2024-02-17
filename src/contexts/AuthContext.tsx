@@ -1,4 +1,4 @@
-import { ENUMS } from "enums/enums";
+import { ROLE } from "enums/enums";
 import { createContext, useContext, useEffect, useState } from "react";
 import { Session } from "types/Session";
 
@@ -14,12 +14,12 @@ interface AuthContextValue {
 
 export const AuthContext = createContext<AuthContextValue>({
   session: null,
-  setSession: () => {},
+  setSession: () => { },
   company: null,
-  setCompany: () => {},
+  setCompany: () => { },
   isSuperUser: () => false,
   view: "user",
-  changeView: () => {},
+  changeView: () => { },
 });
 
 export function useAuth() {
@@ -45,7 +45,7 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
   const isSuperUser = (): boolean => {
     if (session && session.user && session.user.role) {
       let role = session?.user?.role;
-      if (role === ENUMS.ROLE.SUPERUSER || role === ENUMS.ROLE.SUB_SUPERUSER) {
+      if (role === ROLE.SUPERUSER || role === ROLE.SUB_SUPERUSER) {
         return true;
       } else return false;
     } else return false;

@@ -216,8 +216,6 @@ const CustomerFormPage = ({ id }: Props) => {
 
   // MAIN ACTIONS
   const handleCreate = async () => {
-    if (!modelData?.customer_type) modelData.customer_type = CUSTOMER_TYPE.COMPANY;
-
     let numbersToValidate = CustomerNumKeys;
     let stringsToValidate = CustomerStrKeys;
     let requiredToValidate = CustomerRequiredKeys;

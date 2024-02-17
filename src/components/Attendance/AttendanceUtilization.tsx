@@ -7,7 +7,7 @@ import { useCreateEndAttendance } from "api/Attendance/createEndAttendance";
 import { Link } from "react-router-dom";
 import { useUI } from "contexts/UIContext";
 import { useAuth } from "contexts/AuthContext";
-import { ENUMS } from "enums/enums";
+import { DEPARTMENTS } from "enums/enums";
 import { handleServerError } from "utils/HandlingServerError";
 import GeneralChartCard from "components/Charts/GeneralChartCard";
 
@@ -53,7 +53,7 @@ const AttendanceUtilization: React.FC<Props> = ({ latitude, longitude }) => {
       if (
         session &&
         session?.user?.department_info! &&
-        session?.user?.department_info?.name! !== ENUMS.DEPARTMENTS.PROJECTS
+        session?.user?.department_info?.name! !== DEPARTMENTS.PROJECTS
       ) {
         const createInput = {
           latitude: "",

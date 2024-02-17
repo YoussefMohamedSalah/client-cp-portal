@@ -25,7 +25,7 @@ import { handleServerError, validateInputs } from "utils/HandlingServerError";
 import { useAuth } from "contexts/AuthContext";
 import { poRequestInput, useCreatePoRequest } from "api/Documents/PoRequests/createPoRequest";
 import { useSavePoRequestToArchive } from "api/Documents/PoRequests/archivePoRequest";
-import { useSuppliersQuery } from "api/Supplier/getAllSuppliers";
+import { useSuppliersQuery } from "api/Suppliers/getAllSuppliers";
 import { usePoRequestDetailsQuery } from "api/Documents/PoRequests/getPoRequestDetails";
 import { Supplier } from "types/Supplier";
 import { getFormattedTodayDate } from "utils/DateUtils";

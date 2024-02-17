@@ -5,7 +5,7 @@ import PageHeader from "components/Common/PageHeader";
 import useApp from "hooks/useApp";
 import { PAGES } from "constants/pages";
 import { calculateWorkFlowStatus } from "utils/CalculateWorkFlowStatus";
-import { ENUMS } from "enums/enums";
+import { STATUS } from "enums/enums";
 import { useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
@@ -112,7 +112,7 @@ const PoRequests: React.FC = () => {
         let gradient = calculateWorkFlowStatus(row.work_flow);
         return (
           <span className="pointer" onClick={() => handleOpen(row)}>
-            {row.status === ENUMS.STATUS.ARCHIVED ? (
+            {row.status === STATUS.ARCHIVED ? (
               <span className="badge bg-black text-white">Archived</span>
             ) : (
               <span className="badge text-black" style={{ background: gradient }}>
@@ -153,7 +153,7 @@ const PoRequests: React.FC = () => {
     },
     {
       name: "ACTION",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<PurchaseOrderRequest>
@@ -188,7 +188,7 @@ const PoRequests: React.FC = () => {
           />
         </div>
       </div>
-      {selectedDocument && selectedDocument.status !== ENUMS.STATUS.ARCHIVED && (
+      {selectedDocument && selectedDocument.status !== STATUS.ARCHIVED && (
         <WorkFlowStatusModal<PurchaseOrderRequest>
           handleClose={handleClose}
           open={open}

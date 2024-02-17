@@ -1,16 +1,16 @@
 import { useMutation } from "@tanstack/react-query";
-import { createSupplierInput } from "types/Supplier";
+import { Supplier } from "types/Supplier";
 import { ROUTES } from "constants/routes";
 import { http } from "utils/Http";
 
 export const useCreateSupplier = () => {
-  return useMutation<any, Error, createSupplierInput>(async (createInput) => {
+  return useMutation<any, Error, Supplier>(async (createInput) => {
     const { data } = await http.post(ROUTES.SUPPLIER, createInput);
     return { data: data as any };
   });
 };
 
-export const supplierInput = (data: createSupplierInput): any => {
+export const supplierInput = (data: Supplier): any => {
   return {
     company_name: data.company_name,
     phone_number: data.phone_number,

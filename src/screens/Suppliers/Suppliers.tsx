@@ -7,8 +7,8 @@ import { useUI } from "contexts/UIContext";
 import { handleServerError } from "utils/HandlingServerError";
 import NormalTable from "components/Common/NormalTable";
 import TableActionBtn from "components/Common/TableActionBtn";
-import { useDeleteSupplier } from "api/Supplier/deleteSupplier";
-import { useSuppliersQuery } from "api/Supplier/getAllSuppliers";
+import { useDeleteSupplier } from "api/Suppliers/deleteSupplier";
+import { useSuppliersQuery } from "api/Suppliers/getAllSuppliers";
 
 const Suppliers: React.FC = () => {
   const { mutateAsync: deleteMutation } = useDeleteSupplier();

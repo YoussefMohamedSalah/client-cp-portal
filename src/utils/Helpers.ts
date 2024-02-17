@@ -1,4 +1,4 @@
-import { ENUMS, STATUS } from "enums/enums";
+import { STATUS, PRIORITY, ROLE } from "enums/enums";
 import { Session } from "types/Session";
 
 export const getImageUrl = (url: string) => {
@@ -74,7 +74,7 @@ export const isAdminView = () => {
 export const checkPermission = (selectPermission: string) => {
   let session = JSON.parse(localStorage.getItem("session") || "");
   if (!session) return false;
-  if (session.user.role === ENUMS.ROLE.SUPERUSER) return true;
+  if (session.user.role === ROLE.SUPERUSER) return true;
   return true;
   // !CHECK THIS
   // let hasPermission: boolean = false;
@@ -85,7 +85,7 @@ export const checkPermission = (selectPermission: string) => {
 };
 
 export const checkRole = (roles: string[], departments: string[], session: Session) => {
-  if (session?.user?.role === ENUMS.ROLE.SUPERUSER || session?.user?.role === ENUMS.ROLE.SUB_SUPERUSER) return true;
+  if (session?.user?.role === ROLE.SUPERUSER || session?.user?.role === ROLE.SUB_SUPERUSER) return true;
   if (!session || !roles || roles.length === 0 || !departments || departments.length === 0) return false;
 
   let hasRole: boolean = false;
@@ -105,11 +105,11 @@ export const checkRole = (roles: string[], departments: string[], session: Sessi
 
 export const getPriorityBadge = (status: string) => {
   switch (status) {
-    case ENUMS.PRIORITY.LOW:
+    case PRIORITY.LOW:
       return "badge rounded-pill bg-yalow text-wite";
-    case ENUMS.PRIORITY.MEDIUM:
+    case PRIORITY.MEDIUM:
       return "badge rounded-pill bg-blue text-wite";
-    case ENUMS.PRIORITY.HIGH:
+    case PRIORITY.HIGH:
       return "badge rounded-pill bg-danger text-white";
     default:
       return "badge rounded-pill bg-info text-white";
