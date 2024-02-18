@@ -58,6 +58,7 @@ const SubcontractorFormPage = ({ id }: Props) => {
   // !Assuming this is CREATE Modal
   useEffect(() => {
     if (!isEdit) {
+      modelData.subcontractor_type = SUBCONTRACTOR_TYPE.COMPANY
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -222,11 +223,7 @@ const SubcontractorFormPage = ({ id }: Props) => {
     },
   ];
 
-  // MAIN ACTIONS
-
   const handleCreate = async () => {
-    if (!modelData?.subcontractor_type) modelData.subcontractor_type = SUBCONTRACTOR_TYPE.COMPANY;
-
     let numbersToValidate = SubcontractorNumKeys;
     let stringsToValidate = SubcontractorStrKeys;
     let requiredToValidate = SubcontractorRequiredKeys;
@@ -239,13 +236,13 @@ const SubcontractorFormPage = ({ id }: Props) => {
     };
 
     let errors = validateInputs(validationData);
+    console.log(errors)
     if (errors.length > 0) return showError(errors);
 
     try {
       let createInput = subcontractorInput(modelData);
       await createMutation(createInput);
-      push("/" + PAGES.CUSTOMERS);
-      showSuccess();
+      push("/" + PAGES.SUBCONTRACTORS, true);
     } catch (err: any) {
       showError(handleServerError(err.response));
     }
@@ -272,7 +269,6 @@ const SubcontractorFormPage = ({ id }: Props) => {
         id: modelData.id,
         data: createInput,
       });
-      showSuccess();
     } catch (err: any) {
       showError(handleServerError(err.response));
     }

@@ -21,6 +21,7 @@ import { Task } from "types/Task";
 import { useProjectsQuery } from "api/Projects/getAllProjects";
 import { PRIORITY, TASK_TYPE } from "enums/enums";
 import { getOptions } from "utils/GetOptions";
+import { getFormattedTodayDate } from "utils/DateUtils";
 
 interface Props {
   id?: string;
@@ -55,6 +56,8 @@ const TaskFormPage = ({ id }: Props) => {
   // !Assuming this is CREATE Modal
   useEffect(() => {
     if (!isEdit) {
+      modelData.start_at = `${getFormattedTodayDate()}`;
+      modelData.end_at = `${getFormattedTodayDate()}`;
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -101,6 +104,7 @@ const TaskFormPage = ({ id }: Props) => {
   const formFields: IField[] = [
     {
       label: "Project Name",
+      width: "col-md-6",
       type: "select",
       key: TaskKeys.PROJECT,
       value: modelData?.project?.name!,
@@ -112,6 +116,7 @@ const TaskFormPage = ({ id }: Props) => {
     },
     {
       label: "Task Name",
+      width: "col-md-6",
       type: "text",
       key: TaskKeys.NAME,
       value: modelData?.name,
@@ -121,6 +126,7 @@ const TaskFormPage = ({ id }: Props) => {
     },
     {
       label: "Description",
+      width: "col-md-12",
       type: "textarea",
       key: TaskKeys.DESCRIPTION,
       value: modelData?.description,
@@ -130,6 +136,7 @@ const TaskFormPage = ({ id }: Props) => {
     },
     {
       label: "Task Priority",
+      width: "col-md-4",
       type: "select",
       key: TaskKeys.TASK_PRIORITY,
       value: modelData?.task_priority,
@@ -156,6 +163,7 @@ const TaskFormPage = ({ id }: Props) => {
     },
     {
       label: "Start Date",
+      width: "col-md-4",
       type: "date",
       key: TaskKeys.START_DATE,
       value: modelData?.start_at,
@@ -164,6 +172,7 @@ const TaskFormPage = ({ id }: Props) => {
     },
     {
       label: "End Date",
+      width: "col-md-4",
       type: "date",
       key: TaskKeys.END_DATE,
       value: modelData?.end_at,
@@ -187,11 +196,16 @@ const TaskFormPage = ({ id }: Props) => {
     let errors = validateInputs(validationData);
     if (errors.length > 0) return showError(errors);
 
+    if (modelData.project) {
+      modelData.task_type = TASK_TYPE.GROUP_TASK;
+    } else {
+      modelData.task_type = TASK_TYPE.GENERAL_TASK;
+    }
+
     try {
       let createInput = taskInput(modelData);
       await createMutation(createInput);
-      push("/" + PAGES.TASKS);
-      showSuccess();
+      push("/" + PAGES.TASKS, true);
     } catch (err: any) {
       showError(handleServerError(err.response));
     }
@@ -218,8 +232,7 @@ const TaskFormPage = ({ id }: Props) => {
         id: modelData.id,
         data: createInput,
       });
-      showSuccess();
-      push("/" + PAGES.TASKS);
+      // push("/" + PAGES.TASKS);
     } catch (err: any) {
       showError(handleServerError(err.response));
     }

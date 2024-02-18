@@ -17,10 +17,8 @@ export const SubcontractorNumKeys = [SubcontractorKeys.VAT_ON, SubcontractorKeys
 
 export const SubcontractorStrKeys = [
   SubcontractorKeys.AREA,
-  SubcontractorKeys.BUILDING_NUMBER,
   SubcontractorKeys.CITY,
   SubcontractorKeys.COMPANY_NAME,
-  SubcontractorKeys.PHONE_NUMBER,
   SubcontractorKeys.NAME,
   SubcontractorKeys.EMAIL,
   SubcontractorKeys.SUBCONTRACTOR_TYPE,
