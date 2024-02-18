@@ -388,15 +388,15 @@ export const superUserMenuData: any[] = [
     children: [],
     roles: ["Superuser", "Sub_Superuser"],
   },
-  // {
-  //   name: "Tasks",
-  //   routerLink: ["/tasks"],
-  //   identifier: "Tasks",
-  //   iconClass: "icofont-tasks-alt",
-  //   breadcrumbMessage: "",
-  //   isCategory: false,
-  //   isApp: false,
-  //   children: [],
-  //   roles: ["Superuser", "Sub_Superuser"]
-  // },
+  {
+    name: "Tasks",
+    routerLink: ["/tasks"],
+    identifier: "Tasks",
+    iconClass: "icofont-tasks-alt",
+    breadcrumbMessage: "",
+    isCategory: false,
+    isApp: false,
+    children: [],
+    roles: ["Superuser", "Sub_Superuser"]
+  },
 ];

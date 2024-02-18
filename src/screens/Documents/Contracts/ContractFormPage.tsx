@@ -30,13 +30,13 @@ import ConditionsCard from "components/Common/ConditionsCard";
 import InstallmentsCard from "components/Common/InstallmentsCard";
 import DefaultConditionsCard from "components/Common/DefaultConditionsCard";
 import { DocumentFinances } from "types/DocumentFinances";
-import { useGetCompany } from "api/Company/getCompany";
 import DocumentProjectFinancesBox from "components/Common/DocumentProjectFinancesBox";
 import { PrintInstallments } from "types/Print";
 import { Contract } from "types/Contract";
 import { Subcontractor } from "types/Subcontractor";
 import { useSubcontractorsQuery } from "api/Subcontractors/getAllSubcontractors";
 import { editContractInput, useEditContract } from "api/Documents/Contracts/editContract";
+import { useCompanyDetailsQuery } from "api/Company/getCompany";
 
 interface Props {
   id?: string;
@@ -74,7 +74,6 @@ const ContractFormPage = ({ id }: Props) => {
   const [includeVat, setIncludeVat] = useState<boolean>(true);
   const [paymentType, setPaymentType] = useState<string>("cash");
   // ------
-  const { mutateAsync: companyMutation } = useGetCompany();
   const { mutateAsync: editMutation } = useEditContract();
   const { mutateAsync: createMutation } = useCreateContract();
   const { mutateAsync: archiveMutation } = useSaveContractToArchive();
@@ -84,7 +83,7 @@ const ContractFormPage = ({ id }: Props) => {
   const { session } = useAuth();
 
   const { data: documentData, error: documentError, isLoading: documentIsLoading } = useContractDetailsQuery({ id });
-
+  const { data: companyData, error: companyError, isLoading: companyIsLoading } = useCompanyDetailsQuery({});
   const { data: projectsData, error: projectsError, isLoading: projectsIsLoading } = useProjectsQuery({});
 
   const {
@@ -103,9 +102,8 @@ const ContractFormPage = ({ id }: Props) => {
 
   // !Assuming this is CREATE Modal
   useEffect(() => {
-    if (session && session.company && !isEdit) {
+    if (session && companyData?.company?.data && !isEdit) {
       handleInitialModelData();
-      getCompanyData();
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -152,22 +150,14 @@ const ContractFormPage = ({ id }: Props) => {
   }, [documentData, subcontractorsData, projectsData, initialized]);
 
   const handleInitialModelData = () => {
+    const company = companyData?.company?.data!;
+    if (company) {
+      modelData.company = company;
+      setCompanyVatPercentage(Number(company.vat! || 0));
+      setDefaultConditions(company.workFlow.default_contract_conditions);
+    }
     modelData.date = `${getFormattedTodayDate()}`;
     modelData.description = `with reference to the above subject your quotation no XXXXX (rev.0) Dated on ${modelData.date ? getFormattedTodayDate() : "XXXXX"},`;
-  };
-
-  const getCompanyData = async () => {
-    try {
-      let data = await companyMutation({});
-      let company = data?.company?.data!;
-      if (company) {
-        modelData.company = company;
-        setCompanyVatPercentage(Number(company.vat! || 0));
-        setDefaultConditions(company.workFlow?.default_contract_conditions! || []);
-      }
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   const handleFinanceChange = () => {
@@ -190,8 +180,8 @@ const ContractFormPage = ({ id }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subTotalAmount, includeVat, discountAmount]);
 
-  if ((id && documentIsLoading) || (!id && projectsIsLoading) || (!id && subcontractorsIsLoading)) return <Loading />;
-  if ((id && documentError) || (!id && projectsError) || (!id && subcontractorsError)) return null;
+  if ((id && documentIsLoading) || (!id && projectsIsLoading) || (!id && subcontractorsIsLoading) || (!id && companyIsLoading)) return <Loading />;
+  if ((id && documentError) || (!id && projectsError) || (!id && subcontractorsError) || (!id && companyError)) return null;
 
   let projects: Project[] = projectsData?.projects?.data || [];
   let subcontractors: Subcontractor[] = subcontractorsData?.subcontractors?.data || [];

@@ -1,4 +1,3 @@
-import React from "react";
 import { Nav, Tab } from "react-bootstrap";
 import OrganizationSettings from "./OrganizationSettings";
 import PageHeader from "components/Common/PageHeader";

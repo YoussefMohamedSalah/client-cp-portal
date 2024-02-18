@@ -1,3 +1,4 @@
+import moment from "moment";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { styled } from "@mui/material/styles";
 
@@ -50,13 +51,22 @@ const StyledTimePicker = styled(TimePicker)(({ theme }) => ({
 }));
 
 const TimePickerInput = ({ onChange, value, defaultValue, required, disabled, label }: Props) => {
+  const handleFormatTimeBeforeResponding = (dateObject: any) => {
+    const stringTime = dateObject.format("HH:mm"); // Format in 24-hour format
+    onChange(stringTime);
+  };
+
+  const defaultTime = defaultValue ? moment(defaultValue, "hh:mm").format("HH:mm") : null;
+
+
   return (
     <StyledTimePicker
       sx={{ margin: "8px 0" }}
       slotProps={{ textField: { size: "small", fullWidth: true, required: required ? true : false } }}
-      value={value}
+      value={moment(value, "HH:mm")}
+      defaultValue={defaultTime}
       disabled={disabled}
-      onChange={(newValue: any) => onChange(newValue)}
+      onChange={(newValue: any) => handleFormatTimeBeforeResponding(newValue)}
       label={label}
       name="startTime"
     />

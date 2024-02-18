@@ -32,13 +32,13 @@ import { DocumentFinances } from "types/DocumentFinances";
 
 interface Props<
   T extends
-    | PettyCashRequest
-    | PurchaseOrderRequest
-    | EmployeeRequest
-    | MaterialRequest
-    | SiteRequest
-    | Contract
-    | Invoice,
+  | PettyCashRequest
+  | PurchaseOrderRequest
+  | EmployeeRequest
+  | MaterialRequest
+  | SiteRequest
+  | Contract
+  | Invoice,
 > {
   data: T;
   finances?: DocumentFinances;
@@ -46,13 +46,13 @@ interface Props<
 
 function DocumentsDetailsContent<
   T extends
-    | PettyCashRequest
-    | PurchaseOrderRequest
-    | EmployeeRequest
-    | MaterialRequest
-    | SiteRequest
-    | Contract
-    | Invoice,
+  | PettyCashRequest
+  | PurchaseOrderRequest
+  | EmployeeRequest
+  | MaterialRequest
+  | SiteRequest
+  | Contract
+  | Invoice,
 >({ data }: Props<T>) {
   const [conditions, setConditions] = useState<string[]>([]);
   const [materials, setMaterials] = useState<PrintMaterials[]>([]);
@@ -170,8 +170,8 @@ function DocumentsDetailsContent<
                     tableData={conditions}
                     renderRow={(rowData, index: number) => (
                       <tr>
-                        <td className="text-center p-2">{index + 1} -</td>
-                        <td className="text-center p-2">{rowData}</td>
+                        <td className="text-start p-2">{index + 1} -</td>
+                        <td className="text-start p-2">{rowData}</td>
                       </tr>
                     )}
                   />
@@ -195,15 +195,15 @@ function DocumentsDetailsContent<
                     tableData={materials}
                     renderRow={(rowData) => (
                       <>
-                        <td className="text-center p-2">{rowData.item}</td>
-                        <td className="text-center p-2">{rowData.description}</td>
-                        <td className="text-center p-2">{rowData.count || 0}</td>
-                        <td className="text-center p-2">{rowData.price || 0}</td>
-                        <td className="text-center p-2">{rowData.total || 0}</td>
-                        <td className="text-center p-2">{rowData.payed_amount || 0}</td>
-                        <td className="text-center p-2">{rowData.payed_percentage || 0}</td>
-                        <td className="text-center p-2">{rowData.prev_count || rowData.count}</td>
-                        <td className="text-center p-2">{rowData.current_count || rowData.count}</td>
+                        <td className="text-start p-2">{rowData.item}</td>
+                        <td className="text-start p-2">{rowData.description}</td>
+                        <td className="text-start p-2">{rowData.count || 0}</td>
+                        <td className="text-start p-2">{rowData.price || 0}</td>
+                        <td className="text-start p-2">{rowData.total || 0}</td>
+                        <td className="text-start p-2">{rowData.payed_amount || 0}</td>
+                        <td className="text-start p-2">{rowData.payed_percentage || 0}</td>
+                        <td className="text-start p-2">{rowData.prev_count || rowData.count}</td>
+                        <td className="text-start p-2">{rowData.current_count || rowData.count}</td>
                       </>
                     )}
                   />
@@ -217,11 +217,11 @@ function DocumentsDetailsContent<
                     tableData={installments}
                     renderRow={(rowData) => (
                       <>
-                        <td className="text-center p-2">{rowData.name}</td>
-                        <td className="text-center p-2">{rowData.details}</td>
-                        <td className="text-center p-2">{rowData.date}</td>
-                        <td className="text-center p-2">{rowData.percentage}</td>
-                        <td className="text-center p-2">{rowData.value}</td>
+                        <td className="text-start p-2">{rowData.name}</td>
+                        <td className="text-start p-2">{rowData.details}</td>
+                        <td className="text-start p-2">{rowData.date}</td>
+                        <td className="text-start p-2">{rowData.percentage}</td>
+                        <td className="text-start p-2">{rowData.value}</td>
                       </>
                     )}
                   />

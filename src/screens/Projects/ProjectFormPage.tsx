@@ -353,7 +353,6 @@ const ProjectFormPage = ({ id }: Props) => {
     };
 
     let errors = validateInputs(validationData);
-    console.log(errors);
     if (errors.length > 0) return showError(errors);
 
     try {

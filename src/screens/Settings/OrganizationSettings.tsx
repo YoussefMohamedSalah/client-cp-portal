@@ -1,12 +1,29 @@
+import { useCompanyDetailsQuery } from "api/Company/getCompany";
 import FormCard from "components/Settings/FormCard";
 import ImageCard from "components/Settings/ImageCard";
+import Loading from "components/UI/Loading";
 import { CompanyKeys } from "models/Company";
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { Company } from "types/Company";
 import { IField } from "types/Forms/formFields";
 
 const OrganizationSettings = () => {
+  const [initialized, setInitialized] = useState<boolean>(false);
   const [modelData, setModelData] = useState<Company>({} as Company);
+
+  const { data: companyData, error: companyError, isLoading: companyIsLoading } = useCompanyDetailsQuery({});
+
+  useEffect(() => {
+    if (!initialized && companyData) {
+      let company: Company = companyData?.company?.data! || {} as Company;
+      setModelData({ ...company });
+      setInitialized(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [companyData, initialized]);
+
+  if (companyIsLoading) return <Loading />;
+  if (companyError) return null;
 
   const handleModelData = (key: string, value: any) => {
     setModelData({
@@ -71,7 +88,7 @@ const OrganizationSettings = () => {
       type: "text",
       width: "col-md-6",
       key: CompanyKeys.CURRENCY,
-      value: modelData?.vat,
+      value: modelData?.currency,
       onChange: (value: string | any) => handleModelData(CompanyKeys.CURRENCY, value),
       placeholder: "Company Currency",
       required: true,
@@ -81,7 +98,7 @@ const OrganizationSettings = () => {
       type: "time",
       width: "col-md-6",
       key: CompanyKeys.SHIFT_START,
-      value: modelData?.shift_start,
+      value: modelData?.shift_start!,
       onChange: (value: string | any) => handleModelData(CompanyKeys.SHIFT_START, value),
       placeholder: "Shift Start Time",
     },
@@ -90,19 +107,20 @@ const OrganizationSettings = () => {
       type: "time",
       width: "col-md-6",
       key: CompanyKeys.SHIFT_END,
-      value: modelData?.shift_end,
+      value: modelData?.shift_end!,
       onChange: (value: string | any) => handleModelData(CompanyKeys.SHIFT_END, value),
       placeholder: "Shift End Time",
     },
   ];
 
+  if (!initialized) return <></>;
   return (
     <div className="row">
       <div className="col-xl-4">
-        <ImageCard title={"Logo"} defaultUrl={""} onSave={() => {}} />
+        <ImageCard title={"Logo"} defaultUrl={modelData.logo} onSave={() => { }} />
       </div>
       <div className="col-xl-8">
-        <FormCard title={"Info"} formFields={formFields} onSave={() => {}} />
+        <FormCard title={"Info"} formFields={formFields} onSave={() => { }} />
       </div>
     </div>
   );

@@ -4,13 +4,14 @@ import { Employee } from "types/Employee";
 import { http } from "utils/Http";
 
 export const getEmployeeDetails = async ({ queryKey }: any) => {
-  const { data } = await http.get(ROUTES.EMPLOYEE);
-  return { employee: { data: data as Employee } };
-
-  // const [_key, _params] = queryKey;
-  // const { data } = await http.get(ROUTES.PC_REQUEST + _params.id);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_key, _params] = queryKey;
+  if (_params.id) {
+    const { data } = await http.get(ROUTES.EMPLOYEE + _params.id);
+    return { employee: { data: data as Employee } };
+  }
 };
 
 export const useEmployeeDetailsQuery = (options: any) => {
-  return useQuery<{ employee: { data: Employee } }, Error>([ROUTES.EMPLOYEE, options], getEmployeeDetails);
+  return useQuery([ROUTES.EMPLOYEE, options], getEmployeeDetails);
 };

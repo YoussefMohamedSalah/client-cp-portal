@@ -34,7 +34,7 @@ import InstallmentsCard from "components/Common/InstallmentsCard";
 import DefaultConditionsCard from "components/Common/DefaultConditionsCard";
 import { DocumentFinances } from "types/DocumentFinances";
 import { poEditInput, useEditPoRequest } from "api/Documents/PoRequests/editPoRequest";
-import { useGetCompany } from "api/Company/getCompany";
+import { useCompanyDetailsQuery } from "api/Company/getCompany";
 import DocumentProjectFinancesBox from "components/Common/DocumentProjectFinancesBox";
 import { PrintInstallments } from "types/Print";
 
@@ -74,7 +74,6 @@ const PoFormPage = ({ id }: Props) => {
   const [includeVat, setIncludeVat] = useState<boolean>(true);
   const [paymentType, setPaymentType] = useState<string>("cash");
   // ------
-  const { mutateAsync: companyMutation } = useGetCompany();
   const { mutateAsync: editMutation } = useEditPoRequest();
   const { mutateAsync: createMutation } = useCreatePoRequest();
   const { mutateAsync: archiveMutation } = useSavePoRequestToArchive();
@@ -84,9 +83,8 @@ const PoFormPage = ({ id }: Props) => {
   const { session } = useAuth();
 
   const { data: documentData, error: documentError, isLoading: documentIsLoading } = usePoRequestDetailsQuery({ id });
-
+  const { data: companyData, error: companyError, isLoading: companyIsLoading } = useCompanyDetailsQuery({});
   const { data: projectsData, error: projectsError, isLoading: projectsIsLoading } = useProjectsQuery({});
-
   const { data: suppliersData, error: suppliersError, isLoading: suppliersIsLoading } = useSuppliersQuery({});
 
   // !Check if this is CREATE OR EDIT Modal
@@ -99,9 +97,8 @@ const PoFormPage = ({ id }: Props) => {
 
   // !Assuming this is CREATE Modal
   useEffect(() => {
-    if (session && session.company && !isEdit) {
+    if (session && companyData?.company?.data && !isEdit) {
       handleInitialModelData();
-      getCompanyData();
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -148,24 +145,16 @@ const PoFormPage = ({ id }: Props) => {
   }, [documentData, suppliersData, projectsData, initialized]);
 
   const handleInitialModelData = () => {
+    const company = companyData?.company?.data!;
+    if (company) {
+      modelData.company = company;
+      setCompanyVatPercentage(Number(company.vat! || 0));
+      setDefaultConditions(company.workFlow.default_po_conditions);
+    }
     modelData.date = `${getFormattedTodayDate()}`;
     modelData.delivery_date = `${getFormattedTodayDate()}`;
     modelData.description = `with reference to the above subject your quotation no XXXXX (rev.0) Dated on ${modelData.date ? getFormattedTodayDate() : "XXXXX"},
 we would like to place the purchase order for Below Items.`;
-  };
-
-  const getCompanyData = async () => {
-    try {
-      let data = await companyMutation({});
-      let company = data?.company?.data!;
-      if (company) {
-        modelData.company = company;
-        setCompanyVatPercentage(Number(company.vat));
-        setDefaultConditions(company.workFlow.default_po_conditions);
-      }
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   const handleFinanceChange = () => {
@@ -188,8 +177,8 @@ we would like to place the purchase order for Below Items.`;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subTotalAmount, includeVat, discountAmount]);
 
-  if ((id && documentIsLoading) || (!id && projectsIsLoading) || (!id && suppliersIsLoading)) return <Loading />;
-  if ((id && documentError) || (!id && projectsError) || (!id && suppliersError)) return null;
+  if ((id && documentIsLoading) || (!id && projectsIsLoading) || (!id && suppliersIsLoading) || (!id && companyIsLoading)) return <Loading />;
+  if ((id && documentError) || (!id && projectsError) || (!id && suppliersError) || (!id && companyError)) return null;
 
   let projects: Project[] = projectsData?.projects?.data || [];
   let suppliers: Supplier[] = suppliersData?.suppliers?.data || [];

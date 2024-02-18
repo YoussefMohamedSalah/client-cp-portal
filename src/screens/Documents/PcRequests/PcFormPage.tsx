@@ -25,12 +25,12 @@ import { useAuth } from "contexts/AuthContext";
 import { pcRequestInput, useCreatePcRequest } from "api/Documents/PcRequests/createPcRequest";
 import { getFormattedTodayDate } from "utils/DateUtils";
 import { DocumentFinances } from "types/DocumentFinances";
-import { useGetCompany } from "api/Company/getCompany";
 import DocumentProjectFinancesBox from "components/Common/DocumentProjectFinancesBox";
 import { PettyCashRequest } from "types/Pc_request";
 import { usePcRequestDetailsQuery } from "api/Documents/PcRequests/getPcRequestDetails";
 import { pcEditInput, useEditPcRequest } from "api/Documents/PcRequests/editPcRequest";
 import { useSavePcRequestToArchive } from "api/Documents/PcRequests/archivePcRequest";
+import { useCompanyDetailsQuery } from "api/Company/getCompany";
 
 interface Props {
   id?: string;
@@ -60,7 +60,6 @@ const PcFormPage = ({ id }: Props) => {
   const [documentFinancesObj, setDocumentFinancesObj] = useState<DocumentFinances>({} as DocumentFinances);
   const [includeVat, setIncludeVat] = useState<boolean>(true);
   // ------
-  const { mutateAsync: companyMutation } = useGetCompany();
   const { mutateAsync: editMutation } = useEditPcRequest();
   const { mutateAsync: createMutation } = useCreatePcRequest();
   const { mutateAsync: archiveMutation } = useSavePcRequestToArchive();
@@ -70,7 +69,7 @@ const PcFormPage = ({ id }: Props) => {
   const { session } = useAuth();
 
   const { data: documentData, error: documentError, isLoading: documentIsLoading } = usePcRequestDetailsQuery({ id });
-
+  const { data: companyData, error: companyError, isLoading: companyIsLoading } = useCompanyDetailsQuery({});
   const { data: projectsData, error: projectsError, isLoading: projectsIsLoading } = useProjectsQuery({});
 
   // !Check if this is CREATE OR EDIT Modal
@@ -83,9 +82,8 @@ const PcFormPage = ({ id }: Props) => {
 
   // !Assuming this is CREATE Modal
   useEffect(() => {
-    if (session && session.company && !isEdit) {
+    if (session && companyData?.company?.data && !isEdit) {
       handleInitialModelData();
-      getCompanyData();
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -113,21 +111,13 @@ const PcFormPage = ({ id }: Props) => {
   }, [documentData, projectsData, initialized]);
 
   const handleInitialModelData = () => {
+    const company = companyData?.company?.data!;
+    if (company) {
+      modelData.company = company;
+      setCompanyVatPercentage(Number(company.vat! || 0));
+    }
     modelData.date = `${getFormattedTodayDate()}`;
     modelData.description = `No description.`;
-  };
-
-  const getCompanyData = async () => {
-    try {
-      let data = await companyMutation({});
-      let company = data?.company?.data!;
-      if (company) {
-        modelData.company = company;
-        setCompanyVatPercentage(Number(company.vat));
-      }
-    } catch (err) {
-      console.log(err);
-    }
   };
 
   const handleFinanceChange = () => {
@@ -150,8 +140,8 @@ const PcFormPage = ({ id }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subTotalAmount, includeVat]);
 
-  if ((id && documentIsLoading) || (!id && projectsIsLoading)) return <Loading />;
-  if ((id && documentError) || (!id && projectsError)) return null;
+  if ((id && documentIsLoading) || (!id && projectsIsLoading) || (!id && companyIsLoading)) return <Loading />;
+  if ((id && documentError) || (!id && projectsError) || (!id && companyError)) return null;
 
   let projects: Project[] = projectsData?.projects?.data || [];
   let projectsOptions = getOptions(projects, "Select Project");
