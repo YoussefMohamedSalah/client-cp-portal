@@ -295,11 +295,11 @@ export const PagesRender = ({
         return <TenderFormPage id={id ? id : null} />;
       case PAGES.TASKS:
         return <Tasks />;
-      case PAGES.TASK:
-        return <TaskFormPage id={id ? id : null} />;
 
       // case PAGES.INVENTORY:
       // 	return <Inventory />;
+      // case PAGES.TASK:
+      //   return <TaskFormPage id={id ? id : null} />;
 
       // case PAGES.DCC:
       // 	return <Dcc />;
