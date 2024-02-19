@@ -25,6 +25,7 @@ const DocumentSettings = () => {
   if (error) return null;
 
   let workFlowData: CompanyWorkFlow = data?.workflow?.data || ({} as CompanyWorkFlow);
+  console.log(workFlowData.default_po_conditions);
   let poWorkFlow: WorkFlow[] = workFlowData.purchase_order_flow || ([] as WorkFlow[]);
   let pcWorkFlow: WorkFlow[] = workFlowData.petty_cash_request_flow || ([] as WorkFlow[]);
   let materialWorkFlow: WorkFlow[] = workFlowData.material_request_flow || ([] as WorkFlow[]);
@@ -64,7 +65,7 @@ const DocumentSettings = () => {
       tabName: "Purchase Order",
       tabKey: DOCUMENT_TYPE.PURCHASE_ORDER,
       workFlow: poWorkFlow,
-      defaultConditions: workFlowData.default_po_conditions,
+      defaultConditions:workFlowData.default_po_conditions,          // test condition ["condition 1"]
     },
     {
       key: "Pc",

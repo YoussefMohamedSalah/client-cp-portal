@@ -189,6 +189,7 @@ const ProjectFormPage = ({ id }: Props) => {
       key: ProjectKeys.LATITUDE,
       value: modelData?.latitude!,
       onChange: (value: string) => handleModelData(ProjectKeys.LATITUDE, value),
+      required: true,
     },
     {
       label: "LONGITUDE",
@@ -198,6 +199,7 @@ const ProjectFormPage = ({ id }: Props) => {
       value: modelData?.longitude!,
       onChange: (value: string) => handleModelData(ProjectKeys.LONGITUDE, value),
       placeholder: "",
+      required: true,
     },
     {
       type: "textarea",
