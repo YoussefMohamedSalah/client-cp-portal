@@ -29,6 +29,7 @@ const Projects: React.FC = () => {
     }
   };
 
+
   return (
     <>
       <div className="container-fluid">
@@ -47,6 +48,7 @@ const Projects: React.FC = () => {
             </div>
           ))}
         </div>
+        
       </div>
     </>
   );

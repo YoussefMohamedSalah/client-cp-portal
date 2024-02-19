@@ -23,15 +23,36 @@ import { Customer } from "types/Customer";
 import { getOptions } from "utils/GetOptions";
 import { Employee } from "types/Employee";
 
+
 interface Props {
   id?: string;
 }
+
 
 const ProjectFormPage = ({ id }: Props) => {
   const [initialized, setInitialized] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(id ? true : false);
   // -----
-  const [modelData, setModelData] = useState<Project>({} as Project);
+  const [modelData, setModelData] = useState<Project>(
+    {
+      name:"",
+      latitude:0,
+      longitude:0,
+      description:"",
+      bid_value:0,
+      total_budget:0,
+      po_budget:0,
+      pc_budget:0,
+      staff_budget:0,
+      subcontractor_budget:0,
+      contract_number:"",
+      contract_date:"",
+      delivery_date:"",
+      sites_count:0,
+      buildings_count:0,
+      floors_count:0,
+
+    } as Project);
   const [isModal, setIsModal] = useState<boolean>(false);
   // -----
   const { mutateAsync: createMutation } = useCreateProject();
@@ -105,38 +126,28 @@ const ProjectFormPage = ({ id }: Props) => {
 
   const handleReset = () => {
     setModelData({
-      ...modelData,
-      name: "",
-      description: "",
-      customer_details: { id: "", name: "" },
-      kpi: 0,
-      longitude: 0,
-      latitude: 0,
-      bid_value: 0,
-      duration: 0,
-      project_status: "",
-      delivery_date: `${getFormattedTodayDate()}`,
-      contract_date: `${getFormattedTodayDate()}`,
-      contract_number: "",
-      sites_count: 0,
-      buildings_count: 0,
-      floors_count: 0,
-      total_budget: 0,
-      po_budget: 0,
-      po_expenses: 0,
-      pc_budget: 0,
-      pc_expenses: 0,
-      staff_budget: 0,
-      staff_expenses: 0,
-      subcontractor_budget: 0,
-      subcontractor_expenses: 0,
-      comments: [{ id: 0, userId: "", userName: "", comment: "", createdAt: "" }],
-      comments_count: 0,
-      members_count: 0,
-      manager: { id: "", name: "" },
-      assistants: [],
-    });
+        ...modelData,
+          name:"",
+          latitude:0,
+          longitude:0,
+          description:"",
+          bid_value:0,
+          total_budget:0,
+          po_budget:0,
+          pc_budget:0,
+          staff_budget:0,
+          subcontractor_budget:0,
+          contract_number:"",
+          contract_date:"",
+          delivery_date:"",
+          sites_count:0,
+          buildings_count:0,
+          floors_count:0,
+    
+        
+    })
   };
+
 
   const formFields: IField[] = [
     {
@@ -341,22 +352,26 @@ const ProjectFormPage = ({ id }: Props) => {
 
   // MAIN ACTIONS
   const handleCreate = async () => {
-    let numbersToValidate = ProjectNumKeys;
-    let stringsToValidate = ProjectStrKeys;
-    let requiredToValidate = ProjectRequiredKeys;
+    // let numbersToValidate = ProjectNumKeys;
+    // let stringsToValidate = ProjectStrKeys;
+    // let requiredToValidate = ProjectRequiredKeys;
 
-    const validationData: inputsValidationType = {
-      requiredToValidate,
-      numbersToValidate,
-      stringsToValidate,
-      inputs: modelData,
-    };
+    // const validationData: inputsValidationType = {
+    //   requiredToValidate,
+    //   numbersToValidate,
+    //   stringsToValidate,
+    //   inputs: modelData,
+    // };
 
+    // let errors = validateInputs(validationData);
+    // if (errors.length > 0) return showError(errors);
+    
     let errors = validateInputs(validationData);
     if (errors.length > 0) return showError(errors);
 
     try {
       let createInput = projectInput(modelData);
+      console.log(createInput);
       await createMutation(createInput);
       push("/" + PAGES.PROJECTS);
       showSuccess();
