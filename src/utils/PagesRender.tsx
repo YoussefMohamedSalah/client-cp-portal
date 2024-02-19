@@ -150,7 +150,7 @@ const TenderFormPage = lazy(() => import("../screens/Tenders/TenderFormPage"));
 // const EmployeeProfile = lazy(() => import("../Profile/EmployeeProfile"));
 
 // const EnquiresDetail = lazy(() => import("../Tickets/TicketsDetail"));
-// const Notifications = lazy(() => import("../Notifications/Notifications"));
+const Notifications = lazy(() => import("../screens/Notifications/Notifications"));
 
 export interface PagesRenderProps {
   slug: string | null;
@@ -298,8 +298,8 @@ export const PagesRender = ({
       // case PAGES.DCC:
       // 	return <Dcc />;
 
-      // case PAGES.NOTIFICATIONS:
-      // 	return <Notifications />
+      case PAGES.NOTIFICATIONS:
+      	return <Notifications />
       // case PAGES.DCC:
       //   return <ComingSoon />;
 
