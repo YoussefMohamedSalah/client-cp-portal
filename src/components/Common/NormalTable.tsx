@@ -79,4 +79,6 @@ function NormalTable<T extends Customer | Supplier | Employee | Subcontractor>({
   );
 }
 
+
+
 export default NormalTable;

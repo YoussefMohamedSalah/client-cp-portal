@@ -1,10 +1,12 @@
 export function filterData(data: any[], selectedTerm: string, searchValue: string): any[] {
+
   return data?.filter((row) => {
+
     switch (selectedTerm) {
       case "name":
-        return row?.user?.name!.toLowerCase().includes(searchValue.toLowerCase());
+        return row?.name!.toLowerCase().includes(searchValue.toLowerCase());
       case "code":
-        return row.code.toLowerCase().includes(searchValue.toLowerCase());
+        return row?.code.toLowerCase().includes(searchValue.toLowerCase());
       case "date":
         return row.date.toLowerCase().includes(searchValue.toLowerCase());
       default:
@@ -12,3 +14,4 @@ export function filterData(data: any[], selectedTerm: string, searchValue: strin
     }
   });
 }
+

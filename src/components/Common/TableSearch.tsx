@@ -18,6 +18,7 @@ const TableSearch: React.FC<Props> = ({ data, terms, classNameContainer, onSearc
   const handleClearFilters = () => {
     setSearchValue("");
     setSelectedTerm(terms ? terms[0]! : "name");
+    onSearchFilter(originalData);
   };
 
   useEffect(() => {
@@ -30,9 +31,13 @@ const TableSearch: React.FC<Props> = ({ data, terms, classNameContainer, onSearc
 
   useEffect(() => {
     if (originalData && searchValue) {
+      
       let filtered = filterData(originalData, selectedTerm, searchValue);
       onSearchFilter(filtered);
+    }  else if (!searchValue || searchValue.length === 0) {
+      onSearchFilter(originalData);
     }
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue, selectedTerm]);
 
