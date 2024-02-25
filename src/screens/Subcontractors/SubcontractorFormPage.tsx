@@ -58,7 +58,7 @@ const SubcontractorFormPage = ({ id }: Props) => {
   // !Assuming this is CREATE Modal
   useEffect(() => {
     if (!isEdit) {
-      modelData.subcontractor_type = SUBCONTRACTOR_TYPE.COMPANY
+      modelData.subcontractor_type = SUBCONTRACTOR_TYPE.COMPANY;
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -236,7 +236,7 @@ const SubcontractorFormPage = ({ id }: Props) => {
     };
 
     let errors = validateInputs(validationData);
-    console.log(errors)
+    console.log(errors);
     if (errors.length > 0) return showError(errors);
 
     try {

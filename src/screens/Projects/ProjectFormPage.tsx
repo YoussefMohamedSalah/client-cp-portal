@@ -53,6 +53,13 @@ const ProjectFormPage = ({ id }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
+
+
+  // create [], update [assistant, assistant]
+
+
+
+
   // !Assuming this is CREATE Modal
   useEffect(() => {
     if (!isEdit) {
@@ -178,8 +185,8 @@ const ProjectFormPage = ({ id }: Props) => {
       placeholder: "Assign Assistants",
       key: ProjectKeys.ASSISTANTS,
       value: modelData.assistants! || [],
-      onChange: (value: string) => handleModelData(ProjectKeys.ASSISTANTS, value),
-      options: employeesOptions,
+      onChange: (value: string) => handleModelData(ProjectKeys.ASSISTANTS, value), // [em, em, em]
+      options: employeesOptions, // label , value
       required: false,
     },
     {

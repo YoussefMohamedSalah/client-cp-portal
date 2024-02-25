@@ -45,8 +45,8 @@ export interface Project {
   manager: { id: string; name: string };
   daily_report_groups: { groupId: string; groupName: string; employees: string[] }[];
   company: Company;
-  assistants?: Employee[];
   members: any[];
+  assistants?: Employee[];
   managers: Employee[];
   users: Employee[];
   customer: Customer;

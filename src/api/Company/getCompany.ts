@@ -16,7 +16,6 @@ export const getCompanyDetails = async ({ queryKey }: any) => {
   const { data } = await http.get(ROUTES.COMPANY);
   if (data) localStorage.setItem("company", JSON.stringify(data));
   return { company: { data: data as Company } };
-
 };
 
 export const useCompanyDetailsQuery = (options: any) => {
