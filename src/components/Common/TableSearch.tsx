@@ -31,13 +31,12 @@ const TableSearch: React.FC<Props> = ({ data, terms, classNameContainer, onSearc
 
   useEffect(() => {
     if (originalData && searchValue) {
-      
       let filtered = filterData(originalData, selectedTerm, searchValue);
       onSearchFilter(filtered);
-    }  else if (!searchValue || searchValue.length === 0) {
+    } else if (!searchValue || searchValue?.length! === 0) {
       onSearchFilter(originalData);
     }
-    
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchValue, selectedTerm]);
 
@@ -72,8 +71,8 @@ const TableSearch: React.FC<Props> = ({ data, terms, classNameContainer, onSearc
                   <Dropdown.Menu className="dropdown-menu shadow border-0">
                     {terms?.map((term, index) => (
                       <li key={index}>
-                        <span className="dropdown-item" onClick={() => setSelectedTerm(`${term?.toLowerCase()}`)}>
-                          {term?.toUpperCase()}
+                        <span className="dropdown-item" onClick={() => setSelectedTerm(`${term?.toLowerCase()!}`)}>
+                          {term?.toUpperCase()!}
                         </span>
                       </li>
                     ))}
