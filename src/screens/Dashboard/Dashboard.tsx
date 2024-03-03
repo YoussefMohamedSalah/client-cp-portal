@@ -4,6 +4,7 @@ import { EmployeeInfoChartData, TotalEmployeesChartData } from "components/Data/
 import Loading from "components/UI/Loading";
 import { useAdminDashboardQuery } from "api/Dashboard/Dashboard";
 import { Dashboard as DashboardType } from "types/Dashboard";
+import Container from "components/UI/Container";
 
 const Dashboard: React.FC = () => {
   const { isLoading, error, data } = useAdminDashboardQuery({});
@@ -17,10 +18,11 @@ const Dashboard: React.FC = () => {
   let chartData = TotalEmployeesChartData;
   chartData.options.labels = chartOptions;
   chartData.options.series = chartSeries;
+
   return (
     <>
       {dashboard ? (
-        <div className="container-xxl">
+        <Container>
           <div className="row clearfix g-3">
             <div className="col-xl-8 col-lg-12 col-md-12 flex-column">
               <div className="row g-3">
@@ -30,9 +32,9 @@ const Dashboard: React.FC = () => {
                 <div className="col-md-6"></div>
                 <div className="col-md-12">
                   {/* <GeneralChartCard
-                                        Title="Top Sources"
-                                        data={TopHiringSourcesChartData}
-                                    /> */}
+                        Title="Top Sources"
+                        data={TopHiringSourcesChartData}
+                    /> */}
                 </div>
               </div>
             </div>
@@ -47,7 +49,7 @@ const Dashboard: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </Container >
       ) : (
         <Loading />
       )}
