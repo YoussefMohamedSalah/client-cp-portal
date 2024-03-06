@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { STATUS } from "enums/enums";
-import SmallCard from "components/UI/SmallCard";
+import SmallCard, { SmallCardProps } from "components/UI/SmallCard";
 import { PettyCashRequest } from "types/Pc_request";
 import { PurchaseOrderRequest } from "types/Po_request";
 import { EmployeeRequest } from "types/Employee_request";
@@ -9,23 +9,15 @@ import { SiteRequest } from "types/Site_request";
 import { Contract } from "types/Contract";
 import { Invoice } from "types/Invoice";
 
-interface SmallCardProps {
-  title: string;
-  color: string;
-  value: any;
-  iconClass: string;
-  onClick: () => void;
-}
-
 interface Props<
   T extends
-    | PettyCashRequest
-    | PurchaseOrderRequest
-    | EmployeeRequest
-    | MaterialRequest
-    | SiteRequest
-    | Contract
-    | Invoice,
+  | PettyCashRequest
+  | PurchaseOrderRequest
+  | EmployeeRequest
+  | MaterialRequest
+  | SiteRequest
+  | Contract
+  | Invoice,
 > {
   data: T[];
   onFilter: (filtered: T[]) => void;
@@ -33,13 +25,13 @@ interface Props<
 
 function TableCards<
   T extends
-    | PettyCashRequest
-    | PurchaseOrderRequest
-    | EmployeeRequest
-    | MaterialRequest
-    | SiteRequest
-    | Contract
-    | Invoice,
+  | PettyCashRequest
+  | PurchaseOrderRequest
+  | EmployeeRequest
+  | MaterialRequest
+  | SiteRequest
+  | Contract
+  | Invoice,
 >({ data, onFilter }: Props<T>) {
   const [filterData, setFilterData] = useState<T[]>(data || []);
 
@@ -72,35 +64,40 @@ function TableCards<
   const cardsData: SmallCardProps[] = [
     {
       title: "All",
-      color: "bg-info",
+      fColor: "text-white",
+      bgColor: "bg-info",
       value: `Data Count: ${allData.length || 0}`,
       iconClass: "icofont-data fs-3",
       onClick: () => handleFilter("All"),
     },
     {
       title: "Archived",
-      color: "bg-black",
+      fColor: "text-white",
+      bgColor: "bg-black",
       value: `Data Count: ${archived.length || 0}`,
       iconClass: "icofont-data fs-3",
       onClick: () => handleFilter(STATUS.ARCHIVED),
     },
     {
       title: "Approved",
-      color: "bg-success",
+      fColor: "text-white",
+      bgColor: "bg-success",
       value: `Data Count: ${approved.length || 0}`,
       iconClass: "icofont-data fs-3",
       onClick: () => handleFilter(STATUS.APPROVED),
     },
     {
       title: "Pending",
-      color: "bg-primary",
+      fColor: "text-white",
+      bgColor: "bg-primary",
       value: `Data Count: ${pending.length || 0}`,
       iconClass: "icofont-data fs-3",
       onClick: () => handleFilter(STATUS.PENDING),
     },
     {
       title: "Rejected",
-      color: "bg-danger",
+      fColor: "text-white",
+      bgColor: "bg-danger",
       value: `Data Count: ${rejected.length || 0}`,
       iconClass: "icofont-data fs-3",
       onClick: () => handleFilter(STATUS.REJECTED),
@@ -114,7 +111,8 @@ function TableCards<
           <span key={index}>
             <SmallCard
               title={card.title}
-              backgroundColor={card.color}
+              bgColor={card.bgColor}
+              fColor={card.fColor}
               value={card.value}
               iconClass={card.iconClass}
               onClick={card.onClick}

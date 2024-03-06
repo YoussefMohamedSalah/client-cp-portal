@@ -32,7 +32,6 @@ const ValidationTextField = styled(TextField)({
 interface Props {
   label?: string;
   type?: string;
-  key?: string;
   value: any;
   width?: string;
   rows?: number;
@@ -47,10 +46,10 @@ interface Props {
   onChange: (value: string | any) => void;
 }
 
-const MultilineTextInput = ({ label, onChange, defaultValue, value, required, disabled, hidden, rows, key }: Props) => {
+const MultilineTextInput = ({ label, onChange, defaultValue, value, required, disabled, hidden, rows }: Props) => {
   return (
     <ValidationTextField
-      id={`text-area-${key}`}
+      id={`text-area-${label}`}
       label={label}
       placeholder={label}
       sx={{ margin: "8px 0" }}

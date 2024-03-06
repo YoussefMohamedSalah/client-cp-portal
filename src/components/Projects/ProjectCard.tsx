@@ -20,6 +20,7 @@ import {
   AccessTimeOutlinedIcon,
   EditOutlinedIcon,
 } from "components/Icons/MuiIcons";
+import { projectStatusBg, projectStatusVariant } from "utils/ProjectsUtils";
 
 interface Props {
   project: Project;
@@ -40,7 +41,6 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 
 const ProjectCard = ({ project, onDelete }: Props) => {
   const [isModal, setIsModal] = useState<boolean>(false);
-
   const { push } = useApp();
   return (
     <div className="grey-bg container-fluid">
@@ -57,8 +57,8 @@ const ProjectCard = ({ project, onDelete }: Props) => {
                         className="d-flex gap-3 align-items-center pointer"
                         onClick={() => push("/" + PAGES.PROJECT_INFO + "/" + project.id)}>
                         <h3 className="primary">{project.name}</h3>
-                        <span className="small bg-success text-white py-1 px-2 rounded align-self-start">
-                          {project?.project_status!}
+                        <span className={`small ${projectStatusBg(project?.project_status!)} py-1 px-2 rounded align-self-start`}>
+                          {project?.project_status! || ""}
                         </span>
                       </div>
                     </div>
@@ -121,10 +121,10 @@ const ProjectCard = ({ project, onDelete }: Props) => {
                     <span className="pb-1">progress</span>
                     <ProgressBar style={{ height: "7px", marginTop: "3px" }}>
                       <ProgressBar
-                        variant="success"
+                        variant={projectStatusVariant(project?.project_status!)}
                         now={15}
                         style={{
-                          width: `${calculateProjectPercentage(project?.contract_date!, project?.delivery_date!)}30%`,
+                          width: `${calculateProjectPercentage(project?.contract_date!, project?.delivery_date!)}%`,
                         }}
                       />
                     </ProgressBar>

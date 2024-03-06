@@ -56,6 +56,7 @@ export enum ROUTES {
   COMMENT = "comment/",
   PROJECT_EMPLOYEES = "project/employees/",
   WORKFLOW = "workflow/",
+  DEFAULT_CONDITIONS = "workflow/conditions/",
   SUBCONTRACTOR = "subcontractor/",
   CONTRACT_INVOICES = "contract/invoices/",
   // !----- Requests Endpoints ----

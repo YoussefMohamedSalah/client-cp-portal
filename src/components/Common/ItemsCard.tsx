@@ -49,7 +49,6 @@ function ItemsCard<T extends ItemProps>({
                         <div className="w-100">
                           <MultilineTextInput
                             label="Description"
-                            key={"description"}
                             placeholder="Description"
                             rows={1}
                             value={item.description}
