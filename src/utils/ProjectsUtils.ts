@@ -1,4 +1,5 @@
 import { ProjectStatus } from "enums/enums";
+import { IOption } from "types/Option";
 import { Project } from "types/Project";
 
 export const calculateRemainingAmount = (thisInvoiceAmount: number, expenses: number, budget: number): number => {
@@ -43,3 +44,13 @@ export const totalProjectExpenses = (project: Project) => {
 
   return po_expenses + pc_expenses + subcontractor_expenses + staff_expenses;
 }
+
+export const getProjectProgressOptions = (data: any[]): IOption[] => {
+  let options = data.map((option) => {
+    return {
+      label: option.date,
+      value: option.percentage,
+    };
+  });
+  return options;
+};

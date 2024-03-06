@@ -138,7 +138,10 @@ const ProjectCard = ({ project, onDelete }: Props) => {
       <DeleteModal
         show={isModal}
         onClose={() => setIsModal(false)}
-        onDelete={() => onDelete(project.id)}
+        onDelete={() => {
+          setIsModal(false);
+          onDelete(project.id);
+        }}
         message={`Are you sure you want to delete ${project.name} ?`}
         modalHeader={`Delete ${project.name}`}
       />

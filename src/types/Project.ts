@@ -51,6 +51,8 @@ export interface Project {
   users: Employee[];
   customer: Customer;
   tasks?: any[];
+  progress?: { date: string, percentage: number }[];
+  total_progress_percentage: number;
   inventory: Inventory;
   SiteRequests: SiteRequest[];
   PettyCashRequests: PettyCashRequest[];

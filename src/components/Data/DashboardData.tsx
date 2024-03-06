@@ -253,7 +253,7 @@ export const ClientInvoicesData: any = {
   columns: [
     {
       name: "NO",
-      selector: () => {},
+      selector: () => { },
       sortable: true,
       cell: (row: any) => (
         <a href="invoices" className="fw-bold text-secondary">
@@ -271,13 +271,12 @@ export const ClientInvoicesData: any = {
     { name: "AMOUNT", selector: (row: any) => row.amount, sortable: true },
     {
       name: "STATUS",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: (row: any) => (
         <span
-          className={`badge ${
-            row.status === "Paid" ? "bg-success" : row.status === "Pending" ? `bg-warning` : "bg-lavender-purple"
-          }`}>
+          className={`badge ${row.status === "Paid" ? "bg-success" : row.status === "Pending" ? `bg-warning` : "bg-lavender-purple"
+            }`}>
           {row.status}
         </span>
       ),
@@ -369,3 +368,139 @@ export const InvoiceData: any = [
     appliedData: "18 Feb, 2021",
   },
 ];
+
+
+
+// DON'T CHANGE
+export const ProjectExpensesChartData: any = {
+  options: {
+    align: "center",
+    series: [12, 12, 12, 21],
+    responsive: [
+      {
+        breakpoint: 420,
+        options: {
+          chart: { width: "100%", align: "center" },
+          legend: {
+            position: "bottom",
+            markers: { fillColors: "var(--chart-color1)" },
+            labels: { colors: "var(--chart-color1)" },
+          },
+        },
+      },
+    ],
+    chart: { height: 270, type: "polarArea", toolbar: { show: true } },
+    labels: [],
+    fill: {
+      opacity: 1,
+      colors: [
+        "var(--chart-color5)",
+        "var(--chart-color2)",
+        "var(--chart-color3)",
+        "var(--chart-color4)",
+      ],
+    },
+    stroke: { width: 1, colors: undefined },
+    yaxis: { show: false },
+    legend: { position: "bottom", horizontalAlign: "center" },
+    plotOptions: { polarArea: { rings: { strokeWidth: 0 } } },
+    theme: {
+      monochrome: { enabled: true, shadeTo: "light", shadeIntensity: 0.6 },
+    },
+  },
+};
+
+export const ProjectProgressChartData: any = {
+  options: {
+    series: [{ name: "Percentage", data: [] }],
+    chart: { height: 222, type: "line", toolbar: { show: true } },
+    grid: {
+      show: true,
+      xaxis: { lines: { show: true } },
+      yaxis: { lines: { show: true } },
+    },
+    stroke: { width: 4, curve: "smooth", colors: ["var(--chart-color2)"] },
+    xaxis: {
+      type: "datetime",
+      categories: [],
+      tickAmount: 10,
+      labels: {
+        formatter: function (value: any, timestamp: any, opts: any) {
+          return opts.dateFormatter(new Date(timestamp), "dd MMM");
+        },
+      },
+    },
+    fill: {
+      type: "gradient",
+      gradient: {
+        shade: "dark",
+        gradientToColors: ["var(--chart-color3)"],
+        shadeIntensity: 1,
+        type: "horizontal",
+        opacityFrom: 1,
+        opacityTo: 1,
+        stops: [0, 100, 100, 100],
+      },
+    },
+    markers: {
+      size: 3,
+      colors: ["#FFA41B"],
+      strokeColors: "#ffffff",
+      strokeWidth: 2,
+      hover: { size: 7 },
+    },
+    yaxis: { show: true, min: 0, max: 100 },
+  },
+};
+
+export const ProjectKPIChartData: any = {
+  options: {
+    series: [{ name: "Available", data: [4, 19, 7, 35, 14, 27, 9, 12] }],
+    chart: { height: 98, type: "line", toolbar: { show: true } },
+    grid: {
+      show: false,
+      xaxis: { lines: { show: false } },
+      yaxis: { lines: { show: false } },
+    },
+    stroke: { width: 4, curve: "smooth", colors: ["var(--chart-color2)"] },
+    xaxis: {
+      type: "datetime",
+      categories: [
+        "1/11/2023",
+        "2/11/2023",
+        "3/11/2023",
+        "4/11/2023",
+        "5/11/2023",
+        "6/11/2023",
+        "7/11/2023",
+        "8/11/2023",
+      ],
+      tickAmount: 10,
+      labels: {
+        formatter: function (value: any, timestamp: any, opts: any) {
+          return opts.dateFormatter(new Date(timestamp), "dd MMM");
+        },
+      },
+    },
+    fill: {
+      type: "gradient",
+      gradient: {
+        shade: "dark",
+        gradientToColors: ["var(--chart-color3)"],
+        shadeIntensity: 1,
+        type: "horizontal",
+        opacityFrom: 1,
+        opacityTo: 1,
+        stops: [0, 100, 100, 100],
+      },
+    },
+    markers: {
+      size: 3,
+      colors: ["#FFA41B"],
+      strokeColors: "#ffffff",
+      strokeWidth: 2,
+      hover: { size: 7 },
+    },
+    yaxis: { show: false, min: -10, max: 50 },
+  },
+};

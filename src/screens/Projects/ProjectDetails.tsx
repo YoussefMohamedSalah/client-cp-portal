@@ -1,5 +1,6 @@
 import { useProjectDetailsQuery } from "api/Projects/getProjectDetails";
 import PageHeader from "components/Common/PageHeader";
+import ProjectCharts from "components/Projects/ProjectCharts";
 import Loading from "components/UI/Loading";
 import SmallCard from "components/UI/SmallCard";
 import { PAGES } from "constants/pages";
@@ -7,7 +8,9 @@ import useApp from "hooks/useApp";
 import React from "react";
 import { Project } from "types/Project";
 import { getShortString } from "utils/Helpers";
-import { totalProjectExpenses } from "utils/ProjectsUtils";
+import { getProjectProgressOptions, totalProjectExpenses } from "utils/ProjectsUtils";
+import { IOption } from 'types/Option';
+
 
 interface Props {
   id: string;
@@ -21,6 +24,16 @@ const ProjectDetails = ({ id }: Props) => {
   if ((id && projectError)) return null;
   let project: Project = projectData?.project.data! || {} as Project;
 
+
+  const data: IOption[] = [
+    { label: "PO", value: Number(project.po_expenses) },
+    { label: "PC", value: Number(project.pc_expenses) },
+    { label: "Subcontractors", value: Number(project.subcontractor_expenses) },
+    { label: "Staff", value: Number(project.staff_expenses) },
+  ]
+
+  const projectProgress = getProjectProgressOptions(project?.progress! || [])
+  console.log(projectProgress)
 
   return (
     <>
@@ -68,9 +81,23 @@ const ProjectDetails = ({ id }: Props) => {
                     />
                   </div>
 
+                  {data.map((item, index: number) => {
+                    return (
+                      <div className={`col-md-3`} key={index}>
+                        <SmallCard
+                          title={`${item.label} Expenses`}
+                          value={`${Number(item.value).toFixed(2)} SAR`}
+                          bgColor={""}
+                          iconClass={"icofont-riyal fs-2"}
+                          onClick={() => console.log("")}
+                        />
+                      </div>
+                    )
+                  })}
 
 
-                  <div className={`col-md-3`}>
+
+                  {/* <div className={`col-md-3`}>
                     <SmallCard
                       title={"PO Expenses"}
                       value={`${Number(project.po_expenses)!.toFixed(2)} SAR`}
@@ -105,9 +132,7 @@ const ProjectDetails = ({ id }: Props) => {
                       iconClass={"icofont-riyal fs-2"}
                       onClick={() => console.log("")}
                     />
-                  </div>
-
-
+                  </div> */}
                   {/* <div
                     className={`col-md-4`}>
                     <SmallCard
@@ -161,6 +186,7 @@ const ProjectDetails = ({ id }: Props) => {
             </div>
           </div>
         </div>
+        <ProjectCharts projectName={project.name!} projectExpensesData={data} totalExpenses={`${totalProjectExpenses(project).toFixed(2)} SAR`} projectProgressData={projectProgress} totalProgress={`${project.total_progress_percentage} %`} />
       </div>
     </>
   );
