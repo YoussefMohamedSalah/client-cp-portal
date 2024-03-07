@@ -53,27 +53,23 @@ const ProjectDetails = ({ id }: Props) => {
                     <SmallCard
                       title={"Customer"}
                       value={getShortString(project.customer_details?.name!, 42)}
-                      bgColor={""}
                       iconClass={"icofont-user-alt-1 fs-2"}
-                      onClick={() => console.log("")}
+                      onClick={() => push("/" + PAGES.CUSTOMER_INFO + "/" + project.customer_details?.id!)}
                     />
                   </div>
                   <div className={`col-md-4`}>
                     <SmallCard
                       title={"Manager"}
                       value={getShortString(project.manager?.name!, 42)}
-                      bgColor={""}
                       iconClass={"icofont-user-alt-1 fs-2"}
-                      onClick={() => console.log("")}
+                      onClick={() => push("/" + PAGES.EMPLOYEE_INFO + "/" + project.manager?.id!)}
                     />
                   </div>
                   <div className={`col-md-4`}>
                     <SmallCard
                       title={"Total Expenses"}
                       value={`${totalProjectExpenses(project).toFixed(2)} SAR`}
-                      bgColor={""}
                       iconClass={"icofont-riyal fs-2"}
-                      onClick={() => console.log("")}
                     />
                   </div>
                   {data.map((item, index: number) => {
@@ -82,7 +78,6 @@ const ProjectDetails = ({ id }: Props) => {
                         <SmallCard
                           title={`${item.label} Expenses`}
                           value={`${Number(item.value).toFixed(2)} SAR`}
-                          bgColor={""}
                           iconClass={"icofont-riyal fs-2"}
                           onClick={() => console.log("")}
                         />
