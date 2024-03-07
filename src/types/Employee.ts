@@ -22,7 +22,7 @@ export interface Employee {
   sign: string;
   avatar: any;
   is_verified: boolean;
-  department?: string;
+  department: { id: string; name: string };
   department_info?: { id: string; name: string };
   projects?: Project[];
   permissions?: string[];
@@ -34,6 +34,7 @@ export interface Employee {
   joining_date: string;
   groups?: any[];
   iban_number: number | null;
+  projects_info: Project[];
 }
 
 export interface SelectedEmployee {
