@@ -8,15 +8,67 @@ const ClientTaskCard: React.FC = () => {
   if (isLoading) return <Loading />;
   if (error) return null;
 
-  let tasksData: any = data?.tasks?.data || [];
-  let companyTasks: Task[] = tasksData?.companyTasks!;
-  let groupsTasks: Task[] = tasksData?.groupsTasks!;
-  let individualTasks: Task[] = tasksData?.individualTasks!;
-  let tasks: Task[] = [];
-  if (companyTasks) tasks = [...tasks, ...companyTasks];
-  if (groupsTasks) tasks = [...tasks, ...groupsTasks];
-  if (individualTasks) tasks = [...tasks, ...individualTasks];
+  // let tasksData: any = data?.tasks?.data || [];
+  // let companyTasks: Task[] = tasksData?.companyTasks!;
+  // let groupsTasks: Task[] = tasksData?.groupsTasks!;
+  // let individualTasks: Task[] = tasksData?.individualTasks!;
+  // let tasks: Task[] = [];
+  // if (companyTasks) tasks = [...tasks, ...companyTasks];
+  // if (groupsTasks) tasks = [...tasks, ...groupsTasks];
+  // if (individualTasks) tasks = [...tasks, ...individualTasks];
 
+  console.log('tasks' ,data );
+
+ const tasks= [{
+  id: 'kk',
+  name: 'task 1',
+  description: 'task 1 description',
+  task_priority: 'critical',
+  // files?: File[];
+  start_at: '1/1/2023',//?
+  end_at: '10/9/2024',//?
+  assigned_to: 'assigned_to', //?
+  task_type: 'task_type',
+  // thumbnail?: File;
+  // project: Project;
+},{
+  id: '22',
+  name: '22',
+  description: '22',
+  task_priority: 'high',
+  // files?: File[];
+  start_at: '22',//?
+  end_at: '22',//?
+  assigned_to: '22', //?
+  task_type: '22',
+  // thumbnail?: File;
+  // project: Project;
+},{
+  id: '22',
+  name: '22',
+  description: '22',
+  task_priority: '22',
+  // files?: File[];
+  start_at: '22',//?
+  end_at: '22',//?
+  assigned_to: '22', //?
+  task_type: '22',
+  // thumbnail?: File;
+  // project: Project;
+},{
+  id: '22',
+  name: '22',
+  description: '22',
+  task_priority: '22',
+  // files?: File[];
+  start_at: '22',//?
+  end_at: '22',//?
+  assigned_to: '22', //?
+  task_type: '22',
+  // thumbnail?: File;
+  // project: Project;
+},
+]
   return (
     <div className="card mb-3">
       <div className="card-header py-3">
@@ -28,7 +80,7 @@ const ClientTaskCard: React.FC = () => {
             <div className="dd container horizontal-scrollable overflow-x-scroll " data-plugin="nestable">
               <div className="d-flex g-3 mb-3">
                 <>
-                  {tasks.map((task, index) => {
+                  {tasks?.map((task, index) => {
                     return (
                       <>
                         <div

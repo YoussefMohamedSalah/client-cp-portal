@@ -13,6 +13,7 @@ export enum PAGES {
   TASK = "task",
   Task_INFO = "task_rev",
   PROFILE = "profile",
+  PERSONAL_PROFILE='personal_profile',
   TENDERS = "tenders",
   SETTINGS = "settings",
   INVOICES = "invoices",

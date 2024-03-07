@@ -9,10 +9,11 @@ import { useUI } from "contexts/UIContext";
 
 interface Props {
   user: SelectedEmployee;
+  personal?:Boolean;
 }
 const INITIAL_STATE: ResetPasswordInput = { oldPassword: "", newPassword1: "", newPassword2: "" };
 
-const EmployeeProfileCard: React.FC<Props> = ({ user }) => {
+const EmployeeProfileCard: React.FC<Props> = ({ user ,personal }) => {
   const [state, setState] = useState<ResetPasswordInput>(INITIAL_STATE);
   const [isModal, setIsModal] = useState<boolean>(false);
   const { oldPassword, newPassword1, newPassword2 } = state;
@@ -57,11 +58,6 @@ const EmployeeProfileCard: React.FC<Props> = ({ user }) => {
   return (
     <>
       <div className="card teacher-card mb-3">
-        <div className="d-flex justify-content-end">
-          <button type="button" className="btn p-3 position-absolute">
-            <i className="icofont-edit text-primary fs-6" />
-          </button>
-        </div>
         <div className="card-body d-flex teacher-fullDetail">
           <div className="profile-teacher pe-xl-4 pe-md-2 pe-sm-4 pe-4 text-center w220">
             <a href="#!">
@@ -81,10 +77,10 @@ const EmployeeProfileCard: React.FC<Props> = ({ user }) => {
             <div>
               <h6 className="mb-0 mt-2  fw-bold d-block fs-6">{user.name}</h6>
               <span className="py-1 fw-bold small-11 mb-0 mt-1 text-muted">{user.business_title}</span>
-              <p className="mt-2 small">
+              {/* <p className="mt-2 small">
                 The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page,
                 etc.) that doesn't distract from the layout. A practice not without controversy
-              </p>
+              </p> */}
               <div className="row g-2 pt-2">
                 <div className="col-xl-5">
                   <div className="d-flex align-items-center">
@@ -109,19 +105,34 @@ const EmployeeProfileCard: React.FC<Props> = ({ user }) => {
                 <div className="col-xl-5">
                   <div className="d-flex align-items-center">
                     <i className="icofont-address-book" />
-                    <span className="ms-2 small">{user.address ? user.address : "Add Personal Address"}</span>
+                    <span className="ms-2 small">{user.address ? user.address : "No Address Data"}</span>
                   </div>
                 </div>
+
+
+                <div className="col-xl-5">
+                  <div className="d-flex align-items-center">
+                  <i className="icofont-building-alt"></i>
+                  <span className="ms-2 small">
+                    {user?.department_info?.name ? user?.department_info?.name  : "No department Data"}
+                    </span>                   
+                </div>
+
+              </div>
+
+
+
+                
               </div>
             </div>
 
             <div className="d-flex w-100 gap-3 justify-content-lg-start justify-content-center pt-3 pt-xl-0 ">
-              <button
+             {personal&& <button
                 id="dropdown-basic"
                 className="btn btn-primary dropdown-toggle"
                 onClick={() => setIsModal(!isModal)}>
                 Change Password
-              </button>
+              </button>}
               <Modal centered show={isModal} size="sm" onHide={() => setIsModal(false)}>
                 <Modal.Body>
                   <div className="modal-body">
