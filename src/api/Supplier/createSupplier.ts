@@ -4,7 +4,7 @@ import { ROUTES } from "constants/routes";
 import { http } from "utils/Http";
 
 export const useCreateSupplier = () => {
-  return useMutation<any, Error, createSupplierInput>(async createInput => {
+  return useMutation<any, Error, createSupplierInput>(async (createInput) => {
     const { data } = await http.post(ROUTES.SUPPLIER, createInput);
     return { data: data as any };
   });
@@ -24,5 +24,5 @@ export const supplierInput = (data: createSupplierInput): any => {
     street: data.street,
     building_number: data.building_number,
     postal_code: data.postal_code,
-  }
+  };
 };

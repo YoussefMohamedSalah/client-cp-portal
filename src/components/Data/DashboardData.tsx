@@ -253,7 +253,7 @@ export const ClientInvoicesData: any = {
   columns: [
     {
       name: "NO",
-      selector: () => { },
+      selector: () => {},
       sortable: true,
       cell: (row: any) => (
         <a href="invoices" className="fw-bold text-secondary">
@@ -271,12 +271,13 @@ export const ClientInvoicesData: any = {
     { name: "AMOUNT", selector: (row: any) => row.amount, sortable: true },
     {
       name: "STATUS",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: true,
       cell: (row: any) => (
         <span
-          className={`badge ${row.status === "Paid" ? "bg-success" : row.status === "Pending" ? `bg-warning` : "bg-lavender-purple"
-            }`}>
+          className={`badge ${
+            row.status === "Paid" ? "bg-success" : row.status === "Pending" ? `bg-warning` : "bg-lavender-purple"
+          }`}>
           {row.status}
         </span>
       ),
@@ -369,8 +370,6 @@ export const InvoiceData: any = [
   },
 ];
 
-
-
 // DON'T CHANGE
 export const ProjectExpensesChartData: any = {
   options: {
@@ -393,12 +392,7 @@ export const ProjectExpensesChartData: any = {
     labels: [],
     fill: {
       opacity: 1,
-      colors: [
-        "var(--chart-color5)",
-        "var(--chart-color2)",
-        "var(--chart-color3)",
-        "var(--chart-color4)",
-      ],
+      colors: ["var(--chart-color5)", "var(--chart-color2)", "var(--chart-color3)", "var(--chart-color4)"],
     },
     stroke: { width: 1, colors: undefined },
     yaxis: { show: false },

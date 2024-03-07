@@ -1,6 +1,7 @@
 import { ProjectStatus } from "enums/enums";
 import { IOption } from "types/Option";
 import { Project } from "types/Project";
+import { calculateProjectPercentage } from "./Convert";
 
 export const calculateRemainingAmount = (thisInvoiceAmount: number, expenses: number, budget: number): number => {
   let availableAmount: number = calculateProjectAvailableAmount(expenses, budget);
@@ -25,15 +26,18 @@ export const projectStatusBg = (status: string) => {
   if (status === ProjectStatus.PENDING) return "bg-warning text-black";
   if (status === ProjectStatus.SUSPEND) return "bg-danger text-white";
   if (status === ProjectStatus.COMPLETED) return "bg-success text-white";
-}
+};
 
-export const projectStatusVariant = (status: string) => {
-  if (!status) return "";
-  if (status === ProjectStatus.IN_PROGRESS) return "primary";
-  if (status === ProjectStatus.PENDING) return "warning";
-  if (status === ProjectStatus.SUSPEND) return "danger";
-  if (status === ProjectStatus.COMPLETED) return "success";
-}
+export const projectStatusVariant = (project: Project) => {
+  const { total_progress_percentage, contract_date, delivery_date } = project;
+
+  if (total_progress_percentage && contract_date && delivery_date) {
+    let projectTimePercentage = calculateProjectPercentage(contract_date!, delivery_date!);
+    if (total_progress_percentage > projectTimePercentage) return "success";
+    else if (total_progress_percentage === projectTimePercentage) return "primary";
+    else if (total_progress_percentage < projectTimePercentage) return "danger";
+  } else return "primary";
+};
 
 export const totalProjectExpenses = (project: Project) => {
   if (!project) return 0;
@@ -43,7 +47,7 @@ export const totalProjectExpenses = (project: Project) => {
   let staff_expenses = Number(project.staff_expenses) || 0;
 
   return po_expenses + pc_expenses + subcontractor_expenses + staff_expenses;
-}
+};
 
 export const getProjectProgressOptions = (data: any[]): IOption[] => {
   let options = data.map((option) => {

@@ -15,7 +15,7 @@ const Header = ({ session }: Props) => {
   const { isLoading, error, data } = useNotificationsQuery({});
   const notifications: Notification[] = data?.notifications?.data! || ([] as Notification[]);
 
-  console.log(notifications)
+  console.log(notifications);
 
   return (
     <div className="header">

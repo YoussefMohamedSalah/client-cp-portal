@@ -30,7 +30,7 @@ const Projects: React.FC = () => {
     try {
       await deleteMutation(id);
       showSuccess();
-      setProjects(prevProjects => prevProjects.filter(project => project.id !== id));
+      setProjects((prevProjects) => prevProjects.filter((project) => project.id !== id));
     } catch (err: any) {
       showError(handleServerError(err.response));
     }

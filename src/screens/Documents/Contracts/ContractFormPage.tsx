@@ -180,8 +180,15 @@ const ContractFormPage = ({ id }: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subTotalAmount, includeVat, discountAmount]);
 
-  if ((id && documentIsLoading) || (!id && projectsIsLoading) || (!id && subcontractorsIsLoading) || (!id && companyIsLoading)) return <Loading />;
-  if ((id && documentError) || (!id && projectsError) || (!id && subcontractorsError) || (!id && companyError)) return null;
+  if (
+    (id && documentIsLoading) ||
+    (!id && projectsIsLoading) ||
+    (!id && subcontractorsIsLoading) ||
+    (!id && companyIsLoading)
+  )
+    return <Loading />;
+  if ((id && documentError) || (!id && projectsError) || (!id && subcontractorsError) || (!id && companyError))
+    return null;
 
   let projects: Project[] = projectsData?.projects?.data || [];
   let subcontractors: Subcontractor[] = subcontractorsData?.subcontractors?.data || [];

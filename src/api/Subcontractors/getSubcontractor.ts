@@ -9,7 +9,8 @@ export const getSubcontractorDetails = async ({ queryKey }: any) => {
   if (_params.id) {
     const { data } = await http.get(ROUTES.SUBCONTRACTOR + _params.id);
     return { subcontractor: { data: data as Subcontractor } };
-  } return null;
+  }
+  return null;
 };
 
 export const useSubcontractorDetailsQuery = (options: any) => {

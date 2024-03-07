@@ -5,10 +5,7 @@ import { ROUTES } from "constants/routes";
 
 export const useUpdateEmployee = () => {
   return useMutation<any, Error, any>(async (updateInput) => {
-    const { data } = await http.put(
-      ROUTES.EMPLOYEE + updateInput.id,
-      updateInput.data
-    );
+    const { data } = await http.put(ROUTES.EMPLOYEE + updateInput.id, updateInput.data);
     return { employee: { data: data as any } };
   });
 };

@@ -62,7 +62,7 @@ const DocumentSettings = () => {
   };
 
   const handleUpdateConditions = async (conditions: string[], term: string) => {
-    console.log(conditions)
+    console.log(conditions);
 
     let termVal: string = "";
     if (term === DOCUMENT_TYPE.PURCHASE_ORDER) termVal = "default_po_conditions";

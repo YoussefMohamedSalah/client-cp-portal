@@ -18,8 +18,8 @@ const DocumentTab: React.FC<Props> = ({ tabKey, workflow, defaultConditions, onS
   const [conditions, setConditions] = useState<string[]>([]);
 
   useEffect(() => {
-    if (defaultConditions) setConditions([...defaultConditions])
-  }, [defaultConditions])
+    if (defaultConditions) setConditions([...defaultConditions]);
+  }, [defaultConditions]);
 
   const handleAddCondition = () => {
     setConditions((prevConditions) => [...prevConditions, ""]);

@@ -11,13 +11,13 @@ import { Invoice } from "types/Invoice";
 
 interface Props<
   T extends
-  | PettyCashRequest
-  | PurchaseOrderRequest
-  | EmployeeRequest
-  | MaterialRequest
-  | SiteRequest
-  | Contract
-  | Invoice,
+    | PettyCashRequest
+    | PurchaseOrderRequest
+    | EmployeeRequest
+    | MaterialRequest
+    | SiteRequest
+    | Contract
+    | Invoice,
 > {
   data: T[];
   onFilter: (filtered: T[]) => void;
@@ -25,13 +25,13 @@ interface Props<
 
 function TableCards<
   T extends
-  | PettyCashRequest
-  | PurchaseOrderRequest
-  | EmployeeRequest
-  | MaterialRequest
-  | SiteRequest
-  | Contract
-  | Invoice,
+    | PettyCashRequest
+    | PurchaseOrderRequest
+    | EmployeeRequest
+    | MaterialRequest
+    | SiteRequest
+    | Contract
+    | Invoice,
 >({ data, onFilter }: Props<T>) {
   const [filterData, setFilterData] = useState<T[]>(data || []);
 

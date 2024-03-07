@@ -49,7 +49,7 @@ const Dashboard: React.FC = () => {
               </div>
             </div>
           </div>
-        </Container >
+        </Container>
       ) : (
         <Loading />
       )}

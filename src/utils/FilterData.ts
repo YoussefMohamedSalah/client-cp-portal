@@ -10,4 +10,3 @@ export function filterData(data: any[], selectedTerm: string, searchValue: strin
   });
   return filtered;
 }
-

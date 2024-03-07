@@ -177,7 +177,13 @@ we would like to place the purchase order for Below Items.`;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subTotalAmount, includeVat, discountAmount]);
 
-  if ((id && documentIsLoading) || (!id && projectsIsLoading) || (!id && suppliersIsLoading) || (!id && companyIsLoading)) return <Loading />;
+  if (
+    (id && documentIsLoading) ||
+    (!id && projectsIsLoading) ||
+    (!id && suppliersIsLoading) ||
+    (!id && companyIsLoading)
+  )
+    return <Loading />;
   if ((id && documentError) || (!id && projectsError) || (!id && suppliersError) || (!id && companyError)) return null;
 
   let projects: Project[] = projectsData?.projects?.data || [];
