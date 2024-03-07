@@ -4,6 +4,8 @@ export const sumDaysLeftFromToDay = (endDate: string) => {
   let date1: any = new Date();
   let date2: any = new Date(endDate);
   const diffTime = Math.abs(date1 - date2);
+  if (date1 >= date2) return 0;
+
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   return diffDays;
 };
@@ -28,11 +30,15 @@ export const calculateDurationDate = (startDate: string, endDate: string) => {
 
 export const calculateProjectPercentage = (startDate: string, endDate: string) => {
   if (!startDate || !endDate) return 0;
+  let date1: any = new Date(startDate);
+  let date2: any = new Date(endDate);
+  if (date1 >= date2) return 100;
+
   const total = sumDateRange(startDate, endDate);
   const completed = sumDaysLeftFromToDay(endDate);
   let daysDiff = total - completed;
 
-  if (completed > total) return 0;
+  if (completed > total) return 100;
 
   return Math.round((daysDiff / total) * 100);
 };

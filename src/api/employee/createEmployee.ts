@@ -48,31 +48,25 @@ export const employeeInput = (data: CreateEmployeeInput): any => {
   data.name && formData.append("name", data.name);
   data.email && formData.append("email", data?.email!);
   data.password && formData.append("password", data?.password!);
-  data.phone_number &&
-    formData.append("phone_number", `${data?.phone_number!}`);
+  data.phone_number && formData.append("phone_number", `${data?.phone_number!}`);
   data.department && formData.append("departmentId", `${data?.department!}`);
   data.projects && formData.append("projects", `${data?.projects!}`);
   data.manager && formData.append("manager", `${data?.manager!}`);
-  data.business_title &&
-    formData.append("business_title", `${data?.business_title!}`);
+  data.business_title && formData.append("business_title", `${data?.business_title!}`);
   data.is_manager && formData.append("is_manager", `${data?.is_manager!}`);
   data.gender && formData.append("gender", `${data?.gender!}`);
   data.shift_start && formData.append("shift_start", `${data?.shift_start!}`);
   data.shift_end && formData.append("shift_end", data?.shift_end!);
   data.id_number && formData.append("id_number", data?.id_number!);
   data.id_ex_date && formData.append("id_ex_date", `${data?.id_ex_date!}`);
-  data.contract_date &&
-    formData.append("contract_date", `${data?.contract_date!}`);
+  data.contract_date && formData.append("contract_date", `${data?.contract_date!}`);
   data.contract_ex && formData.append("contract_ex", `${data?.contract_ex!}`);
-  data.salary_per_month &&
-    formData.append("salary_per_month", `${data?.salary_per_month!}`);
-  data.residence_number &&
-    formData.append("residence_number", `${data?.residence_number!}`);
+  data.salary_per_month && formData.append("salary_per_month", `${data?.salary_per_month!}`);
+  data.residence_number && formData.append("residence_number", `${data?.residence_number!}`);
   data.nationality && formData.append("nationality", `${data?.nationality!}`);
   data.site_role && formData.append("site_role", `${data?.site_role!}`);
   data.site_job && formData.append("site_job", `${data?.site_job!}`);
-  data.joining_date &&
-    formData.append("joining_date", `${data?.joining_date!}`);
+  data.joining_date && formData.append("joining_date", `${data?.joining_date!}`);
   data.iban_number && formData.append("iban_number", `${data?.iban_number!}`);
 
   data.role && formData.append("role", `${data?.role!}`);

@@ -39,6 +39,13 @@ export enum STATUS {
   ARCHIVED = "Archived",
 }
 
+export enum ProjectStatus {
+  IN_PROGRESS = "In Progress",
+  COMPLETED = "Completed",
+  SUSPEND = "Suspend",
+  PENDING = "Pending",
+}
+
 export enum INVENTORY_TYPE {
   MASTER = "master_inventory",
   PROJECT = "project_inventory",

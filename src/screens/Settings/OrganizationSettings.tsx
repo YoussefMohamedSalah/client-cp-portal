@@ -15,7 +15,7 @@ const OrganizationSettings = () => {
 
   useEffect(() => {
     if (!initialized && companyData) {
-      let company: Company = companyData?.company?.data! || {} as Company;
+      let company: Company = companyData?.company?.data! || ({} as Company);
       setModelData({ ...company });
       setInitialized(true);
     }
@@ -117,10 +117,10 @@ const OrganizationSettings = () => {
   return (
     <div className="row">
       <div className="col-xl-4">
-        <ImageCard title={"Logo"} defaultUrl={modelData.logo} onSave={() => { }} />
+        <ImageCard title={"Logo"} defaultUrl={modelData.logo} onSave={() => {}} />
       </div>
       <div className="col-xl-8">
-        <FormCard title={"Info"} formFields={formFields} onSave={() => { }} />
+        <FormCard title={"Info"} formFields={formFields} onSave={() => {}} />
       </div>
     </div>
   );

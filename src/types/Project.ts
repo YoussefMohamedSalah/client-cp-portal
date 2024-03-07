@@ -4,9 +4,7 @@ import { SiteRequest } from "./Site_request";
 import { PettyCashRequest } from "./Pc_request";
 import { MaterialRequest } from "./Material_request";
 import { PurchaseOrderRequest } from "./Po_request";
-// import { Group } from './Group';
 import { Inventory } from "./Inventory";
-import { User } from "./User";
 import { Contract } from "./Contract";
 import { Invoice } from "./Invoice";
 import { Employee } from "./Employee";
@@ -51,6 +49,8 @@ export interface Project {
   users: Employee[];
   customer: Customer;
   tasks?: any[];
+  progress?: { date: string; percentage: number }[];
+  total_progress_percentage: number;
   inventory: Inventory;
   SiteRequests: SiteRequest[];
   PettyCashRequests: PettyCashRequest[];

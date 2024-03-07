@@ -23,7 +23,7 @@ const GeneralChartCard: React.FC<Props> = ({ Title, TitleRight, extraDivBody, fo
     <div className="card">
       <div className="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
         <h6 className="mb-0 fw-bold ">{Title}</h6>
-        {TitleRight ? <h3 className="mb-0 fw-bold">{TitleRight}</h3> : null}
+        {TitleRight ? <h4 className="mb-0 fw-bold">{TitleRight}</h4> : null}
       </div>
       <div className="card-body">
         {extraDivBody ? extraDivBody() : null}

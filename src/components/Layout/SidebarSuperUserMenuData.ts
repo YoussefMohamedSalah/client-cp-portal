@@ -397,6 +397,6 @@ export const superUserMenuData: any[] = [
     isCategory: false,
     isApp: false,
     children: [],
-    roles: ["Superuser", "Sub_Superuser"]
+    roles: ["Superuser", "Sub_Superuser"],
   },
 ];

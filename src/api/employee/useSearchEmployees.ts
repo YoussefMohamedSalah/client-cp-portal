@@ -9,8 +9,5 @@ export const getSearchEmployees = async ({ queryKey }: any) => {
 };
 
 export const useEmployeesQuery = (options: QueryOptionsType) => {
-  return useQuery<{ employees: { data: any } }, Error>(
-    [ROUTES.CO_EMPLOYEES, options],
-    getSearchEmployees
-  );
+  return useQuery<{ employees: { data: any } }, Error>([ROUTES.CO_EMPLOYEES, options], getSearchEmployees);
 };

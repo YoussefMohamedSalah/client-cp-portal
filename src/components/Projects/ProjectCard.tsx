@@ -20,6 +20,7 @@ import {
   AccessTimeOutlinedIcon,
   EditOutlinedIcon,
 } from "components/Icons/MuiIcons";
+import { projectStatusBg, projectStatusVariant } from "utils/ProjectsUtils";
 
 interface Props {
   project: Project;
@@ -40,7 +41,6 @@ const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
 
 const ProjectCard = ({ project, onDelete }: Props) => {
   const [isModal, setIsModal] = useState<boolean>(false);
-
   const { push } = useApp();
   return (
     <div className="grey-bg container-fluid">
@@ -57,8 +57,9 @@ const ProjectCard = ({ project, onDelete }: Props) => {
                         className="d-flex gap-3 align-items-center pointer"
                         onClick={() => push("/" + PAGES.PROJECT_INFO + "/" + project.id)}>
                         <h3 className="primary">{project.name}</h3>
-                        <span className="small bg-success text-white py-1 px-2 rounded align-self-start">
-                          {project?.project_status!}
+                        <span
+                          className={`small ${projectStatusBg(project?.project_status!)} py-1 px-2 rounded align-self-start`}>
+                          {project?.project_status! || ""}
                         </span>
                       </div>
                     </div>
@@ -117,17 +118,39 @@ const ProjectCard = ({ project, onDelete }: Props) => {
                       </IconButton>
                     </div>
                   </div>
-                  <div>
-                    <span className="pb-1">progress</span>
-                    <ProgressBar style={{ height: "7px", marginTop: "3px" }}>
-                      <ProgressBar
-                        variant="success"
-                        now={15}
-                        style={{
-                          width: `${calculateProjectPercentage(project?.contract_date!, project?.delivery_date!)}30%`,
-                        }}
-                      />
-                    </ProgressBar>
+
+                  <div className="pb-2">
+                    <h6 className="mb-0 mt-2">Completion Progress Percentage</h6>
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <ProgressBar style={{ height: "7px", marginTop: "3px", flex: "1" }}>
+                        <ProgressBar
+                          variant={projectStatusVariant(project)}
+                          now={15}
+                          style={{
+                            width: `${project.total_progress_percentage}%`,
+                          }}
+                        />
+                      </ProgressBar>
+                      <span style={{ marginLeft: "5px" }}>{project.total_progress_percentage}%</span>
+                    </div>
+                  </div>
+
+                  <div className="pb-0">
+                    <h6 className="mb-0">Time Visualization</h6>
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      <ProgressBar style={{ height: "7px", marginTop: "3px", flex: "1" }}>
+                        <ProgressBar
+                          variant={projectStatusVariant(project)}
+                          now={15}
+                          style={{
+                            width: `${calculateProjectPercentage(project?.contract_date!, project?.delivery_date!)}%`,
+                          }}
+                        />
+                      </ProgressBar>
+                      <span style={{ marginLeft: "5px" }}>
+                        {calculateProjectPercentage(project?.contract_date!, project?.delivery_date!)}%
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -138,7 +161,10 @@ const ProjectCard = ({ project, onDelete }: Props) => {
       <DeleteModal
         show={isModal}
         onClose={() => setIsModal(false)}
-        onDelete={() => onDelete(project.id)}
+        onDelete={() => {
+          setIsModal(false);
+          onDelete(project.id);
+        }}
         message={`Are you sure you want to delete ${project.name} ?`}
         modalHeader={`Delete ${project.name}`}
       />

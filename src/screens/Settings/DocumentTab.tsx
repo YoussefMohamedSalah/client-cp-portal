@@ -5,17 +5,21 @@ import ConditionsCard from "components/Common/ConditionsCard";
 import AddMemberToWorkFlow from "./AddMemberToWorkFlow";
 
 interface Props {
-  tabName: string;
   tabKey: string;
   workflow: WorkFlow[];
   defaultConditions: string[] | null;
   onSave: (updatedData: WorkFlow[], term: string) => void;
+  onSaveConditions?: (conditions: string[], term: string) => void;
 }
 
-const DocumentTab: React.FC<Props> = ({ tabName, tabKey, workflow, defaultConditions, onSave }) => {
+const DocumentTab: React.FC<Props> = ({ tabKey, workflow, defaultConditions, onSave, onSaveConditions }) => {
   const [isModal, setIsModal] = useState<boolean>(false);
   const [membersArray, setMembersArray] = useState<WorkFlow[]>([]);
-  const [conditions, setConditions] = useState<string[]>(defaultConditions ? [...defaultConditions] : []);
+  const [conditions, setConditions] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (defaultConditions) setConditions([...defaultConditions]);
+  }, [defaultConditions]);
 
   const handleAddCondition = () => {
     setConditions((prevConditions) => [...prevConditions, ""]);
@@ -94,13 +98,25 @@ const DocumentTab: React.FC<Props> = ({ tabName, tabKey, workflow, defaultCondit
   return (
     <>
       <div className="pt-2 d-flex flex-column gap-2">
-        {defaultConditions ? (
-          <ConditionsCard
-            conditions={conditions}
-            onAddCondition={handleAddCondition}
-            onEdit={handleConditionChange}
-            onRemove={handleRemoveCondition}
-          />
+        {defaultConditions && onSaveConditions ? (
+          <>
+            <ConditionsCard
+              conditions={conditions}
+              onAddCondition={handleAddCondition}
+              onEdit={handleConditionChange}
+              onRemove={handleRemoveCondition}
+            />
+            <div className="align-self-center mt-1">
+              <button
+                type="button"
+                className="btn btn-sm btn-primary text-end h-75 m-1 px-4"
+                data-bs-toggle="modal"
+                data-bs-target="#dremovetask"
+                onClick={() => onSaveConditions(conditions, tabKey)}>
+                Save
+              </button>
+            </div>
+          </>
         ) : null}
         <div className="card">
           <div className="card-header py-2 d-flex justify-content-center">
@@ -162,10 +178,10 @@ const DocumentTab: React.FC<Props> = ({ tabName, tabKey, workflow, defaultCondit
         <div className="align-self-center mt-3">
           <button
             type="button"
-            className="btn btn-sm btn-primary text-end h-75 m-1 "
+            className="btn btn-sm btn-primary text-end h-75 m-1 px-4"
             data-bs-toggle="modal"
             data-bs-target="#dremovetask"
-            onClick={() => onSave(membersArray, tabName)}>
+            onClick={() => onSave(membersArray, tabKey)}>
             Save
           </button>
         </div>

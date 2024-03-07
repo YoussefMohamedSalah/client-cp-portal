@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Loading from "components/UI/Loading";
 import PageHeader from "components/Common/PageHeader";
 import useApp from "hooks/useApp";
@@ -10,20 +11,26 @@ import { useProjectsQuery } from "api/Projects/getAllProjects";
 import ProjectCard from "components/Projects/ProjectCard";
 
 const Projects: React.FC = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
   const { mutateAsync: deleteMutation } = useDeleteProject();
   const { data, error, isLoading } = useProjectsQuery({});
   const { showError, showSuccess } = useUI();
   const { push } = useApp();
 
+  useEffect(() => {
+    if (data && data.projects && data.projects.data) {
+      setProjects(data.projects.data);
+    }
+  }, [data]);
+
   if (isLoading) return <Loading />;
   if (error) return null;
-
-  let projects: Project[] = data.projects.data! || ([] as Project[]);
 
   const handleDelete = async (id: string) => {
     try {
       await deleteMutation(id);
       showSuccess();
+      setProjects((prevProjects) => prevProjects.filter((project) => project.id !== id));
     } catch (err: any) {
       showError(handleServerError(err.response));
     }

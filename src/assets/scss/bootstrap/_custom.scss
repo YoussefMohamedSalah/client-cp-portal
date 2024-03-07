@@ -641,6 +641,10 @@
   }
 }
 
+.text-color {
+  color: var(--text-color);
+}
+
 // pagination
 .page-item {
   &.disabled {
@@ -731,4 +735,35 @@
 [data-theme="dark"] .accordion-button.active .svg,
 [data-theme="dark"] .accordion-button.active .accordion-body .svg {
   color: var(--text-color); /* Set icon color to text-color */
+}
+
+.container,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  max-width: 100%;
+}
+
+@media screen and (min-width: 3840px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 3690px;
+  }
+}
+
+@media all and (min-width: 200px) and (max-width: 3840px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: calc(100% - 50px);
+  }
 }

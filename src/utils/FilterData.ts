@@ -1,14 +1,12 @@
 export function filterData(data: any[], selectedTerm: string, searchValue: string): any[] {
-  return data?.filter((row) => {
-    switch (selectedTerm) {
-      case "name":
-        return row?.user?.name!.toLowerCase().includes(searchValue.toLowerCase());
-      case "code":
-        return row.code.toLowerCase().includes(searchValue.toLowerCase());
-      case "date":
-        return row.date.toLowerCase().includes(searchValue.toLowerCase());
-      default:
-        return true; // Return all items if no specific term is selected
+  let filtered = data?.filter((row) => {
+    if (selectedTerm === "name") {
+      if (row.name!) return row?.name?.toLowerCase()!.includes(searchValue?.toLowerCase()!);
+      if (row.user?.name!) return row?.user?.name?.toLowerCase()!.includes(searchValue?.toLowerCase()!);
     }
+    if (selectedTerm === "code") return row?.code?.toLowerCase()!.includes(searchValue?.toLowerCase()!);
+    if (selectedTerm === "date") return row?.date?.toLowerCase()!.includes(searchValue?.toLowerCase()!);
+    return true;
   });
+  return filtered;
 }

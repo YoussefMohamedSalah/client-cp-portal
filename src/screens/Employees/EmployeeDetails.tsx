@@ -5,7 +5,7 @@ interface Props {
 }
 
 const EmployeeDetails = ({ id }: Props) => {
-  return <div></div>;
+  return <div>{id}</div>;
 };
 
 export default EmployeeDetails;
