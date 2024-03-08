@@ -58,8 +58,7 @@ const SubcontractorFormPage = lazy(() => import("../screens/Subcontractors/Subco
 const ProjectFormPage = lazy(() => import("../screens/Projects/ProjectFormPage"));
 const TenderFormPage = lazy(() => import("../screens/Tenders/TenderFormPage"));
 
-const EmployeeProfileDetails = lazy(() => import("../screens/Profile/EmployeeProfileDetails"));
-const PersonalProfile = lazy(() => import("../screens/Profile/PersonalProfile"));
+const PersonalProfileDetails = lazy(() => import("../screens/Profile/PersonalProfileDetails"));
 
 // // EDIT //
 // const PoRequestEditPage = lazy(() => import("../PoRequests/PoRequestEditPage"));
@@ -274,10 +273,10 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
       // ---
       case PAGES.INVENTORY:
         return <Inventory />;
-        case PAGES.PROFILE:
-          return <EmployeeProfileDetails />;
-          case PAGES.PERSONAL_PROFILE:
-            return <PersonalProfile />;
+      case PAGES.PROFILE:
+        return <PersonalProfileDetails />;
+      // case PAGES.PERSONAL_PROFILE:
+      //   return <PersonalProfile />;
       // ---
 
       // ---

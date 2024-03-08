@@ -12,7 +12,7 @@ interface Props {
 
 type IState = { option: any; series: any };
 
-const TodayTimeUtilisation: React.FC<Props> = ({ identity, Title, TitleRight, extraDivBody, footerBody, data }) => {
+const TodayTimeUtilization: React.FC<Props> = ({ identity, Title, TitleRight, extraDivBody, footerBody, data }) => {
   const INITIAL_STATE: IState = {
     option: data.options,
     series: data.options.series,
@@ -40,4 +40,4 @@ const TodayTimeUtilisation: React.FC<Props> = ({ identity, Title, TitleRight, ex
   );
 };
 
-export default TodayTimeUtilisation;
+export default TodayTimeUtilization;

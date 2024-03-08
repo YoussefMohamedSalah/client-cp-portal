@@ -7,7 +7,7 @@
 import DataTable from "react-data-table-component";
 import { TimeAttendanceData } from "components/Data/AppData";
 import { EmployeesYearlyStatusData } from "components/Data/ChartData";
-import GeneralChartCard from "components/Account/TodayTimeUtilisation";
+import TodayTimeUtilization from "components/Account/TodayTimeUtilization";
 import { useSingleEmployeeQuery } from "api/employee/getSingleEmployee";
 import { useUI } from "contexts/UIContext";
 
@@ -27,21 +27,19 @@ interface Props {
   id?: string;
 }
 
-const EmployeeProfileDetails: React.FC<Props> = () => {
+const PersonalProfileDetails: React.FC<Props> = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   // user sign
-  const [signFile, setSIgnFile] = useState<File | null>(null);
+  const [signFile, setSignFile] = useState<File | null>(null);
 
   const { session, setSession } = useAuth();
   const { showError, showSuccess } = useUI();
   const { mutateAsync: updateUserSignMutation } = useUpdateUserSign();
 
   const { isLoading: employeeLoading, error: EmployeeError, data: employeeRes } = useSingleEmployeeQuery({});
-console.log(employeeRes)
   // let attendanceData: any = attendanceRes?.attendance.data || {};
   let employeeData: any = employeeRes?.employee.data || {};
 
-  // const { status, shift_start, shift_end, total_Shift_Hours, enter_time, leave_time, over_time } = attendanceData;
   if (employeeLoading) return <Loading />;
   if (EmployeeError) return null;
 
@@ -93,9 +91,9 @@ console.log(employeeRes)
           </div>
 
           <div className="col-xxl-8 col-xl-8 col-lg-6 col-md-12">
-            <GeneralChartCard
+            <TodayTimeUtilization
               Title="Employees Yearly Status"
-              identity="Employessyearlystatus"
+              identity="EmployeeYearlyStatus"
               data={EmployeesYearlyStatusData}
               TitleRight={undefined}
               extraDivBody={undefined}
@@ -122,4 +120,4 @@ console.log(employeeRes)
   );
 };
 
-export default EmployeeProfileDetails;
+export default PersonalProfileDetails;
