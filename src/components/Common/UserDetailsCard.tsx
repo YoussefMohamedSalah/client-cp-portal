@@ -28,7 +28,7 @@ const UserDetailsCard: React.FC<Props> = ({ user }) => {
               />
             </a>
             <div className="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
-            <span className="mb-1 text-muted small fw-bold">CUSTOMER TYPE : <span className="text-secondary">{user.customer_type}</span></span>
+            <span className="mb-1 small fw-bold text-secondary">{user.customer_type}</span>
               <span className="mb-1 text-muted small fw-bold">USER ID : <span className="text-secondary">{user.code}</span></span>
               
             </div>
@@ -85,7 +85,7 @@ const UserDetailsCard: React.FC<Props> = ({ user }) => {
                 <div className="col-xl-5">
                   <div className="d-flex align-items-center">
                   <i className="icofont-ui-calendar" />
-                    <span className="ms-2 small text-muted fw-bold">Created Date : <span className="fw-normal text-black">{user.createdAt? new Date(user.createdAt).toLocaleDateString() : "undefined"}</span> </span>
+                    <span className="ms-2 small text-muted fw-bold">Join Date : <span className="fw-normal text-black">{user.createdAt? new Date(user.createdAt).toLocaleDateString() : "undefined"}</span> </span>
                   </div>
                 </div>
                 <div className="col-xl-5">
@@ -98,7 +98,7 @@ const UserDetailsCard: React.FC<Props> = ({ user }) => {
                 <div className="col-xl-5">
                   <div className="d-flex align-items-center">
                     <i className="icofont-email" />
-                    <span className="ms-2 small text-muted fw-bold">User Email : <span className="fw-normal text-black">{user.email ? user.email : "No Email"}</span></span>
+                    <span className="ms-2 small text-muted fw-bold">Email : <span className="fw-normal text-black">{user.email ? user.email : "No Email"}</span></span>
                   </div>
                 </div>
                 <div className="col-xl-5">
