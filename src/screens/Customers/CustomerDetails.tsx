@@ -13,14 +13,10 @@ const CustomerDetails = ({ id }: Props) => {
   if (customerLoading) return <Loading />;
   if (customerError) return null;
   return (
-    <div>
-      <div className="container-xxl">
-        <PageHeader headerTitle="Customer Details" />
-        <div className="row align-item-center row-deck g-3 mb-3">
-          <div >
-            <UserDetailsCard user={customer} />
-          </div>
-        </div>
+    <div className="container-xxl">
+      <PageHeader isBackBtn={true} />
+      <div className="row g-3 py-1 pt-4">
+        <UserDetailsCard user={customer} />
       </div>
     </div>
   );
