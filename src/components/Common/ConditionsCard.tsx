@@ -8,7 +8,6 @@ interface Props {
 }
 
 const ConditionsCard = ({ conditions, onAddCondition, onEdit, onRemove }: Props) => {
-  console.log(conditions)
   return (
     <div className="card">
       <div className="card-header">
