@@ -9,6 +9,9 @@ export const getEmployeeDetails = async ({ queryKey }: any) => {
   if (_params.id) {
     const { data } = await http.get(ROUTES.EMPLOYEE + _params.id);
     return { employee: { data: data as Employee } };
+  } else {
+    const { data } = await http.get(ROUTES.EMPLOYEE);
+    return { employee: { data: data as Employee } };
   }
 };
 

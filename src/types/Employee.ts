@@ -21,6 +21,7 @@ export interface Employee {
   role: ROLE;
   sign: string;
   avatar: any;
+  kpi: number;
   is_verified: boolean;
   department: { id: string; name: string };
   department_info?: { id: string; name: string };

@@ -1,4 +1,4 @@
-import { SelectedEmployee } from "types/Employee";
+import { Employee } from "types/Employee";
 import { ResetPasswordInput } from "types/resetPasswordSend";
 import { useChangePassword } from "api/Auth/SendResetPassword_Api";
 import { useState } from "react";
@@ -7,13 +7,20 @@ import { getImageUrl } from "utils/Helpers";
 import { handleServerError } from "utils/inputValidator";
 import { useUI } from "contexts/UIContext";
 
+export interface DataArrayType {
+  iconClass: string;
+  label: string;
+  value: any;
+}
+
 interface Props {
-  user: SelectedEmployee;
-  personal?:Boolean;
+  employee: Employee;
+  personal?: Boolean;
+  dataArr: DataArrayType[];
 }
 const INITIAL_STATE: ResetPasswordInput = { oldPassword: "", newPassword1: "", newPassword2: "" };
 
-const EmployeeProfileCard: React.FC<Props> = ({ user ,personal }) => {
+const EmployeeProfileCard: React.FC<Props> = ({ employee, personal, dataArr }) => {
   const [state, setState] = useState<ResetPasswordInput>(INITIAL_STATE);
   const [isModal, setIsModal] = useState<boolean>(false);
   const { oldPassword, newPassword1, newPassword2 } = state;
@@ -53,7 +60,7 @@ const EmployeeProfileCard: React.FC<Props> = ({ user ,personal }) => {
       showError(handleServerError(err.response));
     }
   };
-  // console.log(user);
+  // console.log(employee);
 
   return (
     <>
@@ -62,72 +69,88 @@ const EmployeeProfileCard: React.FC<Props> = ({ user ,personal }) => {
           <div className="profile-teacher pe-xl-4 pe-md-2 pe-sm-4 pe-4 text-center w220">
             <a href="#!">
               <img
-                src={getImageUrl(user?.avatar!)}
+                src={getImageUrl(employee?.avatar!)}
                 alt=""
                 className="avatar xl rounded-circle img-thumbnail shadow-sm"
               />
             </a>
             <div className="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
-              <h6 className="mb-1 fw-bold d-block fs-6">{user.role}</h6>
-              <span className="mb-1 text-muted small">USER ID : {user.code}</span>
-              <h6 className="text-muted small">KPI : {user.kpi || 0}</h6>
+              <h6 className="mb-1 fw-bold d-block fs-6">{employee.role}</h6>
+              <span className="mb-1 text-muted small">USER ID : {employee.code}</span>
+              <h6 className="text-muted small">KPI : {employee.kpi || 0}</h6>
             </div>
           </div>
           <div className="teacher-info border-start ps-xl-4 ps-md-4 ps-sm-4 ps-4 w-100 d-flex flex-column justify-content-evenly">
             <div>
-              <h6 className="mb-0 mt-2  fw-bold d-block fs-6">{user.name}</h6>
-              <span className="py-1 fw-bold small-11 mb-0 mt-1 text-muted">{user.business_title}</span>
-              {/* <p className="mt-2 small">
-                The purpose of lorem ipsum is to create a natural looking block of text (sentence, paragraph, page,
-                etc.) that doesn't distract from the layout. A practice not without controversy
-              </p> */}
+              <h6 className="mb-0 mt-2  fw-bold d-block fs-6">{employee.name}</h6>
+              <span className="py-1 fw-bold small-11 mb-0 mt-1 text-muted">{employee.business_title}</span>
               <div className="row g-2 pt-2">
-                <div className="col-xl-5">
+
+
+                {dataArr.map((term, index: number) => {
+                  return (
+                    <div key={index} className="col-xl-5">
+                      <div className="d-flex align-items-center">
+                        <i className={`${term.iconClass}`} />
+                        <span className="ms-2 small text-muted fw-bold">{term.label} : <span className="text-secondary">{term.value}</span></span>
+                      </div>
+                    </div>
+                  )
+                })}
+
+
+                {/* <div className="col-xl-5">
                   <div className="d-flex align-items-center">
                     <i className="icofont-ui-touch-phone" />
-                    <span className="ms-2 small">{user.phone_number ? user.phone_number : "Add Phone Number"}</span>
+                    <span className="ms-2 small">{employee.phone_number ? employee.phone_number : "Add Phone Number"}</span>
                   </div>
                 </div>
                 <div className="col-xl-5">
                   <div className="d-flex align-items-center">
                     <i className="icofont-stopwatch" />
                     <span className="ms-2 small">
-                      {user.shift_start && user.shift_end ? user.shift_start + " - " + user.shift_end : "No Shifts"}
+                      {employee.shift_start && employee.shift_end ? employee.shift_start + " - " + employee.shift_end : "No Shifts"}
                     </span>
                   </div>
                 </div>
                 <div className="col-xl-5">
                   <div className="d-flex align-items-center">
                     <i className="icofont-email" />
-                    <span className="ms-2 small">{user.email ? user.email : "No Email"}</span>
+                    <span className="ms-2 small">{employee.email ? employee.email : "No Email"}</span>
                   </div>
                 </div>
                 <div className="col-xl-5">
                   <div className="d-flex align-items-center">
                     <i className="icofont-address-book" />
-                    <span className="ms-2 small">{user.address ? user.address : "No Address Data"}</span>
+                    <span className="ms-2 small">{employee.address ? employee.address : "No Address Data"}</span>
                   </div>
                 </div>
-
-
                 <div className="col-xl-5">
                   <div className="d-flex align-items-center">
-                  <i className="icofont-building-alt"></i>
-                  <span className="ms-2 small">
-                    {user?.department_info?.name ? user?.department_info?.name  : "No department Data"}
-                    </span>                   
-                </div>
-
-              </div>
-
-
-
-                
+                    <i className="icofont-building-alt"></i>
+                    <span className="ms-2 small">
+                      {employee?.department_info?.name ? employee?.department_info?.name : "No department Data"}
+                    </span>
+                  </div>
+                </div> */}
               </div>
             </div>
 
-            <div className="d-flex w-100 gap-3 justify-content-lg-start justify-content-center pt-3 pt-xl-0 ">
-             {personal&& <button
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div className="d-flex w-100 gap-3 justify-content-lg-start justify-content-center mt-3 pt-xl-0 ">
+              {personal && <button
                 id="dropdown-basic"
                 className="btn btn-primary dropdown-toggle"
                 onClick={() => setIsModal(!isModal)}>

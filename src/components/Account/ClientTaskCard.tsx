@@ -49,7 +49,7 @@ const ClientTaskCard: React.FC = () => {
                               <p className="py-2 mb-0">{getShortString(`${task.description}`, 140)}</p>
                             </div>
                           </div>
-                          <div className="tikit-info row g-3 align-items-center ">
+                          <div className="ticket-info row g-3 align-items-center ">
                             {/* <div className="col-sm" /> */}
                             <div className="col-sm text-end">
                               <div className="small text-truncate light-danger-bg py-1 px-2 rounded-1 d-inline-block fw-bold small">
