@@ -32,13 +32,13 @@ import { DocumentFinances } from "types/DocumentFinances";
 
 interface Props<
   T extends
-    | PettyCashRequest
-    | PurchaseOrderRequest
-    | EmployeeRequest
-    | MaterialRequest
-    | SiteRequest
-    | Contract
-    | Invoice,
+  | PettyCashRequest
+  | PurchaseOrderRequest
+  | EmployeeRequest
+  | MaterialRequest
+  | SiteRequest
+  | Contract
+  | Invoice,
 > {
   data: T;
   finances?: DocumentFinances;
@@ -46,13 +46,13 @@ interface Props<
 
 function DocumentsDetailsContent<
   T extends
-    | PettyCashRequest
-    | PurchaseOrderRequest
-    | EmployeeRequest
-    | MaterialRequest
-    | SiteRequest
-    | Contract
-    | Invoice,
+  | PettyCashRequest
+  | PurchaseOrderRequest
+  | EmployeeRequest
+  | MaterialRequest
+  | SiteRequest
+  | Contract
+  | Invoice,
 >({ data }: Props<T>) {
   const [conditions, setConditions] = useState<string[]>([]);
   const [materials, setMaterials] = useState<PrintMaterials[]>([]);
@@ -95,7 +95,7 @@ function DocumentsDetailsContent<
 
   const handleApprove = async (note: string) => {
     try {
-      await approveMutation({ type: data.type, id: data.id, note });
+      await approveMutation({ type: data.type, id: data?.id!, note });
       showSuccess();
       window.location.reload();
     } catch (err: any) {
@@ -106,7 +106,7 @@ function DocumentsDetailsContent<
 
   const handleReject = async (note: string) => {
     try {
-      await rejectMutation({ type: data.type, id: data.id, note });
+      await rejectMutation({ type: data.type, id: data?.id!, note });
       showSuccess();
       window.location.reload();
     } catch (err: any) {
@@ -117,14 +117,14 @@ function DocumentsDetailsContent<
 
   const handleQrCodeUrl = (): string => {
     let baseUrl = `${process.env.REACT_APP_PUBLIC_URL}`;
-    if (data.id) {
-      if (isPurchaseOrderType(data)) return `${baseUrl}/${PAGES.PO_REQUEST_INFO}/${data.id}`;
-      else if (isPettyCashType(data)) return `${baseUrl}/${PAGES.PC_REQUEST_INFO}/${data.id}`;
-      else if (isSiteType(data)) return `${baseUrl}/${PAGES.SITE_REQUEST_INFO}/${data.id}`;
-      else if (isMaterialType(data)) return `${baseUrl}/${PAGES.MATERIAL_REQUEST_INFO}/${data.id}`;
-      else if (isEmployeeRequestType(data)) return `${baseUrl}/${PAGES.EMPLOYEE_REQUEST_INFO}/${data.id}`;
-      else if (isContractType(data)) return `${baseUrl}/${PAGES.CONTRACT_INFO}/${data.id}`;
-      else if (isInvoiceType(data)) return `${baseUrl}/${PAGES.INVOICE_INFO}/${data.id}`;
+    if (data?.id!) {
+      if (isPurchaseOrderType(data)) return `${baseUrl}/${PAGES.PO_REQUEST_INFO}/${data?.id!}`;
+      else if (isPettyCashType(data)) return `${baseUrl}/${PAGES.PC_REQUEST_INFO}/${data?.id!}`;
+      else if (isSiteType(data)) return `${baseUrl}/${PAGES.SITE_REQUEST_INFO}/${data?.id!}`;
+      else if (isMaterialType(data)) return `${baseUrl}/${PAGES.MATERIAL_REQUEST_INFO}/${data?.id!}`;
+      else if (isEmployeeRequestType(data)) return `${baseUrl}/${PAGES.EMPLOYEE_REQUEST_INFO}/${data?.id!}`;
+      else if (isContractType(data)) return `${baseUrl}/${PAGES.CONTRACT_INFO}/${data?.id!}`;
+      else if (isInvoiceType(data)) return `${baseUrl}/${PAGES.INVOICE_INFO}/${data?.id!}`;
       else return "";
     } else return "";
   };

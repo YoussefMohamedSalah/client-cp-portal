@@ -10,13 +10,13 @@ import { useReactToPrint } from "react-to-print";
 
 interface Props<
   T extends
-    | PettyCashRequest
-    | PurchaseOrderRequest
-    | EmployeeRequest
-    | MaterialRequest
-    | SiteRequest
-    | Contract
-    | Invoice,
+  | PettyCashRequest
+  | PurchaseOrderRequest
+  | EmployeeRequest
+  | MaterialRequest
+  | SiteRequest
+  | Contract
+  | Invoice,
 > {
   document: T;
   ref: any;
@@ -26,18 +26,19 @@ interface Props<
 
 function DocumentActions<
   T extends
-    | PettyCashRequest
-    | PurchaseOrderRequest
-    | EmployeeRequest
-    | MaterialRequest
-    | SiteRequest
-    | Contract
-    | Invoice,
+  | PettyCashRequest
+  | PurchaseOrderRequest
+  | EmployeeRequest
+  | MaterialRequest
+  | SiteRequest
+  | Contract
+  | Invoice,
 >({ onApprove, onReject, ref, document }: Props<T>) {
   const handlePrint = useReactToPrint({
     content: () => ref.current!,
   });
 
+  if (!document || !document.id) return <></>
   return (
     <div className="col-sm d-flex align-items-center justify-content-center gap-2 pt-2">
       {allowDocumentsActionsBtns(document) && (

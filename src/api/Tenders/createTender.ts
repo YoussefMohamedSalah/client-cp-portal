@@ -25,7 +25,6 @@ export const tenderInput = (data: Tender): any => {
   }
 
   const formData = new FormData();
-  data.id && formData.append("id", data.id);
   data.description && formData.append("description", data?.description!);
   data.date && formData.append("data", data?.date);
   data.hand_over && formData.append("hand_over", data?.hand_over);

@@ -49,6 +49,8 @@ const TenderFormPage = ({ id }: Props) => {
   // !Assuming this is CREATE Modal
   useEffect(() => {
     if (!isEdit) {
+      modelData.date = `${getFormattedTodayDate()}`;
+      modelData.hand_over = `${getFormattedTodayDate()}`;
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -160,7 +162,7 @@ const TenderFormPage = ({ id }: Props) => {
     try {
       let createInput = tenderInput(modelData);
       await createMutation(createInput);
-      push("/" + PAGES.TENDERS);
+      // push("/" + PAGES.TENDERS);
       showSuccess();
     } catch (err: any) {
       showError(handleServerError(err.response));
@@ -232,11 +234,13 @@ const TenderFormPage = ({ id }: Props) => {
               <Button className="lift" content="Create" onClick={handleCreate} />
             </>
           )}
-          <Button
-            className="lift"
-            content="details"
-            onClick={() => push("/" + PAGES.TENDER_INFO + "/" + modelData.id)}
-          />
+          {modelData.id && (
+            <Button
+              className="lift"
+              content="details"
+              onClick={() => push("/" + PAGES.TENDER_INFO + "/" + modelData.id)}
+            />
+          )}
         </div>
       </div>
       <DeleteModal

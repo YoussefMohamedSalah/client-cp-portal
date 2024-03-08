@@ -18,6 +18,7 @@ interface Props {
 }
 
 const DocumentPreviewModal = ({ onClose, isModal, modelData, modalHeader, documentType, documentFinances }: Props) => {
+  console.log({ onClose }, { isModal }, { modelData }, { modalHeader }, { documentType }, { documentFinances })
   return (
     <Modal centered size="xl" show={isModal} onHide={onClose}>
       <Modal.Header closeButton>
