@@ -70,7 +70,11 @@ const EmployeeFormPage = ({ id }: Props) => {
   useEffect(() => {
     if (!initialized && employeeData) {
       let employee: Employee = employeeData?.employee?.data!;
-      setModelData({ ...employee, projects: employee.projects_info || [], department: employee.department_info || { id: "0", name: "Select Department" } });
+      setModelData({
+        ...employee,
+        projects: employee.projects_info || [],
+        department: employee.department_info || { id: "0", name: "Select Department" },
+      });
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -409,7 +413,7 @@ const EmployeeFormPage = ({ id }: Props) => {
     };
 
     let errors = validateInputs(validationData);
-    console.log({ errors })
+    console.log({ errors });
     if (errors.length > 0) return showError(errors);
 
     try {
