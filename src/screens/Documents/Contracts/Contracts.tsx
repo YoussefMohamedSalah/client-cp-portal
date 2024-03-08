@@ -10,6 +10,7 @@ import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
 import { Contract } from "types/Contract";
 import { useGetAllContractsQuery } from "api/Documents/Contracts/getAllContracts";
+import { isAdminView } from "utils/Helpers";
 
 const Contracts: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<Contract>({} as Contract);
@@ -118,7 +119,7 @@ const Contracts: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<Contract> data={row} onClickEdit={() => push("/" + PAGES.CONTRACT + "/" + row.id)} />
@@ -132,7 +133,7 @@ const Contracts: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Contracts"}
-          isBtnShow={true}
+          isBtnShow={isAdminView() ? true : false}
           btnText={"Create Contract"}
           onClickBtn={() => push("/" + PAGES.CONTRACT)}
         />

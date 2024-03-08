@@ -11,6 +11,7 @@ import { useDeleteEmployee } from "api/Employees/deleteEmployee";
 import { useEmployeesQuery } from "api/Employees/getAllEmployees";
 import { isSuperUserRole } from "utils/Session";
 import { getImageUrl } from "utils/Helpers";
+import { isAdminView } from "utils/Helpers";
 
 const Employees: React.FC = () => {
   const { mutateAsync: deleteMutation } = useDeleteEmployee();
@@ -46,7 +47,7 @@ const Employees: React.FC = () => {
     },
     {
       name: "NAME",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: (row: any) => (
         <>
@@ -84,7 +85,7 @@ const Employees: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <TableActionBtn
@@ -103,7 +104,7 @@ const Employees: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Employees"}
-          isBtnShow={true}
+          isBtnShow={isAdminView() ? true : false}
           btnText={"Create Employee"}
           onClickBtn={() => push("/" + PAGES.EMPLOYEE)}
         />

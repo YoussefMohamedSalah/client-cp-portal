@@ -20,7 +20,6 @@ const InventoryPage = () => {
   return (
     <div className="container-xxl">
       <PageHeader headerTitle="Inventories" isBtnShow={false} />
-
       <div className="row g-3 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-4 row-cols-xxl-4 py-1 pb-4">
         {inventories.map((inventory, i: number) => {
           return (

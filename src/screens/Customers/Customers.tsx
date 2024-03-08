@@ -9,6 +9,7 @@ import { useUI } from "contexts/UIContext";
 import { handleServerError } from "utils/HandlingServerError";
 import NormalTable from "components/Common/NormalTable";
 import TableActionBtn from "components/Common/TableActionBtn";
+import { isAdminView } from "utils/Helpers";
 
 const Customers: React.FC = () => {
   const { mutateAsync: deleteMutation } = useDeleteCustomer();
@@ -44,7 +45,7 @@ const Customers: React.FC = () => {
     },
     {
       name: "NAME",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: (row: any) => (
         <>
@@ -75,7 +76,7 @@ const Customers: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <TableActionBtn
@@ -94,7 +95,7 @@ const Customers: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Customers"}
-          isBtnShow={true}
+          isBtnShow={isAdminView() ? true : false}
           btnText={"Create Customer"}
           onClickBtn={() => push("/" + PAGES.CUSTOMER)}
         />

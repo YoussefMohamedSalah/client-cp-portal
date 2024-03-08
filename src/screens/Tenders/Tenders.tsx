@@ -8,6 +8,7 @@ import { handleServerError } from "utils/HandlingServerError";
 import { useDeleteTender } from "api/Tenders/deleteTender";
 import { useTendersQuery } from "api/Tenders/getAllTenders";
 import TenderCard from "components/Tenders/TenderCard";
+import { isAdminView } from "utils/Helpers";
 
 const Tenders: React.FC = () => {
   const { mutateAsync: deleteMutation } = useDeleteTender();
@@ -35,7 +36,7 @@ const Tenders: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Tenders"}
-          isBtnShow={true}
+          isBtnShow={isAdminView() ? true : false}
           btnText={"Create Tender"}
           onClickBtn={() => push("/" + PAGES.TENDER)}
         />

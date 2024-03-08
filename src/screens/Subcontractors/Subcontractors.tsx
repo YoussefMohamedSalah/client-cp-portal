@@ -9,6 +9,7 @@ import TableActionBtn from "components/Common/TableActionBtn";
 import { useDeleteSubcontractor } from "api/Subcontractors/deleteSubcontractor";
 import { useSubcontractorsQuery } from "api/Subcontractors/getAllSubcontractors";
 import { Subcontractor } from "types/Subcontractor";
+import { isAdminView } from "utils/Helpers";
 
 const Subcontractors: React.FC = () => {
   const { mutateAsync: deleteMutation } = useDeleteSubcontractor();
@@ -44,7 +45,7 @@ const Subcontractors: React.FC = () => {
     },
     {
       name: "NAME",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: (row: any) => (
         <>
@@ -75,7 +76,7 @@ const Subcontractors: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <TableActionBtn
@@ -94,7 +95,7 @@ const Subcontractors: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Subcontractors"}
-          isBtnShow={true}
+          isBtnShow={isAdminView() ? true : false}
           btnText={"Create Subcontractor"}
           onClickBtn={() => push("/" + PAGES.SUBCONTRACTOR)}
         />

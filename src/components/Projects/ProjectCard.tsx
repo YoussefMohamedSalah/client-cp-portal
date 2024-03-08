@@ -21,6 +21,7 @@ import {
   EditOutlinedIcon,
 } from "components/Icons/MuiIcons";
 import { projectStatusBg, projectStatusVariant } from "utils/ProjectsUtils";
+import { isAdminView } from "utils/Helpers";
 
 interface Props {
   project: Project;
@@ -106,19 +107,22 @@ const ProjectCard = ({ project, onDelete }: Props) => {
                       </div>
                     </div>
                     <div className="col-xl-1 col-12 text-end">
-                      <IconButton aria-label="delete" size="medium" color="error" onClick={() => setIsModal(true)}>
-                        <DeleteIcon fontSize="inherit" />
-                      </IconButton>
-                      <IconButton
-                        aria-label="edit"
-                        size="medium"
-                        color="primary"
-                        onClick={() => push("/" + PAGES.PROJECT + "/" + project.id)}>
-                        <EditOutlinedIcon fontSize="inherit" />
-                      </IconButton>
+                      {isAdminView() ? (
+                        <>
+                          <IconButton aria-label="delete" size="medium" color="error" onClick={() => setIsModal(true)}>
+                            <DeleteIcon fontSize="inherit" />
+                          </IconButton>
+                          <IconButton
+                            aria-label="edit"
+                            size="medium"
+                            color="primary"
+                            onClick={() => push("/" + PAGES.PROJECT + "/" + project.id)}>
+                            <EditOutlinedIcon fontSize="inherit" />
+                          </IconButton>
+                        </>
+                      ) : <></>}
                     </div>
                   </div>
-
                   <div className="pb-2">
                     <h6 className="mb-0 mt-2">Completion Progress Percentage</h6>
                     <div style={{ display: "flex", alignItems: "center" }}>

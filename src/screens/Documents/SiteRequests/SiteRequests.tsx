@@ -10,6 +10,7 @@ import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
 import { SiteRequest } from "types/Site_request";
 import { useGetAllSiteRequestsQuery } from "api/Documents/SiteRequests/getAllSiteRequests";
+import { isAdminView } from "utils/Helpers";
 
 const SiteRequests: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<SiteRequest>({} as SiteRequest);
@@ -101,7 +102,7 @@ const SiteRequests: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<SiteRequest>
@@ -118,7 +119,7 @@ const SiteRequests: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Site Requests"}
-          isBtnShow={true}
+          isBtnShow={isAdminView() ? true : false}
           btnText={"Create Site Request"}
           onClickBtn={() => push("/" + PAGES.SITE_REQUEST)}
         />

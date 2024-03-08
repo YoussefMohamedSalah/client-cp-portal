@@ -10,6 +10,7 @@ import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
 import { Invoice } from "types/Invoice";
 import { useGetAllInvoicesQuery } from "api/Documents/Invoices/getAllInvoices";
+import { isAdminView } from "utils/Helpers";
 
 const Invoiced: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<Invoice>({} as Invoice);
@@ -118,7 +119,7 @@ const Invoiced: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<Invoice> data={row} onClickEdit={() => push("/" + PAGES.INVOICE + "/" + row.id)} />
@@ -132,7 +133,7 @@ const Invoiced: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Invoices"}
-          isBtnShow={true}
+          isBtnShow={isAdminView() ? true : false}
           btnText={"Create Invoice"}
           onClickBtn={() => push("/" + PAGES.INVOICE)}
         />

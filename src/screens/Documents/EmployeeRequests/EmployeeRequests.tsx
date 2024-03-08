@@ -10,6 +10,7 @@ import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
 import { EmployeeRequest } from "types/Employee_request";
 import { useGetAllEmployeeRequestsQuery } from "api/Documents/EmployeeRequests/getAllEmployeeRequests";
+import { isAdminView } from "utils/Helpers";
 
 const EmployeeRequests: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<EmployeeRequest>({} as EmployeeRequest);
@@ -120,7 +121,7 @@ const EmployeeRequests: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<EmployeeRequest>
@@ -137,7 +138,7 @@ const EmployeeRequests: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Employee Requests"}
-          isBtnShow={true}
+          isBtnShow={isAdminView() ? true : false}
           btnText={"Create Employee Request"}
           onClickBtn={() => push("/" + PAGES.EMPLOYEE_REQUEST)}
         />

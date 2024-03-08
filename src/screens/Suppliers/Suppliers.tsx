@@ -9,6 +9,7 @@ import NormalTable from "components/Common/NormalTable";
 import TableActionBtn from "components/Common/TableActionBtn";
 import { useDeleteSupplier } from "api/Suppliers/deleteSupplier";
 import { useSuppliersQuery } from "api/Suppliers/getAllSuppliers";
+import { isAdminView } from "utils/Helpers";
 
 const Suppliers: React.FC = () => {
   const { mutateAsync: deleteMutation } = useDeleteSupplier();
@@ -44,7 +45,7 @@ const Suppliers: React.FC = () => {
     },
     {
       name: "NAME",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: (row: any) => (
         <>
@@ -75,7 +76,7 @@ const Suppliers: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <TableActionBtn
@@ -94,7 +95,7 @@ const Suppliers: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Suppliers"}
-          isBtnShow={true}
+          isBtnShow={isAdminView() ? true : false}
           btnText={"Create Supplier"}
           onClickBtn={() => push("/" + PAGES.SUPPLIER)}
         />

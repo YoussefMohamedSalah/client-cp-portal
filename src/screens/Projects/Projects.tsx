@@ -9,6 +9,7 @@ import { handleServerError } from "utils/HandlingServerError";
 import { useDeleteProject } from "api/Projects/deleteProject";
 import { useProjectsQuery } from "api/Projects/getAllProjects";
 import ProjectCard from "components/Projects/ProjectCard";
+import { isAdminView } from "utils/Helpers";
 
 const Projects: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -42,7 +43,7 @@ const Projects: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Projects"}
-          isBtnShow={true}
+          isBtnShow={isAdminView() ? true : false}
           btnText={"Create Project"}
           onClickBtn={() => push("/" + PAGES.PROJECT)}
         />

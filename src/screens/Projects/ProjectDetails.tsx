@@ -9,6 +9,7 @@ import { Project } from "types/Project";
 import { getShortString } from "utils/Helpers";
 import { getProjectProgressOptions, totalProjectExpenses } from "utils/ProjectsUtils";
 import { IOption } from "types/Option";
+import { isAdminView } from "utils/Helpers";
 
 interface Props {
   id: string;
@@ -37,7 +38,7 @@ const ProjectDetails = ({ id }: Props) => {
         {/* page header */}
         <PageHeader
           headerTitle={`${project.name!} Details`}
-          isBtnShow={true}
+          isBtnShow={isAdminView() ? true : false}
           isBackBtn={true}
           btnText={"Edit"}
           onClickBtn={() => push("/" + PAGES.PROJECT + "/" + project.id)}

@@ -11,16 +11,17 @@ import { MaterialRequest } from "types/Material_request";
 import { SiteRequest } from "types/Site_request";
 import { Contract } from "types/Contract";
 import { Invoice } from "types/Invoice";
+import { isAdminView } from "utils/Helpers";
 
 interface Props<
   T extends
-    | PettyCashRequest
-    | PurchaseOrderRequest
-    | EmployeeRequest
-    | MaterialRequest
-    | SiteRequest
-    | Contract
-    | Invoice,
+  | PettyCashRequest
+  | PurchaseOrderRequest
+  | EmployeeRequest
+  | MaterialRequest
+  | SiteRequest
+  | Contract
+  | Invoice,
 > {
   data: T;
   onClickEdit: () => void;
@@ -28,13 +29,13 @@ interface Props<
 
 function DocumentsTableActionBtn<
   T extends
-    | PettyCashRequest
-    | PurchaseOrderRequest
-    | EmployeeRequest
-    | MaterialRequest
-    | SiteRequest
-    | Contract
-    | Invoice,
+  | PettyCashRequest
+  | PurchaseOrderRequest
+  | EmployeeRequest
+  | MaterialRequest
+  | SiteRequest
+  | Contract
+  | Invoice,
 >({ data, onClickEdit }: Props<T>) {
   const { mutateAsync: deleteMutation } = useDeleteDocument();
   const [isModal, setIsModal] = useState<boolean>(false);
@@ -58,25 +59,29 @@ function DocumentsTableActionBtn<
 
   return (
     <>
-      <div className="btn-group" role="group" aria-label="Basic outlined example">
-        {allowEditActionBtn(data.user.id, data) && (
-          <button type="button" className="btn btn-outline-secondary" onClick={onClickEdit}>
-            <i className="icofont-edit text-success" />
-          </button>
-        )}
-        {allowDeleteActionBtn(data.user.id, data) && (
-          <button type="button" className="btn btn-outline-secondary deleterow" onClick={() => setIsModal(true)}>
-            <i className="icofont-close-circled text-danger"></i>
-          </button>
-        )}
-      </div>
-      <DeleteModal
-        show={isModal}
-        onClose={handleModalClose}
-        onDelete={handleDelete}
-        message="Are you sure you want to delete this Document?"
-        modalHeader="Delete Document"
-      />
+      {isAdminView() && (
+        <>
+          <div className="btn-group" role="group" aria-label="Basic outlined example">
+            {allowEditActionBtn(data.user.id, data) && (
+              <button type="button" className="btn btn-outline-secondary" onClick={onClickEdit}>
+                <i className="icofont-edit text-success" />
+              </button>
+            )}
+            {allowDeleteActionBtn(data.user.id, data) && (
+              <button type="button" className="btn btn-outline-secondary deleterow" onClick={() => setIsModal(true)}>
+                <i className="icofont-close-circled text-danger"></i>
+              </button>
+            )}
+          </div>
+          <DeleteModal
+            show={isModal}
+            onClose={handleModalClose}
+            onDelete={handleDelete}
+            message="Are you sure you want to delete this Document?"
+            modalHeader="Delete Document"
+          />
+        </>
+      )}
     </>
   );
 }

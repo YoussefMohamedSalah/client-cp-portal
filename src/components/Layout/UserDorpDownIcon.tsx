@@ -14,7 +14,7 @@ interface Props {
 
 const UserDorpDownIcon = ({ session }: Props) => {
   const { mutateAsync: logoutMutation } = useLogout();
-  const { setSession, changeView, view, isSuperUser } = useAuth();
+  const { setSession, changeView, view } = useAuth();
   const { showError } = useUI();
   const { push } = useApp();
 

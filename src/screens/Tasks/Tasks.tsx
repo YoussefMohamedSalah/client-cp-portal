@@ -8,6 +8,7 @@ import { Task } from "types/Task";
 import { useDeleteTask } from "api/Tasks/deleteTask";
 import TaskCard from "components/Tasks/TaskCard";
 import { useTasksQuery } from "api/Tasks/getAllTasks";
+import { isAdminView } from "utils/Helpers";
 
 const Tasks: React.FC = () => {
   const { mutateAsync: deleteMutation } = useDeleteTask();
@@ -35,7 +36,7 @@ const Tasks: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Tasks"}
-          isBtnShow={true}
+          isBtnShow={isAdminView() ? true : false}
           btnText={"Create Tasks"}
           onClickBtn={() => push("/" + PAGES.TASK)}
         />

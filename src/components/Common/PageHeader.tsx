@@ -59,14 +59,14 @@ const PageHeader: React.FC<Props> = ({
             </div>
           ) : null}
 
-          {isBtnShow && btnText ? (
-            <div className="col-auto d-flex w-sm-100">
-              <button className="btn btn-primary btn-set-task w-sm-100" onClick={onClickBtn ? onClickBtn : () => {}}>
+          <div className="col-auto d-flex w-sm-100">
+            {isBtnShow && btnText ? (
+              <button className="btn btn-primary btn-set-task w-sm-100" onClick={onClickBtn ? onClickBtn : () => { }}>
                 <i className="icofont-plus-circle me-2 fs-6" />
                 {btnText}
               </button>
-            </div>
-          ) : null}
+            ) : null}
+          </div>
 
           {renderRight ? renderRight() : null}
         </div>

@@ -10,6 +10,7 @@ import { STATUS } from "enums/enums";
 import { useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
+import { isAdminView } from "utils/Helpers";
 
 const PcRequests: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<PettyCashRequest>({} as PettyCashRequest);
@@ -114,7 +115,7 @@ const PcRequests: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<PettyCashRequest>
@@ -131,7 +132,7 @@ const PcRequests: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Petty cash Requests"}
-          isBtnShow={true}
+          isBtnShow={isAdminView() ? true : false}
           btnText={"Create PC"}
           onClickBtn={() => push("/" + PAGES.PC_REQUEST)}
         />

@@ -10,6 +10,7 @@ import { useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
 import { PurchaseOrderRequest } from "types/Po_request";
+import { isAdminView } from "utils/Helpers";
 
 const PoRequests: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<PurchaseOrderRequest>({} as PurchaseOrderRequest);
@@ -153,7 +154,7 @@ const PoRequests: React.FC = () => {
     },
     {
       name: "ACTION",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<PurchaseOrderRequest>
@@ -170,7 +171,7 @@ const PoRequests: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Purchase Order Requests"}
-          isBtnShow={true}
+          isBtnShow={isAdminView() ? true : false}
           btnText={"Create PC"}
           onClickBtn={() => push("/" + PAGES.PO_REQUEST)}
         />
