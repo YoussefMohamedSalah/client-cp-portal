@@ -21,4 +21,5 @@ export interface Customer {
   projects: Project[];
   createdAt: Date;
   updatedAt: Date;
+  avatar?: string;
 }

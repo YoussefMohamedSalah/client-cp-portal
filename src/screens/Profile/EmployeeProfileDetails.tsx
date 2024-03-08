@@ -37,7 +37,7 @@ const EmployeeProfileDetails: React.FC<Props> = () => {
   const { mutateAsync: updateUserSignMutation } = useUpdateUserSign();
 
   const { isLoading: employeeLoading, error: EmployeeError, data: employeeRes } = useSingleEmployeeQuery({});
-
+console.log(employeeRes)
   // let attendanceData: any = attendanceRes?.attendance.data || {};
   let employeeData: any = employeeRes?.employee.data || {};
 

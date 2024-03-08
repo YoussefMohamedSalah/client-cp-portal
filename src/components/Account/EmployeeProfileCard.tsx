@@ -53,7 +53,7 @@ const EmployeeProfileCard: React.FC<Props> = ({ user ,personal }) => {
       showError(handleServerError(err.response));
     }
   };
-  console.log(user);
+  // console.log(user);
 
   return (
     <>

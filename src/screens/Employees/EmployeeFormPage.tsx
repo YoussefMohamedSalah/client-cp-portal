@@ -70,7 +70,11 @@ const EmployeeFormPage = ({ id }: Props) => {
   useEffect(() => {
     if (!initialized && employeeData) {
       let employee: Employee = employeeData?.employee?.data!;
-      setModelData({ ...employee });
+      setModelData({
+        ...employee,
+        projects: employee.projects_info || [],
+        department: employee.department_info || { id: "0", name: "Select Department" },
+      });
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -96,6 +100,9 @@ const EmployeeFormPage = ({ id }: Props) => {
         }
         value = projectsArr;
       }
+    }
+    if (key === EmployeeKeys.DEPARTMENT) {
+      value = departments?.find((department: any) => department.id === value) || ({} as Employee);
     }
     setModelData({
       ...modelData,
@@ -129,7 +136,7 @@ const EmployeeFormPage = ({ id }: Props) => {
       type: "select",
       width: "col-md-3",
       key: EmployeeKeys.DEPARTMENT,
-      value: modelData?.department,
+      value: modelData?.department?.name!,
       onChange: (value: string | any) => handleModelData(EmployeeKeys.DEPARTMENT, value),
       options: departmentsOptions,
       placeholder: "Select Department",
@@ -406,6 +413,7 @@ const EmployeeFormPage = ({ id }: Props) => {
     };
 
     let errors = validateInputs(validationData);
+    console.log({ errors });
     if (errors.length > 0) return showError(errors);
 
     try {

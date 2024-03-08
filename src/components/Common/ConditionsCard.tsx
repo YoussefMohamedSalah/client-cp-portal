@@ -23,10 +23,11 @@ const ConditionsCard = ({ conditions, onAddCondition, onEdit, onRemove }: Props)
           <div className="row justify-content-center align-items-center row g-3 mb-3" key={index}>
             <div className="col-lg-11 d-flex justify-content-start align-items-center">
               <span className="badge bg-success p-2 m-2">{index + 1}</span>
+              {/* condition  */}
               <MultilineTextInput
                 label="Add new condition"
                 placeholder="Condition"
-                rows={2}
+                // rows={2}   ResizeObserver loop problem cause by this props
                 value={condition}
                 onChange={(value: string) => onEdit(index, value)}
               />

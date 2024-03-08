@@ -31,7 +31,7 @@ export enum ROUTES {
 
   // !----- All Endpoints ------
   SUPPLIER = "supplier/",
-  CUSTOMER = "customer/",
+  CUSTOMER = "customer/", 
   TENDER = "tender/",
   TENDER_ADD = "group/tender/add/",
   TENDER_REMOVE = "group/tender/remove/",
