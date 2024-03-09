@@ -24,6 +24,7 @@ export const PoRequestStrKeys = [
   PoRequestKeys.DATE,
   PoRequestKeys.DELIVERY_DATE,
   PoRequestKeys.AVAILABILITY,
+  PoRequestKeys.TRANSPORTATION,
   PoRequestKeys.SUBJECT,
 ];
 

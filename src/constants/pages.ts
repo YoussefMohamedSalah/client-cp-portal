@@ -13,7 +13,7 @@ export enum PAGES {
   TASK = "task",
   Task_INFO = "task_rev",
   PROFILE = "profile",
-  PERSONAL_PROFILE='personal_profile',
+  PERSONAL_PROFILE = 'personal_profile',
   TENDERS = "tenders",
   SETTINGS = "settings",
   INVOICES = "invoices",
@@ -45,6 +45,7 @@ export enum PAGES {
   EMPLOYEE_INFO = "employee_rev",
   PROJECT_INFO = "project_rev",
   TENDER_INFO = "tender_rev",
+  DAILY_REPORT_INFO = "daily_report_rev",
 
   // Create or Edit
   PO_REQUEST = "po_request",
@@ -60,6 +61,8 @@ export enum PAGES {
   EMPLOYEE = "employee",
   PROJECT = "project",
   TENDER = "tender",
+  DAILY_REPORT = "daily_report",
+
 
   INVENTORY = "inventory",
 

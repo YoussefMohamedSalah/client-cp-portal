@@ -49,7 +49,7 @@ const SiteFormPage = lazy(() => import("../screens/Documents/SiteRequests/SiteFo
 const MaterialFormPage = lazy(() => import("../screens/Documents/MaterialRequests/MaterialFormPage"));
 const EmployeeRequestFormPage = lazy(() => import("../screens/Documents/EmployeeRequests/EmployeeRequestFormPage"));
 const ContractFormPage = lazy(() => import("../screens/Documents/Contracts/ContractFormPage"));
-const InvoiceFormPage = lazy(() => import("../screens/Documents/Invoices/InvoiceFormPage"));
+// const InvoiceFormPage = lazy(() => import("../screens/Documents/Invoices/InvoiceFormPage"));
 // ---
 const CustomerFormPage = lazy(() => import("../screens/Customers/CustomerFormPage"));
 const SupplierFormPage = lazy(() => import("../screens/Suppliers/SupplierFormPage"));
@@ -73,7 +73,10 @@ const PersonalProfileDetails = lazy(() => import("../screens/Profile/PersonalPro
 
 // const MaterialForwardingPage = lazy(() => import("../MaterialRequests/MaterialForwardingPage"));
 
-// const DailyReports = lazy(() => import("../DailyReports/DailyReports"));
+const DailyReportDetails = lazy(() => import("../screens/DailyReports/DailyReportDetails"));
+const DailyReportFormPage = lazy(() => import("../screens/DailyReports/DailyReportFormPage"));
+const DailyReports = lazy(() => import("../screens/DailyReports/DailyReports"));
+
 
 const InventoryItemDetails = lazy(() => import("../screens//Inventory/InventoryItemDetails"));
 // const ContractDetails = lazy(() => import("../Contracts/ContractDetails"));
@@ -200,6 +203,11 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
         return <TaskDetails id={id} />;
       case PAGES.TASK:
         return <TaskFormPage id={id} />;
+      // ---
+      case PAGES.DAILY_REPORT_INFO:
+        return <DailyReportDetails id={id} />;
+      case PAGES.DAILY_REPORT:
+        return <DailyReportFormPage id={id} />;
     }
   } else
     switch (slug) {
@@ -270,6 +278,11 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
         return <Tasks />;
       case PAGES.TASK:
         return <TaskFormPage />;
+      // ---
+      case PAGES.DAILY_REPORTS:
+        return <DailyReports />;
+      case PAGES.DAILY_REPORT:
+        return <DailyReportFormPage />;
       // ---
       case PAGES.INVENTORY:
         return <Inventory />;

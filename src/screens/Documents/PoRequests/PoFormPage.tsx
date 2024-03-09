@@ -197,6 +197,8 @@ we would like to place the purchase order for Below Items.`;
     };
   });
 
+  suppliersOptions.unshift({ label: "Select Supplier", value: "0" })
+
   // Modals Handling
   const handleOpenPreviewModal = () => {
     setModalHeader("Preview Purchase Order Request");
