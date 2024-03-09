@@ -11,6 +11,18 @@ export interface DailyReportGroupKpi {
   updatedAt: Date;
 }
 
+export interface DailyReportEmployee {
+  id: string;
+  name: string;
+  mark: number;
+}
+
+export interface DailyReportProjectGroup {
+  groupId: string;
+  groupName: string;
+  employees: DailyReportEmployee[]
+}
+
 export interface DailyReportGroup {
   id: string;
   name: string;
@@ -31,14 +43,14 @@ export interface DailyReport {
   today_working_spot: string | null;
   total_workers_count: number | null;
   notes: string | null;
-  work_flow: Array<{ userId: string; name: string; title: string; state: boolean; isRejected: boolean; sign: string }>;
   files: Array<{ name: string; url: string }>;
   users: Array<{ userId: string; name: string; score: string }>;
-  project_details: { id: string; name: string };
   supervisor: { id: string; name: string };
-  project: Project;
-  company: Company;
+  work_flow: Array<{ userId: string; name: string; title: string; state: boolean; isRejected: boolean; sign: string }>;
   daily_report_groups: DailyReportGroup[];
+  company: Company;
+  project: Project;
+  project_details: { id: string; name: string };
   createdAt: Date;
   updatedAt: Date;
 }

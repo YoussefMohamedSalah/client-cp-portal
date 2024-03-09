@@ -55,7 +55,7 @@ const EmployeeDetails = ({ id }: Props) => {
 
   return (
     <div className="container-xxl">
-      <PageHeader headerTitle="Employee Profile" />
+      <PageHeader headerTitle="Employee Profile" isBackBtn={true} />
       <div className="row align-item-center row-deck g-3 mb-3">
         <div className="col-xxl-8 col-xl-8 col-lg-6 col-md-12">
           <EmployeeProfileCard employee={employee} personal={false} dataArr={dataArr} />

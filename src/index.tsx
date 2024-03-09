@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 redirectToWWW();
 
 root.render(
-  <React.StrictMode>
+  <>
     <Router>
       <Suspense fallback={null}>
         <Providers>
@@ -20,7 +20,7 @@ root.render(
         </Providers>
       </Suspense>
     </Router>
-  </React.StrictMode>,
+  </>,
 );
 
 // If you want to start measuring performance in your app, pass a function

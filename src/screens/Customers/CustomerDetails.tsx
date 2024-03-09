@@ -14,7 +14,7 @@ const CustomerDetails = ({ id }: Props) => {
   if (customerError) return null;
   return (
     <div className="container-xxl">
-      <PageHeader isBackBtn={true} />
+      <PageHeader headerTitle="Customer Profile" isBackBtn={true} />
       <div className="row g-3 py-1 pt-4">
         <UserDetailsCard user={customer} />
       </div>

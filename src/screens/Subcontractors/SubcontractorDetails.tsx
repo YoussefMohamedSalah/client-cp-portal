@@ -15,7 +15,7 @@ const SubcontractorDetails = ({ id }: Props) => {
   return (
     <div>
       <div className="container-xxl">
-        <PageHeader headerTitle="Subcontractor Details" />
+        <PageHeader headerTitle="Subcontractor Profile" isBackBtn={true} />
         <div className="row align-item-center row-deck g-3 mb-3">
           <div >
             <UserDetailsCard user={subcontractor} />

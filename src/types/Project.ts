@@ -8,7 +8,8 @@ import { Inventory } from "./Inventory";
 import { Contract } from "./Contract";
 import { Invoice } from "./Invoice";
 import { Employee } from "./Employee";
-import { DailyReport } from "./Daily_report";
+import { DailyReport, DailyReportEmployee } from "./Daily_report";
+
 
 export interface Project {
   id: string;
@@ -41,7 +42,7 @@ export interface Project {
   comments_count: number | null;
   members_count: number | null;
   manager: { id: string; name: string };
-  daily_report_groups: { groupId: string; groupName: string; employees: string[] }[];
+  daily_report_groups: { groupId: string; groupName: string; employees: DailyReportEmployee[] }[];
   company: Company;
   assistants?: Employee[];
   members: any[];

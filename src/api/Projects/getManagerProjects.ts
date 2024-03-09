@@ -7,7 +7,7 @@ export const getManagerProjects = async ({ queryKey }: any) => {
   return { projects: { data: data as any } };
 };
 
-export const useProjectsQuery = (options: any) => {
+export const useManagerProjectsQuery = (options: any) => {
   return useQuery<{ projects: { data: any } }, Error>(
     [ROUTES.PROJECT + ROUTES.DAILY_REPORT, options],
     getManagerProjects,

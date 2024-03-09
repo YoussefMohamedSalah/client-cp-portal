@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { inputsValidationType } from "types/Error";
 import { IField } from "types/Forms/formFields";
-import { GroupKeys, GroupNumKeys, GroupRequiredKeys, GroupStrKeys } from "entitiesData/Group";
+import { GroupKeys, GroupNumKeys, GroupRequiredKeys, GroupStrKeys } from "models/Group";
 import { handleServerError, validateInputs } from "utils/HandlingServerError";
 import { groupInput, useCreateGroup } from "api/Group/createGroup";
 import { CreateGroup, Group } from "types/Group";
