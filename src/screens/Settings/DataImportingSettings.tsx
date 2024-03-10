@@ -12,7 +12,6 @@ import {
 import { useUI } from "contexts/UIContext";
 import { handleError, handleServerError } from "utils/HandlingServerError";
 import { useState } from "react";
-import OptionsSelectOne from "components/UI/FormInputs/OptionsSelectOne";
 import SimpleSelect from "components/UI/FormInputs/SimpleSelect";
 
 interface TabDataType {
