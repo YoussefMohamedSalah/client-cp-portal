@@ -132,15 +132,15 @@ const Invoiced: React.FC = () => {
       <div className="container-fluid">
         {/* page header */}
         <PageHeader
-          headerTitle={"Invoices"}
+          headerTitle={"Payment Certificates"}
           isBtnShow={isAdminView() ? true : false}
-          btnText={"Create Invoice"}
+          btnText={"Create Payment Certificate"}
           onClickBtn={() => push("/" + PAGES.INVOICE)}
         />
         {/* table data */}
         <div className="row g-3 py-1 pb-4">
           <DocumentTable<Invoice>
-            title={"Invoices"}
+            title={"Payment Certificates"}
             columns={columnT}
             data={requests}
             renderCards={true}

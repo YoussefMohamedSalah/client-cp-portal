@@ -183,51 +183,51 @@ export const superUserMenuData: any[] = [
   },
 
   // FINANCE
-  {
-    name: "Finance Sec",
-    routerLink: ["/"],
-    identifier: "Finance Sec",
-    iconClass: "icofont-money-bag",
-    breadcrumbMessage: "",
-    isCategory: false,
-    isApp: false,
-    children: [
-      // this will be all invoices created.
-      {
-        name: "Invoices",
-        routerLink: ["/invoices"],
-        identifier: "Invoices",
-        iconClass: "",
-        breadcrumbMessage: "",
-        isCategory: false,
-        isApp: false,
-        children: [],
-      },
-      // this will be all payments created
-      {
-        name: "Payments",
-        routerLink: ["/payments"],
-        identifier: "Payments",
-        iconClass: "",
-        breadcrumbMessage: "",
-        isCategory: false,
-        isApp: false,
-        children: [],
-      },
-      // this will be the statistics for all expenses
-      {
-        name: "Expenses",
-        routerLink: ["/expenses"],
-        identifier: "Expenses",
-        iconClass: "",
-        breadcrumbMessage: "",
-        isCategory: false,
-        isApp: false,
-        children: [],
-      },
-    ],
-    roles: ["Superuser", "Sub_Superuser"],
-  },
+  // {
+  //   name: "Finance Sec",
+  //   routerLink: ["/"],
+  //   identifier: "Finance Sec",
+  //   iconClass: "icofont-money-bag",
+  //   breadcrumbMessage: "",
+  //   isCategory: false,
+  //   isApp: false,
+  //   children: [
+  //     // this will be all invoices created.
+  //     {
+  //       name: "Payment Certificates",
+  //       routerLink: ["/invoices"],
+  //       identifier: "Payment Certificates",
+  //       iconClass: "",
+  //       breadcrumbMessage: "",
+  //       isCategory: false,
+  //       isApp: false,
+  //       children: [],
+  //     },
+  //     // this will be all payments created
+  //     {
+  //       name: "Payments",
+  //       routerLink: ["/payments"],
+  //       identifier: "Payments",
+  //       iconClass: "",
+  //       breadcrumbMessage: "",
+  //       isCategory: false,
+  //       isApp: false,
+  //       children: [],
+  //     },
+  //     // this will be the statistics for all expenses
+  //     {
+  //       name: "Expenses",
+  //       routerLink: ["/expenses"],
+  //       identifier: "Expenses",
+  //       iconClass: "",
+  //       breadcrumbMessage: "",
+  //       isCategory: false,
+  //       isApp: false,
+  //       children: [],
+  //     },
+  //   ],
+  //   roles: ["Superuser", "Sub_Superuser"],
+  // },
   // Procurement
   {
     name: "Procurement Sec",
