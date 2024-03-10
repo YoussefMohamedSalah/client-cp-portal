@@ -103,7 +103,7 @@ export enum ROUTES {
   ADMIN_DASHBOARD = "dashboard/attendance",
 
   DOWNLOAD_FILE = "/download/file/",
-  EMPLOYEES_CSV = "/clx/employees/",
+  EMPLOYEES_CSV = "/csv/employees/",
 
   // NEW CHAT
   ALL_DUAL_CHATS = "chat/dual/chats/",
