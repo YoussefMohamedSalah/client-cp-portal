@@ -31,7 +31,7 @@ export enum ROUTES {
 
   // !----- All Endpoints ------
   SUPPLIER = "supplier/",
-  CUSTOMER = "customer/", 
+  CUSTOMER = "customer/",
   TENDER = "tender/",
   TENDER_ADD = "group/tender/add/",
   TENDER_REMOVE = "group/tender/remove/",
@@ -102,6 +102,9 @@ export enum ROUTES {
   // !-----  Admin Dashboard Endpoints -----
   ADMIN_DASHBOARD = "dashboard/attendance",
 
+  DOWNLOAD_FILE = "/download/file/",
+  EMPLOYEES_CSV = "/clx/employees/",
+
   // NEW CHAT
   ALL_DUAL_CHATS = "chat/dual/chats/",
   ALL_GROUP_CHATS = "chat/group/chats/",
@@ -109,7 +112,6 @@ export enum ROUTES {
   CREATE_CHAT = "chat/dual/create/",
   SEND_MESSAGE = "websocket/chat/send/",
 
-  DOWNLOAD_FILE = "/download/file/",
 
   // not yet
   PERMISSION = "user/utils/permissions/",

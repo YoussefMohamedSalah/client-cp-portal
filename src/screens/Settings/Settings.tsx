@@ -2,6 +2,7 @@ import { Nav, Tab } from "react-bootstrap";
 import OrganizationSettings from "./OrganizationSettings";
 import PageHeader from "components/Common/PageHeader";
 import DocumentSettings from "./DocumentSettings";
+import DataImportingSettings from "./DataImportingSettings";
 
 const Settings = () => {
   return (
@@ -20,6 +21,9 @@ const Settings = () => {
                     <Nav.Item>
                       <Nav.Link eventKey="documents">Documents</Nav.Link>
                     </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link eventKey="data_importing">Data importing</Nav.Link>
+                    </Nav.Item>
                   </Nav>
                 </div>
               );
@@ -34,6 +38,9 @@ const Settings = () => {
               </Tab.Pane>
               <Tab.Pane eventKey="documents">
                 <DocumentSettings />
+              </Tab.Pane>
+              <Tab.Pane eventKey="data_importing">
+                <DataImportingSettings />
               </Tab.Pane>
             </Tab.Content>
           </div>

@@ -27,7 +27,6 @@ const DocumentSettings = () => {
   if (error) return null;
 
   let workFlowData: CompanyWorkFlow = data?.workflow?.data || ({} as CompanyWorkFlow);
-  console.log(workFlowData.default_po_conditions);
   let poWorkFlow: WorkFlow[] = workFlowData.purchase_order_flow || ([] as WorkFlow[]);
   let pcWorkFlow: WorkFlow[] = workFlowData.petty_cash_request_flow || ([] as WorkFlow[]);
   let materialWorkFlow: WorkFlow[] = workFlowData.material_request_flow || ([] as WorkFlow[]);
@@ -63,8 +62,6 @@ const DocumentSettings = () => {
   };
 
   const handleUpdateConditions = async (conditions: string[], term: string) => {
-    console.log(conditions);
-
     let termVal: string = "";
     if (term === DOCUMENT_TYPE.PURCHASE_ORDER) termVal = "default_po_conditions";
     if (term === DOCUMENT_TYPE.CONTRACT) termVal = "default_contract_conditions";
@@ -87,7 +84,7 @@ const DocumentSettings = () => {
       tabName: "Purchase Order",
       tabKey: DOCUMENT_TYPE.PURCHASE_ORDER,
       workFlow: poWorkFlow,
-      defaultConditions:workFlowData.default_po_conditions,          // test condition ["condition 1"]
+      defaultConditions: workFlowData.default_po_conditions,          // test condition ["condition 1"]
     },
     {
       key: "Pc",
