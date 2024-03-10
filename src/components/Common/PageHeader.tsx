@@ -61,7 +61,7 @@ const PageHeader: React.FC<Props> = ({
 
           <div className="col-auto d-flex w-sm-100">
             {isBtnShow && btnText ? (
-              <button className="btn btn-primary btn-set-task w-sm-100" onClick={onClickBtn ? onClickBtn : () => { }}>
+              <button className="btn btn-primary btn-set-task w-sm-100" onClick={onClickBtn ? onClickBtn : () => {}}>
                 <i className="icofont-plus-circle me-2 fs-6" />
                 {btnText}
               </button>

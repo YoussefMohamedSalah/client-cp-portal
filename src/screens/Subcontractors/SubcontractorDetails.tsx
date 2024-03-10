@@ -8,7 +8,11 @@ interface Props {
 }
 
 const SubcontractorDetails = ({ id }: Props) => {
-  const { isLoading: subcontractorLoading, error: subcontractorError, data: subcontractorData } = useSubcontractorDetailsQuery({ id });
+  const {
+    isLoading: subcontractorLoading,
+    error: subcontractorError,
+    data: subcontractorData,
+  } = useSubcontractorDetailsQuery({ id });
   let subcontractor: any = subcontractorData?.subcontractor.data || {};
   if (subcontractorLoading) return <Loading />;
   if (subcontractorError) return null;
@@ -17,7 +21,7 @@ const SubcontractorDetails = ({ id }: Props) => {
       <div className="container-xxl">
         <PageHeader headerTitle="Subcontractor Profile" isBackBtn={true} />
         <div className="row align-item-center row-deck g-3 mb-3">
-          <div >
+          <div>
             <UserDetailsCard user={subcontractor} />
           </div>
         </div>
@@ -27,4 +31,3 @@ const SubcontractorDetails = ({ id }: Props) => {
 };
 
 export default SubcontractorDetails;
-

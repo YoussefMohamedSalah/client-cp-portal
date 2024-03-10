@@ -20,7 +20,7 @@ export interface DailyReportEmployee {
 export interface DailyReportProjectGroup {
   groupId: string;
   groupName: string;
-  employees: DailyReportEmployee[]
+  employees: DailyReportEmployee[];
 }
 
 export interface DailyReportGroup {

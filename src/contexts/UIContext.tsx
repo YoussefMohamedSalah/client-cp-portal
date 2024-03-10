@@ -15,11 +15,11 @@ interface UIContextValue {
 }
 
 export const UIContext = createContext<UIContextValue>({
-  changeTheme: () => { },
-  showError: () => { },
-  hideError: () => { },
-  showSuccess: () => { },
-  toggleSidebar: () => { },
+  changeTheme: () => {},
+  showError: () => {},
+  hideError: () => {},
+  showSuccess: () => {},
+  toggleSidebar: () => {},
   theme: "light",
   isShowError: false,
   isShowSuccess: false,
@@ -78,7 +78,7 @@ export const UIProvider: React.FC<Props> = ({ children }) => {
     if (typeof errors !== "string" || typeof errors !== "number" || typeof errors !== "object") {
       if (errors && errors.length > 0) {
         setIsShowError(true);
-        setErrorsList(errors)
+        setErrorsList(errors);
       }
     }
   };

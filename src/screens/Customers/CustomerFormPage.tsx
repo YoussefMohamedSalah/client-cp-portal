@@ -37,7 +37,7 @@ const CustomerFormPage = ({ id }: Props) => {
   const { push } = useApp();
 
   const { data: customerData, error: customerError, isLoading: customerIsLoading } = useCustomerDetailsQuery({ id });
-  console.log(customerData)
+  console.log(customerData);
   // !Check if this is CREATE OR EDIT Modal
   useEffect(() => {
     if (!initialized) {

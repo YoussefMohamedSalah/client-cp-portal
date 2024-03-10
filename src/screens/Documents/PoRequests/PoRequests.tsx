@@ -154,7 +154,7 @@ const PoRequests: React.FC = () => {
     },
     {
       name: "ACTION",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<PurchaseOrderRequest>
@@ -172,7 +172,7 @@ const PoRequests: React.FC = () => {
         <PageHeader
           headerTitle={"Purchase Order Requests"}
           isBtnShow={isAdminView() ? true : false}
-          btnText={"Create PC"}
+          btnText={"Create PO"}
           onClickBtn={() => push("/" + PAGES.PO_REQUEST)}
         />
         {/* table data */}

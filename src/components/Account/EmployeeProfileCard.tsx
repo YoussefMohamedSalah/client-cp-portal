@@ -85,19 +85,18 @@ const EmployeeProfileCard: React.FC<Props> = ({ employee, personal, dataArr }) =
               <h6 className="mb-0 mt-2  fw-bold d-block fs-6">{employee.name}</h6>
               <span className="py-1 fw-bold small-11 mb-0 mt-1 text-muted">{employee.business_title}</span>
               <div className="row g-2 pt-2">
-
-
                 {dataArr.map((term, index: number) => {
                   return (
                     <div key={index} className="col-xl-5">
                       <div className="d-flex align-items-center">
                         <i className={`${term.iconClass}`} />
-                        <span className="ms-2 small text-muted fw-bold">{term.label} : <span className="text-secondary">{term.value}</span></span>
+                        <span className="ms-2 small text-muted fw-bold">
+                          {term.label} : <span className="text-secondary">{term.value}</span>
+                        </span>
                       </div>
                     </div>
-                  )
+                  );
                 })}
-
 
                 {/* <div className="col-xl-5">
                   <div className="d-flex align-items-center">
@@ -136,26 +135,15 @@ const EmployeeProfileCard: React.FC<Props> = ({ employee, personal, dataArr }) =
               </div>
             </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
             <div className="d-flex w-100 gap-3 justify-content-lg-start justify-content-center mt-3 pt-xl-0 ">
-              {personal && <button
-                id="dropdown-basic"
-                className="btn btn-primary dropdown-toggle"
-                onClick={() => setIsModal(!isModal)}>
-                Change Password
-              </button>}
+              {personal && (
+                <button
+                  id="dropdown-basic"
+                  className="btn btn-primary dropdown-toggle"
+                  onClick={() => setIsModal(!isModal)}>
+                  Change Password
+                </button>
+              )}
               <Modal centered show={isModal} size="sm" onHide={() => setIsModal(false)}>
                 <Modal.Body>
                   <div className="modal-body">

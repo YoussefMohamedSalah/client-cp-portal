@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const DailyReportGroupCard = () => {
-    return (
-        <div>
+  return <div></div>;
+};
 
-        </div>
-    )
-}
-
-export default DailyReportGroupCard
+export default DailyReportGroupCard;

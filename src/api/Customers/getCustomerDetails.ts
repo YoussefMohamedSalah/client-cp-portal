@@ -10,10 +10,8 @@ export const getCustomerDetails = async ({ queryKey }: any) => {
     const { data } = await http.get(ROUTES.CUSTOMER + _params.id);
     return { customer: { data: data as Customer } };
   } else return null;
-  
 };
 
 export const useCustomerDetailsQuery = (options: any) => {
   return useQuery([ROUTES.CUSTOMER, options], getCustomerDetails);
 };
-

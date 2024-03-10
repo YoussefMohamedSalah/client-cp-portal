@@ -14,7 +14,7 @@ const EmployeeDetails = ({ id }: Props) => {
   const { isLoading: employeeLoading, error: EmployeeError, data: employeeData } = useEmployeeDetailsQuery({ id });
   if (employeeLoading) return <Loading />;
   if (EmployeeError) return null;
-  let employee: Employee = employeeData?.employee?.data || {} as Employee;
+  let employee: Employee = employeeData?.employee?.data || ({} as Employee);
 
   const {
     name,
@@ -32,7 +32,8 @@ const EmployeeDetails = ({ id }: Props) => {
     nationality,
     site_role,
     site_job,
-    joining_date } = employee;
+    joining_date,
+  } = employee;
 
   const dataArr: DataArrayType[] = [
     { iconClass: "icofont-briefcase", label: "Name", value: name },
@@ -51,7 +52,7 @@ const EmployeeDetails = ({ id }: Props) => {
     { iconClass: "icofont-email", label: "Email", value: email },
     { iconClass: "icofont-address-book", label: "Department", value: department_info?.name! },
     { iconClass: "icofont-ui-calendar", label: "Join date", value: new Date(joining_date).toLocaleDateString() },
-  ]
+  ];
 
   return (
     <div className="container-xxl">
@@ -65,7 +66,7 @@ const EmployeeDetails = ({ id }: Props) => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default EmployeeDetails;

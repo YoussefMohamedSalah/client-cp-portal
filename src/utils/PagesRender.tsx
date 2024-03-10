@@ -77,7 +77,6 @@ const DailyReportDetails = lazy(() => import("../screens/DailyReports/DailyRepor
 const DailyReportFormPage = lazy(() => import("../screens/DailyReports/DailyReportFormPage"));
 const DailyReports = lazy(() => import("../screens/DailyReports/DailyReports"));
 
-
 const InventoryItemDetails = lazy(() => import("../screens//Inventory/InventoryItemDetails"));
 // const ContractDetails = lazy(() => import("../Contracts/ContractDetails"));
 

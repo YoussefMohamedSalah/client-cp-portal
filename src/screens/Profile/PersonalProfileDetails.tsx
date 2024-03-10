@@ -39,7 +39,7 @@ const PersonalProfileDetails: React.FC = () => {
   if (employeeLoading) return <Loading />;
   if (EmployeeError) return null;
 
-  let employee: Employee = employeeData?.employee.data || {} as Employee;
+  let employee: Employee = employeeData?.employee.data || ({} as Employee);
 
   const {
     name,
@@ -57,7 +57,7 @@ const PersonalProfileDetails: React.FC = () => {
     nationality,
     site_role,
     site_job,
-    joining_date
+    joining_date,
   } = employee;
 
   const dataArr: DataArrayType[] = [
@@ -104,7 +104,7 @@ const PersonalProfileDetails: React.FC = () => {
       );
     } catch (err: any) {
       console.log(err.response?.data?.msg!);
-      showError(handleServerError(err.response?.data?.msg!));
+      showError(handleServerError(err.response!));
     }
   };
 

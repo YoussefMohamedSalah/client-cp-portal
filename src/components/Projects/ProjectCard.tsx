@@ -120,7 +120,9 @@ const ProjectCard = ({ project, onDelete }: Props) => {
                             <EditOutlinedIcon fontSize="inherit" />
                           </IconButton>
                         </>
-                      ) : <></>}
+                      ) : (
+                        <></>
+                      )}
                     </div>
                   </div>
                   <div className="pb-2">

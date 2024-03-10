@@ -10,7 +10,7 @@ export interface SmallCardProps {
 
 const SmallCard: React.FC<SmallCardProps> = ({ title, value, text, iconClass, bgColor, fColor, onClick }) => {
   return (
-    <div className="col pointer" onClick={onClick ? onClick : () => { }}>
+    <div className="col pointer" onClick={onClick ? onClick : () => {}}>
       <div className={`card ${bgColor ? bgColor : ""}`}>
         <div className={`${fColor ? fColor : "text-color"} card-body d-flex align-items-center`}>
           {iconClass && <i className={iconClass} />}

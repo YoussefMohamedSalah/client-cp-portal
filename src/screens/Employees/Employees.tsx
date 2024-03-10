@@ -47,7 +47,7 @@ const Employees: React.FC = () => {
     },
     {
       name: "NAME",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: true,
       cell: (row: any) => (
         <>
@@ -85,7 +85,7 @@ const Employees: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => { },
+      selector: (row: any) => {},
       sortable: false,
       cell: (row: any) => (
         <TableActionBtn

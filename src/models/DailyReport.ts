@@ -1,16 +1,16 @@
 export enum DailyReportKeys {
-    DATE = "date",
-    WORKING_AREA = 'working_area',
-    TODAYS_WORKING_SPOT = 'today_working_spot',
-    SUPERVISOR_NAME = 'supervisor',
-    NOTES = 'notes',
-    ENGINEER_NAME = '',
-    TOTAL_EMPLOYEES = 'total_workers_count',
+  DATE = "date",
+  WORKING_AREA = "working_area",
+  TODAYS_WORKING_SPOT = "today_working_spot",
+  SUPERVISOR_NAME = "supervisor",
+  NOTES = "notes",
+  ENGINEER_NAME = "",
+  TOTAL_EMPLOYEES = "total_workers_count",
 
-    GROUPS_COUNT = '',
-    WORKING_PRODUCTIVITY = '',
-    FILES = "files",
-    FILE = "file"
+  GROUPS_COUNT = "",
+  WORKING_PRODUCTIVITY = "",
+  FILES = "files",
+  FILE = "file",
 }
 
 export const GroupNumKeys = [];

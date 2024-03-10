@@ -84,7 +84,7 @@ const DocumentSettings = () => {
       tabName: "Purchase Order",
       tabKey: DOCUMENT_TYPE.PURCHASE_ORDER,
       workFlow: poWorkFlow,
-      defaultConditions: workFlowData.default_po_conditions,          // test condition ["condition 1"]
+      defaultConditions: workFlowData.default_po_conditions, // test condition ["condition 1"]
     },
     {
       key: "Pc",

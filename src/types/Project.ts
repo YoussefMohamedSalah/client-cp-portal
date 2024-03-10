@@ -10,7 +10,6 @@ import { Invoice } from "./Invoice";
 import { Employee } from "./Employee";
 import { DailyReport, DailyReportEmployee } from "./Daily_report";
 
-
 export interface Project {
   id: string;
   name: string;

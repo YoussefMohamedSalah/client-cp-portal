@@ -11,9 +11,22 @@ interface DataArrayType {
   value: any;
 }
 
-
 const UserDetailsCard: React.FC<Props> = ({ user }) => {
-  const { avatar, customer_type, code, country, city, company_name, building_number, phone_number, createdAt, area, street, email, vat_on } = user
+  const {
+    avatar,
+    customer_type,
+    code,
+    country,
+    city,
+    company_name,
+    building_number,
+    phone_number,
+    createdAt,
+    area,
+    street,
+    email,
+    vat_on,
+  } = user;
 
   const dataArr: DataArrayType[] = [
     { iconClass: "icofont-briefcase", label: "Company name:", value: company_name },
@@ -26,7 +39,7 @@ const UserDetailsCard: React.FC<Props> = ({ user }) => {
     { iconClass: "icofont-email", label: "Email:", value: email },
     { iconClass: "icofont-address-book", label: "Vat:", value: `${vat_on} %` },
     { iconClass: "icofont-ui-calendar", label: "Join date:", value: new Date(createdAt).toLocaleDateString() },
-  ]
+  ];
   return (
     <>
       <div className="card teacher-card mb-3">
@@ -41,7 +54,9 @@ const UserDetailsCard: React.FC<Props> = ({ user }) => {
             </a>
             <div className="about-info d-flex align-items-center mt-3 justify-content-center flex-column">
               <span className="mb-1 small fw-bold text-secondary">{customer_type}</span>
-              <span className="mb-1 text-muted small fw-bold">USER ID : <span className="text-secondary">{code}</span></span>
+              <span className="mb-1 text-muted small fw-bold">
+                USER ID : <span className="text-secondary">{code}</span>
+              </span>
             </div>
           </div>
           <div className="teacher-info border-start ps-xl-4 ps-md-4 ps-sm-4 ps-4 w-100 d-flex flex-column justify-content-evenly">
@@ -53,10 +68,12 @@ const UserDetailsCard: React.FC<Props> = ({ user }) => {
                     <div key={index} className="col-xl-5">
                       <div className="d-flex align-items-center">
                         <i className={`${term.iconClass}`} />
-                        <span className="ms-2 small text-muted fw-bold">{term.label} : <span className="text-secondary">{term.value}</span></span>
+                        <span className="ms-2 small text-muted fw-bold">
+                          {term.label} : <span className="text-secondary">{term.value}</span>
+                        </span>
                       </div>
                     </div>
-                  )
+                  );
                 })}
               </div>
             </div>

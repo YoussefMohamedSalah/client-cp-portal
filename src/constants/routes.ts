@@ -112,7 +112,6 @@ export enum ROUTES {
   CREATE_CHAT = "chat/dual/create/",
   SEND_MESSAGE = "websocket/chat/send/",
 
-
   // not yet
   PERMISSION = "user/utils/permissions/",
   POSITION = "user/info/position/",

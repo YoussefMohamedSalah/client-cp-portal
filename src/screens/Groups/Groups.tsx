@@ -40,7 +40,12 @@ const Groups = () => {
   return (
     <div className="container-fluid">
       {/* page header */}
-      <PageHeader headerTitle={"Groups"} isBtnShow={isAdminView() ? true : false} btnText={"Add Group"} onClickBtn={() => setIsModal(true)} />
+      <PageHeader
+        headerTitle={"Groups"}
+        isBtnShow={isAdminView() ? true : false}
+        btnText={"Add Group"}
+        onClickBtn={() => setIsModal(true)}
+      />
 
       <div className="row g-3 row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-2 row-deck py-1 pb-4">
         {groups.map((group: Group, idx: number) => (
