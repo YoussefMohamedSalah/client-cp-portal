@@ -2,12 +2,15 @@ import loginImg from "assets/images/aside.jpeg";
 
 const Aside: React.FC = () => {
   return (
-    <div className="col-lg-6 d-none d-lg-flex justify-content-center align-items-center rounded-lg auth-h100">
-      <div style={{ width: "100%" }}>
+    <div className="d-none d-lg-flex justify-content-center align-items-center rounded-lg w-100 h-100">
+      <div className="w-100 h-100">
         <img
           src={loginImg}
           alt="login-img"
-          style={{ position: "absolute", left: "0", top: "0", maxHeight: "100vh", minWidth: "42vw" }}
+          style={{
+            height: "100%",
+            width: "100%",
+          }}
         />
       </div>
     </div>

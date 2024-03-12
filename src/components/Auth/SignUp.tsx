@@ -54,8 +54,11 @@ const Signup: React.FC = () => {
     }
   };
   return (
-    <div className="col-lg-6 d-flex justify-content-center align-items-center border-0 rounded-lg auth-h100">
-      <div className="w-100 p-3 p-md-5 card border-0 bg-primary text-white" style={{ maxWidth: "35rem" }}>
+    <div className="col-lg-6 d-flex justify-content-center align-items-center border-0 rounded-lg ">
+      <div
+        className="w-100 h-100 p-3 p-md-5 card border-0 bg-primary text-white justify-content-center 
+        align-items-center"
+        style={{ maxWidth: "38.5rem" }}>
         <form className="row g-1 p-3 p-md-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="col-12 text-center mb-1 mb-lg-3">
             <h1>Create your account</h1>
