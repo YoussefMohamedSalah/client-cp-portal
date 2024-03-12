@@ -75,7 +75,7 @@
   @include transition(ease 0.1s);
   @include c_overflow(scroll);
   background: var(--sidebar-color);
-  z-index: 99999;
+  z-index: 9999;
   margin: 25px;
   height: calc(100vh - 50px);
   width: 260px;
