@@ -8,7 +8,6 @@ export const getImageUrl = (url: string) => {
 };
 
 export const allowDocumentsActionsBtns = (document: any) => {
-  console.log({ document });
   let session = JSON.parse(localStorage.getItem("session") || "{}");
   if (!session) return false;
   let viewType = localStorage.getItem("view") || null;

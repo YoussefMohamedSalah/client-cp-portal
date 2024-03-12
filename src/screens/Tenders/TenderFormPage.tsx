@@ -115,7 +115,7 @@ const TenderFormPage = ({ id }: Props) => {
       value: modelData?.description,
       onChange: (value: string | any) => handleModelData(TenderKeys.DESCRIPTION, value),
       placeholder: "Enter Description",
-      required: true,
+      required: false,
     },
     {
       label: "Tender Files",
@@ -162,7 +162,7 @@ const TenderFormPage = ({ id }: Props) => {
     try {
       let createInput = tenderInput(modelData);
       await createMutation(createInput);
-      // push("/" + PAGES.TENDERS);
+      push("/" + PAGES.TENDERS);
       showSuccess();
     } catch (err: any) {
       showError(handleServerError(err.response));

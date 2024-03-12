@@ -102,7 +102,7 @@ const SiteRequests: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<SiteRequest>
@@ -119,7 +119,7 @@ const SiteRequests: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Site Requests"}
-          isBtnShow={isAdminView() ? true : false}
+          isBtnShow={!isAdminView() ? true : false}
           btnText={"Create Site Request"}
           onClickBtn={() => push("/" + PAGES.SITE_REQUEST)}
         />

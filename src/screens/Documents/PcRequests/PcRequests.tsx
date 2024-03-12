@@ -115,7 +115,7 @@ const PcRequests: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<PettyCashRequest>
@@ -132,7 +132,7 @@ const PcRequests: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Petty cash Requests"}
-          isBtnShow={isAdminView() ? true : false}
+          isBtnShow={!isAdminView() ? true : false}
           btnText={"Create PC"}
           onClickBtn={() => push("/" + PAGES.PC_REQUEST)}
         />

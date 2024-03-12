@@ -10,7 +10,7 @@ import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
 import { MaterialRequest } from "types/Material_request";
 import { useGetAllMaterialRequestsQuery } from "api/Documents/MaterialRequests/getAllMaterialRequests";
-import { isAdminView } from "utils/Helpers";
+import { getShortString, isAdminView } from "utils/Helpers";
 
 const MaterialRequests: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<MaterialRequest>({} as MaterialRequest);
@@ -79,7 +79,7 @@ const MaterialRequests: React.FC = () => {
     {
       name: "Subject",
       width: "210px",
-      selector: (row: any) => <span className="">{row.subject}</span>,
+      selector: (row: any) => <span className="">{getShortString(`${row.subject}`, 25)}</span>,
       sortable: false,
     },
     {
@@ -111,7 +111,7 @@ const MaterialRequests: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<MaterialRequest>
@@ -128,7 +128,7 @@ const MaterialRequests: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Material Requests"}
-          isBtnShow={isAdminView() ? true : false}
+          isBtnShow={!isAdminView() ? true : false}
           btnText={"Create Material Request"}
           onClickBtn={() => push("/" + PAGES.MATERIAL_REQUEST)}
         />

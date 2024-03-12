@@ -121,7 +121,7 @@ const EmployeeRequests: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<EmployeeRequest>
@@ -138,7 +138,7 @@ const EmployeeRequests: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Employee Requests"}
-          isBtnShow={isAdminView() ? true : false}
+          isBtnShow={!isAdminView() ? true : false}
           btnText={"Create Employee Request"}
           onClickBtn={() => push("/" + PAGES.EMPLOYEE_REQUEST)}
         />
