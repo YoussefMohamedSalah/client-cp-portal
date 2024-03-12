@@ -119,7 +119,7 @@ const Contracts: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<Contract> data={row} onClickEdit={() => push("/" + PAGES.CONTRACT + "/" + row.id)} />
@@ -133,7 +133,7 @@ const Contracts: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Contracts"}
-          isBtnShow={isAdminView() ? true : false}
+          isBtnShow={!isAdminView() ? true : false}
           btnText={"Create Contract"}
           onClickBtn={() => push("/" + PAGES.CONTRACT)}
         />

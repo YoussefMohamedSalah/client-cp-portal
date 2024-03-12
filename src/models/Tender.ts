@@ -11,6 +11,6 @@ export enum TenderKeys {
 
 export const TenderNumKeys = [];
 
-export const TenderStrKeys = [TenderKeys.HAND_OVER, TenderKeys.DESCRIPTION];
+export const TenderStrKeys = [TenderKeys.HAND_OVER, TenderKeys.DATE];
 
-export const TenderRequiredKeys = [TenderKeys.DESCRIPTION, TenderKeys.HAND_OVER];
+export const TenderRequiredKeys = [TenderKeys.DATE, TenderKeys.HAND_OVER];

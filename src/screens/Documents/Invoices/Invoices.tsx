@@ -119,7 +119,7 @@ const Invoiced: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<Invoice> data={row} onClickEdit={() => push("/" + PAGES.INVOICE + "/" + row.id)} />
@@ -133,7 +133,7 @@ const Invoiced: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Payment Certificates"}
-          isBtnShow={isAdminView() ? true : false}
+          isBtnShow={!isAdminView() ? true : false}
           btnText={"Create Payment Certificate"}
           onClickBtn={() => push("/" + PAGES.INVOICE)}
         />

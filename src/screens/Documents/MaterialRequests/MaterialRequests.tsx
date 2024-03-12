@@ -111,7 +111,7 @@ const MaterialRequests: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <DocumentsTableActionBtn<MaterialRequest>
@@ -128,7 +128,7 @@ const MaterialRequests: React.FC = () => {
         {/* page header */}
         <PageHeader
           headerTitle={"Material Requests"}
-          isBtnShow={isAdminView() ? true : false}
+          isBtnShow={!isAdminView() ? true : false}
           btnText={"Create Material Request"}
           onClickBtn={() => push("/" + PAGES.MATERIAL_REQUEST)}
         />

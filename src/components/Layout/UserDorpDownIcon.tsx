@@ -33,7 +33,7 @@ const UserDorpDownIcon = ({ session }: Props) => {
   };
 
   return (
-    <Dropdown className="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center">
+    <Dropdown className="dropdown user-profile ml-2 ml-sm-3 d-flex align-items-center pointer">
       <div className="u-info me-2">
         <p className="mb-0 text-end line-height-sm">
           <span className="font-weight-bold">{session?.user?.name || "admin"}</span>
