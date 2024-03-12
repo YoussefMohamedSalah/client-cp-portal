@@ -20,37 +20,36 @@ interface Props {
   onChange: (value: string | any) => void;
 }
 
-const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
-  // Apply styling to the underlying TextField
-  "& .MuiInputBase-input": {
-    color: "#888888",
-  },
+const DatePickerInput = ({ onChange, value, defaultValue, required, disabled, label }: Props) => {
+  const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
+    // Apply styling to the underlying TextField
+    "& .MuiInputBase-input": {
+      color: "#888888",
+    },
 
-  "& .MuiInputLabel-root": {
-    color: "#888888",
-  },
-
-  "& .Mui-focused": {
     "& .MuiInputLabel-root": {
       color: "#888888",
     },
-  },
 
-  // Add styling for the borders
-  "& .MuiOutlinedInput-root": {
-    "& fieldset": {
-      borderColor: "#888888", // Set the border color
+    "& .Mui-focused": {
+      "& .MuiInputLabel-root": {
+        color: "#888888",
+      },
     },
-    "&:hover fieldset": {
-      borderColor: "#888888", // Set the border color on hover
-    },
-    "&.Mui-focused fieldset": {
-      borderColor: "#888888", // Set the border color when focused
-    },
-  },
-}));
 
-const DatePickerInput = ({ onChange, value, defaultValue, required, disabled, label }: Props) => {
+    // Add styling for the borders
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: required ? "red" : "", // Set the border color
+      },
+      "&:hover fieldset": {
+        borderColor: "#888888", // Set the border color on hover
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#1E9AF6", // Set the border color when focused
+      },
+    },
+  }));
   const handleFormatDateBeforeResponding = (dateObject: any) => {
     const stringDate = dateObject.format("YYYY-MM-DD");
     onChange(stringDate);

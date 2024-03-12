@@ -47,13 +47,13 @@ const OptionsSelectOne = React.memo(({ options, label, onChange, defaultValue, d
         },
         "& .MuiOutlinedInput-root": {
           "& fieldset": {
-            borderColor: required ? "red!important" : "", // Border color
+            borderColor: required ? "red" : "", // Set the border color
           },
           "&:hover fieldset": {
-            borderColor: "#0267ba",
+            borderColor: "#888888", // Set the border color on hover
           },
           "&.Mui-focused fieldset": {
-            borderColor: "#0267ba", // Blue border color on focus
+            borderColor: "#1E9AF6", // Set the border color when focused
           },
           "& input": {
             color: "#888888!important", // Input text color
