@@ -59,79 +59,77 @@ const StepAuthentication: React.FC = () => {
   };
 
   return (
-    <div className="col-lg-6 d-flex justify-content-center align-items-center border-0 rounded-lg ">
-      <div
-        className="auth-maxWidth auth-noborder w-100 h-100 p-3 p-md-5 card border-0 bg-dark text-light justify-content-center align-items-center"
->
-        <form className="row g-1 p-3 p-md-4">
-          <div className="col-12 text-center mb-1 mb-lg-5">
-            <img src={GoogleImg} className="w240 mb-4" alt="" />
-            <h1>Verification</h1>
-            <span>We sent a verification code to your email. Enter the code from the email in the field below.</span>
+    <div
+      className="auth-maxWidth auth-noborder w-100 h-100 p-3 p-md-5 card border-0 bg-dark text-light justify-content-center align-items-center"
+    >
+      <form className="row g-1 p-3 p-md-4">
+        <div className="col-12 text-center mb-1 mb-lg-5">
+          <img src={GoogleImg} className="w240 mb-4" alt="" />
+          <h1>Verification</h1>
+          <span>We sent a verification code to your email. Enter the code from the email in the field below.</span>
+        </div>
+        <div className="col">
+          <div className="mb-2">
+            <input
+              type="text"
+              className="form-control form-control-lg text-center"
+              placeholder="-"
+              value={otp1}
+              onChange={(e: any) => handleData("otp1", e.target.value)}
+            />
           </div>
-          <div className="col">
-            <div className="mb-2">
-              <input
-                type="text"
-                className="form-control form-control-lg text-center"
-                placeholder="-"
-                value={otp1}
-                onChange={(e: any) => handleData("otp1", e.target.value)}
-              />
-            </div>
+        </div>
+        <div className="col">
+          <div className="mb-2">
+            <input
+              type="text"
+              className="form-control form-control-lg text-center"
+              placeholder="-"
+              value={otp2}
+              onChange={(e: any) => handleData("otp2", e.target.value)}
+            />
           </div>
-          <div className="col">
-            <div className="mb-2">
-              <input
-                type="text"
-                className="form-control form-control-lg text-center"
-                placeholder="-"
-                value={otp2}
-                onChange={(e: any) => handleData("otp2", e.target.value)}
-              />
-            </div>
+        </div>
+        <div className="col">
+          <div className="mb-2">
+            <input
+              type="text"
+              className="form-control form-control-lg text-center"
+              placeholder="-"
+              value={otp3}
+              onChange={(e: any) => handleData("otp3", e.target.value)}
+            />
           </div>
-          <div className="col">
-            <div className="mb-2">
-              <input
-                type="text"
-                className="form-control form-control-lg text-center"
-                placeholder="-"
-                value={otp3}
-                onChange={(e: any) => handleData("otp3", e.target.value)}
-              />
-            </div>
+        </div>
+        <div className="col">
+          <div className="mb-2">
+            <input
+              type="text"
+              className="form-control form-control-lg text-center"
+              placeholder="-"
+              value={otp4}
+              onChange={(e: any) => handleData("otp4", e.target.value)}
+            />
           </div>
-          <div className="col">
-            <div className="mb-2">
-              <input
-                type="text"
-                className="form-control form-control-lg text-center"
-                placeholder="-"
-                value={otp4}
-                onChange={(e: any) => handleData("otp4", e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="col-12 text-center mt-4">
-            <a
-              href="#!"
-              title=""
-              className="btn btn-lg btn-block btn-light lift text-uppercase"
-              onClick={() => handleSendOtp()}>
-              Verify my account
+        </div>
+        <div className="col-12 text-center mt-4">
+          <a
+            href="#!"
+            title=""
+            className="btn btn-lg btn-block btn-light lift text-uppercase"
+            onClick={() => handleSendOtp()}>
+            Verify my account
+          </a>
+        </div>
+        <div className="col-12 text-center mt-4">
+          <span className="text-muted">
+            Haven't received it?{" "}
+            <a href="#!" onClick={() => handleResentResetPassword()} className="text-secondary">
+              Resend a new code.
             </a>
-          </div>
-          <div className="col-12 text-center mt-4">
-            <span className="text-muted">
-              Haven't received it?{" "}
-              <a href="#!" onClick={() => handleResentResetPassword()} className="text-secondary">
-                Resend a new code.
-              </a>
-            </span>
-          </div>
-        </form>
-      </div>
+          </span>
+        </div>
+      </form>
     </div>
   );
 };

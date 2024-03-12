@@ -50,60 +50,58 @@ const SignIn: React.FC = () => {
   };
 
   return (
-    <div className="col-lg-6 d-flex justify-content-center align-items-center border-0 rounded-lg ">
-      <div
-        className="auth-maxWidth auth-noborder w-100 h-100 p-3 p-md-5 card border-0 bg-primary text-white justify-content-center   align-items-center"
-        >
-        <form className="row g-1 p-3 p-md-4" onSubmit={handleSubmit(onSubmit)}>
-          <div className="col-12 text-center mb-1 mb-lg-5">
-            <h1>Sign in</h1>
-            <span>Sign in to your Business dashboard.</span>
-          </div>
-          <div className="col-12">
-            <div className="mb-2">
-              <Input
-                {...register("email")}
-                label="email"
-                type="email"
-                className="form-control form-control-lg"
-                placeholder="email"
-                error={errors.email?.message}
-              />
-            </div>
-          </div>
-          <div className="col-12">
-            <div className="mb-2">
-              <div className="form-label">
-                <span className="d-flex justify-content-between align-items-center">
-                  Password
-                  <Link className="text-secondary" to="password-reset">
-                    Forgot Password?
-                  </Link>
-                </span>
-              </div>
-              <Input
-                {...register("password")}
-                type="password"
-                className="form-control form-control-lg"
-                placeholder="***************"
-                error={errors.password?.message}
-              />
-            </div>
-          </div>
-          <div className="col-12 text-center mt-4 g-4">
-            <button disabled={isSubmitting} type="submit" className="btn btn-lg btn-main lift text-uppercase">
-              SIGN IN
-            </button>
-          </div>
-        </form>
-        <div className="col-12 text-center mt-4">
-          <span className="">
-            Don't have an account?{" "}
-            <span onClick={() => push("/" + PAGES.REGISTER)} title="Sign up" className="text-secondary pointer">
-              &nbsp;Sign up here
-            </span>
-          </span>
+    <div
+      className="auth-maxWidth auth-noborder w-100 h-100 p-3 p-md-5 card border-0 bg-primary text-white justify-content-center align-items-center"
+    >
+      <form className="row g-1 p-3 p-md-4" onSubmit={handleSubmit(onSubmit)}>
+        <div className="col-12 text-center mb-1 mb-lg-5">
+          <h1>Sign in</h1>
+          <span>Sign in to your Business dashboard.</span>
         </div>
+        <div className="col-12">
+          <div className="mb-2">
+            <Input
+              {...register("email")}
+              label="email"
+              type="email"
+              className="form-control form-control-lg"
+              placeholder="email"
+              error={errors.email?.message}
+            />
+          </div>
+        </div>
+        <div className="col-12">
+          <div className="mb-2">
+            <div className="form-label">
+              <span className="d-flex justify-content-between align-items-center">
+                Password
+                <Link className="text-secondary" to="password-reset">
+                  Forgot Password?
+                </Link>
+              </span>
+            </div>
+            <Input
+              {...register("password")}
+              type="password"
+              className="form-control form-control-lg"
+              placeholder="***************"
+              error={errors.password?.message}
+            />
+          </div>
+        </div>
+        <div className="col-12 text-center mt-4 g-4">
+          <button disabled={isSubmitting} type="submit" className="btn btn-lg btn-main lift text-uppercase">
+            SIGN IN
+          </button>
+        </div>
+      </form>
+      <div className="col-12 text-center mt-4">
+        <span className="">
+          Don't have an account?{" "}
+          <span onClick={() => push("/" + PAGES.REGISTER)} title="Sign up" className="text-secondary pointer">
+            &nbsp;Sign up here
+          </span>
+        </span>
       </div>
     </div>
   );
