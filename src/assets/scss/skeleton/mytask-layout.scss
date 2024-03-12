@@ -422,3 +422,14 @@
     height: auto;
   }
 }
+.auth-maxWidth {
+  @media only screen and (max-width: 991px) {
+    max-width: 38.5rem !important;
+  }
+}
+
+.auth-noborder {
+  @media only screen and (min-width: 991px) {
+   border-radius: 0;
+  }
+}

@@ -61,8 +61,8 @@ const StepAuthentication: React.FC = () => {
   return (
     <div className="col-lg-6 d-flex justify-content-center align-items-center border-0 rounded-lg ">
       <div
-        className="w-100 h-100 p-3 p-md-5 card border-0 bg-dark text-light justify-content-center align-items-center"
-        style={{ maxWidth: "38.5rem" }}>
+        className="auth-maxWidth auth-noborder w-100 h-100 p-3 p-md-5 card border-0 bg-dark text-light justify-content-center align-items-center"
+>
         <form className="row g-1 p-3 p-md-4">
           <div className="col-12 text-center mb-1 mb-lg-5">
             <img src={GoogleImg} className="w240 mb-4" alt="" />
