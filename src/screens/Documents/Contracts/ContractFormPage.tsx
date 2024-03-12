@@ -197,14 +197,14 @@ const ContractFormPage = ({ id }: Props) => {
   let subcontractorsOptions = subcontractors.map((subcontractor) => {
     return {
       label:
-        subcontractor.name +
+        subcontractor.name! +
         " - " +
-        subcontractor.company_name +
+        subcontractor.company_name! +
         " - " +
-        subcontractor.country +
+        subcontractor.country! +
         ", " +
-        subcontractor.city,
-      value: subcontractor.id,
+        subcontractor.city!,
+      value: subcontractor.id!,
     };
   });
 
@@ -461,7 +461,7 @@ const ContractFormPage = ({ id }: Props) => {
   };
 
   // MAIN FUNCTIONS
-  const handleCreateRequest = async () => {
+  const handleCreateContract = async () => {
     let numbersToValidate = ContractNumKeys;
     let stringsToValidate = ContractStrKeys;
     let requiredToValidate = ContractRequiredKeys;
@@ -517,14 +517,14 @@ const ContractFormPage = ({ id }: Props) => {
         });
       }
       await createMutation(createInput);
-      push("/" + PAGES.PO_REQUESTS);
+      push("/" + PAGES.CONTRACTS);
       showSuccess();
     } catch (err: any) {
       showError(handleServerError(err.response));
     }
   };
 
-  const handleEditRequest = async (toArchive = false) => {
+  const handleEditContract = async (toArchive = false) => {
     if (toArchive === false) {
       let numbersToValidate = ContractNumKeys;
       let stringsToValidate = ContractStrKeys;
@@ -586,7 +586,7 @@ const ContractFormPage = ({ id }: Props) => {
         });
       }
       await editMutation({ data: createInput, id });
-      push("/" + PAGES.PO_REQUESTS);
+      push("/" + PAGES.CONTRACTS);
       showSuccess();
     } catch (err: any) {
       console.log(err.response?.data?.msg!);
@@ -596,13 +596,13 @@ const ContractFormPage = ({ id }: Props) => {
 
   const handleEdit = () => {
     if (modelData.status === STATUS.ARCHIVED) {
-      handleEditRequest(true);
+      handleEditContract(true);
     } else {
-      handleEditRequest(false);
+      handleEditContract(false);
     }
   };
 
-  const handleSaveRequestToArchive = async () => {
+  const handleSaveContractToArchive = async () => {
     try {
       let createInput;
       let stringItems = JSON.stringify(items);
@@ -714,19 +714,19 @@ const ContractFormPage = ({ id }: Props) => {
             </>
           ) : (
             <>
-              <Button className="lift" content="Create" onClick={handleCreateRequest} />
+              <Button className="lift" content="Create" onClick={handleCreateContract} />
             </>
           )}
           <Button className="lift" content="Preview" onClick={handleOpenPreviewModal} />
           {isEdit ? (
             <>
               {modelData.status === STATUS.ARCHIVED && (
-                <Button className="lift" content="Activate" onClick={() => handleEditRequest(false)} />
+                <Button className="lift" content="Activate" onClick={() => handleEditContract(false)} />
               )}
             </>
           ) : (
             <>
-              <Button className="lift" content="Save To Archive" onClick={handleSaveRequestToArchive} />
+              <Button className="lift" content="Save To Archive" onClick={handleSaveContractToArchive} />
             </>
           )}
         </div>

@@ -24,7 +24,7 @@ export const TimesheetListData: any = {
   columns: [
     {
       name: "PROJECT NAME",
-      selector: () => {},
+      selector: () => { },
       sortable: true,
       cell: () => (
         <select className="form-select">
@@ -42,42 +42,42 @@ export const TimesheetListData: any = {
     {
       name: "MON",
       selector: (row: any) => (
-        <input type="time" className="form-control" id="timepickerded29" value={row.mon} onChange={() => {}} />
+        <input type="time" className="form-control" id="timepickerded29" value={row.mon} onChange={() => { }} />
       ),
       sortable: true,
     },
     {
       name: "TUE",
       selector: (row: any) => (
-        <input type="time" className="form-control" id="timepickerded29" value={row.tue} onChange={() => {}} />
+        <input type="time" className="form-control" id="timepickerded29" value={row.tue} onChange={() => { }} />
       ),
       sortable: true,
     },
     {
       name: "WED",
       selector: (row: any) => (
-        <input type="time" className="form-control" id="timepickerded29" value={row.wed} onChange={() => {}} />
+        <input type="time" className="form-control" id="timepickerded29" value={row.wed} onChange={() => { }} />
       ),
       sortable: true,
     },
     {
       name: "THUR",
       selector: (row: any) => (
-        <input type="time" className="form-control" id="timepickerded29" value={row.thur} onChange={() => {}} />
+        <input type="time" className="form-control" id="timepickerded29" value={row.thur} onChange={() => { }} />
       ),
       sortable: true,
     },
     {
       name: "FRI",
       selector: (row: any) => (
-        <input type="time" className="form-control" id="timepickerded29" value={row.fri} onChange={() => {}} />
+        <input type="time" className="form-control" id="timepickerded29" value={row.fri} onChange={() => { }} />
       ),
       sortable: true,
     },
     {
       name: "SAT",
       selector: (row: any) => (
-        <input type="time" className="form-control" id="timepickerded29" value={row.sat} onChange={() => {}} />
+        <input type="time" className="form-control" id="timepickerded29" value={row.sat} onChange={() => { }} />
       ),
       sortable: true,
     },
@@ -93,7 +93,7 @@ export const TimesheetListData: any = {
     },
     {
       name: "",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       cell: () => (
         <div className="btn-group" role="group" aria-label="Basic outlined example">
           <button type="button" className="btn btn-outline-secondary">
@@ -227,7 +227,7 @@ export const LeadersListData: any = {
     },
     {
       name: "ASSIGNED STAFF",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: (row: any) => {
         return (
@@ -244,13 +244,13 @@ export const LeadersListData: any = {
     },
     {
       name: "STATUS",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: (row: any) => <span className="badge bg-success">{row.status}</span>,
     },
     {
       name: "ACTION",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: () => (
         <div className="btn-group" role="group" aria-label="Basic outlined example">
@@ -375,7 +375,7 @@ export const EnquiresViewData: any = {
     },
     {
       name: "STATUS",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: (row: any) => (
         <span className={`badge ${row.status === "Completed" ? "bg-success" : "bg-warning"}`}>{row.status}</span>
@@ -383,7 +383,7 @@ export const EnquiresViewData: any = {
     },
     {
       name: "ACTION",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: () => (
         <div className="btn-group" role="group" aria-label="Basic outlined example">
@@ -743,7 +743,7 @@ export const HolidaysData: any = {
     },
     {
       name: "ACTION",
-      selector: () => {},
+      selector: () => { },
       sortable: true,
       cell: () => (
         <div className="btn-group" role="group" aria-label="Basic outlined example">
@@ -834,7 +834,7 @@ export const LeaveRequestData: any = {
     },
     {
       name: "EMPLOYEE NAME",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: (row: any) => (
         <>
@@ -866,7 +866,7 @@ export const LeaveRequestData: any = {
     },
     {
       name: "ACTION",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: () => (
         <div className="btn-group" role="group" aria-label="Basic outlined example">
@@ -980,7 +980,7 @@ export const DepartmentsData: any = {
     },
     {
       name: "ACTION",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: () => (
         <div className="btn-group" role="group" aria-label="Basic outlined example">
@@ -1079,13 +1079,12 @@ export const PaymentsData: any = {
     },
     {
       name: "STATUS",
-      selector: () => {},
+      selector: () => { },
       sortable: true,
       cell: (row: any) => (
         <span
-          className={`badge ${
-            row.status === "Paid" ? "bg-success" : row.status === "Draf" ? "bg-lavender-purple" : "bg-warning"
-          }`}>
+          className={`badge ${row.status === "Paid" ? "bg-success" : row.status === "Draf" ? "bg-lavender-purple" : "bg-warning"
+            }`}>
           {row.status}
         </span>
       ),
@@ -1173,7 +1172,7 @@ export const ExpensesData: any = {
     },
     {
       name: "ORDER BY",
-      selector: () => {},
+      selector: () => { },
       sortable: true,
       cell: (row: any) => (
         <>
@@ -1195,20 +1194,19 @@ export const ExpensesData: any = {
     },
     {
       name: "STATUS",
-      selector: () => {},
+      selector: () => { },
       sortable: true,
       cell: (row: any) => (
         <span
-          className={`badge ${
-            row.status === "Completed" ? "bg-success" : row.status === "Draf" ? "bg-lavender-purple" : "bg-warning"
-          }`}>
+          className={`badge ${row.status === "Completed" ? "bg-success" : row.status === "Draf" ? "bg-lavender-purple" : "bg-warning"
+            }`}>
           {row.status}
         </span>
       ),
     },
     {
       name: "ACTION",
-      selector: () => {},
+      selector: () => { },
       sortable: true,
       cell: () => (
         <div className="btn-group" role="group" aria-label="Basic outlined example">

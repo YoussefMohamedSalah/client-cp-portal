@@ -10,7 +10,7 @@ import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import DocumentsTableActionBtn from "components/Common/DocumentsTableActionBtn";
 import { Contract } from "types/Contract";
 import { useGetAllContractsQuery } from "api/Documents/Contracts/getAllContracts";
-import { isAdminView } from "utils/Helpers";
+import { getShortString, isAdminView } from "utils/Helpers";
 
 const Contracts: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<Contract>({} as Contract);
@@ -54,6 +54,13 @@ const Contracts: React.FC = () => {
       selector: (row: any) => row.rev_num!,
       sortable: true,
       cell: (row: any) => <span className="fw-bold">{row.rev_num!}</span>,
+    },
+    {
+      name: "Subject",
+      width: "210px",
+      selector: (row: any) => row.subject!,
+      sortable: true,
+      cell: (row: any) => <span className="fw-bold">{getShortString(`${row.subject}`, 25)!}</span>,
     },
     {
       name: "Maker",

@@ -21,6 +21,7 @@ export const editContractInput = (data: any): any => {
       subcontractorId: data.subcontractor.id,
       items: data.items,
       conditions: data.conditions,
+      subject: data.subject,
       default_conditions: data.default_conditions ? data.default_conditions : null,
       date: data.date,
       removedFilesNameSet: data.removedFilesNameSet ? data.removedFilesNameSet : "[]",
@@ -38,6 +39,7 @@ export const editContractInput = (data: any): any => {
   data.sub_total && formData.append("sub_total", data?.sub_total! || 0);
   data.vat && formData.append("vat", data.vat || 0);
   data.discount && formData.append("discount", data?.discount! || 0);
+  data.subject && formData.append("subject", data.subject!);
   data.total && formData.append("total", data.total || 0);
   data.projectId && formData.append("projectId", data.projectId);
   data.date && formData.append("date", data.date);
