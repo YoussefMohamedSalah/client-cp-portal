@@ -31,8 +31,6 @@ const Tenders: React.FC = () => {
     window.location.reload();
   };
 
-  console.log("tenders", tenders);
-
   return (
     <>
       <div className="container-fluid">
