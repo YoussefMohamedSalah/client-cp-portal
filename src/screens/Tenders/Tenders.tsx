@@ -31,8 +31,8 @@ const Tenders: React.FC = () => {
     window.location.reload();
   };
 
-  console.log('tenders' ,tenders);
-  
+  console.log("tenders", tenders);
+
   return (
     <>
       <div className="container-fluid">
@@ -44,9 +44,9 @@ const Tenders: React.FC = () => {
           onClickBtn={() => push("/" + PAGES.TENDER)}
         />
         {/* table data */}
-        <div className="row g-3 py-1 pb-4">
+        <div className="row g-2 py-1 pb-4">
           {tenders.map((tender: Tender) => (
-            <div key={tender.id}>
+            <div key={tender.id} className=" col-sm-6 col-12">
               <TenderCard tender={tender} onDelete={handleDelete} />
             </div>
           ))}

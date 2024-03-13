@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { calculateProjectPercentage, sumDaysLeftFromToDay } from "utils/Convert";
 import useApp from "hooks/useApp";
@@ -42,86 +41,73 @@ const TenderCard = ({ tender, onDelete }: Props) => {
   return (
     <div className="grey-bg container-fluid">
       <section id="tenders">
-        <div className="row ">
-          <div className="col-xl-12 col-sm-6 col-12">
-            <div className="card">
-              <div className="card-content">
-                <div className="card-body d-flex flex-column">
-                  <div className="media row">
-                    <div className="col-xl-5 col-12">
-                      <div
-                        className="d-flex gap-3 align-items-center pointer"
-                        onClick={() => push("/" + PAGES.TENDER_INFO + "/" + tender.id)}>
-                        <h3 className="primary">{tender.code}</h3>
-                        <span
-                          className={`small ${projectStatusBg(tender?.status!)} py-1 px-2 rounded align-self-start`}>
-                          {tender?.status! || ""}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="col-xl-6">
-                      <div className="d-flex gap-2 flex-wrap">
-                        <Button
-                          size="small"
-                          variant="contained"
-                          className="bg-primary text-white"
-                          startIcon={<GroupsOutlinedIcon />}>
-                          User : {tender?.user.name!}
-                        </Button>
-                        {/* <Button
-                          size="small"
-                          variant="contained"
-                          className="bg-secondary text-white"
-                          startIcon={<TaskOutlinedIcon />}>
-                          Tasks:
-                         {tender?.members_count!}
-                        </Button> */}
-                        <HtmlTooltip
-                          placement="top"
-                          TransitionComponent={Zoom}
-                          title={
-                            <React.Fragment>
-                              <Typography color="inherit">{tender?.code!}</Typography>
-                              <b className="border-top-0">{tender.description}</b>
-                            </React.Fragment>
-                          }>
-                          <Button
-                            size="small"
-                            variant="contained"
-                            className="bg-warning text-white"
-                            startIcon={<InfoOutlinedIcon />}>
-                            About
-                          </Button>
-                        </HtmlTooltip>
-                        <Button
-                          size="small"
-                          variant="contained"
-                          className="bg-success text-white"
-                          startIcon={<AccessTimeOutlinedIcon />}>
-                          {sumDaysLeftFromToDay(tender?.hand_over!)} Days Left
-                        </Button>
-                      </div>
-                    </div>
-
-                    <div className="col-xl-1 col-12 text-end">
-                      {isAdminView() ? (
-                        <>
-                          <IconButton aria-label="delete" size="medium" color="error" onClick={() => setIsModal(true)}>
-                            <DeleteIcon fontSize="inherit" />
-                          </IconButton>
-                          <IconButton
-                            aria-label="edit"
-                            size="medium"
-                            color="primary"
-                            onClick={() => push("/" + PAGES.TENDER_INFO + "/" + tender.id)}>
-                            <EditOutlinedIcon fontSize="inherit" />
-                          </IconButton>
-                        </>
-                      ) : (
-                        <></>
-                      )}
-                    </div>
+        <div className="card p-1">
+          <div className="card-content">
+            <div className="card-body d-flex flex-column">
+              <div className="media row">
+                <div className="col-xl-5 col-12">
+                  <div
+                    className="d-flex gap-3 align-items-center pointer"
+                    onClick={() => push("/" + PAGES.TENDER_INFO + "/" + tender.id)}>
+                    <h3 className="primary">{tender.code}</h3>
+                    <span className={`small ${projectStatusBg(tender?.status!)} py-1 px-2 rounded align-self-start`}>
+                      {tender?.status! || ""}
+                    </span>
                   </div>
+                </div>
+                <div className="col-xl-6">
+                  <div className="d-flex gap-2 flex-wrap">
+                    <Button
+                      size="small"
+                      variant="contained"
+                      className="bg-primary text-white"
+                      startIcon={<GroupsOutlinedIcon />}>
+                      User : {tender?.user.name!}
+                    </Button>
+                    <HtmlTooltip
+                      placement="top"
+                      TransitionComponent={Zoom}
+                      title={
+                        <React.Fragment>
+                          <Typography color="inherit">{tender?.code!}</Typography>
+                          <b className="border-top-0">{tender.description}</b>
+                        </React.Fragment>
+                      }>
+                      <Button
+                        size="small"
+                        variant="contained"
+                        className="bg-warning text-white"
+                        startIcon={<InfoOutlinedIcon />}>
+                        About
+                      </Button>
+                    </HtmlTooltip>
+                    <Button
+                      size="small"
+                      variant="contained"
+                      className="bg-success text-white"
+                      startIcon={<AccessTimeOutlinedIcon />}>
+                      {sumDaysLeftFromToDay(tender?.hand_over!)} Days Left
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="col-xl-1 col-12 text-end">
+                  {isAdminView() ? (
+                    <div>
+                      <IconButton aria-label="delete" size="medium" color="error" onClick={() => setIsModal(true)}>
+                        <DeleteIcon fontSize="inherit" />
+                      </IconButton>
+                      <IconButton
+                        aria-label="edit"
+                        size="medium"
+                        color="primary"
+                        onClick={() => push("/" + PAGES.TENDER_INFO + "/" + tender.id)}>
+                        <EditOutlinedIcon fontSize="inherit" />
+                      </IconButton>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               </div>
             </div>
