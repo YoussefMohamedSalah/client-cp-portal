@@ -20,11 +20,11 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Code",
 			width: "110px",
-			selector: (row: any) => row.code,
+			selector: (row: any) => row.code!,
 			sortable: true,
 			cell: (row: any) => (
-				<span onClick={() => push(`/${PAGES.CONTRACT_INFO}/${row.id}`)} className="fw-bold text-secondary pointer">
-					{row.code}
+				<span onClick={() => push(`/${PAGES.CONTRACT_INFO}/${row.id!}`)} className="fw-bold text-secondary pointer">
+					{row.code!}
 				</span>
 			),
 		},
@@ -40,7 +40,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 			width: "210px",
 			selector: (row: any) => row.subject!,
 			sortable: true,
-			cell: (row: any) => <span className="fw-bold">{getShortString(`${row.subject}`, 25)!}</span>,
+			cell: (row: any) => <span className="fw-bold">{getShortString(`${row.subject!}`, 25)!}</span>,
 		},
 		{
 			name: "Maker",
@@ -52,7 +52,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Date",
 			width: "100px",
-			selector: (row: any) => row.date,
+			selector: (row: any) => row.date!,
 			sortable: true,
 		},
 		{
@@ -64,39 +64,39 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Description",
 			width: "270px",
-			selector: (row: any) => <span className="">{row.description}</span>,
+			selector: (row: any) => <span className="">{row.description!}</span>,
 			sortable: false,
 		},
 		{
 			name: "Transaction Date",
 			width: "160px",
-			selector: (row: any) => row.transaction_date,
+			selector: (row: any) => row.transaction_date!,
 			sortable: true,
 		},
 		{
 			name: "Total",
-			selector: (row: any) => `${Number(row.total).toFixed(2) || 0} SAR`,
+			selector: (row: any) => `${Number(row.total!).toFixed(2) || 0} SAR`,
 			sortable: false,
 		},
 		{
 			name: "Paid",
-			selector: (row: any) => `${Number(row.paid_amount).toFixed(2) || 0} SAR`,
+			selector: (row: any) => `${Number(row.paid_amount!).toFixed(2) || 0} SAR`,
 			sortable: false,
 		},
 		{
 			name: "Status",
 			width: "100px",
-			selector: (row: any) => row.status,
+			selector: (row: any) => row.status!,
 			sortable: true,
 			cell: (row: any) => {
-				let gradient = calculateWorkFlowStatus(row.work_flow);
+				let gradient = calculateWorkFlowStatus(row.work_flow!);
 				return (
 					<span className="pointer" onClick={() => handleOpen(row)}>
-						{row.status === STATUS.ARCHIVED ? (
+						{row.status! === STATUS.ARCHIVED ? (
 							<span className="badge bg-black text-white">Archived</span>
 						) : (
 							<span className="badge text-black" style={{ background: gradient }}>
-								{row.status}
+								{row.status!}
 							</span>
 						)}
 					</span>
@@ -109,7 +109,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 			selector: (row: any) => { },
 			sortable: false,
 			cell: (row: any) => (
-				<DocumentsTableActionBtn<Contract> data={row} onClickEdit={() => push("/" + PAGES.CONTRACT + "/" + row.id)} />
+				<DocumentsTableActionBtn<Contract> data={row} onClickEdit={() => push("/" + PAGES.CONTRACT + "/" + row.id!)} />
 			),
 		},
 	];
@@ -118,13 +118,13 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Code",
 			width: "110px",
-			selector: (row: any) => row.code,
+			selector: (row: any) => row.code!,
 			sortable: true,
 			cell: (row: any) => (
 				<span
-					onClick={() => push(`/${PAGES.EMPLOYEE_REQUEST_INFO}/${row.id}`)}
+					onClick={() => push(`/${PAGES.EMPLOYEE_REQUEST_INFO}/${row.id!}`)}
 					className="fw-bold text-secondary pointer">
-					{row.code}
+					{row.code!}
 				</span>
 			),
 		},
@@ -145,7 +145,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Date",
 			width: "100px",
-			selector: (row: any) => row.date,
+			selector: (row: any) => row.date!,
 			sortable: true,
 		},
 		{
@@ -157,39 +157,39 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Description",
 			width: "270px",
-			selector: (row: any) => <span className="">{row.description}</span>,
+			selector: (row: any) => <span className="">{row.description!}</span>,
 			sortable: false,
 		},
 		{
 			name: "Transaction Date",
 			width: "160px",
-			selector: (row: any) => row.transaction_date,
+			selector: (row: any) => row.transaction_date!,
 			sortable: true,
 		},
 		{
 			name: "Total",
-			selector: (row: any) => `${Number(row.total).toFixed(2) || 0} SAR`,
+			selector: (row: any) => `${Number(row.total!).toFixed(2) || 0} SAR`,
 			sortable: false,
 		},
 		{
 			name: "Paid",
-			selector: (row: any) => `${Number(row.paid_amount).toFixed(2) || 0} SAR`,
+			selector: (row: any) => `${Number(row.paid_amount!).toFixed(2) || 0} SAR`,
 			sortable: false,
 		},
 		{
 			name: "Status",
 			width: "100px",
-			selector: (row: any) => row.status,
+			selector: (row: any) => row.status!,
 			sortable: true,
 			cell: (row: any) => {
-				let gradient = calculateWorkFlowStatus(row.work_flow);
+				let gradient = calculateWorkFlowStatus(row.work_flow!);
 				return (
 					<span className="pointer" onClick={() => handleOpen(row)}>
-						{row.status === STATUS.ARCHIVED ? (
+						{row.status! === STATUS.ARCHIVED ? (
 							<span className="badge bg-black text-white">Archived</span>
 						) : (
 							<span className="badge text-black" style={{ background: gradient }}>
-								{row.status}
+								{row.status!}
 							</span>
 						)}
 					</span>
@@ -204,7 +204,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 			cell: (row: any) => (
 				<DocumentsTableActionBtn<EmployeeRequest>
 					data={row}
-					onClickEdit={() => push("/" + PAGES.EMPLOYEE_REQUEST + "/" + row.id)}
+					onClickEdit={() => push("/" + PAGES.EMPLOYEE_REQUEST + "/" + row.id!)}
 				/>
 			),
 		},
@@ -214,11 +214,11 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Code",
 			width: "110px",
-			selector: (row: any) => row.code,
+			selector: (row: any) => row.code!,
 			sortable: true,
 			cell: (row: any) => (
-				<span onClick={() => push(`/${PAGES.PC_REQUEST_INFO}/${row.id}`)} className="fw-bold text-secondary pointer">
-					{row.code}
+				<span onClick={() => push(`/${PAGES.PC_REQUEST_INFO}/${row.id!}`)} className="fw-bold text-secondary pointer">
+					{row.code!}
 				</span>
 			),
 		},
@@ -239,7 +239,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Date",
 			width: "100px",
-			selector: (row: any) => row.date,
+			selector: (row: any) => row.date!,
 			sortable: true,
 		},
 		{
@@ -251,39 +251,39 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Description",
 			width: "270px",
-			selector: (row: any) => <span className="">{row.description}</span>,
+			selector: (row: any) => <span className="">{row.description!}</span>,
 			sortable: false,
 		},
 		{
 			name: "Transaction Date",
 			width: "160px",
-			selector: (row: any) => row.transaction_date,
+			selector: (row: any) => row.transaction_date!,
 			sortable: true,
 		},
 		{
 			name: "Total",
-			selector: (row: any) => `${Number(row.total).toFixed(2) || 0} SAR`,
+			selector: (row: any) => `${Number(row.total!).toFixed(2) || 0} SAR`,
 			sortable: false,
 		},
 		{
 			name: "Paid",
-			selector: (row: any) => `${Number(row.paid_amount).toFixed(2) || 0} SAR`,
+			selector: (row: any) => `${Number(row.paid_amount!).toFixed(2) || 0} SAR`,
 			sortable: false,
 		},
 		{
 			name: "Status",
 			width: "100px",
-			selector: (row: any) => row.status,
+			selector: (row: any) => row.status!,
 			sortable: true,
 			cell: (row: any) => {
-				let gradient = calculateWorkFlowStatus(row.work_flow);
+				let gradient = calculateWorkFlowStatus(row.work_flow!);
 				return (
 					<span className="pointer" onClick={() => handleOpen(row)}>
-						{row.status === STATUS.ARCHIVED ? (
+						{row.status! === STATUS.ARCHIVED ? (
 							<span className="badge bg-black text-white">Archived</span>
 						) : (
 							<span className="badge text-black" style={{ background: gradient }}>
-								{row.status}
+								{row.status!}
 							</span>
 						)}
 					</span>
@@ -298,7 +298,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 			cell: (row: any) => (
 				<DocumentsTableActionBtn<PettyCashRequest>
 					data={row}
-					onClickEdit={() => push("/" + PAGES.PC_REQUEST + "/" + row.id)}
+					onClickEdit={() => push("/" + PAGES.PC_REQUEST + "/" + row.id!)}
 				/>
 			),
 		},
@@ -308,11 +308,11 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Code",
 			width: "110px",
-			selector: (row: any) => row.code,
+			selector: (row: any) => row.code!,
 			sortable: true,
 			cell: (row: any) => (
-				<span onClick={() => push(`/${PAGES.INVOICE_INFO}/${row.id}`)} className="fw-bold text-secondary pointer">
-					{row.code}
+				<span onClick={() => push(`/${PAGES.INVOICE_INFO}/${row.id!}`)} className="fw-bold text-secondary pointer">
+					{row.code!}
 				</span>
 			),
 		},
@@ -333,7 +333,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Date",
 			width: "100px",
-			selector: (row: any) => row.date,
+			selector: (row: any) => row.date!,
 			sortable: true,
 		},
 		{
@@ -345,39 +345,39 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Description",
 			width: "270px",
-			selector: (row: any) => <span className="">{row.description}</span>,
+			selector: (row: any) => <span className="">{row.description!}</span>,
 			sortable: false,
 		},
 		{
 			name: "Transaction Date",
 			width: "160px",
-			selector: (row: any) => row.transaction_date,
+			selector: (row: any) => row.transaction_date!,
 			sortable: true,
 		},
 		{
 			name: "Total",
-			selector: (row: any) => `${Number(row.total).toFixed(2) || 0} SAR`,
+			selector: (row: any) => `${Number(row.total!).toFixed(2) || 0} SAR`,
 			sortable: false,
 		},
 		{
 			name: "Paid",
-			selector: (row: any) => `${Number(row.paid_amount).toFixed(2) || 0} SAR`,
+			selector: (row: any) => `${Number(row.paid_amount!).toFixed(2) || 0} SAR`,
 			sortable: false,
 		},
 		{
 			name: "Status",
 			width: "100px",
-			selector: (row: any) => row.status,
+			selector: (row: any) => row.status!,
 			sortable: true,
 			cell: (row: any) => {
-				let gradient = calculateWorkFlowStatus(row.work_flow);
+				let gradient = calculateWorkFlowStatus(row.work_flow!);
 				return (
 					<span className="pointer" onClick={() => handleOpen(row)}>
-						{row.status === STATUS.ARCHIVED ? (
+						{row.status! === STATUS.ARCHIVED ? (
 							<span className="badge bg-black text-white">Archived</span>
 						) : (
 							<span className="badge text-black" style={{ background: gradient }}>
-								{row.status}
+								{row.status!}
 							</span>
 						)}
 					</span>
@@ -390,7 +390,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 			selector: (row: any) => { },
 			sortable: false,
 			cell: (row: any) => (
-				<DocumentsTableActionBtn<Invoice> data={row} onClickEdit={() => push("/" + PAGES.INVOICE + "/" + row.id)} />
+				<DocumentsTableActionBtn<Invoice> data={row} onClickEdit={() => push("/" + PAGES.INVOICE + "/" + row.id!)} />
 			),
 		},
 	];
@@ -399,11 +399,11 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Code",
 			width: "110px",
-			selector: (row: any) => row.code,
+			selector: (row: any) => row.code!,
 			sortable: true,
 			cell: (row: any) => (
-				<span onClick={() => push(`/${PAGES.SITE_REQUEST_INFO}/${row.id}`)} className="fw-bold text-secondary pointer">
-					{row.code}
+				<span onClick={() => push(`/${PAGES.SITE_REQUEST_INFO}/${row.id!}`)} className="fw-bold text-secondary pointer">
+					{row.code!}
 				</span>
 			),
 		},
@@ -424,7 +424,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Date",
 			width: "100px",
-			selector: (row: any) => row.date,
+			selector: (row: any) => row.date!,
 			sortable: true,
 		},
 		{
@@ -435,23 +435,23 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		},
 		{
 			name: "Description",
-			selector: (row: any) => <span className="">{row.description}</span>,
+			selector: (row: any) => <span className="">{row.description!}</span>,
 			sortable: false,
 		},
 		{
 			name: "Status",
 			width: "100px",
-			selector: (row: any) => row.status,
+			selector: (row: any) => row.status!,
 			sortable: true,
 			cell: (row: any) => {
-				let gradient = calculateWorkFlowStatus(row.work_flow);
+				let gradient = calculateWorkFlowStatus(row.work_flow!);
 				return (
 					<span className="pointer" onClick={() => handleOpen(row)}>
-						{row.status === STATUS.ARCHIVED ? (
+						{row.status! === STATUS.ARCHIVED ? (
 							<span className="badge bg-black text-white">Archived</span>
 						) : (
 							<span className="badge text-black" style={{ background: gradient }}>
-								{row.status}
+								{row.status!}
 							</span>
 						)}
 					</span>
@@ -466,7 +466,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 			cell: (row: any) => (
 				<DocumentsTableActionBtn<SiteRequest>
 					data={row}
-					onClickEdit={() => push("/" + PAGES.SITE_REQUEST + "/" + row.id)}
+					onClickEdit={() => push("/" + PAGES.SITE_REQUEST + "/" + row.id!)}
 				/>
 			),
 		},
@@ -476,25 +476,25 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Code",
 			width: "110px",
-			selector: (row: any) => row.code,
+			selector: (row: any) => row.code!,
 			sortable: true,
 			cell: (row: any) => (
-				<span onClick={() => push(`/${PAGES.PO_REQUEST_INFO}/${row.id}`)} className="fw-bold text-secondary pointer">
-					{row.code}
+				<span onClick={() => push(`/${PAGES.PO_REQUEST_INFO}/${row.id!}`)} className="fw-bold text-secondary pointer">
+					{row.code!}
 				</span>
 			),
 		},
 		{
 			name: "Date",
 			width: "100px",
-			selector: (row: any) => row.date,
+			selector: (row: any) => row.date!,
 			sortable: true,
 		},
 		{
 			name: "Project",
-			selector: (row: any) => row.project_details.name!,
+			selector: (row: any) => row.project_details?.name!,
 			sortable: true,
-			cell: (row: any) => <span className="fw-bold ms-1">{row.project_details.name!}</span>,
+			cell: (row: any) => <span className="fw-bold ms-1">{row.project_details?.name!}</span>,
 		},
 		{
 			name: "Rev",
@@ -513,7 +513,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Description",
 			width: "240px",
-			selector: (row: any) => <span className="">{row.description}</span>,
+			selector: (row: any) => <span className="">{row.description!}</span>,
 			sortable: false,
 		},
 		{
@@ -543,17 +543,17 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		},
 		{
 			name: "Status",
-			selector: (row: any) => row.status,
+			selector: (row: any) => row.status!,
 			sortable: true,
 			cell: (row: any) => {
-				let gradient = calculateWorkFlowStatus(row.work_flow);
+				let gradient = calculateWorkFlowStatus(row.work_flow!);
 				return (
 					<span className="pointer" onClick={() => handleOpen(row)}>
-						{row.status === STATUS.ARCHIVED ? (
+						{row.status! === STATUS.ARCHIVED ? (
 							<span className="badge bg-black text-white">Archived</span>
 						) : (
 							<span className="badge text-black" style={{ background: gradient }}>
-								{row.status}
+								{row.status!}
 							</span>
 						)}
 					</span>
@@ -579,13 +579,13 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Total",
 			width: "110px",
-			selector: (row: any) => `${Number(row.total).toFixed(2) || 0} SAR`,
+			selector: (row: any) => `${Number(row.total!).toFixed(2) || 0} SAR`,
 			sortable: true,
 		},
 		{
 			name: "Paid",
 			width: "110px",
-			selector: (row: any) => `${Number(row.paid_amount).toFixed(2) || 0} SAR`,
+			selector: (row: any) => `${Number(row.paid_amount!).toFixed(2) || 0} SAR`,
 			sortable: true,
 		},
 		{
@@ -595,7 +595,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 			cell: (row: any) => (
 				<DocumentsTableActionBtn<PurchaseOrderRequest>
 					data={row}
-					onClickEdit={() => push("/" + PAGES.PO_REQUEST + "/" + row.id)}
+					onClickEdit={() => push("/" + PAGES.PO_REQUEST + "/" + row.id!)}
 				/>
 			),
 		},
@@ -605,13 +605,13 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Code",
 			width: "110px",
-			selector: (row: any) => row.code,
+			selector: (row: any) => row.code!,
 			sortable: true,
 			cell: (row: any) => (
 				<span
-					onClick={() => push(`/${PAGES.MATERIAL_REQUEST_INFO}/${row.id}`)}
+					onClick={() => push(`/${PAGES.MATERIAL_REQUEST_INFO}/${row.id!}`)}
 					className="fw-bold text-secondary pointer">
-					{row.code}
+					{row.code!}
 				</span>
 			),
 		},
@@ -632,7 +632,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Date",
 			width: "100px",
-			selector: (row: any) => row.date,
+			selector: (row: any) => row.date!,
 			sortable: true,
 		},
 		{
@@ -650,23 +650,23 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 		{
 			name: "Description",
 			width: "390px",
-			selector: (row: any) => <span className="">{row.description}</span>,
+			selector: (row: any) => <span className="">{row.description!}</span>,
 			sortable: false,
 		},
 		{
 			name: "Status",
 			width: "100px",
-			selector: (row: any) => row.status,
+			selector: (row: any) => row.status!,
 			sortable: true,
 			cell: (row: any) => {
-				let gradient = calculateWorkFlowStatus(row.work_flow);
+				let gradient = calculateWorkFlowStatus(row.work_flow!);
 				return (
 					<span className="pointer" onClick={() => handleOpen(row)}>
-						{row.status === STATUS.ARCHIVED ? (
+						{row.status! === STATUS.ARCHIVED ? (
 							<span className="badge bg-black text-white">Archived</span>
 						) : (
 							<span className="badge text-black" style={{ background: gradient }}>
-								{row.status}
+								{row.status!}
 							</span>
 						)}
 					</span>
@@ -681,7 +681,7 @@ const useColumnTable = (handleOpen: (row: any) => void) => {
 			cell: (row: any) => (
 				<DocumentsTableActionBtn<MaterialRequest>
 					data={row}
-					onClickEdit={() => push("/" + PAGES.MATERIAL_REQUEST + "/" + row.id)}
+					onClickEdit={() => push("/" + PAGES.MATERIAL_REQUEST + "/" + row.id!)}
 				/>
 			),
 		},

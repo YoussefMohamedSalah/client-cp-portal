@@ -69,13 +69,3 @@ export const geDccDocuments = async (documentType: string) => {
     const { documents } = await getDocumentFunction();
     return { dccDocuments: { data: documents.data as any[] } };
 };
-
-export const tasbihWay = async (documentType: string) => {
-    if (documentType === DOCUMENT_TYPE.INVOICE) {
-        let { documents } = await getAllInvoices();
-        return documents.data || [];
-    } else if (documentType === DOCUMENT_TYPE.CONTRACT) {
-        let { documents } = await getAllContracts();
-        return documents.data || [];
-    }
-};
