@@ -48,7 +48,7 @@ const Contracts: React.FC = () => {
           onClickBtn={() => push("/" + PAGES.CONTRACT)}
         />
         {/* table data */}
-        <div className="row g-3 py-1 pb-4">
+        <div className="test">
           <DocumentTable<Contract>
             title={"Contracts"}
             columns={contractColumnT}

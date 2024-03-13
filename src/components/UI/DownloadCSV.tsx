@@ -8,8 +8,8 @@ interface Props {
 
 function DownloadCSV({ fileName, csvData }: Props) {
   return (
-    <div>
-      <CSVLink className="downloadbtn" filename={fileName} data={csvData}>
+    <div style={{ padding: "5px 0px 14px 3px" }}>
+      <CSVLink className="downloadbtn align-self-xl-end" filename={fileName} data={csvData}>
         Export to CSV
       </CSVLink>
     </div>

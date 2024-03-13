@@ -48,7 +48,7 @@ const MaterialRequests: React.FC = () => {
           onClickBtn={() => push("/" + PAGES.MATERIAL_REQUEST)}
         />
         {/* table data */}
-        <div className="row g-3 py-1 pb-4">
+        <div className="test">
           <DocumentTable<MaterialRequest>
             title={"Material Requests"}
             columns={materialColumnT}

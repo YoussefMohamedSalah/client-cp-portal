@@ -48,7 +48,7 @@ const EmployeeRequests: React.FC = () => {
           onClickBtn={() => push("/" + PAGES.EMPLOYEE_REQUEST)}
         />
         {/* table data */}
-        <div className="row g-3 py-1 pb-4">
+        <div className="test">
           <DocumentTable<EmployeeRequest>
             title={"Employee Requests"}
             columns={employeesRequestsColumnT}

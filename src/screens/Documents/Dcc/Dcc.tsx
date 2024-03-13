@@ -80,32 +80,32 @@ const Dcc: React.FC = () => {
 										className="nav nav-tabs tab-body-header rounded invoice-set"
 									>
 										<Nav.Item>
-											<Nav.Link onClick={() => setDocumentType(DOCUMENT_TYPE.PURCHASE_ORDER)} eventKey="po">Po R.</Nav.Link>
+											<Nav.Link onClick={() => setDocumentType(DOCUMENT_TYPE.PURCHASE_ORDER)} eventKey="po">PO</Nav.Link>
 										</Nav.Item>
 										<Nav.Item>
-											<Nav.Link onClick={() => setDocumentType(DOCUMENT_TYPE.PETTY_CASH)} eventKey="pc">Pc R.</Nav.Link>
+											<Nav.Link onClick={() => setDocumentType(DOCUMENT_TYPE.PETTY_CASH)} eventKey="pc">PC</Nav.Link>
 										</Nav.Item>
 										<Nav.Item>
-											<Nav.Link onClick={() => setDocumentType(DOCUMENT_TYPE.SITE)} eventKey="site">Site R.</Nav.Link>
+											<Nav.Link onClick={() => setDocumentType(DOCUMENT_TYPE.SITE)} eventKey="site">SI</Nav.Link>
 										</Nav.Item>
 										<Nav.Item>
-											<Nav.Link onClick={() => setDocumentType(DOCUMENT_TYPE.MATERIAL)} eventKey="material">Material R.</Nav.Link>
+											<Nav.Link onClick={() => setDocumentType(DOCUMENT_TYPE.MATERIAL)} eventKey="material">MR</Nav.Link>
 										</Nav.Item>
 										<Nav.Item>
-											<Nav.Link onClick={() => setDocumentType(DOCUMENT_TYPE.EMPLOYEE)} eventKey="employee">Employee R.</Nav.Link>
+											<Nav.Link onClick={() => setDocumentType(DOCUMENT_TYPE.EMPLOYEE)} eventKey="employee">EMP</Nav.Link>
 										</Nav.Item>
 										<Nav.Item>
-											<Nav.Link onClick={() => setDocumentType(DOCUMENT_TYPE.CONTRACT)} eventKey="contract">Contract R.</Nav.Link>
+											<Nav.Link onClick={() => setDocumentType(DOCUMENT_TYPE.CONTRACT)} eventKey="contract">CON</Nav.Link>
 										</Nav.Item>
 										<Nav.Item>
-											<Nav.Link onClick={() => setDocumentType(DOCUMENT_TYPE.INVOICE)} eventKey="invoice">Invoice R.</Nav.Link>
+											<Nav.Link onClick={() => setDocumentType(DOCUMENT_TYPE.INVOICE)} eventKey="invoice">INV</Nav.Link>
 										</Nav.Item>
 									</Nav>
 								);
 							}}
 						/>
 					</div>
-					<div className="row g-3 py-1 pb-4">
+					<div className="test">
 						<Tab.Content>
 							{isLoading ? (<Loading />) : (
 								<>

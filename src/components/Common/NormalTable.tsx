@@ -47,7 +47,7 @@ function NormalTable<T extends Customer | Supplier | Employee | Subcontractor>({
   return (
     <div className="row clearfix g-3">
       {/* Cards Filters */}
-      <div className="d-flex justify-content-between">
+      <div className="d-flex flex-column flex-lg-row justify-content-between">
         {/* Download as a CSV */}
         {renderDownload && <DownloadCSV fileName={formatCsvTitle(fileName)} csvData={csvData} />}
         {/* Search Input */}

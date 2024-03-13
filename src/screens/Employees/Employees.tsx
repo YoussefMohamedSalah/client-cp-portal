@@ -47,7 +47,7 @@ const Employees: React.FC = () => {
     },
     {
       name: "NAME",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: (row: any) => (
         <>
@@ -85,7 +85,7 @@ const Employees: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <TableActionBtn
@@ -109,7 +109,7 @@ const Employees: React.FC = () => {
           onClickBtn={() => push("/" + PAGES.EMPLOYEE)}
         />
         {/* table data */}
-        <div className="row g-3 py-1 pb-4">
+        <div className="test">
           <NormalTable<Employee>
             title={"Employees"}
             columns={columnT}

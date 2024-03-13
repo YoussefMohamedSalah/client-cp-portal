@@ -41,7 +41,7 @@ const Tenders: React.FC = () => {
           onClickBtn={() => push("/" + PAGES.TENDER)}
         />
         {/* table data */}
-        <div className="row g-3 py-1 pb-4">
+        <div className="test">
           {tenders.map((tender: Tender) => (
             <div key={tender.id}>
               <TenderCard tender={tender} onDelete={handleDelete} />

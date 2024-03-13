@@ -49,7 +49,7 @@ const Invoiced: React.FC = () => {
           onClickBtn={() => push("/" + PAGES.INVOICE)}
         />
         {/* table data */}
-        <div className="row g-3 py-1 pb-4">
+        <div className="test">
           <DocumentTable<Invoice>
             title={"Payment Certificates"}
             columns={invoiceColumnT}

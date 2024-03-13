@@ -44,7 +44,7 @@ const PcRequests: React.FC = () => {
           onClickBtn={() => push("/" + PAGES.PC_REQUEST)}
         />
         {/* table data */}
-        <div className="row g-3 py-1 pb-4">
+        <div className="test">
           <DocumentTable<PettyCashRequest>
             title={"Petty cash Requests"}
             columns={pettyCashColumnT}

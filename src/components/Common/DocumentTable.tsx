@@ -15,13 +15,13 @@ import { formatCsvTitle } from "utils/FormatCsvTitle";
 
 interface Props<
   T extends
-    | PettyCashRequest
-    | PurchaseOrderRequest
-    | EmployeeRequest
-    | MaterialRequest
-    | SiteRequest
-    | Contract
-    | Invoice,
+  | PettyCashRequest
+  | PurchaseOrderRequest
+  | EmployeeRequest
+  | MaterialRequest
+  | SiteRequest
+  | Contract
+  | Invoice,
 > {
   title: string;
   columns: any;
@@ -40,13 +40,13 @@ interface Props<
 
 function DocumentTable<
   T extends
-    | PettyCashRequest
-    | PurchaseOrderRequest
-    | EmployeeRequest
-    | MaterialRequest
-    | SiteRequest
-    | Contract
-    | Invoice,
+  | PettyCashRequest
+  | PurchaseOrderRequest
+  | EmployeeRequest
+  | MaterialRequest
+  | SiteRequest
+  | Contract
+  | Invoice,
 >({
   title,
   columns,
@@ -76,7 +76,7 @@ function DocumentTable<
     <div className="row clearfix g-3">
       {/* Cards Filters */}
       {renderCards && <TableCards data={data} onFilter={onCardsFilter} />}
-      <div className="d-flex justify-content-between">
+      <div className="d-flex flex-column flex-lg-row justify-content-xl-between justify-content-center">
         {/* Download as a CSV */}
         {renderDownload && <DownloadCSV fileName={formatCsvTitle(fileName)} csvData={csvData} />}
         {/* Search Input */}

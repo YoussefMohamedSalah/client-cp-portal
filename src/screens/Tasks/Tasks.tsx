@@ -41,7 +41,7 @@ const Tasks: React.FC = () => {
           onClickBtn={() => push("/" + PAGES.TASK)}
         />
         {/* table data */}
-        <div className="row g-3 py-1 pb-4">
+        <div className="test">
           {tasks.map((task: Task) => (
             <div key={task.id}>
               <TaskCard task={task} onDelete={handleDelete} />
