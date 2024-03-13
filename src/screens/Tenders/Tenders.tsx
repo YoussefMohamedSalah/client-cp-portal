@@ -28,8 +28,11 @@ const Tenders: React.FC = () => {
     } catch (err: any) {
       showError(handleServerError(err.response));
     }
+    window.location.reload();
   };
 
+  console.log('tenders' ,tenders);
+  
   return (
     <>
       <div className="container-fluid">
