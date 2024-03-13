@@ -11,13 +11,13 @@ import { Invoice } from "types/Invoice";
 
 interface Props<
   T extends
-    | PettyCashRequest
-    | PurchaseOrderRequest
-    | EmployeeRequest
-    | MaterialRequest
-    | SiteRequest
-    | Contract
-    | Invoice,
+  | PettyCashRequest
+  | PurchaseOrderRequest
+  | EmployeeRequest
+  | MaterialRequest
+  | SiteRequest
+  | Contract
+  | Invoice,
 > {
   data: T[];
   onFilter: (filtered: T[]) => void;
@@ -25,13 +25,13 @@ interface Props<
 
 function TableCards<
   T extends
-    | PettyCashRequest
-    | PurchaseOrderRequest
-    | EmployeeRequest
-    | MaterialRequest
-    | SiteRequest
-    | Contract
-    | Invoice,
+  | PettyCashRequest
+  | PurchaseOrderRequest
+  | EmployeeRequest
+  | MaterialRequest
+  | SiteRequest
+  | Contract
+  | Invoice,
 >({ data, onFilter }: Props<T>) {
   const [filterData, setFilterData] = useState<T[]>(data || []);
 
@@ -105,7 +105,7 @@ function TableCards<
   ];
 
   return (
-    <div className="row g-3 mb-3 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-5 row-cols-xl-5 row-cols-xxl-5">
+    <div className="row g-3 mb-2 row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-5 row-cols-xl-5 row-cols-xxl-5 m-0">
       {cardsData.map((card, index: number) => {
         return (
           <span key={index}>

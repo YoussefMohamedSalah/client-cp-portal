@@ -48,7 +48,7 @@ const Projects: React.FC = () => {
           onClickBtn={() => push("/" + PAGES.PROJECT)}
         />
         {/* table data */}
-        <div className="row g-3 py-1 pb-4">
+        <div className="test">
           {projects.map((project: Project) => (
             <div key={project.id}>
               <ProjectCard project={project} onDelete={handleDelete} />

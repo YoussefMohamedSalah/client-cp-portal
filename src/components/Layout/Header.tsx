@@ -17,8 +17,8 @@ const Header = ({ session }: Props) => {
 
   return (
     <div className="header">
-      <nav className="navbar pt-2 pb-2">
-        <div className="container-xxl">
+      <nav className="navbar pb-0">
+        <div className="container-fluid p-0">
           {/* search */}
           <p></p>
           <div className="d-flex justify-self-end justify-content-end col-lg-6 col-md-6 col-12">

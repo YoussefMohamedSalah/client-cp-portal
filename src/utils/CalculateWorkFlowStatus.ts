@@ -9,11 +9,11 @@ const getStatusColor = (isApproved: boolean, isRejected: boolean) => {
 };
 
 export const calculateWorkFlowStatus = (workFlow: any[]): string => {
-  if (!workFlow || workFlow.length === 0) {
+  if (!workFlow || workFlow?.length! === 0) {
     return "#f0ad4e";
   }
-  const totalItems = workFlow.length;
-  const rejectedItem = workFlow.find((item) => item.isRejected);
+  const totalItems = workFlow?.length!;
+  const rejectedItem = workFlow?.find((item) => item.isRejected);
 
   if (rejectedItem) {
     // If any item is rejected, set the whole status to red

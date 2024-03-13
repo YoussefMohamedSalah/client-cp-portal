@@ -45,7 +45,7 @@ const Customers: React.FC = () => {
     },
     {
       name: "NAME",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: true,
       cell: (row: any) => (
         <>
@@ -76,7 +76,7 @@ const Customers: React.FC = () => {
     {
       name: "ACTION",
       width: "120px",
-      selector: (row: any) => {},
+      selector: (row: any) => { },
       sortable: false,
       cell: (row: any) => (
         <TableActionBtn
@@ -100,7 +100,7 @@ const Customers: React.FC = () => {
           onClickBtn={() => push("/" + PAGES.CUSTOMER)}
         />
         {/* table data */}
-        <div className="row g-3 py-1 pb-4">
+        <div className="test">
           <NormalTable<Customer>
             title={"Customers"}
             columns={columnT}

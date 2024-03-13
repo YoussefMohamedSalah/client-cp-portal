@@ -4,6 +4,8 @@ import { lazy } from "react";
 const Dashboard = lazy(() => import("../screens/Dashboard/Dashboard"));
 const Tenders = lazy(() => import("../screens/Tenders/Tenders"));
 const Settings = lazy(() => import("../screens/Settings/Settings"));
+const Dcc = lazy(() => import("../screens/Documents/Dcc/Dcc"));
+
 
 const TaskDetails = lazy(() => import("../screens/Tasks/TaskDetails"));
 const TaskFormPage = lazy(() => import("../screens/Tasks/TaskFormPage"));
@@ -298,11 +300,13 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
       case PAGES.GROUPS:
         return <Groups />;
 
+      case PAGES.DCC:
+        return <Dcc />;
+
+
       // case PAGES.INVENTORY:
       // 	return <Inventory />;
 
-      // case PAGES.DCC:
-      // 	return <Dcc />;
 
       // case PAGES.NOTIFICATIONS:
       // 	return <Notifications />
