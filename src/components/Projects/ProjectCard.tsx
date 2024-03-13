@@ -44,7 +44,7 @@ const ProjectCard = ({ project, onDelete }: Props) => {
   const [isModal, setIsModal] = useState<boolean>(false);
   const { push } = useApp();
   return (
-    <div className="grey-bg container-fluid">
+    <div className="grey-bg container-fluid p-0">
       <section id="projects">
         <div className="row ">
           <div className="col-xl-12 col-sm-6 col-12">

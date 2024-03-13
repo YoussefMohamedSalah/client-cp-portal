@@ -7,7 +7,7 @@ interface Props {
 
 const CardsExamples = ({ project }: Props) => {
   return (
-    <div className="grey-bg container-fluid">
+    <div className="grey-bg container-fluid p-0">
       <section id="minimal-statistics">
         <div className="row">
           <div className="col-12 mt-3 mb-1">
