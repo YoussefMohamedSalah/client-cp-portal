@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { calculateProjectPercentage, sumDaysLeftFromToDay } from "utils/Convert";
+import { sumDaysLeftFromToDay } from "utils/Convert";
 import useApp from "hooks/useApp";
 import { styled } from "@mui/material/styles";
 
