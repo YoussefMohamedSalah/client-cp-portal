@@ -1,5 +1,6 @@
 import { PAGES } from "constants/pages";
 import { lazy } from "react";
+import Todos from "screens/Todos/Todos";
 
 const Dashboard = lazy(() => import("../screens/Dashboard/Dashboard"));
 const Tenders = lazy(() => import("../screens/Tenders/Tenders"));
@@ -290,6 +291,8 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
       // case PAGES.PERSONAL_PROFILE:
       //   return <PersonalProfile />;
       // ---
+      case PAGES.TODO:
+        return <Todos />;
 
       // ---
       case PAGES.SETTINGS:

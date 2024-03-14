@@ -307,7 +307,11 @@ const CustomerFormPage = ({ id }: Props) => {
               <Button className="lift" content="Create" onClick={handleCreate} />
             </>
           )}
-          <Button className="lift" content="profile" onClick={() => push("/" + PAGES.CUSTOMER_INFO + "/")} />
+          <Button
+            className="lift"
+            content="profile"
+            onClick={() => push("/" + PAGES.CUSTOMER_INFO + "/" + modelData.id)}
+          />
         </div>
       </div>
       <DeleteModal

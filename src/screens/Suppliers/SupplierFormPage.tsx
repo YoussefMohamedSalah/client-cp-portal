@@ -308,7 +308,11 @@ const SupplierFormPage = ({ id }: Props) => {
               <Button className="lift" content="Create" onClick={handleCreate} />
             </>
           )}
-          <Button className="lift" content="profile" onClick={() => push("/" + PAGES.SUPPLIER_INFO + "/")} />
+          <Button
+            className="lift"
+            content="profile"
+            onClick={() => push("/" + PAGES.SUPPLIER_INFO + "/" + modelData.id)}
+          />
         </div>
       </div>
       <DeleteModal

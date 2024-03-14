@@ -108,3 +108,9 @@ export enum CONTRACT_TYPE {
   COMPANY = "Company",
   INDIVIDUAL = "Individual",
 }
+export enum TODO {
+  TODO = "ToDo",
+  ON_PROGRESS = "On Progress",
+  PENDING = "Pending",
+  DONE = "Done",
+}
