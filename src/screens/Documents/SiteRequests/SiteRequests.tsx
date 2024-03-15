@@ -14,7 +14,7 @@ import useColumnTable from "hooks/useColumnTable";
 const SiteRequests: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<SiteRequest>({} as SiteRequest);
   const [open, setOpen] = useState<boolean>(false);
-  const [requests, setRequests] = useState<SiteRequest[]>([] as SiteRequest[])
+  const [requests, setRequests] = useState<SiteRequest[]>([] as SiteRequest[]);
   const { data, error, isLoading } = useGetAllSiteRequestsQuery();
   const { push } = useApp();
 
@@ -29,7 +29,7 @@ const SiteRequests: React.FC = () => {
     if (data && data.siteRequests && data.siteRequests.data) {
       setRequests(data.siteRequests.data);
     }
-  }, [data])
+  }, [data]);
 
   if (isLoading) return <Loading />;
   if (error) return null;

@@ -241,7 +241,7 @@ const PcFormPage = ({ id }: Props) => {
       onChange: (e: any) => {
         if (e.target.files && e.target.files.length > 0) {
           let file: File = e.target?.files[0]!;
-          console.log({ file })
+          console.log({ file });
           let reader = new FileReader();
           reader.readAsDataURL(file);
           reader.onload = (url) => {
@@ -478,7 +478,7 @@ const PcFormPage = ({ id }: Props) => {
     }
   };
 
-  console.log({ oldFiles }, { files })
+  console.log({ oldFiles }, { files });
 
   if (!initialized) return <></>;
   return (

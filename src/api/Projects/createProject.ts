@@ -2,16 +2,26 @@ import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
 import { Project } from "types/Project";
 import { http } from "utils/Http";
+import { QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export const useCreateProject = () => {
-  return useMutation<any, Error, FormData>(async (createInput) => {
-    const { data } = await http.post(ROUTES.PROJECT, createInput, {
-      headers: {
-        "Content-Type": "multipart/form-data",
+  return useMutation<any, Error, FormData>(
+    async (createInput) => {
+      const { data } = await http.post(ROUTES.PROJECT, createInput, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return { project: { data: data as Project } };
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["projects"]);
       },
-    });
-    return { project: { data: data as Project } };
-  });
+    },
+  );
 };
 
 export const projectInput = (data: Project): any => {

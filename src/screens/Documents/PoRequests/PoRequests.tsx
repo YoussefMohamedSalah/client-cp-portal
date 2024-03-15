@@ -14,7 +14,7 @@ import useColumnTable from "hooks/useColumnTable";
 const PoRequests: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<PurchaseOrderRequest>({} as PurchaseOrderRequest);
   const [open, setOpen] = useState<boolean>(false);
-  const [requests, setRequests] = useState<PurchaseOrderRequest[]>([] as PurchaseOrderRequest[])
+  const [requests, setRequests] = useState<PurchaseOrderRequest[]>([] as PurchaseOrderRequest[]);
 
   const { data, error, isLoading } = useGetAllPoRequestsQuery();
   const { push } = useApp();
@@ -30,11 +30,10 @@ const PoRequests: React.FC = () => {
     if (data && data.poRequests && data.poRequests.data) {
       setRequests(data.poRequests.data);
     }
-  }, [data])
+  }, [data]);
 
   if (isLoading) return <Loading />;
   if (error) return null;
-
 
   const handleClose = () => {
     setOpen(false);

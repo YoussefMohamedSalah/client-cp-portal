@@ -2,16 +2,26 @@ import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
 import { Tender, SelectedTender } from "types/Tender";
 import { http } from "utils/Http";
+import { QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export const useCreateTender = () => {
-  return useMutation<any, Error, FormData>(async (createInput) => {
-    const { data } = await http.post(ROUTES.TENDER, createInput, {
-      headers: {
-        "Content-Type": "multipart/form-data",
+  return useMutation<any, Error, FormData>(
+    async (createInput) => {
+      const { data } = await http.post(ROUTES.TENDER, createInput, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return { tender: { data: data as Tender } };
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["tenders"]);
       },
-    });
-    return { tender: { data: data as Tender } };
-  });
+    },
+  );
 };
 
 export const tenderInput = (data: Tender): any => {

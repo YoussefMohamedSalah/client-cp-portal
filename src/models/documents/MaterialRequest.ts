@@ -17,14 +17,6 @@ export const MaterialRequestRequiredKeys = [
   MaterialRequestKeys.PROJECT,
 ];
 
-
 export const MaterialRequestPreviewTable = {
-  materials: [
-    "item",
-    "description",
-    "count",
-    "price",
-    "prev count",
-    "current count",
-  ]
-}
+  materials: ["item", "description", "count", "price", "prev count", "current count"],
+};

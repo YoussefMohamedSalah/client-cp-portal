@@ -7,18 +7,21 @@ import { QueryClient } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 export const useCreatePoRequest = () => {
-  return useMutation<any, Error, any>(async (createInput) => {
-    const { data } = await http.post(ROUTES.PO_REQUEST, createInput, {
-      headers: {
-        "Content-Type": "multipart/form-data",
+  return useMutation<any, Error, any>(
+    async (createInput) => {
+      const { data } = await http.post(ROUTES.PO_REQUEST, createInput, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return { poRequest: { data: data as PurchaseOrderRequest } };
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["poRequests"]);
       },
-    });
-    return { poRequest: { data: data as PurchaseOrderRequest } };
-  }, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(["poRequests"]);
-    }
-  });
+    },
+  );
 };
 
 export const poRequestInput = (data: any): any => {

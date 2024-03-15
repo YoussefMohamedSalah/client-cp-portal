@@ -2,16 +2,26 @@ import { useMutation } from "@tanstack/react-query";
 import { Employee } from "types/Employee";
 import { ROUTES } from "constants/routes";
 import { http } from "utils/Http";
+import { QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export const useCreateEmployee = () => {
-  return useMutation<any, Error, Employee>(async (createInput) => {
-    const { data } = await http.post(ROUTES.EMPLOYEE, createInput, {
-      headers: {
-        "Content-Type": "multipart/form-data",
+  return useMutation<any, Error, Employee>(
+    async (createInput) => {
+      const { data } = await http.post(ROUTES.EMPLOYEE, createInput, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return { employee: { data: data as Employee } };
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["employees"]);
       },
-    });
-    return { employee: { data: data as Employee } };
-  });
+    },
+  );
 };
 
 export const employeeInput = (data: Employee): any => {

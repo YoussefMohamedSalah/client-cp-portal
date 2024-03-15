@@ -15,13 +15,13 @@ import { formatCsvTitle } from "utils/FormatCsvTitle";
 
 interface Props<
   T extends
-  | PettyCashRequest
-  | PurchaseOrderRequest
-  | EmployeeRequest
-  | MaterialRequest
-  | SiteRequest
-  | Contract
-  | Invoice,
+    | PettyCashRequest
+    | PurchaseOrderRequest
+    | EmployeeRequest
+    | MaterialRequest
+    | SiteRequest
+    | Contract
+    | Invoice,
 > {
   title: string;
   columns: any;
@@ -40,13 +40,13 @@ interface Props<
 
 function DocumentTable<
   T extends
-  | PettyCashRequest
-  | PurchaseOrderRequest
-  | EmployeeRequest
-  | MaterialRequest
-  | SiteRequest
-  | Contract
-  | Invoice,
+    | PettyCashRequest
+    | PurchaseOrderRequest
+    | EmployeeRequest
+    | MaterialRequest
+    | SiteRequest
+    | Contract
+    | Invoice,
 >({
   title,
   columns,
@@ -67,8 +67,8 @@ function DocumentTable<
   const onSearchFilter = (filtered: T[]) => setFilteredData(filtered);
 
   useEffect(() => {
-    setFilteredData(data)
-  }, [data])
+    setFilteredData(data);
+  }, [data]);
 
   let csvData =
     formatDocumentCsvOutput<

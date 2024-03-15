@@ -5,10 +5,10 @@ import { Company } from "types/Company";
 
 export const useCompany = () => {
   return useMutation<any, Error, FormData>(async (createInput) => {
-    console.log(createInput)
+    console.log(createInput);
     const { data } = await http.put(ROUTES.COMPANY, createInput, {
       headers: {
-        'Content-Type': "multipart/form-data"
+        "Content-Type": "multipart/form-data",
       },
     });
     return { company: { data: data as Company } };

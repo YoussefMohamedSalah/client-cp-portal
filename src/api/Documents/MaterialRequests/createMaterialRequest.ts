@@ -7,18 +7,21 @@ import { QueryClient } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 export const useCreateMaterialRequest = () => {
-  return useMutation<any, Error, any>(async (createInput) => {
-    const { data } = await http.post(ROUTES.MATERIAL_REQUEST, createInput, {
-      headers: {
-        "Content-Type": "multipart/form-data",
+  return useMutation<any, Error, any>(
+    async (createInput) => {
+      const { data } = await http.post(ROUTES.MATERIAL_REQUEST, createInput, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return { materialRequest: { data: data as MaterialRequest } };
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["materialRequests"]);
       },
-    });
-    return { materialRequest: { data: data as MaterialRequest } };
-  }, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(["materialRequests"]);
-    }
-  });
+    },
+  );
 };
 
 export const materialRequestInput = (data: any): any => {

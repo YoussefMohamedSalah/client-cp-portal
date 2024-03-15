@@ -251,12 +251,12 @@ const ContractFormPage = ({ id }: Props) => {
     setFilesNameSet([]);
     setSubTotalAmount(0);
     setSelectedProject({} as Project);
-    setInstallments([{ name: "", percentage: 0, value: 0, details: "", date: "" }])
-    setDiscountAmount("0")
-    setTotalAmount(0)
-    setDocumentFinancesObj({} as DocumentFinances)
-    setIncludeVat(true)
-    setPaymentType("cash")
+    setInstallments([{ name: "", percentage: 0, value: 0, details: "", date: "" }]);
+    setDiscountAmount("0");
+    setTotalAmount(0);
+    setDocumentFinancesObj({} as DocumentFinances);
+    setIncludeVat(true);
+    setPaymentType("cash");
 
     setModelData({
       ...modelData,

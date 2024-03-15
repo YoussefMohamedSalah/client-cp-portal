@@ -9,5 +9,5 @@ export const getAllCustomers = async ({ queryKey }: any) => {
 };
 
 export const useCustomersQuery = (options: any) => {
-  return useQuery<{ customers: { data: any } }, Error>([ROUTES.CO_CUSTOMERS, options], getAllCustomers);
+  return useQuery({ queryKey: ["customers"], queryFn: getAllCustomers });
 };

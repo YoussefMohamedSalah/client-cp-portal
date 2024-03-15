@@ -24,7 +24,7 @@ const DataImportingSettings = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [term, setTerm] = useState<string>("Select Action Type");
 
-  console.log(term)
+  console.log(term);
 
   const { mutateAsync: addCsvFileMutation } = useAddEmployeesByCsvFile();
   const { mutateAsync: replaceCsvFileMutation } = useReplaceEmployeesByCsvFile();
@@ -118,7 +118,7 @@ const DataImportingSettings = () => {
   ];
 
   return (
-    <div >
+    <div>
       <Tab.Container id="left-tabs-example" defaultActiveKey="employee">
         <div className="row">
           <div className="d-flex justify-content-center align-items-center">

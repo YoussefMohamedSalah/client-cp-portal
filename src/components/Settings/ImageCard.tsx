@@ -21,10 +21,10 @@ const ImageCard = ({ defaultUrl, title, onSave, onChange }: Props) => {
     const selectedFile = event.target.files?.[0];
     if (selectedFile) {
       const fileUrl = URL.createObjectURL(selectedFile);
-      setUploadedFile(selectedFile)
+      setUploadedFile(selectedFile);
       setFile(fileUrl);
       if (onChange) {
-        onChange(selectedFile)
+        onChange(selectedFile);
       }
     }
   };

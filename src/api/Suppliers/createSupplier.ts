@@ -2,12 +2,22 @@ import { useMutation } from "@tanstack/react-query";
 import { Supplier } from "types/Supplier";
 import { ROUTES } from "constants/routes";
 import { http } from "utils/Http";
+import { QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export const useCreateSupplier = () => {
-  return useMutation<any, Error, Supplier>(async (createInput) => {
-    const { data } = await http.post(ROUTES.SUPPLIER, createInput);
-    return { data: data as any };
-  });
+  return useMutation<any, Error, Supplier>(
+    async (createInput) => {
+      const { data } = await http.post(ROUTES.SUPPLIER, createInput);
+      return { data: data as any };
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["suppliers"]);
+      },
+    },
+  );
 };
 
 export const supplierInput = (data: Supplier): any => {

@@ -678,7 +678,7 @@ we would like to place the purchase order for Below Items.`,
       showError(handleServerError(err.response));
     }
   };
-  console.log(initialized)
+  console.log(initialized);
   if (!initialized) return <></>;
   return (
     <div className="container-xxl">

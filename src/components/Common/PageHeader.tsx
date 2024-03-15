@@ -32,7 +32,8 @@ const PageHeader: React.FC<Props> = ({
   return (
     <div className="row align-items-center m-0">
       <div className="border-0 mb-2 p-0">
-        <div className={`card-header no-bg bg-transparent d-flex align-items-center py-1 ${!isBackBtn ? "justify-content-center" : " justify-content-between"} justify-content-lg-between border-bottom flex-wrap`}>
+        <div
+          className={`card-header no-bg bg-transparent d-flex align-items-center py-1 ${!isBackBtn ? "justify-content-center" : " justify-content-between"} justify-content-lg-between border-bottom flex-wrap`}>
           {isBackBtn && (
             <span onClick={() => navigate(-1)} title="" className="btn btn-primary border lift">
               <div className="icon">
@@ -61,7 +62,7 @@ const PageHeader: React.FC<Props> = ({
 
           <div className="col-auto d-flex w-sm-100">
             {isBtnShow && btnText ? (
-              <button className="btn btn-primary btn-set-task w-sm-100" onClick={onClickBtn ? onClickBtn : () => { }}>
+              <button className="btn btn-primary btn-set-task w-sm-100" onClick={onClickBtn ? onClickBtn : () => {}}>
                 <i className="icofont-plus-circle me-2 fs-6" />
                 {btnText}
               </button>

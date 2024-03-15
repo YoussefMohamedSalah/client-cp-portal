@@ -7,19 +7,22 @@ import { QueryClient } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 export const useCreateContract = () => {
-  return useMutation<any, Error, any>(async (createInput) => {
-    const { projectId } = createInput;
-    const { data } = await http.post(ROUTES.CONTRACT + projectId, createInput.data, {
-      headers: {
-        "Content-Type": "multipart/form-data",
+  return useMutation<any, Error, any>(
+    async (createInput) => {
+      const { projectId } = createInput;
+      const { data } = await http.post(ROUTES.CONTRACT + projectId, createInput.data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return { contract: { data: data as Contract } };
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["contracts"]);
       },
-    });
-    return { contract: { data: data as Contract } };
-  }, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(["contracts"]);
-    }
-  });
+    },
+  );
 };
 
 export const contractInput = (data: any): any => {

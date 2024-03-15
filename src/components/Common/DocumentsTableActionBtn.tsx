@@ -15,13 +15,13 @@ import { isAdminView } from "utils/Helpers";
 
 interface Props<
   T extends
-  | PettyCashRequest
-  | PurchaseOrderRequest
-  | EmployeeRequest
-  | MaterialRequest
-  | SiteRequest
-  | Contract
-  | Invoice,
+    | PettyCashRequest
+    | PurchaseOrderRequest
+    | EmployeeRequest
+    | MaterialRequest
+    | SiteRequest
+    | Contract
+    | Invoice,
 > {
   data: T;
   onClickEdit: () => void;
@@ -29,13 +29,13 @@ interface Props<
 
 function DocumentsTableActionBtn<
   T extends
-  | PettyCashRequest
-  | PurchaseOrderRequest
-  | EmployeeRequest
-  | MaterialRequest
-  | SiteRequest
-  | Contract
-  | Invoice,
+    | PettyCashRequest
+    | PurchaseOrderRequest
+    | EmployeeRequest
+    | MaterialRequest
+    | SiteRequest
+    | Contract
+    | Invoice,
 >({ data, onClickEdit }: Props<T>) {
   const { mutateAsync: deleteMutation } = useDeleteDocument();
   const [isModal, setIsModal] = useState<boolean>(false);

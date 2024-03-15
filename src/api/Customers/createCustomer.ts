@@ -2,12 +2,22 @@ import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
 import { Customer } from "types/Customer";
 import http from "utils/Http";
+import { QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export const useCreateCustomer = () => {
-  return useMutation<any, Error, Customer>(async (createInput) => {
-    const { data } = await http.post(ROUTES.CUSTOMER, createInput);
-    return { customer: { data: data as Customer } };
-  });
+  return useMutation<any, Error, Customer>(
+    async (createInput) => {
+      const { data } = await http.post(ROUTES.CUSTOMER, createInput);
+      return { customer: { data: data as Customer } };
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["customers"]);
+      },
+    },
+  );
 };
 
 export const customerInput = (data: Customer): any => {

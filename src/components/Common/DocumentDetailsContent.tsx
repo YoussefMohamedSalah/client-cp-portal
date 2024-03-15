@@ -32,13 +32,13 @@ import { DocumentFinances } from "types/DocumentFinances";
 
 interface Props<
   T extends
-  | PettyCashRequest
-  | PurchaseOrderRequest
-  | EmployeeRequest
-  | MaterialRequest
-  | SiteRequest
-  | Contract
-  | Invoice,
+    | PettyCashRequest
+    | PurchaseOrderRequest
+    | EmployeeRequest
+    | MaterialRequest
+    | SiteRequest
+    | Contract
+    | Invoice,
 > {
   data: T;
   finances?: DocumentFinances;
@@ -46,13 +46,13 @@ interface Props<
 
 function DocumentsDetailsContent<
   T extends
-  | PettyCashRequest
-  | PurchaseOrderRequest
-  | EmployeeRequest
-  | MaterialRequest
-  | SiteRequest
-  | Contract
-  | Invoice,
+    | PettyCashRequest
+    | PurchaseOrderRequest
+    | EmployeeRequest
+    | MaterialRequest
+    | SiteRequest
+    | Contract
+    | Invoice,
 >({ data }: Props<T>) {
   const [conditions, setConditions] = useState<string[]>([]);
   const [materials, setMaterials] = useState<PrintMaterials[]>([]);

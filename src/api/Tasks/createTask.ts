@@ -2,16 +2,26 @@ import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
 import { Task } from "types/Task";
 import { http } from "utils/Http";
+import { QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export const useCreateTask = () => {
-  return useMutation<any, Error, FormData>(async (createInput) => {
-    const { data } = await http.post(ROUTES.TASK, createInput, {
-      headers: {
-        "Content-Type": "multipart/form-data",
+  return useMutation<any, Error, FormData>(
+    async (createInput) => {
+      const { data } = await http.post(ROUTES.TASK, createInput, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return { task: { data: data as Task } };
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["tasks"]);
       },
-    });
-    return { task: { data: data as Task } };
-  });
+    },
+  );
 };
 
 export const taskInput = (data: Task): any => {

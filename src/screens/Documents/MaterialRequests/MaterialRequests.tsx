@@ -14,7 +14,7 @@ import useColumnTable from "hooks/useColumnTable";
 const MaterialRequests: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<MaterialRequest>({} as MaterialRequest);
   const [open, setOpen] = useState<boolean>(false);
-  const [requests, setRequests] = useState<MaterialRequest[]>([] as MaterialRequest[])
+  const [requests, setRequests] = useState<MaterialRequest[]>([] as MaterialRequest[]);
   const { data, error, isLoading } = useGetAllMaterialRequestsQuery();
   const { push } = useApp();
 
@@ -29,7 +29,7 @@ const MaterialRequests: React.FC = () => {
     if (data && data.materialRequests && data.materialRequests.data) {
       setRequests(data.materialRequests.data);
     }
-  }, [data])
+  }, [data]);
 
   if (isLoading) return <Loading />;
   if (error) return null;

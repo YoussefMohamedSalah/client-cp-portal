@@ -192,7 +192,7 @@ const DailyReportFormPage = ({ id }: Props) => {
           headerTitle={"Daily Reports"}
           isBtnShow={false}
           btnText={"Create Daily Report"}
-          onClickBtn={() => { }}
+          onClickBtn={() => {}}
         />
         {/* table data */}
         <div className="row clearfix g-3">

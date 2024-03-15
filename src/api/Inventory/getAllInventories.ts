@@ -10,5 +10,5 @@ export const getAllInventories = async ({ queryKey }: any) => {
 };
 
 export const useInventoriesQuery = (options: QueryOptionsType) => {
-  return useQuery<{ inventories: { data: any } }, Error>([ROUTES.CO_INVENTORIES, options], getAllInventories);
+  return useQuery({ queryKey: ["inventory"], queryFn: getAllInventories });
 };

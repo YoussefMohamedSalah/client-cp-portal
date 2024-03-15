@@ -22,7 +22,7 @@ const OrganizationSettings = () => {
 
   useEffect(() => {
     if (!initialized && companyData) {
-      let company: Company = companyData?.company?.data! || {} as Company;
+      let company: Company = companyData?.company?.data! || ({} as Company);
       setModelData({ ...company });
       setInitialized(true);
     }
@@ -41,7 +41,7 @@ const OrganizationSettings = () => {
 
   const handleFileChange = (file: File) => {
     if (file) {
-      handleModelData('logo', file);
+      handleModelData("logo", file);
     }
   };
 
@@ -131,22 +131,25 @@ const OrganizationSettings = () => {
       let updateInput = companyInput(modelData);
       let companyRes = await updateCompanyMutation(updateInput);
       if (companyRes.company?.data) {
-        let company: Company = companyRes.company?.data! || {} as Company;
+        let company: Company = companyRes.company?.data! || ({} as Company);
         showSuccess();
         setSession({
           ...session,
-          company: company
+          company: company,
         });
         setCompany(company);
-        localStorage.setItem("session", JSON.stringify({
-          ...session,
-          company: company
-        }));
+        localStorage.setItem(
+          "session",
+          JSON.stringify({
+            ...session,
+            company: company,
+          }),
+        );
         localStorage.setItem("company", JSON.stringify(company));
       }
     } catch (err: any) {
-      console.log(err.response?.data?.msg!)
-      showError(handleServerError(err.response?.data?.msg!))
+      console.log(err.response?.data?.msg!);
+      showError(handleServerError(err.response?.data?.msg!));
     }
   };
 

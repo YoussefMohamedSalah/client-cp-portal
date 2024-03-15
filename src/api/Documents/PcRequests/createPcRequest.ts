@@ -7,18 +7,21 @@ import { QueryClient } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 export const useCreatePcRequest = () => {
-  return useMutation<any, Error, any>(async (createInput) => {
-    const { data } = await http.post(ROUTES.PC_REQUEST, createInput, {
-      headers: {
-        "Content-Type": "multipart/form-data",
+  return useMutation<any, Error, any>(
+    async (createInput) => {
+      const { data } = await http.post(ROUTES.PC_REQUEST, createInput, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return { pcRequest: { data: data as PettyCashRequest } };
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["pcRequests"]);
       },
-    });
-    return { pcRequest: { data: data as PettyCashRequest } };
-  }, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(["pcRequests"]);
-    }
-  });
+    },
+  );
 };
 
 export const pcRequestInput = (data: any): any => {

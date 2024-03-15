@@ -40,7 +40,7 @@ const AuthLayout = () => {
           <Suspense fallback={<Loading />}>{renderContent()}</Suspense>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 

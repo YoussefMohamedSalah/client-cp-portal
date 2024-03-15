@@ -11,11 +11,10 @@ import { useGetAllInvoicesQuery } from "api/Documents/Invoices/getAllInvoices";
 import { isAdminView } from "utils/Helpers";
 import useColumnTable from "hooks/useColumnTable";
 
-
 const Invoiced: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<Invoice>({} as Invoice);
   const [open, setOpen] = useState<boolean>(false);
-  const [requests, setRequests] = useState<Invoice[]>([] as Invoice[])
+  const [requests, setRequests] = useState<Invoice[]>([] as Invoice[]);
   const { data, error, isLoading } = useGetAllInvoicesQuery();
   const { push } = useApp();
 
@@ -30,7 +29,7 @@ const Invoiced: React.FC = () => {
     if (data && data.invoices && data.invoices.data) {
       setRequests(data.invoices.data);
     }
-  }, [data])
+  }, [data]);
 
   if (isLoading) return <Loading />;
   if (error) return null;

@@ -14,7 +14,7 @@ import useColumnTable from "hooks/useColumnTable";
 const PcRequests: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<PettyCashRequest>({} as PettyCashRequest);
   const [open, setOpen] = useState<boolean>(false);
-  const [requests, setRequests] = useState<PettyCashRequest[]>([] as PettyCashRequest[])
+  const [requests, setRequests] = useState<PettyCashRequest[]>([] as PettyCashRequest[]);
   const { data, error, isLoading } = useGetAllPcRequestsQuery();
   const { push } = useApp();
 
@@ -29,7 +29,7 @@ const PcRequests: React.FC = () => {
     if (data && data.pcRequests && data.pcRequests.data) {
       setRequests(data.pcRequests.data);
     }
-  }, [data])
+  }, [data]);
 
   if (isLoading) return <Loading />;
   if (error) return null;

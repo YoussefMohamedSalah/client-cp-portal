@@ -2,12 +2,22 @@ import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
 import { Subcontractor } from "types/Subcontractor";
 import http from "utils/Http";
+import { QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export const useCreateSubcontractor = () => {
-  return useMutation<any, Error, Subcontractor>(async (createInput) => {
-    const { data } = await http.post(ROUTES.SUBCONTRACTOR, createInput);
-    return { subcontractor: { data: data as Subcontractor } };
-  });
+  return useMutation<any, Error, Subcontractor>(
+    async (createInput) => {
+      const { data } = await http.post(ROUTES.SUBCONTRACTOR, createInput);
+      return { subcontractor: { data: data as Subcontractor } };
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["subcontractors"]);
+      },
+    },
+  );
 };
 
 export const subcontractorInput = (data: Subcontractor): any => {

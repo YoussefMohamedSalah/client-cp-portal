@@ -14,7 +14,7 @@ import useColumnTable from "hooks/useColumnTable";
 const EmployeeRequests: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<EmployeeRequest>({} as EmployeeRequest);
   const [open, setOpen] = useState<boolean>(false);
-  const [requests, setRequests] = useState<EmployeeRequest[]>([] as EmployeeRequest[])
+  const [requests, setRequests] = useState<EmployeeRequest[]>([] as EmployeeRequest[]);
   const { data, error, isLoading } = useGetAllEmployeeRequestsQuery();
   const { push } = useApp();
 
@@ -29,7 +29,7 @@ const EmployeeRequests: React.FC = () => {
     if (data && data.empRequests && data.empRequests.data) {
       setRequests(data.empRequests.data);
     }
-  }, [data])
+  }, [data]);
 
   if (isLoading) return <Loading />;
   if (error) return null;

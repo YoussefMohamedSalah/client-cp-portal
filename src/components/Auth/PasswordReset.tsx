@@ -45,8 +45,7 @@ const PasswordReset: React.FC = () => {
   return (
     <div
       className="auth-maxWidth auth-noborder w-100 h-100 p-3 p-md-5 card border-0 bg-primary text-white justify-content-center 
-        align-items-center"
-    >
+        align-items-center">
       <form className="row g-1 p-3 p-md-4" onSubmit={handleSubmit(onSubmit)}>
         <div className="col-12 text-center mb-1 mb-lg-5">
           <img src={GoogleImg} className="w240 mb-4" alt="" />
