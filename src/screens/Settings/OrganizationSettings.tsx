@@ -1,21 +1,29 @@
 import { useCompanyDetailsQuery } from "api/Company/getCompany";
+import { companyInput, useCompany } from "api/Company/updateCompany";
 import FormCard from "components/Settings/FormCard";
 import ImageCard from "components/Settings/ImageCard";
 import Loading from "components/UI/Loading";
+import { useAuth } from "contexts/AuthContext";
+import { useUI } from "contexts/UIContext";
 import { CompanyKeys } from "models/Company";
 import { useState, useEffect } from "react";
 import { Company } from "types/Company";
 import { IField } from "types/Forms/formFields";
+import { handleServerError } from "utils/HandlingServerError";
 
 const OrganizationSettings = () => {
   const [initialized, setInitialized] = useState<boolean>(false);
   const [modelData, setModelData] = useState<Company>({} as Company);
+  const { mutateAsync: updateCompanyMutation } = useCompany();
+  const { showError, showSuccess } = useUI();
+  const { session, setSession, setCompany } = useAuth();
 
   const { data: companyData, error: companyError, isLoading: companyIsLoading } = useCompanyDetailsQuery({});
 
   useEffect(() => {
     if (!initialized && companyData) {
       let company: Company = companyData?.company?.data! || ({} as Company);
+      console.log({ company })
       setModelData({ ...company });
       setInitialized(true);
     }
@@ -30,6 +38,12 @@ const OrganizationSettings = () => {
       ...modelData,
       [key]: value,
     });
+  };
+
+  const handleFileChange = (file: File) => {
+    if (file) {
+      handleModelData('logo', file);
+    }
   };
 
   const formFields: IField[] = [
@@ -113,14 +127,39 @@ const OrganizationSettings = () => {
     },
   ];
 
+  const handleUpdate = async (logo: File | null) => {
+    try {
+      let updateInput = companyInput(modelData);
+      let companyRes = await updateCompanyMutation(updateInput);
+      console.log(companyRes.company?.data!)
+      if (companyRes.company?.data) {
+        let company: Company = companyRes.company?.data! || {} as Company;
+        showSuccess();
+        setSession({
+          ...session,
+          company: company
+        });
+        setCompany(company);
+        localStorage.setItem("session", JSON.stringify({
+          ...session,
+          company: company
+        }));
+        localStorage.setItem("company", JSON.stringify(company));
+      }
+    } catch (err: any) {
+      console.log(err.response?.data?.msg!)
+      showError(handleServerError(err.response?.data?.msg!))
+    }
+  };
+
   if (!initialized) return <></>;
   return (
     <div className="row">
       <div className="col-xl-4">
-        <ImageCard title={"Logo"} defaultUrl={modelData.logo} onSave={() => {}} />
+        <ImageCard title={"Logo"} defaultUrl={modelData.logo || ""} onSave={handleUpdate} onChange={handleFileChange} />
       </div>
       <div className="col-xl-8">
-        <FormCard title={"Info"} formFields={formFields} onSave={() => {}} />
+        <FormCard title={"Info"} formFields={formFields} onSave={handleUpdate} />
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import { IField } from "types/Forms/formFields";
 interface Props {
   title: string;
   formFields: IField[];
-  onSave: () => void;
+  onSave: (file: File | null) => void;
 }
 
 const FormCard = ({ title, formFields, onSave }: Props) => {
@@ -17,7 +17,7 @@ const FormCard = ({ title, formFields, onSave }: Props) => {
       <hr className="mt-0 mb-3" />
       <div className="card-body text-center d-flex flex-column align-items-center">
         <FormInputs formFields={formFields} grid={true} block={true} />
-        <button className="btn btn-primary align-self-start" type="button" onClick={onSave}>
+        <button className="btn btn-primary align-self-start" type="button" onClick={() => onSave(null)}>
           Save
         </button>
       </div>

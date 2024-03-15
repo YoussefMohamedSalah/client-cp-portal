@@ -4,12 +4,13 @@ import { getImageUrl } from "utils/Helpers";
 interface Props {
   defaultUrl: string;
   title: string;
-  onSave: () => void;
+  onSave: (file: File | null) => void;
+  onChange?: (file: File) => void;
 }
 
-const ImageCard = ({ defaultUrl, title, onSave }: Props) => {
+const ImageCard = ({ defaultUrl, title, onSave, onChange }: Props) => {
   const [file, setFile] = useState<string | null>(null);
-
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleUpload = () => {
@@ -20,7 +21,11 @@ const ImageCard = ({ defaultUrl, title, onSave }: Props) => {
     const selectedFile = event.target.files?.[0];
     if (selectedFile) {
       const fileUrl = URL.createObjectURL(selectedFile);
+      setUploadedFile(selectedFile)
       setFile(fileUrl);
+      if (onChange) {
+        onChange(selectedFile)
+      }
     }
   };
 
@@ -56,7 +61,7 @@ const ImageCard = ({ defaultUrl, title, onSave }: Props) => {
           <button className="btn btn-primary" type="button" onClick={handleUpload}>
             Upload
           </button>
-          <button className="btn btn-primary" type="button" onClick={() => onSave()}>
+          <button className="btn btn-primary" type="button" onClick={() => onSave(uploadedFile)}>
             Save
           </button>
         </div>

@@ -33,10 +33,10 @@ const AuthLayout = () => {
   return (
     <div className="d-flex justify-content-center align-items-center w-100">
       <div className="row g-0 justify-content-center" style={{ flex: 1 }}>
-        <div className="col-lg-6" style={{ height: "100vh", flex: 1 }}>
+        <div className="col-lg-6 d-none d-lg-block" style={{ height: "100vh", flex: 1 }}>
           <Aside />
         </div>
-        <div className="col-lg-6" style={{ height: "100vh", flex: 1 }}>
+        <div className="col-lg-6 col-md-12" style={{ height: "100vh", width: "100%", flex: 1 }}>
           <Suspense fallback={<Loading />}>{renderContent()}</Suspense>
         </div>
       </div>

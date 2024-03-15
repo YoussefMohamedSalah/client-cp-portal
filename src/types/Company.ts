@@ -10,7 +10,7 @@ export interface Company {
   shift_end: string;
   vat: string;
   size: string;
-  logo: string;
+  logo?: string;
   currency: string;
   is_verified: boolean;
   stepper_state: boolean;
