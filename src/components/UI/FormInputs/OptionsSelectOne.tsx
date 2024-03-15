@@ -37,7 +37,7 @@ const OptionsSelectOne = React.memo(({ options, label, onChange, defaultValue, d
         },
         "& .MuiOutlinedInput-root": {
           "& fieldset": {
-            borderColor: "#888888!important", // Border color
+            borderColor: required ? "red" : "#888888!important", // Border color based on required prop
           },
           "&:hover fieldset": {
             borderColor: "#40a9ff",
