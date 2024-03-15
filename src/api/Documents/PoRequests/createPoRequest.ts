@@ -2,6 +2,9 @@ import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
 import { http } from "utils/Http";
 import { PurchaseOrderRequest } from "types/Po_request";
+import { QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export const useCreatePoRequest = () => {
   return useMutation<any, Error, any>(async (createInput) => {
@@ -11,6 +14,10 @@ export const useCreatePoRequest = () => {
       },
     });
     return { poRequest: { data: data as PurchaseOrderRequest } };
+  }, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["poRequests"]);
+    }
   });
 };
 

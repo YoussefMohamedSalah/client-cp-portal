@@ -4,7 +4,7 @@ import PageHeader from "components/Common/PageHeader";
 import useApp from "hooks/useApp";
 import { PAGES } from "constants/pages";
 import { STATUS } from "enums/enums";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import { EmployeeRequest } from "types/Employee_request";
 import { useGetAllEmployeeRequestsQuery } from "api/Documents/EmployeeRequests/getAllEmployeeRequests";
@@ -14,7 +14,7 @@ import useColumnTable from "hooks/useColumnTable";
 const EmployeeRequests: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<EmployeeRequest>({} as EmployeeRequest);
   const [open, setOpen] = useState<boolean>(false);
-
+  const [requests, setRequests] = useState<EmployeeRequest[]>([] as EmployeeRequest[])
   const { data, error, isLoading } = useGetAllEmployeeRequestsQuery();
   const { push } = useApp();
 
@@ -25,13 +25,14 @@ const EmployeeRequests: React.FC = () => {
 
   const { employeesRequestsColumnT } = useColumnTable(handleOpen);
 
+  useEffect(() => {
+    if (data && data.empRequests && data.empRequests.data) {
+      setRequests(data.empRequests.data);
+    }
+  }, [data])
+
   if (isLoading) return <Loading />;
   if (error) return null;
-
-  let requests: EmployeeRequest[] = [];
-  if (data && data.empRequests && data.empRequests.data) {
-    requests = data.empRequests.data;
-  }
 
   const handleClose = () => {
     setOpen(false);

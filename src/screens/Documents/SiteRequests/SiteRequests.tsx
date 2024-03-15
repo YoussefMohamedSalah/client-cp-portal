@@ -4,7 +4,7 @@ import PageHeader from "components/Common/PageHeader";
 import useApp from "hooks/useApp";
 import { PAGES } from "constants/pages";
 import { STATUS } from "enums/enums";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import { SiteRequest } from "types/Site_request";
 import { useGetAllSiteRequestsQuery } from "api/Documents/SiteRequests/getAllSiteRequests";
@@ -14,7 +14,7 @@ import useColumnTable from "hooks/useColumnTable";
 const SiteRequests: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<SiteRequest>({} as SiteRequest);
   const [open, setOpen] = useState<boolean>(false);
-
+  const [requests, setRequests] = useState<SiteRequest[]>([] as SiteRequest[])
   const { data, error, isLoading } = useGetAllSiteRequestsQuery();
   const { push } = useApp();
 
@@ -25,13 +25,14 @@ const SiteRequests: React.FC = () => {
 
   const { siteColumnT } = useColumnTable(handleOpen);
 
+  useEffect(() => {
+    if (data && data.siteRequests && data.siteRequests.data) {
+      setRequests(data.siteRequests.data);
+    }
+  }, [data])
+
   if (isLoading) return <Loading />;
   if (error) return null;
-
-  let requests: SiteRequest[] = [];
-  if (data && data.siteRequests && data.siteRequests.data) {
-    requests = data.siteRequests.data;
-  }
 
   const handleClose = () => {
     setOpen(false);

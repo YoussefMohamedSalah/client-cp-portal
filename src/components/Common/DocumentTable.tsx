@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 import DownloadCSV from "components/UI/DownloadCSV";
 import TableCards from "./TableCards";
@@ -62,9 +62,13 @@ function DocumentTable<
   filterOptions,
   selectItem,
 }: Props<T>) {
-  const [filteredData, setFilteredData] = useState<T[]>(data || []);
+  const [filteredData, setFilteredData] = useState<T[]>([]);
   const onCardsFilter = (filtered: T[]) => setFilteredData(filtered);
   const onSearchFilter = (filtered: T[]) => setFilteredData(filtered);
+
+  useEffect(() => {
+    setFilteredData(data)
+  }, [data])
 
   let csvData =
     formatDocumentCsvOutput<

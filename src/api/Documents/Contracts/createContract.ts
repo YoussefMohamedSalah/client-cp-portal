@@ -1,7 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
 import { http } from "utils/Http";
-import { Contract, CreateContract } from "types/Contract";
+import { Contract } from "types/Contract";
+import { QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export const useCreateContract = () => {
   return useMutation<any, Error, any>(async (createInput) => {
@@ -12,6 +15,10 @@ export const useCreateContract = () => {
       },
     });
     return { contract: { data: data as Contract } };
+  }, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["contracts"]);
+    }
   });
 };
 

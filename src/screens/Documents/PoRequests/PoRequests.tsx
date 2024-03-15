@@ -5,7 +5,7 @@ import PageHeader from "components/Common/PageHeader";
 import useApp from "hooks/useApp";
 import { PAGES } from "constants/pages";
 import { STATUS } from "enums/enums";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import { PurchaseOrderRequest } from "types/Po_request";
 import { isAdminView } from "utils/Helpers";
@@ -14,6 +14,7 @@ import useColumnTable from "hooks/useColumnTable";
 const PoRequests: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<PurchaseOrderRequest>({} as PurchaseOrderRequest);
   const [open, setOpen] = useState<boolean>(false);
+  const [requests, setRequests] = useState<PurchaseOrderRequest[]>([] as PurchaseOrderRequest[])
 
   const { data, error, isLoading } = useGetAllPoRequestsQuery();
   const { push } = useApp();
@@ -25,13 +26,15 @@ const PoRequests: React.FC = () => {
 
   const { purchaseOrderColumnT } = useColumnTable(handleOpen);
 
+  useEffect(() => {
+    if (data && data.poRequests && data.poRequests.data) {
+      setRequests(data.poRequests.data);
+    }
+  }, [data])
+
   if (isLoading) return <Loading />;
   if (error) return null;
 
-  let requests: PurchaseOrderRequest[] = [];
-  if (data && data.poRequests && data.poRequests.data) {
-    requests = data.poRequests.data;
-  }
 
   const handleClose = () => {
     setOpen(false);

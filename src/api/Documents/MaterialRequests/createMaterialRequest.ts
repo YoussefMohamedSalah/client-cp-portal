@@ -2,6 +2,9 @@ import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
 import { http } from "utils/Http";
 import { MaterialRequest } from "types/Material_request";
+import { QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export const useCreateMaterialRequest = () => {
   return useMutation<any, Error, any>(async (createInput) => {
@@ -11,6 +14,10 @@ export const useCreateMaterialRequest = () => {
       },
     });
     return { materialRequest: { data: data as MaterialRequest } };
+  }, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["materialRequests"]);
+    }
   });
 };
 

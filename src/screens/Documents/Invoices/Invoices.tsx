@@ -4,7 +4,7 @@ import PageHeader from "components/Common/PageHeader";
 import useApp from "hooks/useApp";
 import { PAGES } from "constants/pages";
 import { STATUS } from "enums/enums";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import { Invoice } from "types/Invoice";
 import { useGetAllInvoicesQuery } from "api/Documents/Invoices/getAllInvoices";
@@ -15,7 +15,7 @@ import useColumnTable from "hooks/useColumnTable";
 const Invoiced: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<Invoice>({} as Invoice);
   const [open, setOpen] = useState<boolean>(false);
-
+  const [requests, setRequests] = useState<Invoice[]>([] as Invoice[])
   const { data, error, isLoading } = useGetAllInvoicesQuery();
   const { push } = useApp();
 
@@ -26,13 +26,14 @@ const Invoiced: React.FC = () => {
 
   const { invoiceColumnT } = useColumnTable(handleOpen);
 
+  useEffect(() => {
+    if (data && data.invoices && data.invoices.data) {
+      setRequests(data.invoices.data);
+    }
+  }, [data])
+
   if (isLoading) return <Loading />;
   if (error) return null;
-
-  let requests: Invoice[] = [];
-  if (data && data.invoices && data.invoices.data) {
-    requests = data.invoices.data;
-  }
 
   const handleClose = () => {
     setOpen(false);

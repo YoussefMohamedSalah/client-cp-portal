@@ -2,6 +2,9 @@ import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
 import { http } from "utils/Http";
 import { PettyCashRequest } from "types/Pc_request";
+import { QueryClient } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 export const useCreatePcRequest = () => {
   return useMutation<any, Error, any>(async (createInput) => {
@@ -10,7 +13,11 @@ export const useCreatePcRequest = () => {
         "Content-Type": "multipart/form-data",
       },
     });
-    return { pcRequests: { data: data as PettyCashRequest } };
+    return { pcRequest: { data: data as PettyCashRequest } };
+  }, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["pcRequests"]);
+    }
   });
 };
 

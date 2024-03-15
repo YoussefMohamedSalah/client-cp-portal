@@ -6,7 +6,7 @@ import PageHeader from "components/Common/PageHeader";
 import useApp from "hooks/useApp";
 import { PAGES } from "constants/pages";
 import { STATUS } from "enums/enums";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import { isAdminView } from "utils/Helpers";
 import useColumnTable from "hooks/useColumnTable";
@@ -14,7 +14,7 @@ import useColumnTable from "hooks/useColumnTable";
 const PcRequests: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<PettyCashRequest>({} as PettyCashRequest);
   const [open, setOpen] = useState<boolean>(false);
-
+  const [requests, setRequests] = useState<PettyCashRequest[]>([] as PettyCashRequest[])
   const { data, error, isLoading } = useGetAllPcRequestsQuery();
   const { push } = useApp();
 
@@ -25,11 +25,14 @@ const PcRequests: React.FC = () => {
 
   const { pettyCashColumnT } = useColumnTable(handleOpen);
 
+  useEffect(() => {
+    if (data && data.pcRequests && data.pcRequests.data) {
+      setRequests(data.pcRequests.data);
+    }
+  }, [data])
+
   if (isLoading) return <Loading />;
   if (error) return null;
-
-  let requests: PettyCashRequest[] = [];
-  if (data?.pcRequests?.data!) requests = data.pcRequests.data;
 
   const handleClose = () => setOpen(false);
 
