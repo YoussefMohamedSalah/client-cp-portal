@@ -24,6 +24,8 @@ const DataImportingSettings = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [term, setTerm] = useState<string>("Select Action Type");
 
+  console.log(term)
+
   const { mutateAsync: addCsvFileMutation } = useAddEmployeesByCsvFile();
   const { mutateAsync: replaceCsvFileMutation } = useReplaceEmployeesByCsvFile();
   const { mutateAsync: updateCsvFileMutation } = useUpdateEmployeesByCsvFile();
@@ -68,22 +70,22 @@ const DataImportingSettings = () => {
       let inputData = employeesCsvAttachmentInput({
         file,
       });
-      if (term === "Add Employees") {
+      if (term === "add") {
         await addCsvFileMutation(inputData);
         showSuccess();
-        window.location.reload();
-      } else if (term === "Replace Employees") {
+        // window.location.reload();
+      } else if (term === "replace") {
         await replaceCsvFileMutation(inputData);
         showSuccess();
-        window.location.reload();
-      } else if (term === "Update Employees") {
+        // window.location.reload();
+      } else if (term === "update") {
         await updateCsvFileMutation(inputData);
         showSuccess();
-        window.location.reload();
-      } else if (term === "Delete Employees") {
+        // window.location.reload();
+      } else if (term === "delete") {
         await deleteCsvFileMutation(inputData);
         showSuccess();
-        window.location.reload();
+        // window.location.reload();
       } else {
         setIsSubmitting(false);
         return showError(handleError("Please enter valid term"));
@@ -116,7 +118,7 @@ const DataImportingSettings = () => {
   ];
 
   return (
-    <div className="container-xxl">
+    <div >
       <Tab.Container id="left-tabs-example" defaultActiveKey="employee">
         <div className="row">
           <div className="d-flex justify-content-center align-items-center">

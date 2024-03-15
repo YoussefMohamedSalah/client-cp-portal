@@ -6,7 +6,7 @@ import DataImportingSettings from "./DataImportingSettings";
 
 const Settings = () => {
   return (
-    <div className="container-xxl">
+    <div className="container-fluid">
       <Tab.Container id="left-tabs-example" defaultActiveKey="organization">
         <div className="row clearfix g-3">
           <PageHeader
