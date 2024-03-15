@@ -20,7 +20,7 @@ const Subcontractors: React.FC = () => {
   if (isLoading) return <Loading />;
   if (error) return null;
 
-  let subcontractors: Subcontractor[] = data?.subcontractors.data! || ([] as Subcontractor[]);
+  let subcontractors: Subcontractor[] = data?.subcontractors?.data! || ([] as Subcontractor[]);
 
   const handleDelete = async (id: string) => {
     try {

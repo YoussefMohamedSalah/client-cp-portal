@@ -22,8 +22,7 @@ const OrganizationSettings = () => {
 
   useEffect(() => {
     if (!initialized && companyData) {
-      let company: Company = companyData?.company?.data! || ({} as Company);
-      console.log({ company })
+      let company: Company = companyData?.company?.data! || {} as Company;
       setModelData({ ...company });
       setInitialized(true);
     }
@@ -131,7 +130,6 @@ const OrganizationSettings = () => {
     try {
       let updateInput = companyInput(modelData);
       let companyRes = await updateCompanyMutation(updateInput);
-      console.log(companyRes.company?.data!)
       if (companyRes.company?.data) {
         let company: Company = companyRes.company?.data! || {} as Company;
         showSuccess();
