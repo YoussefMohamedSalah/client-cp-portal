@@ -13,7 +13,7 @@ import FormInputs from "components/UI/FormInputs/FormInputs";
 import Loading from "components/UI/Loading";
 import { PAGES } from "constants/pages";
 import { useUI } from "contexts/UIContext";
-import { STATUS } from "enums/enums";
+import { DOCUMENT_TYPE, STATUS } from "enums/enums";
 import useApp from "hooks/useApp";
 import {
   MaterialRequestKeys,
@@ -140,6 +140,7 @@ Best Regards.`;
   // Modals Handling
   const handleOpenPreviewModal = () => {
     setModalHeader("Preview Material Request");
+    modelData.type = DOCUMENT_TYPE.MATERIAL;
     setIsPreviewModal(true);
   };
 

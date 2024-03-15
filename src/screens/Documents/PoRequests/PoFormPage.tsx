@@ -9,7 +9,7 @@ import FormInputs from "components/UI/FormInputs/FormInputs";
 import Loading from "components/UI/Loading";
 import { PAGES } from "constants/pages";
 import { useUI } from "contexts/UIContext";
-import { STATUS } from "enums/enums";
+import { DOCUMENT_TYPE, STATUS } from "enums/enums";
 import useApp from "hooks/useApp";
 import { PoRequestKeys, PoRequestNumKeys, PoRequestStrKeys, PoRequestRequiredKeys } from "models/documents/PoRequest";
 import { useEffect, useState } from "react";
@@ -202,6 +202,8 @@ we would like to place the purchase order for Below Items.`;
   // Modals Handling
   const handleOpenPreviewModal = () => {
     setModalHeader("Preview Purchase Order Request");
+    modelData.type = DOCUMENT_TYPE.PURCHASE_ORDER;
+    modelData.installments = installments;
     setIsPreviewModal(true);
   };
 

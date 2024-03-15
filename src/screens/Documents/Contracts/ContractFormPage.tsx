@@ -9,7 +9,7 @@ import FormInputs from "components/UI/FormInputs/FormInputs";
 import Loading from "components/UI/Loading";
 import { PAGES } from "constants/pages";
 import { useUI } from "contexts/UIContext";
-import { STATUS } from "enums/enums";
+import { DOCUMENT_TYPE, STATUS } from "enums/enums";
 import useApp from "hooks/useApp";
 import { ContractKeys, ContractNumKeys, ContractStrKeys, ContractRequiredKeys } from "models/documents/Contract";
 import { useEffect, useState } from "react";
@@ -211,6 +211,8 @@ const ContractFormPage = ({ id }: Props) => {
   // Modals Handling
   const handleOpenPreviewModal = () => {
     setModalHeader("Preview Contract");
+    modelData.type = DOCUMENT_TYPE.CONTRACT;
+    modelData.installments = installments;
     setIsPreviewModal(true);
   };
 
