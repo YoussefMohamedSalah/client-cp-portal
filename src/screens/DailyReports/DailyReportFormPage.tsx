@@ -43,7 +43,7 @@ const DailyReportFormPage = ({ id }: Props) => {
   });
 
   const handleModelData = (key: string, value: any) => {
-    if (key === DailyReportKeys.FILE) {
+    if (key === DailyReportKeys.FILES) {
       setFilesNameSet([...filesNameSet, value.name]);
       let newFilesArray: File[] = [...files, value];
       value = newFilesArray;
@@ -192,7 +192,7 @@ const DailyReportFormPage = ({ id }: Props) => {
           headerTitle={"Daily Reports"}
           isBtnShow={false}
           btnText={"Create Daily Report"}
-          onClickBtn={() => {}}
+          onClickBtn={() => { }}
         />
         {/* table data */}
         <div className="row clearfix g-3">

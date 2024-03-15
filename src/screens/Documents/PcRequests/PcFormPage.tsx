@@ -157,7 +157,7 @@ const PcFormPage = ({ id }: Props) => {
       value = projects.find((project) => project.id === value!) || null;
       setSelectedProject(value ? value : ({} as Project));
     }
-    if (key === PcRequestKeys.FILE) {
+    if (key === PcRequestKeys.FILES) {
       setFilesNameSet([...filesNameSet, value.name]);
       let newFilesArray: File[] = [...files, value];
       value = newFilesArray;
@@ -240,6 +240,7 @@ const PcFormPage = ({ id }: Props) => {
       onChange: (e: any) => {
         if (e.target.files && e.target.files.length > 0) {
           let file: File = e.target?.files[0]!;
+          console.log({ file })
           let reader = new FileReader();
           reader.readAsDataURL(file);
           reader.onload = (url) => {
@@ -475,6 +476,8 @@ const PcFormPage = ({ id }: Props) => {
       showError(handleServerError(err.response));
     }
   };
+
+  console.log({ oldFiles }, { files })
 
   if (!initialized) return <></>;
   return (

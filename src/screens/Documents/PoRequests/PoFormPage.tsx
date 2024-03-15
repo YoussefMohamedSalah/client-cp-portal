@@ -214,7 +214,7 @@ we would like to place the purchase order for Below Items.`;
       value = suppliers.find((supplier) => supplier.id === value!) || null;
       setSelectedSupplier(value ? value : ({} as Supplier));
     }
-    if (key === PoRequestKeys.FILE) {
+    if (key === PoRequestKeys.FILES) {
       setFilesNameSet([...filesNameSet, value.name]);
       let newFilesArray: File[] = [...files, value];
       value = newFilesArray;
