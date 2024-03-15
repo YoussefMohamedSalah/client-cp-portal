@@ -60,7 +60,7 @@ const EmployeeFormPage = ({ id }: Props) => {
 
   // !Assuming this is CREATE Modal
   useEffect(() => {
-    if (!isEdit) {
+    if (!isEdit && !initialized) {
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

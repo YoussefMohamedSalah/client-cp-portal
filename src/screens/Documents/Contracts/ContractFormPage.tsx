@@ -102,12 +102,12 @@ const ContractFormPage = ({ id }: Props) => {
 
   // !Assuming this is CREATE Modal
   useEffect(() => {
-    if (session && companyData?.company?.data && !isEdit) {
+    if (!isEdit && !initialized) {
       handleInitialModelData();
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session]);
+  }, []);
 
   // !Assuming this is EDIT Modal
   useEffect(() => {

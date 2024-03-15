@@ -62,7 +62,7 @@ const SiteFormPage = ({ id }: Props) => {
 
   // !Assuming this is CREATE Modal
   useEffect(() => {
-    if (!isEdit) {
+    if (!isEdit && !initialized) {
       handleInitialModelData();
       setInitialized(true);
     }

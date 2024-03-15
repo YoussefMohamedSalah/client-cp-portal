@@ -57,7 +57,7 @@ const SubcontractorFormPage = ({ id }: Props) => {
 
   // !Assuming this is CREATE Modal
   useEffect(() => {
-    if (!isEdit) {
+    if (!isEdit && !initialized) {
       modelData.subcontractor_type = SUBCONTRACTOR_TYPE.COMPANY;
       setInitialized(true);
     }

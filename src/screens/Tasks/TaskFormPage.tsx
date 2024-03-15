@@ -55,7 +55,7 @@ const TaskFormPage = ({ id }: Props) => {
 
   // !Assuming this is CREATE Modal
   useEffect(() => {
-    if (!isEdit) {
+    if (!isEdit && !initialized) {
       modelData.start_at = `${getFormattedTodayDate()}`;
       modelData.end_at = `${getFormattedTodayDate()}`;
       setInitialized(true);

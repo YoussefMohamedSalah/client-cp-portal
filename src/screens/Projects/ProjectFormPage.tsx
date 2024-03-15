@@ -55,7 +55,7 @@ const ProjectFormPage = ({ id }: Props) => {
 
   // !Assuming this is CREATE Modal
   useEffect(() => {
-    if (!isEdit) {
+    if (!isEdit && !initialized) {
       modelData.contract_date = `${getFormattedTodayDate()}`;
       modelData.delivery_date = `${getFormattedTodayDate()}`;
       setInitialized(true);

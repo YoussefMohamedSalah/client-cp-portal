@@ -97,12 +97,12 @@ const PoFormPage = ({ id }: Props) => {
 
   // !Assuming this is CREATE Modal
   useEffect(() => {
-    if (session && companyData?.company?.data && !isEdit) {
+    if (!isEdit && !initialized) {
       handleInitialModelData();
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [session]);
+  }, []);
 
   // !Assuming this is EDIT Modal
   useEffect(() => {
@@ -678,7 +678,7 @@ we would like to place the purchase order for Below Items.`,
       showError(handleServerError(err.response));
     }
   };
-
+  console.log(initialized)
   if (!initialized) return <></>;
   return (
     <div className="container-xxl">

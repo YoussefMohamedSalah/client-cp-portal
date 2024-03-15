@@ -48,7 +48,7 @@ const TenderFormPage = ({ id }: Props) => {
 
   // !Assuming this is CREATE Modal
   useEffect(() => {
-    if (!isEdit) {
+    if (!isEdit && !initialized) {
       modelData.date = `${getFormattedTodayDate()}`;
       modelData.hand_over = `${getFormattedTodayDate()}`;
       setInitialized(true);

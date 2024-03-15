@@ -48,7 +48,7 @@ const SupplierFormPage = ({ id }: Props) => {
 
   // !Assuming this is CREATE Modal
   useEffect(() => {
-    if (!isEdit) {
+    if (!isEdit && !initialized) {
       modelData.supplier_type = SUPPLIER_TYPE.COMPANY;
       setInitialized(true);
     }
