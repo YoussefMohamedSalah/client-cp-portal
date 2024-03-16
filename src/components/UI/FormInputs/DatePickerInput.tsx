@@ -42,7 +42,7 @@ const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
       borderColor: "red", // Set the border color
     },
     "&:hover fieldset": {
-      borderColor: "#888888", // Set the border color on hover
+      borderColor: "#000000", // Set the border color on hover
     },
     "&.Mui-focused fieldset": {
       borderColor: "#40a9ff", // Set the border color when focused
