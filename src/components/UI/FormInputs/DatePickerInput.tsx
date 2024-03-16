@@ -21,6 +21,7 @@ interface Props {
 }
 
 const DatePickerInput = ({ onChange, value, defaultValue, required, disabled, label }: Props) => {
+
   const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
     // Apply styling to the underlying TextField
     "& .MuiInputBase-input": {

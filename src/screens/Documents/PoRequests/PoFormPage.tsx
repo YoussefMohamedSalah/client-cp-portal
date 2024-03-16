@@ -86,7 +86,7 @@ const PoFormPage = ({ id }: Props) => {
   const { data: companyData, error: companyError, isLoading: companyIsLoading } = useCompanyDetailsQuery({});
   const { data: projectsData, error: projectsError, isLoading: projectsIsLoading } = useProjectsQuery({});
   const { data: suppliersData, error: suppliersError, isLoading: suppliersIsLoading } = useSuppliersQuery({});
-
+  let request: PurchaseOrderRequest = documentData?.poRequestDetails.data || ({} as PurchaseOrderRequest);
   // !Check if this is CREATE OR EDIT Modal
   useEffect(() => {
     if (!initialized) {
@@ -769,6 +769,7 @@ we would like to place the purchase order for Below Items.`,
           modelData={modelData}
           documentFinances={documentFinancesObj}
           documentType={"po"}
+          data={request}
         />
       </div>
     </div>

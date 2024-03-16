@@ -50,7 +50,7 @@ const OptionsSelectOne = React.memo(({ options, label, onChange, defaultValue, d
             borderColor: required ? "red" : "#888888!important", // Border color based on required prop
           },
           "&:hover fieldset": {
-            borderColor: "#888888", // Set the border color on hover
+            borderColor: "#000000",
           },
           "&.Mui-focused fieldset": {
             borderColor: "#1E9AF6", // Set the border color when focused
