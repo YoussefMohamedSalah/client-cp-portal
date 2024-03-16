@@ -39,13 +39,13 @@ const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
   // Add styling for the borders
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      borderColor: "#888888", // Set the border color
+      borderColor: "red", // Set the border color
     },
     "&:hover fieldset": {
       borderColor: "#888888", // Set the border color on hover
     },
     "&.Mui-focused fieldset": {
-      borderColor: "#888888", // Set the border color when focused
+      borderColor: "#40a9ff", // Set the border color when focused
     },
   },
 }));
@@ -57,15 +57,29 @@ const DatePickerInput = ({ onChange, value, defaultValue, required, disabled, la
   };
 
   return (
-    <StyledDatePicker
-      value={moment(value)}
-      disabled={disabled}
-      sx={{ margin: "8px 0" }}
-      onChange={(newValue: any) => handleFormatDateBeforeResponding(newValue)}
-      slotProps={{ textField: { size: "small", fullWidth: true, required: required ? true : false } }}
-      views={["year", "month", "day"]}
-      label={label}
-    />
+    <>
+      {required ? (
+        <StyledDatePicker
+          value={moment(value)}
+          disabled={disabled}
+          sx={{ margin: "8px 0" }}
+          onChange={(newValue: any) => handleFormatDateBeforeResponding(newValue)}
+          slotProps={{ textField: { size: "small", fullWidth: true, required: required } }}
+          views={["year", "month", "day"]}
+          label={label}
+        />
+      ) : (
+        <DatePicker
+          value={moment(value)}
+          disabled={disabled}
+          sx={{ margin: "8px 0" }}
+          onChange={(newValue: any) => handleFormatDateBeforeResponding(newValue)}
+          slotProps={{ textField: { size: "small", fullWidth: true, required: required } }}
+          views={["year", "month", "day"]}
+          label={label}
+        />
+      )}
+    </>
   );
 };
 
