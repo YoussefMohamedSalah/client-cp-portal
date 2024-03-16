@@ -318,7 +318,7 @@ const SubcontractorFormPage = ({ id }: Props) => {
           <Button
             className="lift"
             content="profile"
-            onClick={() => push("/" + PAGES.CUSTOMER_INFO + "/" + modelData.id)}
+            onClick={() => push("/" + PAGES.SUBCONTRACTOR_INFO + "/" + modelData.id)}
           />
         </div>
       </div>

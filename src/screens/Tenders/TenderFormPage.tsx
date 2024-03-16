@@ -95,6 +95,7 @@ const TenderFormPage = ({ id }: Props) => {
       value: modelData?.date,
       onChange: (value: string | any) => handleModelData(TenderKeys.DATE, value),
       placeholder: "Date",
+      required: true,
     },
     {
       label: "Hand Over Date",

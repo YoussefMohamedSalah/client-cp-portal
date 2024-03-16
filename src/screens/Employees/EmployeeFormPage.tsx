@@ -392,6 +392,7 @@ const EmployeeFormPage = ({ id }: Props) => {
     if (errors.length > 0) return showError(errors);
     try {
       let createInput = employeeInput(modelData);
+      console.log(createInput);
       await createMutation(createInput);
       showSuccess();
       push("/" + PAGES.EMPLOYEES);
@@ -419,6 +420,7 @@ const EmployeeFormPage = ({ id }: Props) => {
     try {
       if (errors.length > 0) return showError(errors);
       let createInput = employeeUpdateInput(modelData);
+      console.log(createInput);
       await updateMutation({
         id: modelData.id,
         data: createInput,
