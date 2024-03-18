@@ -4,7 +4,7 @@ import { getImageUrl } from "utils/Helpers";
 interface Props {
   defaultUrl: string;
   title: string;
-  onSave: (file: File | null) => void;
+  onSave: () => void;
   onChange?: (file: File) => void;
 }
 
@@ -61,7 +61,7 @@ const ImageCard = ({ defaultUrl, title, onSave, onChange }: Props) => {
           <button className="btn btn-primary" type="button" onClick={handleUpload}>
             Upload
           </button>
-          <button className="btn btn-primary" type="button" onClick={() => onSave(uploadedFile)}>
+          <button className="btn btn-primary" type="button" onClick={onSave}>
             Save
           </button>
         </div>

@@ -81,14 +81,14 @@ const OrganizationSettings = () => {
       type: "text",
       width: "col-md-6",
       key: CompanyKeys.PHONE_NUMBER,
-      value: modelData?.address,
+      value: modelData?.phone_number,
       onChange: (value: string | any) => handleModelData(CompanyKeys.PHONE_NUMBER, value),
       placeholder: "Company Phone number",
       required: true,
     },
     {
       label: "Vat",
-      type: "text",
+      type: "number",
       width: "col-md-6",
       key: CompanyKeys.VAT,
       value: modelData?.vat,
@@ -126,7 +126,7 @@ const OrganizationSettings = () => {
     },
   ];
 
-  const handleUpdate = async (logo: File | null) => {
+  const handleUpdate = async () => {
     try {
       let updateInput = companyInput(modelData);
       let companyRes = await updateCompanyMutation(updateInput);
@@ -146,6 +146,7 @@ const OrganizationSettings = () => {
           }),
         );
         localStorage.setItem("company", JSON.stringify(company));
+        window.location.reload()
       }
     } catch (err: any) {
       console.log(err.response?.data?.msg!);
