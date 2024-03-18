@@ -139,7 +139,7 @@ const DataImportingSettings = () => {
                       <div className="col-md-6 col-lg-6 col-xl-12">
                         <div className="card">
                           <div className="card-body">
-                            <div className=" d-flex align-content-center-center justify-content-between flex-wrap">
+                            <div className="d-flex align-content-center-center justify-content-center justify-content-xl-between gap-2 flex-wrap">
                               <h5 className="card-title text-primary">
                                 <strong>Employees Data</strong>
                               </h5>
@@ -152,7 +152,7 @@ const DataImportingSettings = () => {
                                 />
                               </div>
                               <a href="/empty_employee_data.csv" download="empty_employee_data.csv">
-                                <Button className="lift" content="Download Employee Template" onClick={() => {}} />
+                                <Button className="lift" content="Download Employee Template" onClick={() => { }} />
                               </a>
                             </div>
                             <Attachment onUploadFile={handleUpload} isSubmitting={isSubmitting} />
