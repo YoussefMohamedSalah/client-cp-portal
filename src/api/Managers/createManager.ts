@@ -19,7 +19,7 @@ export const managerInput = (data: any): any => {
     onboard_at: data.onboard_at!,
     employee_id: data.employee_id!,
     phone: data.phone!,
-    department: data.department!,
+    department: data.department.id!,
     description: data.description!,
     user_permissions: data.user_permissions!,
   };

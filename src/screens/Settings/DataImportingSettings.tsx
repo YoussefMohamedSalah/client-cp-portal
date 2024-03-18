@@ -1,7 +1,6 @@
 import { Nav, Tab } from "react-bootstrap";
 import Attachment from "components/Common/Attachment";
 import Button from "components/UI/Button";
-import { downloadEmployeesCsv } from "api/Clx/DownloadEmployeesClxFile";
 import {
   employeesCsvAttachmentInput,
   useAddEmployeesByCsvFile,
@@ -14,6 +13,7 @@ import { handleError, handleServerError } from "utils/HandlingServerError";
 import { useState } from "react";
 import SimpleSelect from "components/UI/FormInputs/SimpleSelect";
 
+
 interface TabDataType {
   key: string;
   tabKey: string;
@@ -23,9 +23,6 @@ interface TabDataType {
 const DataImportingSettings = () => {
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [term, setTerm] = useState<string>("Select Action Type");
-
-  console.log(term);
-
   const { mutateAsync: addCsvFileMutation } = useAddEmployeesByCsvFile();
   const { mutateAsync: replaceCsvFileMutation } = useReplaceEmployeesByCsvFile();
   const { mutateAsync: updateCsvFileMutation } = useUpdateEmployeesByCsvFile();
@@ -41,24 +38,24 @@ const DataImportingSettings = () => {
     },
   ];
 
-  const handleDownload = async () => {
-    try {
-      const response = await downloadEmployeesCsv({});
-      // Create a URL for the blob
-      const url = window.URL.createObjectURL(new Blob([response?.data?.data!]));
-      // Create a temporary <a> element to initiate the download
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "employees_data.csv"); // Set the filename for download
-      document.body.appendChild(link);
-      link.click();
-      // Clean up
-      link.parentNode?.removeChild(link);
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error("Error downloading file:", error);
-    }
-  };
+  // const handleDownload = async () => {
+  //   try {
+  //     const response = await downloadEmployeesCsv({});
+  //     // Create a URL for the blob
+  //     const url = window.URL.createObjectURL(new Blob([response?.data?.data!]));
+  //     // Create a temporary <a> element to initiate the download
+  //     const link = document.createElement("a");
+  //     link.href = url;
+  //     link.setAttribute("download", "employees_data.csv"); // Set the filename for download
+  //     document.body.appendChild(link);
+  //     link.click();
+  //     // Clean up
+  //     link.parentNode?.removeChild(link);
+  //     window.URL.revokeObjectURL(url);
+  //   } catch (error) {
+  //     console.error("Error downloading file:", error);
+  //   }
+  // };
 
   const handleUpload = async (file: File) => {
     if (!file) return showError(handleError("Please upload file"));
@@ -118,7 +115,7 @@ const DataImportingSettings = () => {
   ];
 
   return (
-    <div>
+    <div >
       <Tab.Container id="left-tabs-example" defaultActiveKey="employee">
         <div className="row">
           <div className="d-flex justify-content-center align-items-center">
@@ -155,7 +152,9 @@ const DataImportingSettings = () => {
                                   options={actionTypeOptions}
                                 />
                               </div>
-                              <Button className="lift" content="Download Employee Template" onClick={handleDownload} />
+                              <a href="/empty_employee_data.csv" download="empty_employee_data.csv">
+                                <Button className="lift" content="Download Employee Template" onClick={() => { }} />
+                              </a>
                             </div>
                             <Attachment onUploadFile={handleUpload} isSubmitting={isSubmitting} />
                           </div>

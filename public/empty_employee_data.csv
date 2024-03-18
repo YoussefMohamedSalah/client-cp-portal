@@ -1,0 +1,2 @@
+first_name,last_name,email,password,phone_number,business_title,address,gender,shift_start,shift_end,id_number,id_ex_date,contract_date,contract_ex,salary_per_month,role,kpi,department,residence_number,nationality,site_role,site_job,joining_date,iban_number
+first_name,last_name,email,password,12345678910,business_title,address,Male - Female,07:00:00,17:00:00,01/01/2024,01/01/2024,01/01/2024,01/01/2024,1000,User-Manager-Director,0,Projects-HR-Finance-Marketing-Tender-Procurement,0,Saudi Arabian,Eng,Assistant,01/01/2024,0

@@ -20,6 +20,8 @@ import { Project } from "types/Project";
 import { getOptions } from "utils/GetOptions";
 import { useProjectsQuery } from "api/Projects/getAllProjects";
 import { useDepartmentsQuery } from "api/Departments/getAllDepartments";
+import { useAuth } from "contexts/AuthContext";
+import { getFormattedTodayDate } from "utils/DateUtils";
 
 interface Props {
   id?: string;
@@ -38,6 +40,8 @@ const EmployeeFormPage = ({ id }: Props) => {
   // -----
   const { showError, showSuccess } = useUI();
   const { push } = useApp();
+  const { session } = useAuth();
+
 
   const { data: employeeData, error: employeeError, isLoading: employeeIsLoading } = useEmployeeDetailsQuery({ id });
 
@@ -61,6 +65,11 @@ const EmployeeFormPage = ({ id }: Props) => {
   // !Assuming this is CREATE Modal
   useEffect(() => {
     if (!isEdit && !initialized) {
+      modelData.shift_start = session.company?.shift_start!
+      modelData.shift_end = session.company?.shift_end!
+      modelData.contract_date = `${getFormattedTodayDate()}`;
+      modelData.contract_ex = `${getFormattedTodayDate()}`;
+      modelData.gender = "Male";
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -261,7 +270,7 @@ const EmployeeFormPage = ({ id }: Props) => {
     },
     {
       label: "Shift Start",
-      type: "text",
+      type: "time",
       width: "col-md-3",
       key: EmployeeKeys.SHIFT_START,
       value: modelData?.shift_start,
@@ -271,7 +280,7 @@ const EmployeeFormPage = ({ id }: Props) => {
     },
     {
       label: "Shift End",
-      type: "text",
+      type: "time",
       width: "col-md-3",
       key: EmployeeKeys.SHIFT_END,
       value: modelData?.shift_end,
@@ -392,7 +401,6 @@ const EmployeeFormPage = ({ id }: Props) => {
     if (errors.length > 0) return showError(errors);
     try {
       let createInput = employeeInput(modelData);
-      console.log(createInput);
       await createMutation(createInput);
       showSuccess();
       push("/" + PAGES.EMPLOYEES);
@@ -414,13 +422,11 @@ const EmployeeFormPage = ({ id }: Props) => {
     };
 
     let errors = validateInputs(validationData);
-    console.log({ errors });
     if (errors.length > 0) return showError(errors);
 
     try {
       if (errors.length > 0) return showError(errors);
       let createInput = employeeUpdateInput(modelData);
-      console.log(createInput);
       await updateMutation({
         id: modelData.id,
         data: createInput,

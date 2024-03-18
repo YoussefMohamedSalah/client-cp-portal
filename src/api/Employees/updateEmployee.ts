@@ -17,7 +17,7 @@ export const employeeUpdateInput = (data: Employee): any => {
     business_title: data.business_title,
     contract_date: data.contract_date,
     contract_ex: data.contract_ex,
-    department: data.department,
+    department: data.department.id,
     email: data.email,
     gender: data.gender,
     iban_number: data.iban_number,

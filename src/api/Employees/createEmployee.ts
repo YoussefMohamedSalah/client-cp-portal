@@ -31,7 +31,7 @@ export const employeeInput = (data: Employee): any => {
       email: data.email,
       password: data.password!,
       phone_number: data.phone_number,
-      departmentId: data.department,
+      departmentId: data.department.id,
       projects: data.projects,
       // manager: data.manager,
       business_title: data.business_title ? data.business_title : "Engineer",
