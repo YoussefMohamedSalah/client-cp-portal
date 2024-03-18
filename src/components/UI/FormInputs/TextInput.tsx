@@ -7,7 +7,7 @@ const ValidationTextField = styled(TextField)({
     borderWidth: 1,
   },
   "& input:invalid + fieldset": {
-    borderColor: "red",
+    borderColor: "#888888!important",
     borderWidth: 1,
   },
   "& input:valid:focus + fieldset": {

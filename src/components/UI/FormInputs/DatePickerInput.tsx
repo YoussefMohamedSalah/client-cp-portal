@@ -23,24 +23,23 @@ interface Props {
 const DatePickerInput = ({ onChange, value, defaultValue, required, disabled, label }: Props) => {
   const StyledDatePicker = styled(DatePicker)(({ theme }) => ({
     // Apply styling to the underlying TextField
+    "& fieldset": {
+      borderColor: "#888888!important",
+      borderWidth: 1,
+    },
     "& .MuiInputBase-input": {
       color: "#888888",
     },
-
     "& .MuiInputLabel-root": {
       color: "#888888",
+      "& fieldset": {
+        borderColor: "#888888!important", // Border color
+      }
     },
-
     // Add styling for the borders
     "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "red", // Set the border color
-      },
-      "&:hover fieldset": {
-        borderColor: "#888888", // Set the border color on hover
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#40a9ff", // Set the border color when focused
+      "& svg": {
+        color: "#888888!important", // svg icon color
       },
     },
   }));
@@ -52,27 +51,15 @@ const DatePickerInput = ({ onChange, value, defaultValue, required, disabled, la
 
   return (
     <>
-      {required ? (
-        <StyledDatePicker
-          value={moment(value)}
-          disabled={disabled}
-          sx={{ margin: "8px 0" }}
-          onChange={(newValue: any) => handleFormatDateBeforeResponding(newValue)}
-          slotProps={{ textField: { size: "small", fullWidth: true, required: required } }}
-          views={["year", "month", "day"]}
-          label={label}
-        />
-      ) : (
-        <DatePicker
-          value={moment(value)}
-          disabled={disabled}
-          sx={{ margin: "8px 0" }}
-          onChange={(newValue: any) => handleFormatDateBeforeResponding(newValue)}
-          slotProps={{ textField: { size: "small", fullWidth: true, required: required } }}
-          views={["year", "month", "day"]}
-          label={label}
-        />
-      )}
+      <StyledDatePicker
+        value={moment(value)}
+        disabled={disabled}
+        sx={{ margin: "8px 0" }}
+        onChange={(newValue: any) => handleFormatDateBeforeResponding(newValue)}
+        slotProps={{ textField: { size: "small", fullWidth: true, required: required } }}
+        views={["year", "month", "day"]}
+        label={label}
+      />
     </>
   );
 };

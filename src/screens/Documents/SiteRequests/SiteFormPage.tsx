@@ -99,8 +99,8 @@ const SiteFormPage = ({ id }: Props) => {
 
   const handleModelData = (key: string, value: any) => {
     if (key === SiteRequestKeys.PROJECT) {
-      value = projects.find((project) => project.id === value);
-      setSelectedProject(value ? value : ({} as Project));
+      let sProject = projects.find((project) => project.id === value);
+      setSelectedProject(sProject ? sProject : ({} as Project));
     }
     setModelData({
       ...modelData,
@@ -142,7 +142,7 @@ const SiteFormPage = ({ id }: Props) => {
       type: "select",
       width: "col-md-4",
       key: SiteRequestKeys.PROJECT,
-      value: selectedProject?.name!,
+      value: selectedProject?.id!,
       onChange: (value: string | any) => handleModelData(SiteRequestKeys.PROJECT, value),
       options: projectsOptions,
       placeholder: "Select Project",

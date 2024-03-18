@@ -18,7 +18,7 @@ export const useEditContract = () => {
 export const editContractInput = (data: any): any => {
   if (!data.uploadedFiles || data.uploadedFiles.length === 0) {
     return {
-      subcontractorId: data.subcontractor.id,
+      subcontractorId: data.subcontractor,
       items: data.items,
       conditions: data.conditions,
       subject: data.subject,
@@ -46,7 +46,7 @@ export const editContractInput = (data: any): any => {
   data.items && formData.append("items", data?.items!);
   data.conditions && formData.append("conditions", data.conditions);
   data.default_conditions && formData.append("default_conditions", data.default_conditions);
-  data.subcontractorId && formData.append("subcontractor", data.subcontractor.id);
+  data.subcontractor && formData.append("subcontractorId", data.subcontractor);
   data.removedFilesNameSet && formData.append("removedFilesNameSet", data.removedFilesNameSet);
   data.addedFilesNameSet && formData.append("addedFilesNameSet", data.addedFilesNameSet);
   data.is_archived && formData.append("is_archived", data.is_archived);

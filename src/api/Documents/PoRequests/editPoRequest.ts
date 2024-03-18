@@ -24,7 +24,7 @@ export const poEditInput = (data: any): any => {
       transportation: data.transportation ? data.transportation : null,
       delivery_date: data.delivery_date ? data.delivery_date : null,
       material_availability: data.material_availability ? data.material_availability : null,
-      supplierId: data.supplierId ? data.supplierId : null,
+      supplierId: data.supplier ? data.supplier : null,
       description: data.description ? data.description : null,
       date: data.date ? data.date : null,
       removedFilesNameSet: data.removedFilesNameSet ? data.removedFilesNameSet : [],
@@ -61,7 +61,7 @@ export const poEditInput = (data: any): any => {
   data.transportation && formData.append("transportation", data.transportation);
   data.delivery_date && formData.append("delivery_date", data.delivery_date);
   data.material_availability && formData.append("material_availability", data.material_availability);
-  data.supplierId && formData.append("supplierId", data.supplierId);
+  data.supplier && formData.append("supplierId", data.supplier);
   data.subject && formData.append("subject", data.subject);
   data.description && formData.append("description", data.description);
   data.date && formData.append("date", data.date);

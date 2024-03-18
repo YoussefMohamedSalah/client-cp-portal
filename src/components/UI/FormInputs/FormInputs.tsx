@@ -4,11 +4,12 @@ import DatePickerInput from "./DatePickerInput";
 import FileUploadInput from "./FileUploadInput";
 import MultiSelectInput from "./MultiSelectInput";
 import MultilineTextInput from "./MultilineTextInput";
-import OptionsSelectOne from "./OptionsSelectOne";
+// import OptionsSelectOne from "./OptionsSelectOne";
 import PasswordInput from "./PasswordInput";
 import TextInput from "./TextInput";
 import { IField } from "types/Forms/formFields";
 import TimePickerInput from "./TimePickerInput";
+import SimpleSelect from "./SimpleSelect";
 
 interface Props {
   formFields: IField[];
@@ -82,8 +83,21 @@ const FormInputs: React.FC<Props> = ({ formFields, grid, block = false }) => {
                 )}
 
                 {/* Select */}
-                {formInfo.type === "select" && !formInfo.hide && (
+                {/* {formInfo.type === "select" && !formInfo.hide && (
                   <OptionsSelectOne
+                    label={formInfo.label}
+                    value={formInfo.value}
+                    onChange={formInfo.onChange}
+                    defaultValue={formInfo.default}
+                    disabled={formInfo.disabled}
+                    options={formInfo.options ? formInfo.options : []}
+                    placeholder={formInfo.placeholder}
+                    required={formInfo.required}
+                  />
+                )} */}
+
+                {formInfo.type === "select" && !formInfo.hide && (
+                  <SimpleSelect
                     label={formInfo.label}
                     value={formInfo.value}
                     onChange={formInfo.onChange}

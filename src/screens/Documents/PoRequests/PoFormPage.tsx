@@ -209,12 +209,12 @@ we would like to place the purchase order for Below Items.`;
 
   const handleModelData = (key: string, value: any) => {
     if (key === PoRequestKeys.PROJECT) {
-      value = projects.find((project) => project.id === value!) || null;
-      setSelectedProject(value ? value : ({} as Project));
+      let sProject = projects.find((project) => project.id === value!) || null;
+      setSelectedProject(sProject ? sProject : ({} as Project));
     }
     if (key === PoRequestKeys.SUPPLIER) {
-      value = suppliers.find((supplier) => supplier.id === value!) || null;
-      setSelectedSupplier(value ? value : ({} as Supplier));
+      let sSupplier = suppliers.find((supplier) => supplier.id === value!) || null;
+      setSelectedSupplier(sSupplier ? sSupplier : ({} as Supplier));
     }
     if (key === PoRequestKeys.FILES) {
       setFilesNameSet([...filesNameSet, value.name]);
@@ -285,7 +285,7 @@ we would like to place the purchase order for Below Items.`,
       type: "select",
       width: "col-md-6",
       key: PoRequestKeys.PROJECT,
-      value: selectedProject?.name!,
+      value: selectedProject?.id!,
       onChange: (value: any) => {
         handleModelData(PoRequestKeys.PROJECT, value);
       },
@@ -298,7 +298,7 @@ we would like to place the purchase order for Below Items.`,
       type: "select",
       width: "col-md-6",
       key: PoRequestKeys.SUPPLIER,
-      value: selectedSupplier?.name!,
+      value: selectedSupplier?.id!,
       onChange: (value: any) => handleModelData(PoRequestKeys.SUPPLIER, value),
       options: suppliersOptions,
       placeholder: "Select Supplier",
@@ -678,7 +678,7 @@ we would like to place the purchase order for Below Items.`,
       showError(handleServerError(err.response));
     }
   };
-  console.log(initialized);
+
   if (!initialized) return <></>;
   return (
     <div className="container-xxl">

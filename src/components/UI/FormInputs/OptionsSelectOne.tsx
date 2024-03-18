@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete, { AutocompleteInputChangeReason } from "@mui/material/Autocomplete";
 import { IOption } from "types/Forms/option";
@@ -15,15 +15,6 @@ interface Props {
 }
 
 const OptionsSelectOne = React.memo(({ options, label, onChange, defaultValue, disabled, value, required }: Props) => {
-  const [isFocused, setIsFocused] = useState(false);
-
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
-
-  const handleBlur = () => {
-    setIsFocused(false);
-  };
 
   const getOptionLabel = (option: string | IOption) => (typeof option === "string" ? option : option?.label || "");
   const filterOptions = (options: (string | IOption)[], { inputValue }: { inputValue: string }) => {
@@ -46,9 +37,9 @@ const OptionsSelectOne = React.memo(({ options, label, onChange, defaultValue, d
           color: "#888888!important", // Label color
         },
         "& .MuiOutlinedInput-root": {
-          "& fieldset": {
-            borderColor: required ? "red" : "#888888!important", // Border color based on required prop
-          },
+          // "& fieldset": {
+          //   borderColor: required ? "red" : "#888888!important", // Border color based on required prop
+          // },
           "&:hover fieldset": {
             borderColor: "#000000",
           },
@@ -94,8 +85,6 @@ const OptionsSelectOne = React.memo(({ options, label, onChange, defaultValue, d
           InputProps={{
             ...params.InputProps,
             type: "search",
-            onFocus: handleFocus,
-            onBlur: handleBlur,
           }}
         />
       )}

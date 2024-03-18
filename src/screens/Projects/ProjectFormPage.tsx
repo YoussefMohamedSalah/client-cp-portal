@@ -79,13 +79,10 @@ const ProjectFormPage = ({ id }: Props) => {
   let customers: Customer[] = customersData?.customers?.data! || [];
   let employees: Employee[] = employeesData?.employees?.data! || [];
 
-  let customersOptions = getOptions(customers, "Select Customer");
-  let employeesOptions = getOptions(employees, "Select");
+  let customersOptions = getOptions(customers, "");
+  let employeesOptions = getOptions(employees, "");
 
   const handleModelData = (key: string, value: any) => {
-    if (key === ProjectKeys.MANAGER) {
-      value = employees?.find((manager: Employee) => manager.id === value) || ({} as Employee);
-    }
     if (key === ProjectKeys.ASSISTANTS) {
       if (value && Array.isArray(value)) {
         let assistants: Employee[] = [];
@@ -133,7 +130,6 @@ const ProjectFormPage = ({ id }: Props) => {
       comments: [{ id: 0, userId: "", userName: "", comment: "", createdAt: "" }],
       comments_count: 0,
       members_count: 0,
-      manager: { id: "", name: "" },
       assistants: [],
     });
   };
@@ -154,19 +150,19 @@ const ProjectFormPage = ({ id }: Props) => {
       type: "select",
       width: "col-md-4",
       key: ProjectKeys.CUSTOMER,
-      value: modelData?.customer_details?.name!,
+      value: modelData?.customer_details?.id!,
       onChange: (value: string) => handleModelData(ProjectKeys.CUSTOMER, value),
       options: customersOptions,
       placeholder: "Select Customer",
       required: !isEdit ? true : false,
-      disabled: isEdit ? true : false,
+      // disabled: isEdit ? true : false,
     },
     {
       label: "Project Manager",
       type: "select",
       width: "col-md-4",
       key: ProjectKeys.MANAGER,
-      value: modelData?.manager?.name!,
+      value: modelData?.manager?.id!,
       onChange: (value: string) => handleModelData(ProjectKeys.MANAGER, value),
       options: employeesOptions,
       placeholder: "Select Manager",

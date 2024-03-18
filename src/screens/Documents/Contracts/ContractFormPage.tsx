@@ -193,7 +193,7 @@ const ContractFormPage = ({ id }: Props) => {
   let projects: Project[] = projectsData?.projects?.data || [];
   let subcontractors: Subcontractor[] = subcontractorsData?.subcontractors?.data || [];
 
-  let projectsOptions = getOptions(projects, "Select Project");
+  let projectsOptions = getOptions(projects, "");
   let subcontractorsOptions = subcontractors.map((subcontractor) => {
     return {
       label:
@@ -218,12 +218,12 @@ const ContractFormPage = ({ id }: Props) => {
 
   const handleModelData = (key: string, value: any) => {
     if (key === ContractKeys.PROJECT) {
-      value = projects.find((project) => project.id === value!) || null;
-      setSelectedProject(value ? value : ({} as Project));
+      let sProject = projects.find((project) => project.id === value!) || null;
+      setSelectedProject(sProject ? sProject : ({} as Project));
     }
     if (key === ContractKeys.SUB_CONTRACTOR) {
-      value = subcontractors.find((subcontractor) => subcontractor.id === value!) || null;
-      setSelectedSubcontractor(value ? value : ({} as Subcontractor));
+      let sSubcontractor = subcontractors.find((subcontractor) => subcontractor.id === value!) || null;
+      setSelectedSubcontractor(sSubcontractor ? sSubcontractor : ({} as Subcontractor));
     }
     if (key === ContractKeys.FILES) {
       setFilesNameSet([...filesNameSet, value.name]);
@@ -296,7 +296,7 @@ const ContractFormPage = ({ id }: Props) => {
       type: "select",
       width: "col-md-6",
       key: ContractKeys.PROJECT,
-      value: selectedProject?.name!,
+      value: selectedProject?.id!,
       onChange: (value: any) => {
         handleModelData(ContractKeys.PROJECT, value);
       },
@@ -309,7 +309,7 @@ const ContractFormPage = ({ id }: Props) => {
       type: "select",
       width: "col-md-6",
       key: ContractKeys.SUB_CONTRACTOR,
-      value: selectedSubcontractor?.name!,
+      value: selectedSubcontractor?.id!,
       onChange: (value: any) => handleModelData(ContractKeys.SUB_CONTRACTOR, value),
       options: subcontractorsOptions,
       placeholder: "Select Subcontractor",

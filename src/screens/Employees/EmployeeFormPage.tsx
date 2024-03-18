@@ -81,7 +81,7 @@ const EmployeeFormPage = ({ id }: Props) => {
       setModelData({
         ...employee,
         projects: employee.projects_info || [],
-        department: employee.department_info || { id: "0", name: "Select Department" },
+        department: employee.department_info?.id! || "",
       });
       setInitialized(true);
     }
@@ -92,7 +92,7 @@ const EmployeeFormPage = ({ id }: Props) => {
   if (employeeError || departmentError || projectsError) return null;
 
   let projects: Project[] = projectsData?.projects?.data || ([] as Project[]);
-  let departments: any[] = departmentData?.departments?.data || [];
+  let departments: any[] = departmentData?.departments?.data! || [];
 
   let projectsOptions = getOptions(projects, "Select Project");
   let departmentsOptions = getOptions(departments, "Select Department");
@@ -109,14 +109,17 @@ const EmployeeFormPage = ({ id }: Props) => {
         value = projectsArr;
       }
     }
-    if (key === EmployeeKeys.DEPARTMENT) {
-      value = departments?.find((department: any) => department.id === value) || ({} as Employee);
-    }
+    // if (key === EmployeeKeys.DEPARTMENT) {
+    //   value = departments?.find((department: any) => department.id === value) || ({} as Employee);
+    // }
+    console.log(value)
     setModelData({
       ...modelData,
       [key]: value,
     });
   };
+
+  console.log(modelData, departmentsOptions)
 
   const formFields: IField[] = [
     {
@@ -144,7 +147,7 @@ const EmployeeFormPage = ({ id }: Props) => {
       type: "select",
       width: "col-md-3",
       key: EmployeeKeys.DEPARTMENT,
-      value: modelData?.department?.name!,
+      value: modelData?.department!,
       onChange: (value: string | any) => handleModelData(EmployeeKeys.DEPARTMENT, value),
       options: departmentsOptions,
       placeholder: "Select Department",

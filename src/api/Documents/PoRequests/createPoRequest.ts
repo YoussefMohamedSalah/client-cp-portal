@@ -34,8 +34,8 @@ export const poRequestInput = (data: any): any => {
       delivery_date: data.delivery_date ? data.delivery_date : null,
       material_availability: data.material_availability ? data.material_availability : null,
       description: data.description ? data.description : null,
-      supplierId: data.supplier ? data.supplier.id : null,
-      projectId: data.projectId ? data.projectId : "",
+      supplierId: data.supplier ? data.supplier : "",
+      projectId: data.project ? data.project : "",
       // --------
       items: data.items ? data.items : null,
       conditions: data.conditions ? data.conditions : null,
@@ -67,12 +67,12 @@ export const poRequestInput = (data: any): any => {
   data.transportation && formData.append("transportation", data.transportation);
   data.delivery_date && formData.append("delivery_date", data.delivery_date);
   data.material_availability && formData.append("material_availability", data.material_availability);
-  data.supplier && formData.append("supplierId", data.supplier.id);
   data.subject && formData.append("subject", data.subject);
   data.description && formData.append("description", data.description);
   data.date && formData.append("date", data.date);
   data.filesNameSet && formData.append("filesNameSet", data.filesNameSet);
-  data.projectId && formData.append("projectId", data.projectId);
+  data.supplier && formData.append("supplierId", data.supplier);
+  data.project && formData.append("projectId", data.project);
   for (let file of data.files) {
     formData.append("files", file);
   }

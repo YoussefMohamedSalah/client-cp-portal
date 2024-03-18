@@ -122,8 +122,8 @@ Best Regards.`;
 
   const handleModelData = (key: string, value: any) => {
     if (key === MaterialRequestKeys.PROJECT) {
-      value = projects.find((project) => project.id === value);
-      setSelectedProject(value ? value : ({} as Project));
+      let sProject = projects.find((project) => project.id === value);
+      setSelectedProject(sProject ? sProject : ({} as Project));
     }
     if (key === MaterialRequestKeys.FILES) {
       setFilesNameSet([...filesNameSet, value.name]);
@@ -184,7 +184,7 @@ Best Regards.`,
       type: "select",
       width: "col-md-4",
       key: MaterialRequestKeys.PROJECT,
-      value: selectedProject?.name!,
+      value: selectedProject?.id!,
       default: "",
       onChange: (value: string | any) => {
         handleModelData(MaterialRequestKeys.PROJECT, value);

@@ -45,11 +45,11 @@ export const projectInput = (data: Project): any => {
       buildings_count: data.buildings_count ? data.buildings_count : 0,
       floors_count: data.floors_count ? data.floors_count : 0,
       contract_number: data.contract_number,
-      manager: data.manager,
+      managerId: data.manager,
+      customerId: data.customer,
       assistants: data.assistants ? data.assistants : [],
       project_status: data.project_status,
       members: data.members,
-      customerId: data.customer,
     } as any;
   }
 
@@ -72,7 +72,7 @@ export const projectInput = (data: Project): any => {
   formData.append("buildings_count", `${data.buildings_count ? data.buildings_count : 0}`);
   formData.append("floors_count", `${data.floors_count ? data.floors_count : 0}`);
   data.contract_number && formData.append("contract_number", `${data?.contract_number!}`);
-  data.manager && formData.append("manager", `${data?.manager!}`);
+  data.manager && formData.append("managerId", `${data?.manager!}`);
   data.assistants && formData.append("assistants", `${data.assistants!}`);
   data.project_status && formData.append("project_status", `${data?.project_status!}`);
   data.members && formData.append("members", `${data?.members!}`);

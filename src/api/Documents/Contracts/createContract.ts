@@ -28,7 +28,7 @@ export const useCreateContract = () => {
 export const contractInput = (data: any): any => {
   if (!data.files || data.files.length === 0) {
     return {
-      subcontractor: data.subcontractor?.id!,
+      subcontractorId: data.subcontractor!,
       items: data.items,
       subject: data.subject,
       conditions: data.conditions,
@@ -39,7 +39,7 @@ export const contractInput = (data: any): any => {
       vat: data.vat ? data.vat : 0,
       discount: data.discount ? data.discount : 0,
       total: data.total ? data.total : 0,
-    } as Contract;
+    } as any;
   }
 
   const formData = new FormData();
@@ -52,7 +52,7 @@ export const contractInput = (data: any): any => {
   data.items && formData.append("items", data?.items!);
   data.conditions && formData.append("conditions", data.conditions);
   data.default_conditions && formData.append("default_conditions", data.default_conditions);
-  data.subcontractor && formData.append("subcontractor", data.subcontractor?.id!);
+  data.subcontractor && formData.append("subcontractorId", data.subcontractor!);
   data.filesNameSet && formData.append("filesNameSet", data.filesNameSet);
   for (let file of data.files) {
     formData.append("files", file);

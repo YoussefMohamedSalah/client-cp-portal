@@ -22,22 +22,26 @@ interface Props {
 
 const StyledTimePicker = styled(TimePicker)(({ theme }) => ({
   // Apply styling to the underlying TextField
+
   "& .MuiInputBase-input": {
     color: "#888888",
+    "& svg": {
+      color: "#888888!important", // svg icon color
+    },
   },
-
   "& .MuiInputLabel-root": {
     color: "#888888",
   },
-
   "& .Mui-focused": {
     "& .MuiInputLabel-root": {
       color: "#888888",
     },
   },
-
   // Add styling for the borders
   "& .MuiOutlinedInput-root": {
+    "& svg": {
+      color: "#888888!important", // svg icon color
+    },
     "& fieldset": {
       borderColor: "#888888", // Set the border color
     },

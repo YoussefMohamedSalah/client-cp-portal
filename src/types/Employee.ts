@@ -23,7 +23,7 @@ export interface Employee {
   avatar: any;
   kpi: number;
   is_verified: boolean;
-  department: { id: string; name: string };
+  department: any;
   department_info?: { id: string; name: string };
   projects?: Project[];
   permissions?: string[];
