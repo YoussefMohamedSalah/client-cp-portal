@@ -88,7 +88,7 @@ const Inventory = lazy(() => import("../screens/Inventory/Inventory"));
 // const Tickets = lazy(() => import("../Tickets/TicketsView"));
 // const ChatApp = lazy(() => import("../Chat/ChatApp"));
 // const Calendar = lazy(() => import("../App/Calendar"));
-// const AllEmployeesAttendance = lazy(() => import("../Attendance/AllEmployeesAttendance"));
+const AllEmployeesAttendance = lazy(() => import("../screens/Attendance/AllEmployeesAttendance"));
 // const ProjectDetails = lazy(() => import("../Projects/ProjectDetails"));
 // const TaskDetails = lazy(() => import("../Tasks/TaskDetails"));
 // const Categories = lazy(() => import("../Category/Category"));
@@ -304,7 +304,8 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 
       case PAGES.DCC:
         return <Dcc />;
-
+      case PAGES.ATTENDANCE:
+        return <AllEmployeesAttendance />;
       // case PAGES.INVENTORY:
       // 	return <Inventory />;
 
@@ -332,8 +333,6 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
       // case PAGES.TASKS:
       // 	return <Tasks />;
 
-      // case PAGES.ATTENDANCE:
-      // 	return <AllEmployeesAttendance />;
       // case PAGES.CALENDAR:
       // 	return <Calendar />;
       // case PAGES.CATEGORIES:
