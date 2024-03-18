@@ -67,7 +67,7 @@ const ProjectFormPage = ({ id }: Props) => {
   useEffect(() => {
     if (!initialized && projectData) {
       let project: Project = projectData?.project?.data!;
-      setModelData({ ...project, assistants: project.managers || [] });
+      setModelData({ ...project, assistants: project.managers || [], });
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,8 +76,8 @@ const ProjectFormPage = ({ id }: Props) => {
   if ((id && projectIsLoading) || (!id && customersIsLoading) || (!id && employeesIsLoading)) return <Loading />;
   if ((id && projectError) || (!id && customersError) || (!id && employeesError)) return null;
 
-  let customers: Customer[] = customersData?.customers?.data || [];
-  let employees: Employee[] = employeesData?.employees?.data || [];
+  let customers: Customer[] = customersData?.customers?.data! || [];
+  let employees: Employee[] = employeesData?.employees?.data! || [];
 
   let customersOptions = getOptions(customers, "Select Customer");
   let employeesOptions = getOptions(employees, "Select");
@@ -154,7 +154,7 @@ const ProjectFormPage = ({ id }: Props) => {
       type: "select",
       width: "col-md-4",
       key: ProjectKeys.CUSTOMER,
-      value: modelData?.customer?.name!,
+      value: modelData?.customer_details?.name!,
       onChange: (value: string) => handleModelData(ProjectKeys.CUSTOMER, value),
       options: customersOptions,
       placeholder: "Select Customer",
@@ -170,6 +170,7 @@ const ProjectFormPage = ({ id }: Props) => {
       onChange: (value: string) => handleModelData(ProjectKeys.MANAGER, value),
       options: employeesOptions,
       placeholder: "Select Manager",
+      required: true
     },
     {
       label: "Assign Assistants",

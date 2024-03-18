@@ -49,7 +49,7 @@ export const ProjectStrKeys = [
 
 export const ProjectRequiredKeys = [
   ProjectKeys.NAME,
-  ProjectKeys.DESCRIPTION,
+  ProjectKeys.MANAGER,
   ProjectKeys.CONTRACT_DATE,
   ProjectKeys.DELIVERY_DATE,
   ProjectKeys.BID_VALUE,

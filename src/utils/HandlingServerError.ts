@@ -4,6 +4,7 @@ import { ErrorType, inputsValidationType } from "types/Error";
 export const validateInputs = (validationData: inputsValidationType): ErrorType[] => {
   const { requiredToValidate, numbersToValidate, stringsToValidate, inputs } = validationData;
   const errorsArray: ErrorType[] = [];
+
   const error: ErrorType = {
     index: Math.random(),
     type: "Missing Required Data!",
