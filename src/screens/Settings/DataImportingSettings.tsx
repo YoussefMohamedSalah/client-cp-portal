@@ -13,7 +13,6 @@ import { handleError, handleServerError } from "utils/HandlingServerError";
 import { useState } from "react";
 import SimpleSelect from "components/UI/FormInputs/SimpleSelect";
 
-
 interface TabDataType {
   key: string;
   tabKey: string;
@@ -115,7 +114,7 @@ const DataImportingSettings = () => {
   ];
 
   return (
-    <div >
+    <div>
       <Tab.Container id="left-tabs-example" defaultActiveKey="employee">
         <div className="row">
           <div className="d-flex justify-content-center align-items-center">
@@ -153,7 +152,7 @@ const DataImportingSettings = () => {
                                 />
                               </div>
                               <a href="/empty_employee_data.csv" download="empty_employee_data.csv">
-                                <Button className="lift" content="Download Employee Template" onClick={() => { }} />
+                                <Button className="lift" content="Download Employee Template" onClick={() => {}} />
                               </a>
                             </div>
                             <Attachment onUploadFile={handleUpload} isSubmitting={isSubmitting} />

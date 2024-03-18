@@ -42,7 +42,6 @@ const EmployeeFormPage = ({ id }: Props) => {
   const { push } = useApp();
   const { session } = useAuth();
 
-
   const { data: employeeData, error: employeeError, isLoading: employeeIsLoading } = useEmployeeDetailsQuery({ id });
 
   // const {
@@ -65,8 +64,8 @@ const EmployeeFormPage = ({ id }: Props) => {
   // !Assuming this is CREATE Modal
   useEffect(() => {
     if (!isEdit && !initialized) {
-      modelData.shift_start = session.company?.shift_start!
-      modelData.shift_end = session.company?.shift_end!
+      modelData.shift_start = session.company?.shift_start!;
+      modelData.shift_end = session.company?.shift_end!;
       modelData.contract_date = `${getFormattedTodayDate()}`;
       modelData.contract_ex = `${getFormattedTodayDate()}`;
       modelData.gender = "Male";

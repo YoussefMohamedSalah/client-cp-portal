@@ -146,7 +146,7 @@ const OrganizationSettings = () => {
           }),
         );
         localStorage.setItem("company", JSON.stringify(company));
-        window.location.reload()
+        window.location.reload();
       }
     } catch (err: any) {
       console.log(err.response?.data?.msg!);
