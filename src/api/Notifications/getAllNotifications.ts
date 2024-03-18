@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
 import { NotificationType } from "types/Notification";
+import { QueryOptionsType } from "types/QueryOptions";
 import http from "utils/Http";
 
 export const getAllNotifications = async ({ queryKey }: any) => {
@@ -8,9 +9,6 @@ export const getAllNotifications = async ({ queryKey }: any) => {
   return { notifications: { data: data as NotificationType[] } };
 };
 
-export const useNotificationsQuery = (options: any) => {
-  return useQuery<{ notifications: { data: NotificationType[] } }, Error>(
-    [ROUTES.NOTIFICATIONS, options],
-    getAllNotifications,
-  );
+export const useNotificationsQuery = (options: QueryOptionsType) => {
+  return useQuery<{ notifications: { data: any } }, Error>([ROUTES.NOTIFICATIONS, options], getAllNotifications);
 };

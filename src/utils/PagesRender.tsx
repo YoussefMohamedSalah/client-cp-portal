@@ -78,7 +78,7 @@ const PersonalProfileDetails = lazy(() => import("../screens/Profile/PersonalPro
 const DailyReportDetails = lazy(() => import("../screens/DailyReports/DailyReportDetails"));
 const DailyReportFormPage = lazy(() => import("../screens/DailyReports/DailyReportFormPage"));
 const DailyReports = lazy(() => import("../screens/DailyReports/DailyReports"));
-
+const Notifications = lazy(() => import("../screens/Notifications/Notifications"));
 const InventoryItemDetails = lazy(() => import("../screens//Inventory/InventoryItemDetails"));
 // const ContractDetails = lazy(() => import("../Contracts/ContractDetails"));
 
@@ -97,7 +97,6 @@ const Groups = lazy(() => import("../screens/Groups/Groups"));
 // const EmployeeProfile = lazy(() => import("../Profile/EmployeeProfile"));
 
 // const EnquiresDetail = lazy(() => import("../Tickets/TicketsDetail"));
-// const Notifications = lazy(() => import("../Notifications/Notifications"));
 
 export interface PagesRenderProps {
   slug: string | null;
@@ -305,11 +304,12 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
       case PAGES.DCC:
         return <Dcc />;
 
+      case PAGES.NOTIFICATIONS:
+        return <Notifications />;
+
       // case PAGES.INVENTORY:
       // 	return <Inventory />;
 
-      // case PAGES.NOTIFICATIONS:
-      // 	return <Notifications />
       // case PAGES.DCC:
       //   return <ComingSoon />;
 

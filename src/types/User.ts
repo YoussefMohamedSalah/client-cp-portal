@@ -1,6 +1,6 @@
 import { ROLE } from "enums/enums";
 import { Company } from "./Company";
-import { Notification } from "./Notification";
+import { NotificationType } from "./Notification";
 import { Project } from "./Project";
 import { DailyReportGroup } from "./Daily_report";
 import { EmployeeRequest } from "./Employee_request";
@@ -53,7 +53,7 @@ export interface User {
   company: Company;
   // department: Department;
   //attendances: Attendance[];
-  notifications: Notification[];
+  notifications: NotificationType[];
   tasks: Task[];
   projects: Project[];
   manager_of: Project[];

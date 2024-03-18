@@ -62,7 +62,7 @@ export function getHoursDiff(startDate: Date, endDate: Date): number {
   return diffInHours;
 }
 
-export const getTimeDifference = (timestamp: string): string => {
+export const getTimeDifference = (timestamp: string | Date): string => {
   const currentTime = new Date();
   const givenTime = new Date(timestamp);
   let now = currentTime.getTime() + 3600000;

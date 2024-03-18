@@ -5,10 +5,10 @@ import useApp from "hooks/useApp";
 import { Badge, Dropdown } from "react-bootstrap";
 import { getTimeDifference } from "utils/DateUtils";
 import { handleServerError } from "utils/HandlingServerError";
-import { Notification } from "types/Notification";
+import { NotificationType } from "types/Notification";
 
 interface Props {
-  Notifications: Notification[];
+  Notifications: NotificationType[];
 }
 
 const NotificationsDropDownIcon = ({ Notifications }: Props) => {
@@ -27,7 +27,7 @@ const NotificationsDropDownIcon = ({ Notifications }: Props) => {
     }
   };
 
-  let pendingNotifications: Notification[] = [];
+  let pendingNotifications: NotificationType[] = [];
   if (Notifications && Array.isArray(Notifications)) {
     pendingNotifications = Notifications?.filter((notification) => notification.is_read === false) || [];
   }
@@ -84,12 +84,12 @@ const NotificationsDropDownIcon = ({ Notifications }: Props) => {
                 </ul>
               </div>
             </div>
-            <a
+            <div
+              role="button"
               className="card-footer text-center border-top-0"
-              href="#!"
               onClick={() => push("/" + PAGES.NOTIFICATIONS)}>
               View all notifications
-            </a>
+            </div>
           </div>
         )}
       </Dropdown.Menu>
