@@ -5,7 +5,7 @@ import AttendanceModalIcon from "./AttendanceModalIcon";
 import ThemeSwitcher from "components/UI/ThemeSwitcher";
 import ToggleSideBarIcon from "./ToggleSideBarIcon";
 import { useNotificationsQuery } from "api/Common/getAllNotifications";
-import { Notification } from "types/Notification";
+import { NotificationType } from "types/Notification";
 
 interface Props {
   session: Session;
@@ -13,7 +13,7 @@ interface Props {
 
 const Header = ({ session }: Props) => {
   const { isLoading, error, data } = useNotificationsQuery({});
-  const notifications: Notification[] = data?.notifications?.data! || ([] as Notification[]);
+  const notifications: NotificationType[] = data?.notifications?.data! || ([] as NotificationType[]);
 
   return (
     <div className="header">
