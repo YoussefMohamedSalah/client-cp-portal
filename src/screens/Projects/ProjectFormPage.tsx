@@ -67,7 +67,7 @@ const ProjectFormPage = ({ id }: Props) => {
   useEffect(() => {
     if (!initialized && projectData) {
       let project: Project = projectData?.project?.data!;
-      setModelData({ ...project, assistants: project.managers || [], });
+      setModelData({ ...project, assistants: project.managers || [] });
       setInitialized(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -166,7 +166,7 @@ const ProjectFormPage = ({ id }: Props) => {
       onChange: (value: string) => handleModelData(ProjectKeys.MANAGER, value),
       options: employeesOptions,
       placeholder: "Select Manager",
-      required: true
+      required: true,
     },
     {
       label: "Assign Assistants",

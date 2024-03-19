@@ -34,7 +34,7 @@ const DatePickerInput = ({ onChange, value, defaultValue, required, disabled, la
       color: "#888888",
       "& fieldset": {
         borderColor: "#888888!important", // Border color
-      }
+      },
     },
     // Add styling for the borders
     "& .MuiOutlinedInput-root": {

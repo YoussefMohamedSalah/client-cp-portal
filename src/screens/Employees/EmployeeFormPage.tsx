@@ -112,14 +112,14 @@ const EmployeeFormPage = ({ id }: Props) => {
     // if (key === EmployeeKeys.DEPARTMENT) {
     //   value = departments?.find((department: any) => department.id === value) || ({} as Employee);
     // }
-    console.log(value)
+    console.log(value);
     setModelData({
       ...modelData,
       [key]: value,
     });
   };
 
-  console.log(modelData, departmentsOptions)
+  console.log(modelData, departmentsOptions);
 
   const formFields: IField[] = [
     {
