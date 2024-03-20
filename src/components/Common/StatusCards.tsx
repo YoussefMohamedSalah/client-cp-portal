@@ -12,14 +12,14 @@ import { Todo } from "types/Todo";
 
 interface Props<
   T extends
-  | PettyCashRequest
-  | PurchaseOrderRequest
-  | EmployeeRequest
-  | MaterialRequest
-  | SiteRequest
-  | Contract
-  | Invoice
-  | Todo,
+    | PettyCashRequest
+    | PurchaseOrderRequest
+    | EmployeeRequest
+    | MaterialRequest
+    | SiteRequest
+    | Contract
+    | Invoice
+    | Todo,
 > {
   data: T[];
   onFilter: (filtered: T[]) => void;
@@ -27,14 +27,14 @@ interface Props<
 
 function StatusCards<
   T extends
-  | PettyCashRequest
-  | PurchaseOrderRequest
-  | EmployeeRequest
-  | MaterialRequest
-  | SiteRequest
-  | Contract
-  | Invoice
-  | Todo,
+    | PettyCashRequest
+    | PurchaseOrderRequest
+    | EmployeeRequest
+    | MaterialRequest
+    | SiteRequest
+    | Contract
+    | Invoice
+    | Todo,
 >({ data, onFilter }: Props<T>) {
   const [filterData, setFilterData] = useState<T[]>(data || []);
   useEffect(() => {

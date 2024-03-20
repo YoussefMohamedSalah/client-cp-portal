@@ -7,10 +7,11 @@ import { QueryClient } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 export const useUpdateTodo = () => {
-  return useMutation<any, Error, any>(async (updateInput) => {
-    const { data } = await http.put(ROUTES.TODO + updateInput.id, updateInput);
-    return { todo: { data: data as Todo } };
-  },
+  return useMutation<any, Error, any>(
+    async (updateInput) => {
+      const { data } = await http.put(ROUTES.TODO + updateInput.id, updateInput);
+      return { todo: { data: data as Todo } };
+    },
     {
       onSuccess: () => {
         queryClient.invalidateQueries(["todos"]);

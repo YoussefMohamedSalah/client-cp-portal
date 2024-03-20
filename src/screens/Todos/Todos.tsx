@@ -50,7 +50,7 @@ const Todos: React.FC = () => {
     try {
       let createInput = todoInput(modelData);
       await createMutation(createInput);
-      handleClose()
+      handleClose();
     } catch (err: any) {
       showError(handleServerError(err.response));
     }
@@ -60,7 +60,7 @@ const Todos: React.FC = () => {
     try {
       await deleteMutation(id);
       showSuccess();
-      handleClose()
+      handleClose();
     } catch (err: any) {
       showError(handleServerError(err.response));
     }
@@ -70,7 +70,7 @@ const Todos: React.FC = () => {
     try {
       await updateMutation(modelData);
       showSuccess();
-      handleClose()
+      handleClose();
     } catch (err: any) {
       showError(handleServerError(err.response));
     }
@@ -128,7 +128,13 @@ const Todos: React.FC = () => {
         </div>
         <TodosDragAnDropContainer todos={todos} onDelete={handleDelete} onUpdate={handleOpenModal} />
       </div>
-      <TodoModal isModal={isModal} formFields={formFields} onCreate={handleCreate} onUpdate={handleUpdate} onClose={handleClose} />
+      <TodoModal
+        isModal={isModal}
+        formFields={formFields}
+        onCreate={handleCreate}
+        onUpdate={handleUpdate}
+        onClose={handleClose}
+      />
     </div>
   );
 };

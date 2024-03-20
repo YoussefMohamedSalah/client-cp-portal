@@ -11,7 +11,7 @@ interface Props {
 }
 
 const TodoModal = ({ onClose, onUpdate, onCreate, isModal, formFields }: Props) => {
-  console.log(isModal)
+  console.log(isModal);
   return (
     <Modal centered show={isModal !== "none" ? true : false} onHide={onClose}>
       <Modal.Body className="d-flex flex-column">
