@@ -84,6 +84,7 @@ const SideBar: React.FC<Props> = ({ session }) => {
 
   const changeMenu = () => {
     const userRole: string = session?.user?.role!;
+    console.log(userRole);
     if (userRole) {
       if (isSuperUser()) setMenuArray([...superUserMenuData]);
       else setMenuArray([...SideBarMenuData]);

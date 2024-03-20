@@ -30,6 +30,7 @@ interface Props {
 const EmployeeFormPage = ({ id }: Props) => {
   const [initialized, setInitialized] = useState<boolean>(false);
   const [isEdit, setIsEdit] = useState<boolean>(id ? true : false);
+  console.log(isEdit);
   // -----
   const [modelData, setModelData] = useState<Employee>({} as Employee);
   const [isModal, setIsModal] = useState<boolean>(false);
@@ -112,14 +113,14 @@ const EmployeeFormPage = ({ id }: Props) => {
     // if (key === EmployeeKeys.DEPARTMENT) {
     //   value = departments?.find((department: any) => department.id === value) || ({} as Employee);
     // }
-    console.log(value)
+    console.log(value);
     setModelData({
       ...modelData,
       [key]: value,
     });
   };
 
-  console.log(modelData, departmentsOptions)
+  console.log(modelData, departmentsOptions);
 
   const formFields: IField[] = [
     {
@@ -171,7 +172,7 @@ const EmployeeFormPage = ({ id }: Props) => {
       value: modelData?.password,
       onChange: (value: string) => handleModelData(EmployeeKeys.PASSWORD, value),
       placeholder: "Password",
-      required: false,
+      required: true,
       disabled: isEdit ? true : false,
     },
     {

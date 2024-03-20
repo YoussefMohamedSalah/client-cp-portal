@@ -1,5 +1,6 @@
 export const SideBarMenuData: any[] = [
   // ******************************** With Children Menus
+
   // Projects
   {
     name: "Projects",
@@ -48,7 +49,7 @@ export const SideBarMenuData: any[] = [
       },
     ],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Projects", "Finance", "Procurement", "Tender", "HR"],
+    departments: ["Projects", "Finance", "Procurement", "Tender"],
   },
   // Requests
   {
@@ -134,7 +135,7 @@ export const SideBarMenuData: any[] = [
       },
     ],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Projects", "Finance", "Procurement", "Tender", "HR"],
+    departments: ["Projects", "Finance", "Procurement", "Tender"],
   },
   // Finances
   {
@@ -211,74 +212,110 @@ export const SideBarMenuData: any[] = [
     departments: ["Finance"],
   },
   // HR Only
+  // {
+  //   name: "HR Sec",
+  //   routerLink: ["/"],
+  //   identifier: "HR Sec",
+  //   iconClass: "icofont-users-alt-1",
+  //   breadcrumbMessage: "",
+  //   isCategory: false,
+  //   isApp: true,
+  //   children: [
+  //     {
+  //       name: "Managers",
+  //       routerLink: ["/managers"],
+  //       identifier: "Managers",
+  //       iconClass: "icofont-users-alt-1",
+  //       breadcrumbMessage: "",
+  //       isCategory: false,
+  //       isApp: true,
+  //       children: [],
+  //       roles: ["Superuser", "Director", "Manager", "User"],
+  //     },
+  //     {
+  //       name: "Employees",
+  //       routerLink: ["/employees"],
+  //       identifier: "Employees",
+  //       iconClass: "icofont-users-alt-1",
+  //       breadcrumbMessage: "",
+  //       isCategory: false,
+  //       isApp: true,
+  //       children: [],
+  //       roles: ["Superuser", "Director", "Manager", "User"],
+  //     },
+  //     {
+  //       name: "Attendance",
+  //       routerLink: ["/attendance"],
+  //       identifier: "Attendance",
+  //       iconClass: "icofont-file-spreadsheet",
+  //       breadcrumbMessage: "",
+  //       isCategory: false,
+  //       isApp: true,
+  //       children: [],
+  //       roles: ["Superuser", "Director", "Manager", "User"],
+  //     },
+  //     {
+  //       name: "Salaries",
+  //       routerLink: ["/salaries"],
+  //       identifier: "Salaries",
+  //       iconClass: "icofont-file-spreadsheet",
+  //       breadcrumbMessage: "",
+  //       isCategory: false,
+  //       isApp: true,
+  //       children: [],
+  //       roles: ["Superuser", "User", "Manager", "Director"],
+  //     },
+  //     {
+  //       name: "Job Offer",
+  //       routerLink: ["/job_offer"],
+  //       identifier: "Job Offer",
+  //       iconClass: "icofont-file-spreadsheet",
+  //       breadcrumbMessage: "",
+  //       isCategory: false,
+  //       isApp: true,
+  //       children: [],
+  //       roles: ["Superuser", "User", "Manager", "Director"],
+  //     },
+  //   ],
+  //   roles: ["Superuser", "User", "Manager", "Director"],
+  //   departments: [],
+  // },
   {
-    name: "HR Sec",
+    name: "Approval",
     routerLink: ["/"],
-    identifier: "HR Sec",
+    identifier: "Approval",
     iconClass: "icofont-users-alt-1",
     breadcrumbMessage: "",
     isCategory: false,
     isApp: true,
     children: [
       {
-        name: "Managers",
-        routerLink: ["/managers"],
-        identifier: "Managers",
-        iconClass: "icofont-users-alt-1",
-        breadcrumbMessage: "",
-        isCategory: false,
-        isApp: true,
-        children: [],
-        roles: ["Superuser", "Director", "Manager", "User"],
-      },
-      {
-        name: "Employees",
-        routerLink: ["/employees"],
-        identifier: "Employees",
-        iconClass: "icofont-users-alt-1",
-        breadcrumbMessage: "",
-        isCategory: false,
-        isApp: true,
-        children: [],
-        roles: ["Superuser", "Director", "Manager", "User"],
-      },
-      {
-        name: "Attendance",
-        routerLink: ["/attendance"],
-        identifier: "Attendance",
-        iconClass: "icofont-file-spreadsheet",
-        breadcrumbMessage: "",
-        isCategory: false,
-        isApp: true,
-        children: [],
-        roles: ["Superuser", "Director", "Manager", "User"],
-      },
-      {
-        name: "Salaries",
-        routerLink: ["/salaries"],
-        identifier: "Salaries",
-        iconClass: "icofont-file-spreadsheet",
-        breadcrumbMessage: "",
-        isCategory: false,
-        isApp: true,
-        children: [],
-        roles: ["Superuser", "User", "Manager", "Director"],
-      },
-      {
         name: "Job Offer",
         routerLink: ["/job_offer"],
         identifier: "Job Offer",
-        iconClass: "icofont-file-spreadsheet",
+        iconClass: "icofont-users-alt-1",
         breadcrumbMessage: "",
         isCategory: false,
         isApp: true,
         children: [],
-        roles: ["Superuser", "User", "Manager", "Director"],
+        roles: ["Superuser", "Director", "Manager", "User"],
+      },
+      {
+        name: "Services",
+        routerLink: ["/services"],
+        identifier: "Services",
+        iconClass: "icofont-users-alt-1",
+        breadcrumbMessage: "",
+        isCategory: false,
+        isApp: true,
+        children: [],
+        roles: ["Superuser", "Director", "Manager", "User"],
       },
     ],
-    roles: ["Superuser", "User", "Manager", "Director"],
+    roles: ["Manager", "Director"],
     departments: ["HR"],
   },
+
   // HR for all
   {
     name: "HR Sec",
@@ -391,6 +428,114 @@ export const SideBarMenuData: any[] = [
   },
 
   // *************************************************************
+  // <Dashboard
+  {
+    name: "Dashboard _ KPI",
+    routerLink: ["/"],
+    identifier: "Dashboard",
+    iconClass: "icofont-dashboard",
+    breadcrumbMessage: "",
+    isCategory: false,
+    isApp: true,
+    children: [],
+    roles: ["Superuser", "User", "Manager", "Director"],
+    departments: ["Projects", "Tender", "Finance", "HR", "Procurement", "Marketing"],
+  },
+
+  // <Profile
+  {
+    name: "Profile",
+    routerLink: ["/profile"],
+    identifier: "Profile",
+    iconClass: "icofont-ui-user",
+    breadcrumbMessage: "",
+    isCategory: false,
+    isApp: true,
+    children: [],
+    roles: ["Superuser", "User", "Manager", "Director"],
+    departments: ["Projects", "Tender", "Finance", "HR", "Procurement", "Marketing"],
+  },
+
+  // <Attendence
+  {
+    name: "Attendence",
+    routerLink: ["/attendence"],
+    identifier: "Attendence",
+    iconClass: "icofont-finger-print",
+    breadcrumbMessage: "",
+    isCategory: false,
+    isApp: true,
+    children: [],
+    roles: ["Superuser", "User", "Manager", "Director"],
+    departments: ["Projects", "Tender", "Finance", "HR", "Procurement", "Marketing"],
+  },
+  // <Dcc
+  {
+    name: "DCC",
+    routerLink: ["/dcc"],
+    identifier: "DCC",
+    iconClass: "icofont-briefcase",
+    breadcrumbMessage: "",
+    isCategory: false,
+    isApp: false,
+    children: [],
+    roles: ["Superuser", "User", "Manager", "Director"],
+    departments: ["Projects", "HR", "Finance", "Marketing", "Tender", "Procurement"],
+  },
+  // < Tasks
+  {
+    name: "Tasks",
+    routerLink: ["/tasks"],
+    identifier: "Tasks",
+    iconClass: "icofont-tasks-alt",
+    breadcrumbMessage: "",
+    isCategory: false,
+    isApp: false,
+    children: [],
+    roles: ["Superuser", "User", "Manager", "Director"],
+    departments: ["Projects", "HR", "Finance", "Marketing", "Tender", "Procurement"],
+  },
+  //<Job Offer
+  {
+    name: "Job Offer",
+    routerLink: ["/job_offer"],
+    identifier: "Job Offer",
+    iconClass: "icofont-money-bag",
+    breadcrumbMessage: "",
+    isCategory: false,
+    isApp: true,
+    children: [],
+    roles: ["Superuser", "User", "Manager", "Director"],
+    departments: ["Finance", "HR"],
+  },
+
+  // <Create User
+  {
+    name: "Create User",
+    routerLink: ["/employees"],
+    identifier: "Create User",
+    iconClass: "icofont-contact-add",
+    breadcrumbMessage: "",
+    isCategory: false,
+    isApp: true,
+    children: [],
+    roles: ["Superuser", "User", "Manager", "Director"],
+    departments: ["HR"],
+  },
+
+  // <Time Sheet
+  {
+    name: "Time Sheet",
+    routerLink: ["/time_sheet"],
+    identifier: "Time Sheet",
+    iconClass: "icofont-file-spreadsheet",
+    breadcrumbMessage: "",
+    isCategory: false,
+    isApp: true,
+    children: [],
+    roles: ["Superuser", "User", "Manager", "Director"],
+    departments: ["HR"],
+  },
   // <Tender Department>
   {
     name: "Tenders",
@@ -402,7 +547,7 @@ export const SideBarMenuData: any[] = [
     isApp: true,
     children: [],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Tender", "Finance", "HR"],
+    departments: ["Tender", "Finance"],
   },
   // <Marketing Department>
   {
@@ -419,19 +564,7 @@ export const SideBarMenuData: any[] = [
   },
 
   // *************************************************************
-  // <Open For All Departments>
-  {
-    name: "DCC",
-    routerLink: ["/dcc"],
-    identifier: "DCC",
-    iconClass: "icofont-briefcase",
-    breadcrumbMessage: "",
-    isCategory: false,
-    isApp: false,
-    children: [],
-    roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Projects", "HR", "Finance", "Marketing", "Tender", "Procurement"],
-  },
+
   // {
   //   name: "Reports",
   //   routerLink: ["/reports"],
@@ -470,18 +603,7 @@ export const SideBarMenuData: any[] = [
   //     "Procurement"
   //   ]
   // },
-  {
-    name: "Tasks",
-    routerLink: ["/tasks"],
-    identifier: "Tasks",
-    iconClass: "icofont-tasks-alt",
-    breadcrumbMessage: "",
-    isCategory: false,
-    isApp: false,
-    children: [],
-    roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Projects", "HR", "Finance", "Marketing", "Tender", "Procurement"],
-  },
+
   {
     name: "Chat",
     routerLink: ["/chat"],
@@ -492,7 +614,7 @@ export const SideBarMenuData: any[] = [
     isApp: true,
     children: [],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Projects", "HR", "Finance", "Marketing", "Tender", "Procurement"],
+    departments: ["Projects", "Finance", "Marketing", "Tender", "Procurement"],
   },
   {
     name: "Calendar",
@@ -504,6 +626,18 @@ export const SideBarMenuData: any[] = [
     isApp: true,
     children: [],
     roles: ["Superuser", "Manager", "Director"],
-    departments: ["HR", "Finance", "Marketing", "Tender", "Procurement"],
+    departments: ["Finance", "Marketing", "Tender", "Procurement"],
+  },
+  {
+    name: "Report",
+    routerLink: ["/report"],
+    identifier: "Report",
+    iconClass: "icofont-file-spreadsheet",
+    breadcrumbMessage: "",
+    isCategory: false,
+    isApp: true,
+    children: [],
+    roles: ["Superuser", "User", "Manager", "Director"],
+    departments: ["HR"],
   },
 ];
