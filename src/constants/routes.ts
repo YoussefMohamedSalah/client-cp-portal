@@ -29,7 +29,6 @@ export enum ROUTES {
   DAILY_REPORT = "daily_report/",
   DAILY_REPORT_INITIAL_DATA = "daily_report/initial/",
   TODO = "todo/",
-  CO_TODOS = "company/todo",
 
   // !----- All Endpoints ------
   SUPPLIER = "supplier/",

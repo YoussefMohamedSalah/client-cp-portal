@@ -1,29 +1,29 @@
 import { useMutation } from "@tanstack/react-query";
 import { ROUTES } from "constants/routes";
-import { Supplier } from "types/Supplier";
+import { Todo } from "types/Todo";
 import { http } from "utils/Http";
+import { QueryClient } from "@tanstack/react-query";
 
-export const useUpdateSupplier = () => {
+const queryClient = new QueryClient();
+
+export const useUpdateTodo = () => {
   return useMutation<any, Error, any>(async (updateInput) => {
-    const { data } = await http.put(ROUTES.SUPPLIER + updateInput.id, updateInput.data);
-    return { supplier: { data: data as Supplier } };
-  });
+    const { data } = await http.put(ROUTES.TODO + updateInput.id, updateInput);
+    return { todo: { data: data as Todo } };
+  },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(["todos"]);
+      },
+    },
+  );
 };
 
-export const supplierUpdateInput = (data: Supplier): any => {
+export const todoUpdateInput = (data: Todo): any => {
   return {
     id: data.id,
-    // customer_type: data.customer_type,
-    company_name: data.company_name,
-    vat_on: data.vat_on,
-    name: data.name,
-    phone_number: data.phone_number,
-    email: data.email,
-    country: data.country,
-    city: data.city,
-    area: data.area,
-    street: data.street,
-    building_number: data.building_number,
-    postal_code: data.postal_code,
-  } as Supplier;
+    title: data.title,
+    description: data.description,
+    status: data.status,
+  } as Todo;
 };

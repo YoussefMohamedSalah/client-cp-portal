@@ -1,6 +1,5 @@
 export enum TodoKeys {
-  NAME = "name",
-  DESC = "desc",
   TITLE = "title",
+  DESCRIPTION = "description",
   STATUS = "status",
 }

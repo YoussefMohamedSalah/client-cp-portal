@@ -4,10 +4,10 @@ import { Todo } from "types/Todo";
 import { http } from "utils/Http";
 
 export const getAllTodos = async () => {
-  const { data } = await http.get(ROUTES.CO_TODOS);
+  const { data } = await http.get(ROUTES.TODO);
   return { todos: { data: data as Todo[] } };
 };
 
 export const useTodosQuery = (options: any) => {
-  return useQuery<{ todos: { data: any } }, Error>([ROUTES.CO_TODOS, options], getAllTodos);
+  return useQuery({ queryKey: ["todos"], queryFn: getAllTodos });
 };
