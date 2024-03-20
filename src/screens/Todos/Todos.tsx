@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PageHeader from "components/Common/PageHeader";
 import { IField } from "types/Forms/formFields";
 import { Todo } from "types/Todo";
-import { useTodosQuery } from "api/Todo/getAllTodos";
+import { getAllTodos, useTodosQuery } from "api/Todo/getAllTodos";
 import Loading from "components/UI/Loading";
 import { todoInput, useCreateTodo } from "api/Todo/createTodo";
 import { useUI } from "contexts/UIContext";
@@ -16,6 +16,7 @@ import TodoModal from "components/Todos/TodoModal";
 import { TODO } from "enums/enums";
 
 const Todos: React.FC = () => {
+  const [todos, setTodos] = useState<Todo[]>([])
   const [isModal, setIsModal] = useState<"none" | "edit" | "create">("none");
   const { data, error, isLoading } = useTodosQuery({});
   const [modelData, setModelData] = useState<Todo>({} as Todo);
@@ -26,6 +27,15 @@ const Todos: React.FC = () => {
 
   const { showError, showSuccess } = useUI();
 
+  useEffect(() => {
+    if (data && data.todos && data.todos.data) {
+      setTodos(data.todos.data);
+    }
+  }, [data])
+
+  if (isLoading) return <Loading />;
+  if (error) return null;
+
   // control the value of input
   const handleModelData = (key: string, value: any) => {
     setModelData({
@@ -33,6 +43,17 @@ const Todos: React.FC = () => {
       [key]: value,
     });
   };
+
+  const handleRefetch = async () => {
+    try {
+      let res = await getAllTodos();
+      if (res && res.todos && res.todos.data) {
+        setTodos(res.todos.data)
+      }
+    } catch (err: any) {
+      showError(handleServerError(err.response));
+    }
+  }
 
   const handleOpenModal = (todo: Todo = {} as Todo) => {
     setModelData(todo);
@@ -50,6 +71,7 @@ const Todos: React.FC = () => {
     try {
       let createInput = todoInput(modelData);
       await createMutation(createInput);
+      handleRefetch()
       handleClose();
     } catch (err: any) {
       showError(handleServerError(err.response));
@@ -59,6 +81,7 @@ const Todos: React.FC = () => {
   const handleDelete = async (id: string) => {
     try {
       await deleteMutation(id);
+      handleRefetch()
       showSuccess();
       handleClose();
     } catch (err: any) {
@@ -69,6 +92,7 @@ const Todos: React.FC = () => {
   const handleUpdate = async () => {
     try {
       await updateMutation(modelData);
+      handleRefetch()
       showSuccess();
       handleClose();
     } catch (err: any) {
@@ -111,10 +135,6 @@ const Todos: React.FC = () => {
       required: true,
     },
   ];
-
-  if (isLoading) return <Loading />;
-  if (error) return null;
-  let todos: Todo[] = data?.todos?.data! || ([] as Todo[]);
 
   return (
     <div className="container-fluid">
