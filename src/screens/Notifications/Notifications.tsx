@@ -9,7 +9,6 @@ import useApp from "hooks/useApp";
 import { NotificationType } from "types/Notification";
 import NoTableData from "components/Common/NoTableData";
 
-
 const Notifications = () => {
   const { isLoading, error, data } = useNotificationsQuery({});
   const { mutateAsync: updateMutation } = useUpdateNotificationStatus();
@@ -19,7 +18,7 @@ const Notifications = () => {
   if (isLoading) return null;
   if (error) return <Loading />;
 
-  const notifications: NotificationType = data?.notifications?.data! || [] as NotificationType[];
+  const notifications: NotificationType = data?.notifications?.data! || ([] as NotificationType[]);
 
   const handleNotificationStatus = async (notification: any) => {
     if (notification.is_read) return;
@@ -52,10 +51,7 @@ const Notifications = () => {
 
   return (
     <div className="container-xxl">
-      <PageHeader
-        headerTitle="Notifications"
-        isBackBtn={true}
-      />
+      <PageHeader headerTitle="Notifications" isBackBtn={true} />
       <div>
         {Array.isArray(notifications) &&
           notifications.length > 0 &&
@@ -64,7 +60,10 @@ const Notifications = () => {
               <div className={`pointer`} onClick={() => handleClick(notification)}>
                 <div
                   className=""
-                  style={{ ...notificationListStyle, borderLeft: `${notification.is_read ? "" : "2px solid #224189"}` }}>
+                  style={{
+                    ...notificationListStyle,
+                    borderLeft: `${notification.is_read ? "" : "2px solid #224189"}`,
+                  }}>
                   <div className="d-flex">
                     <div className="notification-list_detail" style={notificationListDetailStyle}>
                       <p>

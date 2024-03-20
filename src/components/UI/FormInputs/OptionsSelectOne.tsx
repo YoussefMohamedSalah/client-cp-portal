@@ -15,7 +15,6 @@ interface Props {
 }
 
 const OptionsSelectOne = React.memo(({ options, label, onChange, defaultValue, disabled, value, required }: Props) => {
-
   const getOptionLabel = (option: string | IOption) => (typeof option === "string" ? option : option?.label || "");
   const filterOptions = (options: (string | IOption)[], { inputValue }: { inputValue: string }) => {
     const inputValueLowerCase = inputValue.toLowerCase();

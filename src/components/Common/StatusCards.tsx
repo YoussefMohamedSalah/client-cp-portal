@@ -45,7 +45,7 @@ function StatusCards<
   let allData = data || [];
   let done = data?.filter((row) => row?.status! === TODO.DONE) || [];
   let onProgress = data?.filter((row) => row?.status! === TODO.ON_PROGRESS) || [];
-  let pending = data?.filter((row) => row?.status! === TODO.PENDING) || [];
+  let others = data?.filter((row) => row?.status! === TODO.OTHERS) || [];
   let toDo = data?.filter((row) => row?.status! === TODO.TODO) || [];
 
   const handleFilter = (term: string) => {
@@ -54,8 +54,8 @@ function StatusCards<
         return setFilterData(done);
       case TODO.ON_PROGRESS:
         return setFilterData(onProgress);
-      case TODO.PENDING:
-        return setFilterData(pending);
+      case TODO.OTHERS:
+        return setFilterData(others);
       case TODO.TODO:
         return setFilterData(toDo);
       default:
@@ -97,12 +97,12 @@ function StatusCards<
       onClick: () => handleFilter(TODO.ON_PROGRESS),
     },
     {
-      title: "Pending",
+      title: "Others",
       fColor: "text-white",
       bgColor: "bg-primary",
       value: `Data Count: ${pending.length || 0}`,
       iconClass: "icofont-data fs-3",
-      onClick: () => handleFilter(TODO.PENDING),
+      onClick: () => handleFilter(TODO.OTHERS),
     },
   ];
 

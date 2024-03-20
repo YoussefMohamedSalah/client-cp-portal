@@ -30,7 +30,7 @@ export enum PAGES {
   DAILY_REPORTS = "daily_reports",
   PROCUREMENT_PLAN = "procurement_plan",
   CONSTRUCTION_PLAN = "construction_plan",
-  TODO = "todo",
+  TODO = "todos",
 
   // Details
   PO_REQUEST_INFO = "po_request_rev",

@@ -75,7 +75,7 @@ const UserDorpDownIcon = ({ session }: Props) => {
               style={{ cursor: "pointer" }}
               onClick={() => changeView()}
               className="list-group-item list-group-item-action border-0 ">
-              <i className="icofont-tasks fs-5 me-3" />
+              <i className="icofont-user fs-5 me-3" />
               {view === "admin" ? "User Profile" : "Admin Profile"}
             </div>
             <div
@@ -84,14 +84,23 @@ const UserDorpDownIcon = ({ session }: Props) => {
                 push("/profile");
               }}
               className="list-group-item list-group-item-action border-0 ">
-              <i className="icofont-ui-user-group fs-6 me-3" />
+              <i className="icofont-ui-user-group fs-5 me-3" />
               profile
+            </div>
+            <div
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                push("/todos");
+              }}
+              className="list-group-item list-group-item-action border-0 ">
+              <i className="icofont-tasks fs-5 me-3" />
+              Todos
             </div>
             <div>
               <hr className="dropdown-divider border-dark" />
             </div>
             <span onClick={handleLogout} className="list-group-item list-group-item-action border-0 pointer">
-              <i className="icofont-logout fs-6 me-3" />
+              <i className="icofont-logout fs-5 me-3" />
               Sign out
             </span>
           </div>

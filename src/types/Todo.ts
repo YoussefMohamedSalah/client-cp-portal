@@ -1,6 +1,8 @@
+import { TODO } from "enums/enums";
+
 export interface Todo {
   id: string;
   title: string;
-  desc: string;
-  status: string;
+  description: string;
+  status: TODO;
 }

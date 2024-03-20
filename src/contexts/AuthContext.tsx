@@ -55,11 +55,11 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
     if (view === "admin") {
       setView("user");
       localStorage.setItem("view", "user");
-      window.location.reload();
+      window.location.replace("/");
     } else if (view === "user") {
       localStorage.setItem("view", "admin");
       setView("admin");
-      window.location.reload();
+      window.location.replace("/");
     }
   };
 

@@ -152,7 +152,7 @@ const DataImportingSettings = () => {
                                 />
                               </div>
                               <a href="/empty_employee_data.csv" download="empty_employee_data.csv">
-                                <Button className="lift" content="Download Employee Template" onClick={() => { }} />
+                                <Button className="lift" content="Download Employee Template" onClick={() => {}} />
                               </a>
                             </div>
                             <Attachment onUploadFile={handleUpload} isSubmitting={isSubmitting} />
