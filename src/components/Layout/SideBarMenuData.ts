@@ -544,7 +544,7 @@ export const SideBarMenuData: any[] = [
   //Approval
   {
     name: "Approval",
-    routerLink: ["/"],
+    routerLink: ["/finance-approval"],
     identifier: "Approval ",
     iconClass: "icofont-checked",
     breadcrumbMessage: "",

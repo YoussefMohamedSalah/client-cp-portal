@@ -11,13 +11,15 @@ import { PurchaseOrderRequest } from "types/Po_request";
 import { isAdminView } from "utils/Helpers";
 import useColumnTable from "hooks/useColumnTable";
 
-const PoRequests: React.FC = () => {
+const FinanceApproval: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<PurchaseOrderRequest>({} as PurchaseOrderRequest);
   const [open, setOpen] = useState<boolean>(false);
   const [requests, setRequests] = useState<PurchaseOrderRequest[]>([] as PurchaseOrderRequest[]);
 
   const { data, error, isLoading } = useGetAllPoRequestsQuery();
-  
+
+  console.log("FinanceApproval", data);
+
   const { push } = useApp();
 
   const handleOpen = (request: PurchaseOrderRequest) => {
@@ -44,16 +46,11 @@ const PoRequests: React.FC = () => {
     <>
       <div className="container-fluid">
         {/* page header */}
-        <PageHeader
-          headerTitle={"Purchase Order Requests"}
-          isBtnShow={!isAdminView() ? true : false}
-          btnText={"Create PO"}
-          onClickBtn={() => push("/" + PAGES.PO_REQUEST)}
-        />
+        <PageHeader headerTitle={"Finance Approval"} />
         {/* table data */}
         <div className="test">
           <DocumentTable<PurchaseOrderRequest>
-            title={"Purchase Order Requests"}
+            title={"FinanceApproval"}
             columns={purchaseOrderColumnT}
             data={requests}
             renderCards={true}
@@ -61,6 +58,7 @@ const PoRequests: React.FC = () => {
             renderDownload={true}
             selectItem={(item: PurchaseOrderRequest) => setSelectedDocument(item)}
             filterOptions={["name", "date", "code"]}
+            isFinanceApproval={true}
           />
         </div>
       </div>
@@ -75,4 +73,4 @@ const PoRequests: React.FC = () => {
   );
 };
 
-export default PoRequests;
+export default FinanceApproval;

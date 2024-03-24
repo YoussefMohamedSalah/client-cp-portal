@@ -25,6 +25,8 @@ const Dcc: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
   const { showError } = useUI();
 
+  console.log("documents", documents);
+
   useEffect(() => {
     if (documentType) {
       handleGetDocuments(documentType);

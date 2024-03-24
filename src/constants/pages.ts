@@ -78,7 +78,9 @@ export enum PAGES {
 
   REPORTS = "reports",
   GROUPS = "groups",
-
+  FINANCE_APPROVAL = "finance-approval",
+  // APPROVAL_LIST="finance-approval/list-all",
+  APPROVAL_LIST="list-all",
   // -----
 
   // -----

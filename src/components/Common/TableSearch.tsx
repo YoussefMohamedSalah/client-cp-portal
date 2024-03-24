@@ -42,6 +42,7 @@ const TableSearch: React.FC<Props> = ({ data, terms, classNameContainer, onSearc
 
   return (
     <>
+    
       <div
         style={{ maxWidth: "40rem" }}
         className={
