@@ -41,7 +41,6 @@ export const projectUpdateInput = (data: Project): any => {
       comments: data.comments,
       members: data.members,
       tasks: data.tasks,
-      customer: data.customer,
     } as any;
   }
 
