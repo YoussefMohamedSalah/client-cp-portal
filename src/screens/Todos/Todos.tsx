@@ -114,7 +114,13 @@ const Todos: React.FC = () => {
 
   if (isLoading) return <Loading />;
   if (error) return null;
-  let todos: Todo[] = data?.todos?.data! || ([] as Todo[]);
+
+  //  to check if todos is an array
+  function isTodoArray(value: any): value is Todo[] {
+    return Array.isArray(value);
+  }
+  // Check if data.todos.data exists and is an array before accessing it
+  let todos: Todo[] = data?.todos?.data && isTodoArray(data.todos.data) ? data.todos.data : ([] as Todo[]);
 
   return (
     <div className="container-fluid">

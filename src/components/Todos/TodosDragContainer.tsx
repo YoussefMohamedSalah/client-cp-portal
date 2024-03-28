@@ -21,6 +21,7 @@ interface TaskType {
 }
 
 const TodosDragAnDropContainer = ({ todos, onDelete, onUpdate }: Props) => {
+  console.log(todos);
   const { mutateAsync: updateMutation } = useUpdateTodo();
   const { showError } = useUI();
 
@@ -32,7 +33,7 @@ const TodosDragAnDropContainer = ({ todos, onDelete, onUpdate }: Props) => {
   ]);
 
   useEffect(() => {
-    if (todos) {
+    if (todos.length >= 1) {
       let todoArr = todos?.filter((todo) => todo.status === TODO.TODO) || [];
       let onProgressArr = todos?.filter((todo) => todo.status === TODO.ON_PROGRESS) || [];
       let doneArr = todos?.filter((todo) => todo.status === TODO.DONE) || [];
@@ -47,6 +48,7 @@ const TodosDragAnDropContainer = ({ todos, onDelete, onUpdate }: Props) => {
 
       setGroups(newGroups);
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [todos]);
 
