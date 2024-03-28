@@ -17,6 +17,7 @@ const PoRequests: React.FC = () => {
   const [requests, setRequests] = useState<PurchaseOrderRequest[]>([] as PurchaseOrderRequest[]);
 
   const { data, error, isLoading } = useGetAllPoRequestsQuery();
+  
   const { push } = useApp();
 
   const handleOpen = (request: PurchaseOrderRequest) => {

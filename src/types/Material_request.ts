@@ -1,6 +1,6 @@
 import { Project } from "./Project";
 import { Company } from "./Company";
-import { STATUS, DOCUMENT_TYPE } from "enums/enums";
+import { STATUS, DOCUMENT_TYPE, FINANCE_STATUS } from "enums/enums";
 import { FileType } from "./FileType";
 
 export interface MaterialRequest {
@@ -14,6 +14,7 @@ export interface MaterialRequest {
   description: string | null;
   subject: string | null;
   status: STATUS;
+  finance_state: FINANCE_STATUS;
   items: Array<{
     description: string;
     item: string;

@@ -1,4 +1,4 @@
-import { DOCUMENT_TYPE } from "enums/enums";
+import { DOCUMENT_TYPE, FINANCE_STATUS, STATUS } from "enums/enums";
 
 export interface EmployeeRequest {
   id: string;
@@ -9,7 +9,8 @@ export interface EmployeeRequest {
   date: string;
   subject: string | null;
   description: string | null;
-  status: string;
+  status: STATUS;
+  finance_state: FINANCE_STATUS;
   work_flow: Array<{ userId: string; name: string; title: string; state: boolean; isRejected: boolean; sign: string }>;
   files: Array<{ name: string; url: string }>;
   timeline: Array<{ name: string; content: string; date: Date; status: string }>;

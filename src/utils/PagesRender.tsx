@@ -95,6 +95,7 @@ const Inventory = lazy(() => import("../screens/Inventory/Inventory"));
 // const Managers = lazy(() => import("../Manager/Managers"));
 const Groups = lazy(() => import("../screens/Groups/Groups"));
 // const EmployeeProfile = lazy(() => import("../Profile/EmployeeProfile"));
+const FinanceApproval = lazy(() => import("../screens/Finance/FinanceApproval/FinanceApproval"));
 
 // const EnquiresDetail = lazy(() => import("../Tickets/TicketsDetail"));
 
@@ -306,6 +307,9 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
 
       case PAGES.NOTIFICATIONS:
         return <Notifications />;
+
+      case PAGES.FINANCE_APPROVAL:
+        return <FinanceApproval />;
 
       // case PAGES.INVENTORY:
       // 	return <Inventory />;

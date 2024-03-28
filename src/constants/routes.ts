@@ -74,6 +74,19 @@ export enum ROUTES {
   DCC_PC_REQUESTS = "dcc/pc/",
   DCC_SITE_REQUESTS = "dcc/site/",
   DCC_MATERIAL_REQUESTS = "dcc/material/",
+  DCC_EMPLOYEE_REQUESTS = "dcc/employee/",
+  DCC_CONTRACT_REQUESTS = "dcc/contract/",
+  DCC_INVOICE_REQUESTS = "dcc/invoice/",
+
+
+
+  FINANCE_PO_REQUESTS = "finance/po/",
+  FINANCE_PC_REQUESTS = "finance/pc/",
+  FINANCE_SITE_REQUESTS = "finance/site/",
+  FINANCE_MATERIAL_REQUESTS = "finance/material/",
+  FINANCE_EMPLOYEE_REQUESTS = "finance/employee/",
+  FINANCE_CONTRACT_REQUESTS = "finance/contract/",
+  FINANCE_INVOICE_REQUESTS = "finance/invoice/",
 
   PO_REQUEST = "request/po/",
   PC_REQUEST = "request/pc/",

@@ -12,6 +12,7 @@ import { formatDocumentCsvOutput } from "utils/FormatDocumentCsvOutput";
 import { Contract } from "types/Contract";
 import { Invoice } from "types/Invoice";
 import { formatCsvTitle } from "utils/FormatCsvTitle";
+import FinancialCards from "./FinancialCards";
 
 interface Props<
   T extends
@@ -36,6 +37,7 @@ interface Props<
   renderDownload: boolean;
   filterOptions?: string[];
   selectItem?: (item: T) => void;
+  isFinanceApproval?: boolean;
 }
 
 function DocumentTable<
@@ -61,6 +63,7 @@ function DocumentTable<
   renderDownload,
   filterOptions,
   selectItem,
+  isFinanceApproval,
 }: Props<T>) {
   const [filteredData, setFilteredData] = useState<T[]>([]);
   const onCardsFilter = (filtered: T[]) => setFilteredData(filtered);
@@ -79,7 +82,8 @@ function DocumentTable<
   return (
     <div className="row clearfix g-3">
       {/* Cards Filters */}
-      {renderCards && <TableCards data={data} onFilter={onCardsFilter} />}
+
+      {renderCards && !isFinanceApproval && <TableCards data={data} onFilter={onCardsFilter} />}
       <div className="d-flex flex-column flex-lg-row justify-content-xl-between justify-content-center">
         {/* Download as a CSV */}
         {renderDownload && <DownloadCSV fileName={formatCsvTitle(fileName)} csvData={csvData} />}
@@ -93,6 +97,7 @@ function DocumentTable<
           />
         )}
       </div>
+      {isFinanceApproval && <FinancialCards data={data} onFilter={onCardsFilter} />}
       {/* TABLE */}
       <div className="col-sm-12">
         <DataTable

@@ -2,7 +2,7 @@ import { Project } from "./Project";
 import { Company } from "./Company";
 import { Subcontractor } from "./Subcontractor";
 import { Contract } from "./Contract";
-import { STATUS, DOCUMENT_TYPE } from "enums/enums";
+import { STATUS, DOCUMENT_TYPE, FINANCE_STATUS } from "enums/enums";
 
 export interface Invoice {
   id: string;
@@ -31,11 +31,12 @@ export interface Invoice {
   files: string[];
   user: { id: string; name: string };
   project_details: { id: string; name: string };
-  status: STATUS;
   work_flow: Array<{ userId: string; name: string; title: string; state: boolean; isRejected: boolean; sign: string }>;
   timeline: Array<{ name: string; content: string; date: Date; status: string }>;
   rejection_reason: string | null;
   project: Project;
+  status: STATUS;
+  finance_state: FINANCE_STATUS;
   contract: Contract;
   subcontractor: Subcontractor;
   company: Company;

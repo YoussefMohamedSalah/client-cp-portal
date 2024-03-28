@@ -3,7 +3,7 @@ import React from "react";
 interface Props {
   onClick?: () => void;
   className?: string;
-  variant?: "secondary" | "primary" | "dark";
+  variant?: "secondary" | "primary" | "dark" | "danger" | "success";
   size?: "md" | "lg";
   content: string;
 }

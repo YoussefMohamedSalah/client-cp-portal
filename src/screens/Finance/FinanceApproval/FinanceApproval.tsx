@@ -1,8 +1,14 @@
+import Loading from "components/UI/Loading";
+import DocumentTable from "components/Common/DocumentTable";
 import { Tab, Nav } from "react-bootstrap";
 import PageHeader from "components/Common/PageHeader";
-import DocumentTable from "components/Common/DocumentTable";
+import { DOCUMENT_TYPE, STATUS } from "enums/enums";
+import { useEffect, useState } from "react";
+import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
 import useColumnTable from "hooks/useColumnTable";
-import { useState, useEffect } from "react";
+import { geFinanceDocuments } from "api/Finances/getFinanceDocuments";
+import { useUI } from "contexts/UIContext";
+import { handleServerError } from "utils/HandlingServerError";
 import { Contract } from "types/Contract";
 import { PettyCashRequest } from "types/Pc_request";
 import { SiteRequest } from "types/Site_request";
@@ -10,14 +16,9 @@ import { MaterialRequest } from "types/Material_request";
 import { PurchaseOrderRequest } from "types/Po_request";
 import { Invoice } from "types/Invoice";
 import { EmployeeRequest } from "types/Employee_request";
-import Loading from "components/UI/Loading";
-import WorkFlowStatusModal from "components/Modals/WorkFlowStatusModal";
-import { DOCUMENT_TYPE, STATUS } from "enums/enums";
-import { useUI } from "contexts/UIContext";
-import { handleServerError } from "utils/HandlingServerError";
-import { geDccDocuments } from "api/Dcc/getDccDocuments";
 
-const Dcc: React.FC = () => {
+
+const FinanceApproval: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<any>({} as any);
   const [documentType, setDocumentType] = useState<string>(DOCUMENT_TYPE.PURCHASE_ORDER);
   const [documents, setDocuments] = useState<any[]>([]);
@@ -32,27 +33,23 @@ const Dcc: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [documentType]);
 
-  const handleOpen = (request: Contract) => {
-    setSelectedDocument(request);
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
   const handleGetDocuments = async (type: string) => {
     try {
       setIsLoading(true);
-      const documents = await geDccDocuments(type);
+      const documents = await geFinanceDocuments(type);
       if (documents) {
-        setDocuments(documents.dccDocuments?.data! || []);
+        setDocuments(documents.financeDocuments?.data! || []);
       }
       setIsLoading(false);
     } catch (err: any) {
       setIsLoading(false);
       showError(handleServerError(err.response));
     }
+  };
+
+  const handleOpen = (request: PurchaseOrderRequest) => {
+    setSelectedDocument(request);
+    setOpen(true);
   };
 
   const {
@@ -65,13 +62,17 @@ const Dcc: React.FC = () => {
     invoiceColumnT,
   } = useColumnTable(handleOpen);
 
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <div className="container-fluid">
         <Tab.Container id="left-tabs-example" defaultActiveKey="po">
           <div className="row clearfix g-3">
             <PageHeader
-              headerTitle={"DCC | Documents Control Center"}
+              headerTitle={"Finances | Control Center"}
               isBtnShow={false}
               renderRight={() => {
                 return (
@@ -132,6 +133,7 @@ const Dcc: React.FC = () => {
                       renderDownload={true}
                       selectItem={(item: PurchaseOrderRequest) => setSelectedDocument(item)}
                       filterOptions={["name", "date", "code"]}
+                      isFinanceApproval={true}
                     />
                   </Tab.Pane>
                   <Tab.Pane eventKey="pc">
@@ -144,6 +146,7 @@ const Dcc: React.FC = () => {
                       renderDownload={true}
                       selectItem={(item: PettyCashRequest) => setSelectedDocument(item)}
                       filterOptions={["name", "date", "code"]}
+                      isFinanceApproval={true}
                     />
                   </Tab.Pane>
                   <Tab.Pane eventKey="site">
@@ -156,6 +159,7 @@ const Dcc: React.FC = () => {
                       renderDownload={true}
                       selectItem={(item: SiteRequest) => setSelectedDocument(item)}
                       filterOptions={["name", "date", "code"]}
+                      isFinanceApproval={true}
                     />
                   </Tab.Pane>
                   <Tab.Pane eventKey="material">
@@ -168,6 +172,7 @@ const Dcc: React.FC = () => {
                       renderDownload={true}
                       selectItem={(item: MaterialRequest) => setSelectedDocument(item)}
                       filterOptions={["name", "date", "code"]}
+                      isFinanceApproval={true}
                     />
                   </Tab.Pane>
                   <Tab.Pane eventKey="employee">
@@ -180,6 +185,7 @@ const Dcc: React.FC = () => {
                       renderDownload={true}
                       selectItem={(item: EmployeeRequest) => setSelectedDocument(item)}
                       filterOptions={["name", "date", "code"]}
+                      isFinanceApproval={true}
                     />
                   </Tab.Pane>
                   <Tab.Pane eventKey="contract">
@@ -191,6 +197,7 @@ const Dcc: React.FC = () => {
                       renderSearch={true}
                       renderDownload={true}
                       filterOptions={["name", "date", "code"]}
+                      isFinanceApproval={true}
                     />
                   </Tab.Pane>
                   <Tab.Pane eventKey="invoice">
@@ -203,6 +210,7 @@ const Dcc: React.FC = () => {
                       renderDownload={true}
                       selectItem={(item: Invoice) => setSelectedDocument(item)}
                       filterOptions={["name", "date", "code"]}
+                      isFinanceApproval={true}
                     />
                   </Tab.Pane>
                 </>
@@ -218,4 +226,30 @@ const Dcc: React.FC = () => {
   );
 };
 
-export default Dcc;
+export default FinanceApproval;
+
+// <div className="container-fluid">
+//   {/* page header */}
+//   <PageHeader headerTitle={"Finance Approval"} />
+//   {/* table data */}
+//   <div className="test">
+//     <DocumentTable<PurchaseOrderRequest>
+//       title={"FinanceApproval"}
+//       columns={purchaseOrderColumnT}
+//       data={requests}
+//       renderCards={true}
+//       renderSearch={true}
+//       renderDownload={true}
+//       selectItem={(item: PurchaseOrderRequest) => setSelectedDocument(item)}
+//       filterOptions={["name", "date", "code"]}
+//       isFinanceApproval={true}
+//     />
+//   </div>
+// </div>
+// {selectedDocument && selectedDocument.status !== STATUS.ARCHIVED && (
+//   <WorkFlowStatusModal<PurchaseOrderRequest>
+//     handleClose={handleClose}
+//     open={open}
+//     selectedDocument={selectedDocument}
+//   />
+// )}
