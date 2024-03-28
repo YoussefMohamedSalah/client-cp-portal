@@ -19,13 +19,11 @@ import { geDccDocuments } from "api/Dcc/getDccDocuments";
 
 const Dcc: React.FC = () => {
   const [selectedDocument, setSelectedDocument] = useState<any>({} as any);
-  const [documentType, setDocumentType] = useState<string>("");
+  const [documentType, setDocumentType] = useState<string>(DOCUMENT_TYPE.PURCHASE_ORDER);
   const [documents, setDocuments] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
   const { showError } = useUI();
-
-  console.log("documents", documents);
 
   useEffect(() => {
     if (documentType) {

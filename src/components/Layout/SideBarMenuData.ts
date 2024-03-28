@@ -14,18 +14,18 @@ export const SideBarMenuData: any[] = [
     departments: ["Projects", "HR", "Finance", "Marketing", "Tender", "Procurement"],
   },
   //Profile
-  {
-    name: "Profile",
-    routerLink: ["/"],
-    identifier: "Profile",
-    iconClass: "icofont-ui-user",
-    breadcrumbMessage: "",
-    isCategory: false,
-    isApp: true,
-    children: [],
-    roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Projects", "HR", "Finance", "Marketing", "Tender", "Procurement"],
-  },
+  // {
+  //   name: "Profile",
+  //   routerLink: ["/"],
+  //   identifier: "Profile",
+  //   iconClass: "icofont-ui-user",
+  //   breadcrumbMessage: "",
+  //   isCategory: false,
+  //   isApp: true,
+  //   children: [],
+  //   roles: ["Superuser", "User", "Manager", "Director"],
+  //   departments: ["Projects", "HR", "Finance", "Marketing", "Tender", "Procurement"],
+  // },
   // Requests
   {
     name: "Requests",
@@ -113,6 +113,20 @@ export const SideBarMenuData: any[] = [
     roles: ["Superuser", "User", "Manager", "Director"],
     departments: ["Projects", "Finance", "Procurement", "Tender", "HR"],
   },
+
+  //Approval
+  {
+    name: "FCC",
+    routerLink: ["/finance-approval"],
+    identifier: "FCC ",
+    iconClass: "icofont-checked",
+    breadcrumbMessage: "",
+    isCategory: false,
+    isApp: true,
+    children: [],
+    roles: ["Manager"],
+    departments: ["Finance"],
+  },
   // Projects
   {
     name: "Projects",
@@ -165,7 +179,7 @@ export const SideBarMenuData: any[] = [
   },
   {
     name: "Attendance",
-    routerLink: ["/"],
+    routerLink: ["/attendance"],
     identifier: "Attendance",
     iconClass: "icofont-users-alt-1",
     breadcrumbMessage: "",
@@ -173,7 +187,7 @@ export const SideBarMenuData: any[] = [
     isApp: true,
     children: [],
     roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Projects", "HR", "Finance", "Marketing", "Tender", "Procurement"],
+    departments: ["HR", "Finance"],
   },
   //Task
   {
@@ -472,24 +486,24 @@ export const SideBarMenuData: any[] = [
     departments: ["HR", "Finance"],
   },
   //Add Customer
-  {
-    name: "Add Customer",
-    routerLink: ["/"],
-    identifier: "Add Customer",
-    iconClass: "icofont-users",
-    //<i class="icofont-add-users"></i>
-    breadcrumbMessage: "",
-    isCategory: false,
-    isApp: true,
-    children: [],
-    roles: ["Superuser", "User", "Manager", "Director"],
-    departments: ["Procurement", "Finance"],
-  },
+  // {
+  //   name: "Add Customer",
+  //   routerLink: ["/"],
+  //   identifier: "Add Customer",
+  //   iconClass: "icofont-users",
+  //   //<i class="icofont-add-users"></i>
+  //   breadcrumbMessage: "",
+  //   isCategory: false,
+  //   isApp: true,
+  //   children: [],
+  //   roles: ["Superuser", "User", "Manager", "Director"],
+  //   departments: ["Procurement", "Finance"],
+  // },
 
   //Cost Center
   {
-    name: "Cost Center ",
-    routerLink: ["/"],
+    name: "Cost Center",
+    routerLink: ["/cost-center"],
     identifier: "Cost Center ",
     iconClass: "icofont-money",
     breadcrumbMessage: "",
@@ -503,7 +517,7 @@ export const SideBarMenuData: any[] = [
   //Store
   {
     name: "Store ",
-    routerLink: ["/"],
+    routerLink: ["/inventory"],
     identifier: "Store ",
     iconClass: "icofont-shopify",
     breadcrumbMessage: "",
@@ -515,9 +529,9 @@ export const SideBarMenuData: any[] = [
   },
   //Project invoice
   {
-    name: "Project invoice ",
-    routerLink: ["/"],
-    identifier: "Project invoice ",
+    name: "Project invoices",
+    routerLink: ["/invoices"],
+    identifier: "Project invoices",
     iconClass: "icofont-file-document",
     breadcrumbMessage: "",
     isCategory: false,
@@ -539,19 +553,5 @@ export const SideBarMenuData: any[] = [
     children: [],
     roles: ["Superuser", "User", "Manager", "Director"],
     departments: ["Projects", "HR", "Finance", "Marketing", "Tender", "Procurement"],
-  },
-
-  //Approval
-  {
-    name: "Approval",
-    routerLink: ["/finance-approval"],
-    identifier: "Approval ",
-    iconClass: "icofont-checked",
-    breadcrumbMessage: "",
-    isCategory: false,
-    isApp: true,
-    children: [],
-    roles: ["Manager"],
-    departments: ["Finance"],
   },
 ];

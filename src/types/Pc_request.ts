@@ -1,6 +1,6 @@
 import { Project } from "./Project";
 import { Company } from "./Company";
-import { STATUS, DOCUMENT_TYPE } from "enums/enums";
+import { STATUS, DOCUMENT_TYPE, FINANCE_STATUS } from "enums/enums";
 
 export interface PettyCashRequest {
   id: string;
@@ -19,6 +19,7 @@ export interface PettyCashRequest {
   subject: string | null;
   description: string | null;
   status: STATUS;
+  finance_state: FINANCE_STATUS;
   items: Array<{ description: string; item: string; count: number; price: number; total: number }>;
   work_flow: Array<{ userId: string; name: string; title: string; state: boolean; isRejected: boolean; sign: string }>;
   files: Array<{ name: string; url: string }>;

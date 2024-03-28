@@ -192,6 +192,16 @@ export const superUserMenuData: any[] = [
     isCategory: false,
     isApp: false,
     children: [
+      {
+        name: "FCC",
+        routerLink: ["/finance-approval"],
+        identifier: "FCC ",
+        iconClass: "icofont-checked",
+        breadcrumbMessage: "",
+        isCategory: false,
+        isApp: true,
+        children: [],
+      },
       // this will be all invoices created.
       {
         name: "Payment Certificates",

@@ -39,6 +39,13 @@ export enum STATUS {
   ARCHIVED = "Archived",
 }
 
+// used
+export enum FINANCE_STATUS {
+  APPROVED = "Approved",
+  PENDING = "Pending",
+  REJECTED = "Rejected",
+}
+
 export enum ProjectStatus {
   IN_PROGRESS = "In Progress",
   COMPLETED = "Completed",

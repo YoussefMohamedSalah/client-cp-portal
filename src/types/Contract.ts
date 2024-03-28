@@ -2,7 +2,7 @@ import { Company } from "./Company";
 import { Invoice } from "./Invoice";
 import { Project } from "./Project";
 import { Subcontractor } from "./Subcontractor";
-import { STATUS, DOCUMENT_TYPE } from "enums/enums";
+import { STATUS, DOCUMENT_TYPE, FINANCE_STATUS } from "enums/enums";
 
 export interface Contract {
   id: string;
@@ -26,6 +26,7 @@ export interface Contract {
   project_details: { id: string; name: string };
   subcontractor_details: { id: string; name: string };
   status: STATUS;
+  finance_state: FINANCE_STATUS;
   payment_type: string;
   installments: Array<{ name: string; percentage: number; value: number; details: string; date: string }>;
   work_flow: Array<{ userId: string; name: string; title: string; state: boolean; isRejected: boolean; sign: string }>;

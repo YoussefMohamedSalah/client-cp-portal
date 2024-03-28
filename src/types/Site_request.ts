@@ -1,6 +1,6 @@
 import { Project } from "./Project";
 import { Company } from "./Company";
-import { STATUS, DOCUMENT_TYPE } from "enums/enums";
+import { STATUS, DOCUMENT_TYPE, FINANCE_STATUS } from "enums/enums";
 
 export interface SiteRequest {
   id: string;
@@ -13,6 +13,7 @@ export interface SiteRequest {
   description: string | null;
   subject: string | null;
   status: STATUS;
+  finance_state: FINANCE_STATUS;
   work_flow: { userId: string; name: string; title: string; state: boolean; isRejected: boolean; sign: string }[];
   timeline: { name: string; content: string; date: Date; status: string }[];
   rejection_reason: string | null;
